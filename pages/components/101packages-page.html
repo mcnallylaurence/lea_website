@@ -1,0 +1,845 @@
+<!-- Ladybird Ever After &ndash; Packages Page &ndash; Squarespace Code Block -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Alice&display=swap" rel="stylesheet">
+
+<style>
+.lb-packages {
+  --green:    #5B6239;
+  --green-dk: #3a3f25;
+  --green-hv: #4a5130;
+  --gold:     #B8964E;
+  --gold-lt:  #D4AF71;
+  --cream:    #F5F0E8;
+  --warm:     #FDFAF4;
+  --stone:    #8C8070;
+  --txt:      #1A1A18;
+  --txt-mid:  #4A4A42;
+  --pad-x: clamp(1.2rem, 5vw, 5rem);
+  --pad-y: clamp(3.5rem, 7vw, 6rem);
+  font-family: 'Alice', serif;
+  font-weight: 300;
+  color: var(--txt);
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+.lb-packages *, .lb-packages *::before, .lb-packages *::after { margin:0; padding:0; box-sizing:border-box; }
+.lb-packages img { display:block; }
+.lb-packages h1, .lb-packages h2, .lb-packages h3, .lb-packages h4 { font-family:'Playfair Display',serif; font-weight:300; }
+.lb-packages h1 em, .lb-packages h2 em, .lb-packages h3 em, .lb-packages h4 em { font-style:italic; color:var(--gold-lt); }
+.lb-packages a { color: inherit; }
+
+.lb-packages .label {
+  font-size:.6rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold);
+  font-weight:600; display:flex; align-items:center; gap:.6rem; margin-bottom:.75rem;
+}
+.lb-packages .label::after { content:''; flex:0 0 28px; height:1px; background:var(--gold); opacity:.5; }
+
+.lb-packages .btn {
+  display:inline-block; font-family:'Alice',serif; font-size:.74rem; font-weight:600;
+  letter-spacing:.15em; text-transform:uppercase; text-decoration:none; padding:.95rem 2.2rem;
+  border:2px solid transparent; cursor:pointer; transition:all .3s;
+}
+.lb-packages .btn-green { background:var(--green); color:var(--cream); border-color:var(--green); }
+.lb-packages .btn-green:hover { background:var(--green-hv); border-color:var(--green-hv); }
+.lb-packages .btn-gold { background:var(--gold); color:var(--green); border-color:var(--gold); }
+.lb-packages .btn-gold:hover { background:transparent; color:var(--gold-lt); border-color:var(--gold-lt); }
+.lb-packages .btn-outline { background:transparent; color:var(--gold); border-color:var(--gold); }
+.lb-packages .btn-outline:hover { background:var(--gold); color:var(--green); }
+
+/* ── HERO ── */
+.lb-packages .hero {
+  position:relative; background:var(--green); overflow:hidden; display:flex;
+  align-items:center; justify-content:center; text-align:center;
+  padding:clamp(5rem,12vw,8rem) var(--pad-x); min-height:52vh;
+}
+.lb-packages .hero-bg {
+  position:absolute; inset:0;
+  background-image:url('https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/6be79920-10fd-47f4-915e-692638646e7c/Castle+Background.jpg?format=2500w');
+  background-size:cover; background-position:center 40%; opacity:.15;
+}
+.lb-packages .hero-grad {
+  position:absolute; inset:0;
+  background:radial-gradient(ellipse at center, rgba(28,28,26,.5) 0%, rgba(28,28,26,.82) 100%);
+}
+.lb-packages .hero-content { position:relative; z-index:2; max-width:720px; animation:lbPkgFadeUp .9s ease both; }
+.lb-packages .hero-eyebrow {
+  font-size:.58rem; letter-spacing:.35em; text-transform:uppercase; color:var(--gold-lt);
+  font-weight:500; margin-bottom:1.4rem; display:flex; align-items:center; justify-content:center; gap:.8rem;
+}
+.lb-packages .hero-eyebrow-line { flex:0 0 24px; height:1px; background:var(--gold-lt); opacity:.45; }
+.lb-packages .hero h1 { font-size:clamp(2.2rem,5.5vw,3.8rem); color:var(--warm); line-height:1.08; margin-bottom:1.2rem; }
+.lb-packages .hero-sub {
+  font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(.95rem,1.6vw,1.2rem);
+  color:rgba(253,250,244,.6); line-height:1.65; max-width:540px; margin:0 auto;
+}
+.lb-packages .hero-divider { width:50px; height:1px; background:var(--gold-lt); opacity:.4; margin:1.6rem auto; }
+.lb-packages .hero-ctas { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-top:2rem; }
+
+/* ── INTRO ── */
+.lb-packages .intro { background:var(--cream); padding:var(--pad-y) var(--pad-x); }
+.lb-packages .intro-inner { max-width:780px; margin:0 auto; text-align:center; }
+.lb-packages .intro h2 { font-size:clamp(1.8rem,3.2vw,2.6rem); color:var(--txt); line-height:1.18; margin-bottom:1.4rem; }
+.lb-packages .intro p { font-size:.88rem; line-height:1.85; color:var(--txt-mid); margin-bottom:1rem; }
+.lb-packages .intro p a { color:var(--gold); text-decoration:underline; text-underline-offset:3px; }
+.lb-packages .intro p a:hover { color:var(--green); }
+
+.lb-packages .testimonial {
+  margin:2.2rem auto 0; max-width:620px; padding:1.8rem 2rem;
+  background:var(--warm); border-left:3px solid var(--gold); font-style:italic;
+}
+.lb-packages .testimonial p { font-family:'Playfair Display',serif; font-size:.92rem; line-height:1.7; color:var(--txt-mid); margin-bottom:.6rem; }
+.lb-packages .testimonial cite { font-size:.72rem; font-style:normal; color:var(--stone); letter-spacing:.06em; }
+
+/* ── CHOOSER ── */
+.lb-packages .chooser { background:var(--warm); padding:var(--pad-y) var(--pad-x); }
+.lb-packages .chooser-inner { max-width:880px; margin:0 auto; }
+.lb-packages .chooser-header { text-align:center; margin-bottom:clamp(1.5rem,3vw,2.5rem); }
+.lb-packages .chooser-header h2 { font-size:clamp(1.6rem,3vw,2.4rem); color:var(--txt); line-height:1.15; margin-bottom:.8rem; }
+.lb-packages .chooser-header p { font-size:.85rem; color:var(--txt-mid); line-height:1.75; max-width:540px; margin:0 auto; }
+
+.lb-packages .chooser-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.2rem; }
+.lb-packages .chooser-card {
+  background:var(--cream); padding:1.8rem 1.5rem; text-align:center;
+  border:1px solid rgba(91,98,57,.1); transition:all .35s;
+}
+.lb-packages .chooser-card:hover { transform:translateY(-3px); box-shadow:0 8px 25px rgba(0,0,0,.06); }
+.lb-packages .chooser-card-icon { font-size:1.8rem; margin-bottom:.8rem; display:block; }
+.lb-packages .chooser-card h3 {
+  font-size:1rem; font-weight:600; color:var(--green); margin-bottom:.5rem; line-height:1.25;
+}
+.lb-packages .chooser-card p { font-size:.78rem; line-height:1.7; color:var(--txt-mid); }
+.lb-packages .chooser-card .chooser-rec {
+  display:inline-block; margin-top:.8rem; font-size:.58rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--gold); font-weight:600; background:rgba(184,150,78,.1);
+  padding:.3rem .7rem;
+}
+
+/* ── PACKAGES ── */
+.lb-packages .packages-section { background:var(--cream); padding:var(--pad-y) var(--pad-x); }
+.lb-packages .packages-header { text-align:center; margin-bottom:clamp(2rem,4vw,3.5rem); }
+.lb-packages .packages-header h2 { font-size:clamp(1.8rem,3.4vw,2.6rem); color:var(--txt); line-height:1.15; margin-bottom:.6rem; }
+.lb-packages .packages-header p { font-size:.82rem; color:var(--txt-mid); line-height:1.7; }
+
+.lb-packages .pkg-list { max-width:960px; margin:0 auto; display:flex; flex-direction:column; gap:0; }
+
+.lb-packages .pkg {
+  display:grid; grid-template-columns:1fr 1fr; gap:0; background:var(--warm);
+  border:1px solid rgba(91,98,57,.1); border-bottom:none; overflow:hidden; transition:box-shadow .4s;
+}
+.lb-packages .pkg:last-child { border-bottom:1px solid rgba(91,98,57,.1); }
+.lb-packages .pkg:hover { box-shadow:0 6px 25px rgba(0,0,0,.06); z-index:1; position:relative; }
+
+.lb-packages .pkg:nth-child(even) .pkg-img { order:2; }
+.lb-packages .pkg:nth-child(even) .pkg-body { order:1; }
+
+.lb-packages .pkg-img { position:relative; min-height:380px; overflow:hidden; }
+.lb-packages .pkg-img img {
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  filter:saturate(.85); transition:transform .7s ease, filter .5s ease;
+}
+.lb-packages .pkg:hover .pkg-img img { transform:scale(1.04); filter:saturate(1); }
+.lb-packages .pkg-img-overlay {
+  position:absolute; inset:0; z-index:1;
+  background:linear-gradient(to right, rgba(28,28,26,.35) 0%, rgba(28,28,26,0) 60%);
+}
+.lb-packages .pkg:nth-child(even) .pkg-img-overlay {
+  background:linear-gradient(to left, rgba(28,28,26,.35) 0%, rgba(28,28,26,0) 60%);
+}
+.lb-packages .pkg-badge {
+  position:absolute; top:1.2rem; left:1.2rem; z-index:2;
+  font-family:'Playfair Display',serif; font-size:.6rem; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--warm); background:rgba(91,98,57,.75);
+  backdrop-filter:blur(6px); padding:.35rem .8rem; font-weight:600;
+}
+.lb-packages .pkg:nth-child(even) .pkg-badge { left:auto; right:1.2rem; }
+
+.lb-packages .pkg-body { padding:2.4rem 2.2rem; display:flex; flex-direction:column; justify-content:center; }
+.lb-packages .pkg-tier {
+  font-size:.56rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold); font-weight:600; margin-bottom:.4rem;
+}
+.lb-packages .pkg-name { font-size:clamp(1.6rem,2.4vw,2rem); color:var(--green); line-height:1.15; margin-bottom:.2rem; }
+.lb-packages .pkg-tagline {
+  font-family:'Playfair Display',serif; font-style:italic; font-size:.88rem;
+  color:var(--stone); margin-bottom:.8rem;
+}
+.lb-packages .pkg-price {
+  font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--txt);
+  font-weight:600; margin-bottom:1rem;
+}
+.lb-packages .pkg-price span { font-size:.72rem; font-weight:300; color:var(--stone); }
+.lb-packages .pkg-desc { font-size:.8rem; line-height:1.8; color:var(--txt-mid); margin-bottom:1.4rem; }
+
+.lb-packages .pkg-includes { list-style:none; margin-bottom:1.6rem; }
+.lb-packages .pkg-includes li {
+  font-size:.76rem; color:var(--txt-mid); padding:.35rem 0 .35rem 1.4rem; position:relative;
+  border-bottom:1px solid rgba(91,98,57,.06); line-height:1.5;
+}
+.lb-packages .pkg-includes li:last-child { border-bottom:none; }
+.lb-packages .pkg-includes li::before {
+  content:'✓'; position:absolute; left:0; color:var(--gold); font-weight:600; font-size:.72rem;
+}
+
+.lb-packages .pkg-footer { display:flex; gap:.8rem; align-items:center; flex-wrap:wrap; }
+.lb-packages .pkg-link {
+  font-size:.66rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold);
+  text-decoration:none; font-weight:600; transition:color .3s;
+}
+.lb-packages .pkg-link:hover { color:var(--green); }
+
+/* ── SLAINTE FEATURED ── */
+.lb-packages .pkg-featured {
+  border:2px solid var(--gold) !important; border-bottom:2px solid var(--gold) !important;
+  box-shadow:0 8px 32px rgba(184,150,78,.18);
+}
+.lb-packages .pkg-featured .pkg-body { background:var(--cream); }
+.lb-packages .pkg-most-popular {
+  display:inline-block; background:var(--gold); color:var(--green);
+  font-size:.54rem; letter-spacing:.22em; text-transform:uppercase;
+  font-weight:700; padding:.28rem .8rem; margin-bottom:.7rem;
+}
+
+/* ── INCLUDED SECTION ── */
+.lb-packages .included { background:var(--green); padding:var(--pad-y) var(--pad-x); }
+.lb-packages .included-inner { max-width:960px; margin:0 auto; }
+.lb-packages .included-header { text-align:center; margin-bottom:clamp(2rem,4vw,3rem); }
+.lb-packages .included-header h2 { font-size:clamp(1.8rem,3vw,2.4rem); color:var(--warm); line-height:1.15; margin-bottom:.6rem; }
+.lb-packages .included-header p { font-size:.82rem; color:rgba(245,240,232,.5); line-height:1.7; }
+
+.lb-packages .included-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(245,240,232,.1); }
+.lb-packages .included-card {
+  background:var(--green-dk); padding:1.8rem 1.4rem; text-align:center; transition:background .3s;
+}
+.lb-packages .included-card:hover { background:var(--green-hv); }
+.lb-packages .included-card-icon { font-size:1.5rem; margin-bottom:.7rem; display:block; }
+.lb-packages .included-card h4 {
+  font-size:.82rem; font-weight:600; color:var(--gold-lt); margin-bottom:.5rem; line-height:1.3;
+}
+.lb-packages .included-card p { font-size:.72rem; line-height:1.7; color:rgba(245,240,232,.55); }
+
+/* ── PROOF BAR ── */
+.lb-packages .proof {
+  background:var(--warm); padding:clamp(2rem,3.5vw,3rem) var(--pad-x); text-align:center;
+  border-top:1px solid rgba(91,98,57,.08); border-bottom:1px solid rgba(91,98,57,.08);
+}
+.lb-packages .proof-inner { max-width:800px; margin:0 auto; }
+.lb-packages .proof-stats { display:flex; justify-content:center; gap:clamp(2rem,5vw,4rem); flex-wrap:wrap; margin-bottom:1.2rem; }
+.lb-packages .proof-stat { text-align:center; }
+.lb-packages .proof-stat-num {
+  font-family:'Playfair Display',serif; font-size:clamp(1.6rem,2.8vw,2.2rem);
+  color:var(--green); font-weight:600; line-height:1;
+}
+.lb-packages .proof-stat-label { font-size:.62rem; letter-spacing:.15em; text-transform:uppercase; color:var(--stone); margin-top:.3rem; }
+.lb-packages .proof-logos { display:flex; justify-content:center; align-items:center; gap:2rem; flex-wrap:wrap; opacity:.5; margin-top:1rem; }
+.lb-packages .proof-logos img { height:28px; filter:grayscale(1); transition:filter .3s, opacity .3s; opacity:.6; }
+.lb-packages .proof-logos img:hover { filter:grayscale(0); opacity:1; }
+
+/* ── LOCATIONS ── */
+.lb-packages .locations { background:var(--cream); padding:var(--pad-y) var(--pad-x); }
+.lb-packages .locations-inner { max-width:960px; margin:0 auto; }
+.lb-packages .locations-header { text-align:center; margin-bottom:clamp(1.5rem,3vw,2.5rem); }
+.lb-packages .locations-header h2 { font-size:clamp(1.8rem,3vw,2.4rem); color:var(--txt); line-height:1.15; margin-bottom:.6rem; }
+.lb-packages .locations-header p { font-size:.82rem; color:var(--txt-mid); line-height:1.7; max-width:520px; margin:0 auto; }
+
+.lb-packages .locations-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:1px solid rgba(91,98,57,.1); }
+.lb-packages .loc-card {
+  text-decoration:none; color:var(--txt); background:var(--warm); overflow:hidden;
+  border-right:1px solid rgba(91,98,57,.1); transition:all .4s;
+}
+.lb-packages .loc-card:last-child { border-right:none; }
+.lb-packages .loc-card:hover { background:rgba(91,98,57,.03); transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,.06); }
+.lb-packages .loc-card-img { position:relative; height:180px; overflow:hidden; }
+.lb-packages .loc-card-img img {
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  filter:saturate(.8); transition:transform .6s ease, filter .4s;
+}
+.lb-packages .loc-card:hover .loc-card-img img { transform:scale(1.06); filter:saturate(1); }
+.lb-packages .loc-card-img-overlay {
+  position:absolute; inset:0; background:linear-gradient(to top, rgba(28,28,26,.45) 0%, rgba(28,28,26,0) 55%); z-index:1;
+}
+.lb-packages .loc-card-body { padding:1.2rem 1.1rem 1.4rem; }
+.lb-packages .loc-card h3 { font-size:.92rem; font-weight:600; color:var(--green); margin-bottom:.3rem; line-height:1.25; }
+.lb-packages .loc-card p { font-size:.7rem; line-height:1.65; color:var(--txt-mid); margin-bottom:.8rem; }
+.lb-packages .loc-card-cta {
+  font-size:.6rem; letter-spacing:.12em; text-transform:uppercase; color:var(--gold);
+  font-weight:600; display:flex; align-items:center; gap:.4rem; transition:gap .3s, color .3s;
+}
+.lb-packages .loc-card:hover .loc-card-cta { gap:.65rem; color:var(--green); }
+
+/* ── FAQ ── */
+.lb-packages .faq { background:var(--warm); padding:var(--pad-y) var(--pad-x); }
+.lb-packages .faq-inner { max-width:780px; margin:0 auto; }
+.lb-packages .faq-header { text-align:center; margin-bottom:clamp(1.5rem,3vw,2.5rem); }
+.lb-packages .faq-header h2 { font-size:clamp(1.8rem,3vw,2.4rem); color:var(--txt); line-height:1.15; margin-bottom:.6rem; }
+
+.lb-packages .faq-item {
+  border-bottom:1px solid rgba(91,98,57,.1); overflow:hidden;
+}
+.lb-packages .faq-q {
+  width:100%; background:none; border:none; font-family:'Alice',serif; font-size:.88rem;
+  color:var(--txt); padding:1.2rem 2.5rem 1.2rem 0; cursor:pointer; text-align:left;
+  position:relative; line-height:1.5; transition:color .3s;
+}
+.lb-packages .faq-q:hover { color:var(--green); }
+.lb-packages .faq-q::after {
+  content:'+'; position:absolute; right:0; top:50%; transform:translateY(-50%);
+  font-family:'Playfair Display',serif; font-size:1.3rem; color:var(--gold);
+  transition:transform .3s;
+}
+.lb-packages .faq-item.open .faq-q::after { content:'−'; }
+.lb-packages .faq-a {
+  max-height:0; overflow:hidden; transition:max-height .4s ease, padding .3s;
+}
+.lb-packages .faq-item.open .faq-a { max-height:600px; }
+.lb-packages .faq-a-inner {
+  padding:0 0 1.4rem; font-size:.82rem; line-height:1.8; color:var(--txt-mid);
+}
+.lb-packages .faq-a-inner a { color:var(--gold); text-decoration:underline; text-underline-offset:3px; }
+
+/* ── FINAL CTA ── */
+.lb-packages .final-cta {
+  background:var(--green-dk); padding:clamp(3.5rem,8vw,6rem) var(--pad-x);
+  text-align:center;
+}
+.lb-packages .final-cta-content { max-width:600px; margin:0 auto; }
+.lb-packages .final-cta h2 { font-size:clamp(1.8rem,3.5vw,2.8rem); color:var(--warm); line-height:1.15; margin-bottom:1rem; }
+.lb-packages .final-cta p {
+  font-family:'Playfair Display',serif; font-style:italic; font-size:.92rem;
+  color:rgba(245,240,232,.55); line-height:1.7; margin-bottom:2rem;
+}
+.lb-packages .final-cta .btn-gold { font-size:.78rem; padding:1.1rem 2.8rem; }
+
+/* ── ANIMATIONS ── */
+@keyframes lbPkgFadeUp { from { opacity:0; transform:translateY(26px); } to { opacity:1; transform:translateY(0); } }
+.lb-packages .reveal { opacity:0; transform:translateY(20px); transition:opacity .7s ease, transform .7s ease; }
+.lb-packages .reveal.in { opacity:1; transform:translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width:900px) {
+  .lb-packages .pkg { grid-template-columns:1fr; }
+  .lb-packages .pkg-img { min-height:260px; }
+  .lb-packages .pkg:nth-child(even) .pkg-img { order:0; }
+  .lb-packages .pkg:nth-child(even) .pkg-body { order:0; }
+  .lb-packages .included-grid { grid-template-columns:repeat(2,1fr); }
+  .lb-packages .locations-grid { grid-template-columns:repeat(2,1fr); }
+  .lb-packages .loc-card:nth-child(2) { border-right:none; }
+  .lb-packages .chooser-grid { grid-template-columns:1fr; }
+}
+@media (max-width:600px) {
+  .lb-packages .hero { padding:3.5rem 1.2rem; min-height:42vh; }
+  .lb-packages .intro, .lb-packages .chooser, .lb-packages .packages-section,
+  .lb-packages .included, .lb-packages .locations, .lb-packages .faq { padding:2.5rem 1.2rem; }
+  .lb-packages .pkg-body { padding:1.8rem 1.4rem; }
+  .lb-packages .included-grid { grid-template-columns:1fr 1fr; }
+  .lb-packages .locations-grid { grid-template-columns:1fr; }
+  .lb-packages .loc-card { border-right:none !important; border-bottom:1px solid rgba(91,98,57,.1); }
+  .lb-packages .loc-card:last-child { border-bottom:none; }
+  .lb-packages .proof-stats { gap:1.5rem; }
+}
+</style>
+
+<div class="lb-packages">
+
+<!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grad"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">
+      <span class="hero-eyebrow-line"></span>
+      Elopement & Wedding Packages
+      <span class="hero-eyebrow-line"></span>
+    </p>
+    <h1>All-Inclusive Elopement &amp;<br>Wedding Packages in <em>Ireland</em></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">Designed for American &amp; Canadian couples. One planner, one contract, zero international hassle.</p>
+    <div class="hero-ctas">
+      <a href="#packages" class="btn btn-gold">Explore Packages</a>
+      <a href="https://www.ladybirdeverafter.com/schedule-a-call" class="btn btn-outline">Book a Free Call</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     INTRO
+══════════════════════════════════════ -->
+<div class="intro">
+  <div class="intro-inner reveal">
+    <p class="label" style="justify-content:center;">Your Dream Irish Wedding</p>
+    <h2>Planned from home.<br><em>Celebrated in Ireland.</em></h2>
+    <p>Planning a wedding across the Atlantic should feel exciting, not overwhelming. Ladybird Ever After specialises in one thing: creating unforgettable elopements and intimate weddings in Ireland for couples travelling from the United States and Canada.</p>
+    <p>Every package below is truly all-inclusive. That means a dedicated US-based wedding planner, an expert Irish celebrant, award-winning photography, and full legal guidance &mdash; all managed through a single contract with pricing in US dollars. We handle every vendor payment, every foreign currency transfer, and every logistical detail so you can focus on each other.</p>
+    <p>Whether you picture yourselves exchanging vows on the dramatic <a href="https://www.ladybirdeverafter.com/cliffs-of-moher">Cliffs of Moher</a>, inside the ancient ruins of <a href="https://www.ladybirdeverafter.com/dunluce-castle">Dunluce Castle</a>, beside the serene lakes of <a href="https://www.ladybirdeverafter.com/killarney-national-park">Killarney National Park</a>, or at a medieval castle ruin like <a href="https://www.ladybirdeverafter.com/rahinnane-castle">Rahinnane</a> &mdash; we have planned weddings at over 30 iconic Irish locations and know each one intimately.</p>
+    <p>Our packages range from simple elopements for two to full bespoke wedding celebrations with reception coordination, live music, and day-of management. Every package can be customised to match your vision, your guest count, and your budget.</p>
+
+    <div class="testimonial">
+      <p>&ldquo;We live in Atlanta and had no idea where to start planning a wedding in Ireland. Ladybird Ever After handled absolutely everything &mdash; the legal paperwork, the venue, the photographer, even recommending the best pub for our post-ceremony pint. It was the most magical day of our lives.&rdquo;</p>
+      <cite>&mdash; Jessica &amp; Kyle, married at Ross Castle, Killarney</cite>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     WHICH PACKAGE IS RIGHT FOR YOU
+══════════════════════════════════════ -->
+<div class="chooser">
+  <div class="chooser-inner">
+    <div class="chooser-header reveal">
+      <p class="label" style="justify-content:center;">Finding Your Fit</p>
+      <h2>Which package is<br><em>right for you?</em></h2>
+      <p>It comes down to three things: how many people will be there, how much photography you want, and whether you need reception planning.</p>
+    </div>
+
+    <div class="chooser-grid">
+      <div class="chooser-card reveal">
+        <span class="chooser-card-icon">💍</span>
+        <h3>Just the Two of You</h3>
+        <p>A celebrant, a photographer, and Ireland's most breathtaking scenery. No guest logistics, no reception planning &mdash; just your love story.</p>
+        <span class="chooser-rec">F&aacute;ilte or Gr&aacute;</span>
+      </div>
+      <div class="chooser-card reveal">
+        <span class="chooser-card-icon">👨‍👩‍👧‍👦</span>
+        <h3>Bringing Your People</h3>
+        <p>A dedicated wedding planner and reception coordination so your guests are taken care of while you enjoy every moment.</p>
+        <span class="chooser-rec">Sl&aacute;inte</span>
+      </div>
+      <div class="chooser-card reveal">
+        <span class="chooser-card-icon">🏰</span>
+        <h3>The Full Celebration</h3>
+        <p>Everything from an on-the-day coordinator to ceremony music, additional styling, and extended photography coverage.</p>
+        <span class="chooser-rec">Ard</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PACKAGES
+══════════════════════════════════════ -->
+<div class="packages-section" id="packages">
+  <div class="packages-header reveal">
+    <p class="label" style="justify-content:center;">Our Packages</p>
+    <h2>Irish Elopement &amp; Wedding <em>Packages</em></h2>
+    <p>Each package is a foundation upon which you can build a fully bespoke experience.</p>
+  </div>
+
+  <div class="pkg-list">
+
+    <!-- ─── FÁILTE ─── -->
+    <div class="pkg reveal" id="failte">
+      <div class="pkg-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/6f2b39e6-2374-4c58-880f-1421677578d9/Alicia%26Brian-83.webp?format=2500w" alt="Intimate elopement ceremony in Ireland with couple exchanging vows">
+        <div class="pkg-img-overlay"></div>
+        <div class="pkg-badge">Elopement</div>
+      </div>
+      <div class="pkg-body">
+        <div class="pkg-tier">Package One</div>
+        <h3 class="pkg-name">F&aacute;ilte</h3>
+        <p class="pkg-tagline">The Pure Elopement &mdash; just the two of you and Ireland.</p>
+        <div class="pkg-price">From $4,900 <span>/ couple</span></div>
+        <p class="pkg-desc">F&aacute;ilte (meaning &ldquo;welcome&rdquo; in Irish) is our most intimate package. Your celebrant performs a legal or symbolic ceremony at the Irish location of your choice, while your photographer captures every candid moment across two hours. We handle the legal guidance and location booking &mdash; you just show up and say &ldquo;I do.&rdquo;</p>
+        <ul class="pkg-includes">
+          <li>Expert Irish celebrant (legal or symbolic ceremony)</li>
+          <li>Premium elopement photography (2 hours)</li>
+          <li>Full legal guidance for US/Canadian couples</li>
+          <li>Location selection &amp; booking</li>
+          <li>US-based planning support &amp; client portal</li>
+          <li>One contract, pricing in USD, flexible payment plans</li>
+        </ul>
+        <div class="pkg-footer">
+          <a href="/get-in-touch" class="btn btn-green">Enquire Now</a>
+          <a href="/happy-couples/jessica-kyle-ross-castle" class="pkg-link">See a Real Elopement →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── GRÁ ─── -->
+    <div class="pkg reveal" id="gra">
+      <div class="pkg-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/7bee81a4-bd46-45fd-856e-9079173fcb09/TandJKillarney.webp?format=2500w" alt="Enhanced elopement in Killarney with bridal bouquet and styling">
+        <div class="pkg-img-overlay"></div>
+        <div class="pkg-badge">Enhanced Elopement</div>
+      </div>
+      <div class="pkg-body">
+        <div class="pkg-tier">Package Two</div>
+        <h3 class="pkg-name">Gr&aacute;</h3>
+        <p class="pkg-tagline">The Enhanced Elopement &mdash; your love story, beautifully styled.</p>
+        <div class="pkg-price">From $6,800 <span>/ couple</span></div>
+        <p class="pkg-desc">Gr&aacute; (meaning &ldquo;love&rdquo; in Irish) builds on the pure elopement with everything you need to feel camera-ready and completely pampered. Extended photography coverage means time for portrait sessions at a second location &mdash; imagine saying your vows at a castle ruin, then walking along the cliffs for sunset photos.</p>
+        <ul class="pkg-includes">
+          <li>Expert Irish celebrant (legal or symbolic ceremony)</li>
+          <li>Premium elopement photography (3 hours)</li>
+          <li>Bespoke bridal bouquet &amp; buttonhole by a local Irish florist</li>
+          <li>Professional hair styling (for one person)</li>
+          <li>Professional makeup artistry (for one person)</li>
+          <li>Full legal guidance for US/Canadian couples</li>
+          <li>Location selection &amp; booking</li>
+          <li>US-based planning support &amp; client portal</li>
+          <li>One contract, pricing in USD, flexible payment plans</li>
+        </ul>
+        <div class="pkg-footer">
+          <a href="/get-in-touch" class="btn btn-green">Enquire Now</a>
+          <a href="/happy-couples/mollie-ryan-dunquin-pier" class="pkg-link">See a Real Elopement →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── SLÁINTE ─── -->
+    <div class="pkg pkg-featured reveal" id="slainte">
+      <div class="pkg-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/f45ff3f1-5607-4e5e-9b6d-a95d0011c12d/L%26Y16.jpg?format=2500w" alt="Intimate Irish wedding celebration with family and friends">
+        <div class="pkg-img-overlay"></div>
+        <div class="pkg-badge">Intimate Wedding</div>
+      </div>
+      <div class="pkg-body">
+        <div class="pkg-tier">Package Three</div>
+        <span class="pkg-most-popular">&#9733; Most Popular</span>
+        <h3 class="pkg-name">Sl&aacute;inte</h3>
+        <p class="pkg-tagline">The Intimate Irish Wedding &mdash; bring your favourite people, we handle the rest.</p>
+        <div class="pkg-price">From $8,700 <span>/ couple + guests</span></div>
+        <p class="pkg-desc">Sl&aacute;inte (the Irish toast meaning &ldquo;good health&rdquo;) is where elopement meets celebration. Your dedicated wedding planner coordinates everything from ceremony logistics to your reception at one of Ireland's exceptional venues &mdash; whether that's a private dining room in a centuries-old castle, a cosy country house, or a lively Irish pub.</p>
+        <ul class="pkg-includes">
+          <li>Everything in Gr&aacute;, plus:</li>
+          <li>Dedicated wedding planner (from first call through the big day)</li>
+          <li>Reception venue sourcing, booking &amp; coordination</li>
+          <li>Guest logistics support</li>
+          <li>Full legal guidance for US/Canadian couples</li>
+          <li>US-based planning support &amp; client portal</li>
+          <li>One contract, pricing in USD, flexible payment plans</li>
+        </ul>
+        <div class="pkg-footer">
+          <a href="/get-in-touch" class="btn btn-gold">Enquire Now</a>
+          <a href="/happy-couples/kalee-kristian-cliffs-of-moher" class="pkg-link">See a Real Wedding →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── ARD ─── -->
+    <div class="pkg reveal" id="ard">
+      <div class="pkg-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/4165ccfd-24ac-4fe6-9e00-b8c14a61904a/adrienne+and+josh.jpg?format=2500w" alt="Bespoke destination wedding at an Irish castle">
+        <div class="pkg-img-overlay"></div>
+        <div class="pkg-badge">Bespoke Wedding</div>
+      </div>
+      <div class="pkg-body">
+        <div class="pkg-tier">Package Four</div>
+        <h3 class="pkg-name">Ard</h3>
+        <p class="pkg-tagline">The Bespoke Wedding &mdash; a destination wedding, without the destination stress.</p>
+        <div class="pkg-price">From $9,800 <span>/ couple + guests</span></div>
+        <p class="pkg-desc">Ard (meaning &ldquo;great&rdquo; or &ldquo;noble&rdquo; in Irish) is for couples who want a complete Irish wedding experience. Four hours of premium photography captures your day from getting-ready moments through the reception. Your on-the-day coordinator ensures every vendor is in place and every timeline runs seamlessly.</p>
+        <ul class="pkg-includes">
+          <li>Everything in Sl&aacute;inte, plus:</li>
+          <li>Premium photography extended to 4 hours</li>
+          <li>On-the-day coordinator (separate from your planner)</li>
+          <li>Full legal guidance for US/Canadian couples</li>
+          <li>US-based planning support &amp; client portal</li>
+          <li>One contract, pricing in USD, flexible payment plans</li>
+        </ul>
+        <div class="pkg-footer">
+          <a href="https://www.ladybirdeverafter.com/get-in-touch" class="btn btn-green">Enquire Now</a>
+          <a href="https://www.ladybirdeverafter.com/mt-rahinnane-castle" class="pkg-link">See a Real Wedding →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─── RÍRÁ ─── -->
+    <div class="pkg reveal">
+      <div class="pkg-img">
+        <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/d75ea9b8-bea3-4add-8d96-63403ca5ffa4/M%26B_605.webp?format=2500w" alt="Ultimate wedding celebration at Dunluce Castle Ireland">
+        <div class="pkg-img-overlay"></div>
+        <div class="pkg-badge">Ultimate Wedding</div>
+      </div>
+      <div class="pkg-body">
+        <div class="pkg-tier">Package Five</div>
+        <h3 class="pkg-name">R&iacute;R&aacute;</h3>
+        <p class="pkg-tagline">The Ultimate Wedding &mdash; every detail, every guest, every unforgettable moment.</p>
+        <div class="pkg-price">From $XX,XXX <span>/ couple + guests</span></div>
+        <p class="pkg-desc">R&iacute;R&aacute; (meaning &ldquo;great fun&rdquo; in Irish) is our most complete package. Eight hours of photography captures your entire day. Live ceremony music &mdash; a harpist at a castle ruin, a traditional Irish musician on a clifftop &mdash; sets the tone. Additional styling for your wedding party means everyone looks as stunning as the scenery.</p>
+        <ul class="pkg-includes">
+          <li>Everything in Ard, plus:</li>
+          <li>Premium photography extended to 8 hours</li>
+          <li>Live ceremony music</li>
+          <li>Additional hair &amp; makeup (for 2 additional people)</li>
+          <li>Additional buttonhole &amp; corsage (x2)</li>
+          <li>Full legal guidance for US/Canadian couples</li>
+          <li>US-based planning support &amp; client portal</li>
+          <li>One contract, pricing in USD, flexible payment plans</li>
+        </ul>
+        <div class="pkg-footer">
+          <a href="https://www.ladybirdeverafter.com/get-in-touch" class="btn btn-green">Enquire Now</a>
+          <a href="https://www.ladybirdeverafter.com/mb-dunluce-castle" class="pkg-link">See a Real Wedding →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     INCLUDED IN EVERY PACKAGE
+══════════════════════════════════════ -->
+<div class="included">
+  <div class="included-inner">
+    <div class="included-header reveal">
+      <p class="label" style="justify-content:center;color:var(--gold-lt);">Standard With Every Package</p>
+      <h2>Included in every<br><em>Ladybird package.</em></h2>
+      <p>No matter which package you choose, these essentials come standard.</p>
+    </div>
+    <div class="included-grid reveal">
+      <div class="included-card">
+        <span class="included-card-icon">🇺🇸</span>
+        <h4>US-Based Planner</h4>
+        <p>Your dedicated planner is based in the US and available in your timezone. Easy, responsive communication from your first call to the big day.</p>
+      </div>
+      <div class="included-card">
+        <span class="included-card-icon">☘️</span>
+        <h4>Irish Celebrant</h4>
+        <p>Every ceremony is performed by a local Irish celebrant who can conduct legal or symbolic ceremonies matched to your vision.</p>
+      </div>
+      <div class="included-card">
+        <span class="included-card-icon">📋</span>
+        <h4>Full Legal Guidance</h4>
+        <p>We walk you through every step of getting legally married in Ireland &mdash; notification requirements, documents, and timelines.</p>
+      </div>
+      <div class="included-card">
+        <span class="included-card-icon">📸</span>
+        <h4>Award-Winning Photos</h4>
+        <p>We work with Ireland's finest wedding photographers who know every angle of the country's most iconic landscapes.</p>
+      </div>
+      <div class="included-card">
+        <span class="included-card-icon">📍</span>
+        <h4>Location Booking</h4>
+        <p>From cliffs and castles to country estates and pubs, we help you find the perfect setting from our <a href="https://www.ladybirdeverafter.com/venues" style="color:var(--gold-lt);">30+ curated venues</a>.</p>
+      </div>
+      <div class="included-card">
+        <span class="included-card-icon">💵</span>
+        <h4>Zero International Admin</h4>
+        <p>One US contract. Pricing in USD. Secure credit card payments. We handle all foreign currency transfers and vendor payments.</p>
+      </div>
+      <div class="included-card">
+        <span class="included-card-icon">💳</span>
+        <h4>Flexible Payments</h4>
+        <p>Secure 0% interest financing options available. Pay over time with a plan that works for your budget.</p>
+      </div>
+      <div class="included-card">
+        <span class="included-card-icon">🔑</span>
+        <h4>Client Portal</h4>
+        <p>Your exclusive portal keeps every detail organised &mdash; timelines, documents, vendor contacts, and inspiration all in one place.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SOCIAL PROOF
+══════════════════════════════════════ -->
+<div class="proof reveal">
+  <div class="proof-inner">
+    <div class="proof-stats">
+      <div class="proof-stat">
+        <div class="proof-stat-num">100+</div>
+        <div class="proof-stat-label">Couples Married in Ireland</div>
+      </div>
+      <div class="proof-stat">
+        <div class="proof-stat-num">30+</div>
+        <div class="proof-stat-label">Curated Irish Venues</div>
+      </div>
+      <div class="proof-stat">
+        <div class="proof-stat-num">5★</div>
+        <div class="proof-stat-label">Average Couple Rating</div>
+      </div>
+      <div class="proof-stat">
+        <div class="proof-stat-num">30+</div>
+        <div class="proof-stat-label">US States Represented</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     POPULAR LOCATIONS
+══════════════════════════════════════ -->
+<div class="locations">
+  <div class="locations-inner">
+    <div class="locations-header reveal">
+      <p class="label" style="justify-content:center;">Popular Ceremony Settings</p>
+      <h2>Where will you<br><em>say &ldquo;I do&rdquo;?</em></h2>
+      <p>Every package works at any of our 30+ curated locations. Here are a few favourites.</p>
+    </div>
+    <div class="locations-grid reveal">
+      <a href="https://www.ladybirdeverafter.com/cliffs-of-moher" class="loc-card">
+        <div class="loc-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/ee5aed59-7275-4677-b479-d1650cc58476/Kalee%26Kristian-267.jpg?format=1500w" alt="Wedding couple walking along the Cliffs of Moher">
+          <div class="loc-card-img-overlay"></div>
+        </div>
+        <div class="loc-card-body">
+          <h3>Cliffs of Moher</h3>
+          <p>Dramatic 700-foot sea cliffs on Ireland's Wild Atlantic Way. One of the most iconic elopement locations in the world.</p>
+          <div class="loc-card-cta">Explore <span>→</span></div>
+        </div>
+      </a>
+      <a href="https://www.ladybirdeverafter.com/dunluce-castle" class="loc-card">
+        <div class="loc-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/cb7b3545-2d1e-424b-92ee-06de6b3722c6/BV-142.jpg?format=1500w" alt="Elopement at medieval Dunluce Castle ruins">
+          <div class="loc-card-img-overlay"></div>
+        </div>
+        <div class="loc-card-body">
+          <h3>Dunluce Castle</h3>
+          <p>Medieval castle ruins perched on a basalt cliff overlooking the North Atlantic. Hauntingly beautiful and deeply romantic.</p>
+          <div class="loc-card-cta">Explore <span>→</span></div>
+        </div>
+      </a>
+      <a href="https://www.ladybirdeverafter.com/killarney-national-park" class="loc-card">
+        <div class="loc-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/cc1dc4b6-2560-4c32-a0d4-58bb9a7f9bd9/K%26E03.04.25-386.jpg?format=1500w" alt="Wedding couple at Ross Castle in Killarney National Park">
+          <div class="loc-card-img-overlay"></div>
+        </div>
+        <div class="loc-card-body">
+          <h3>Killarney National Park</h3>
+          <p>Arrive by horse-drawn carriage to Ross Castle or exchange vows at ancient Muckross Abbey amid centuries-old yew trees.</p>
+          <div class="loc-card-cta">Explore <span>→</span></div>
+        </div>
+      </a>
+      <a href="https://www.ladybirdeverafter.com/rahinnane-castle" class="loc-card">
+        <div class="loc-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/cf310d2f-012e-4d9f-b43f-f4a79a67eec7/M%26T01.05.25-376.jpg?format=1500w" alt="Wedding couple at Rahinnane Castle ruins on the Dingle Peninsula">
+          <div class="loc-card-img-overlay"></div>
+        </div>
+        <div class="loc-card-body">
+          <h3>Rahinnane Castle</h3>
+          <p>A secluded 15th-century castle ruin on the Dingle Peninsula with rolling hills, sheep-dotted fields, and Atlantic views.</p>
+          <div class="loc-card-cta">Explore <span>→</span></div>
+        </div>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:2rem;" class="reveal">
+      <a href="https://www.ladybirdeverafter.com/venues" class="btn btn-green">Explore All 30+ Venues</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     FAQ
+══════════════════════════════════════ -->
+<div class="faq">
+  <div class="faq-inner">
+    <div class="faq-header reveal">
+      <p class="label" style="justify-content:center;">Your Questions Answered</p>
+      <h2>Frequently asked<br><em>questions.</em></h2>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">How much does it cost to elope in Ireland?</button>
+      <div class="faq-a"><div class="faq-a-inner">Our elopement packages start under $4,000 for an intimate ceremony for two with a celebrant and two hours of photography. Enhanced packages with professional styling, extended photography, and additional services range upward depending on your vision. All pricing is in USD with no hidden international fees, and we offer flexible payment plans with 0% interest financing. <a href="https://www.ladybirdeverafter.com/get-in-touch">Contact us for a detailed quote →</a></div></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">Can Americans legally get married in Ireland?</button>
+      <div class="faq-a"><div class="faq-a-inner">Yes! Ireland is one of the most welcoming countries in the world for international couples. There is no residency requirement, meaning you do not need to be an Irish citizen or live in Ireland to marry there. You will need to give three months' notice to the HSE (Health Service Executive) and provide certain documents. We handle all of this guidance as part of every package. <a href="https://www.ladybirdeverafter.com/blog/how-to-get-married-in-ireland">Read our complete legal guide →</a></div></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">What documents do I need to get married in Ireland as a US citizen?</button>
+      <div class="faq-a"><div class="faq-a-inner">You will need a valid US passport, your birth certificate, and if applicable, a divorce decree or death certificate of a former spouse. You will also need to complete the notification process with Ireland's HSE at least three months before your ceremony date. Our team walks you through every step and reviews your paperwork before submission. <a href="https://www.ladybirdeverafter.com/blog/getting-married-in-ireland-as-an-american">Read our full documentation guide →</a></div></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">Do I need to choose a package before moving forward?</button>
+      <div class="faq-a"><div class="faq-a-inner">No, you don't need to decide immediately. We can start with a deposit to secure your date, which allows us to begin curating your journey while your vision naturally unfolds. Most couples refine their package choice during our planning calls as they learn more about what's possible.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">Are your Ireland wedding packages customisable?</button>
+      <div class="faq-a"><div class="faq-a-inner">Absolutely. Our packages are designed as a foundation &mdash; a robust canvas that handles the complex logistics of getting married in Ireland. From there, your celebration is fully bespoke, allowing for complete artistic customisation. Want to add a vintage car, a harpist, a private dinner in a castle? We make it happen.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">What is the best time of year to elope in Ireland?</button>
+      <div class="faq-a"><div class="faq-a-inner">Ireland is beautiful year-round and we plan elopements in every season. May through September offers the longest daylight hours (sunset can be as late as 10pm in June) and milder temperatures. Autumn and winter elopements have a dramatic beauty of their own &mdash; golden light, moody skies, and far fewer tourists at popular locations. <a href="https://www.ladybirdeverafter.com/blog/eloping-in-ireland-weather-what-to-expect-in-every-season">Read our seasonal weather guide →</a></div></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">How do we handle payments and contracts from the US?</button>
+      <div class="faq-a"><div class="faq-a-inner">We've designed a seamless experience for North American couples with zero international admin. You will have one US point of contact, one US contract, and the ability to pay in USD via credit card. We manage all foreign currency transfers and Irish vendor payments so you can enjoy a completely stress-free planning process.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">How far in advance should I book?</button>
+      <div class="faq-a"><div class="faq-a-inner">We recommend booking 6 to 12 months in advance, especially if you have a specific date or popular venue in mind. However, we have successfully planned elopements in as little as 3 months. The key constraint is Ireland's legal requirement of 3 months' notice before the ceremony, so that is the absolute minimum timeline for a legal marriage.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">What if my guest list exceeds the maximum for a package?</button>
+      <div class="faq-a"><div class="faq-a-inner">No problem at all. While our tiers provide a starting point, we specialise in bespoke Irish weddings. If your party grows, we will provide a custom quote tailored to your guest count and your unique vision for the day. We've planned celebrations from 2 to 50+ guests.</div></div>
+    </div>
+    <div class="faq-item reveal">
+      <button class="faq-q">Do you plan larger weddings or only elopements?</button>
+      <div class="faq-a"><div class="faq-a-inner">We plan everything from two-person elopements to intimate weddings of 50+ guests. Our Sl&aacute;inte, Ard, and R&iacute;R&aacute; packages include full reception coordination and wedding planning. Whether your celebration is a quiet ceremony on a clifftop followed by pints in a pub, or a formal dinner in a castle ballroom, we tailor the experience to your vision.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     FINAL CTA
+══════════════════════════════════════ -->
+<div class="final-cta">
+  <div class="final-cta-bg"></div>
+  <div class="final-cta-content reveal">
+    <p class="label" style="justify-content:center;color:var(--gold-lt);">Begin Your Story</p>
+    <h2>Ready to start planning<br>your <em>Irish wedding?</em></h2>
+    <p>Book a free 15-minute planning call and we'll help you find the perfect package, location, and timeline for your celebration.</p>
+    <a href="https://www.ladybirdeverafter.com/schedule-a-call" class="btn btn-gold">Book Your Free Call</a>
+    <div style="margin-top:1rem;">
+      <a href="https://www.ladybirdeverafter.com/get-in-touch" style="font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(245,240,232,.45);text-decoration:none;">or send us a message →</a>
+    </div>
+  </div>
+</div>
+
+</div><!-- /.lb-packages -->
+
+<!-- ══════════════════════════════════════
+     FAQ SCHEMA (for Google rich snippets)
+══════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"How much does it cost to elope in Ireland?","acceptedAnswer":{"@type":"Answer","text":"Elopement packages start under $4,000 for an intimate ceremony for two with a celebrant and two hours of photography. Enhanced packages with styling, extended photography, and additional services range upward. All pricing is in USD with no hidden international fees, and flexible payment plans with 0% interest financing are available."}},
+    {"@type":"Question","name":"Can Americans legally get married in Ireland?","acceptedAnswer":{"@type":"Answer","text":"Yes. Ireland has no residency requirement, meaning US citizens can legally marry there. You need to give three months' notice to the HSE (Health Service Executive) and provide documents including a valid passport and birth certificate."}},
+    {"@type":"Question","name":"What documents do I need to get married in Ireland as a US citizen?","acceptedAnswer":{"@type":"Answer","text":"You need a valid US passport, birth certificate, and if applicable, a divorce decree or death certificate of a former spouse. You must complete the notification process with Ireland's HSE at least three months before your ceremony date."}},
+    {"@type":"Question","name":"What is the best time of year to elope in Ireland?","acceptedAnswer":{"@type":"Answer","text":"Ireland is beautiful year-round. May through September offers the longest daylight hours and milder temperatures. Autumn and winter elopements offer dramatic beauty with golden light, moody skies, and fewer tourists at popular locations."}},
+    {"@type":"Question","name":"Are your Ireland wedding packages customizable?","acceptedAnswer":{"@type":"Answer","text":"Yes. Packages are designed as a foundation handling the complex logistics of getting married in Ireland. From there, celebrations are fully bespoke with complete artistic customization."}},
+    {"@type":"Question","name":"How far in advance should I book my Ireland elopement?","acceptedAnswer":{"@type":"Answer","text":"We recommend 6 to 12 months in advance. The minimum timeline is 3 months due to Ireland's legal notice requirement for marriages."}},
+    {"@type":"Question","name":"How do we handle payments and contracts from the US?","acceptedAnswer":{"@type":"Answer","text":"You have one US contract, one US point of contact, and pay in USD via credit card. All foreign currency transfers and Irish vendor payments are managed for a stress-free planning process."}},
+    {"@type":"Question","name":"Do you plan larger weddings or only elopements?","acceptedAnswer":{"@type":"Answer","text":"We plan everything from two-person elopements to intimate weddings of 50+ guests. Sláinte, Ard, and RíRá packages include full reception coordination and wedding planning."}}
+  ]
+}
+</script>
+
+<!-- ══════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════ -->
+<script>
+(function(){
+  var root = document.querySelector('.lb-packages');
+  if (!root) return;
+
+  // Reveal on scroll
+  var revEls = root.querySelectorAll('.reveal');
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e,i){
+      if(e.isIntersecting){
+        setTimeout(function(){ e.target.classList.add('in'); }, i*80);
+        obs.unobserve(e.target);
+      }
+    });
+  },{ threshold:0.07, rootMargin:'0px 0px -30px 0px' });
+  revEls.forEach(function(el){ obs.observe(el); });
+
+  // FAQ accordion
+  root.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var item = this.parentElement;
+      var isOpen = item.classList.contains('open');
+      // Close all
+      root.querySelectorAll('.faq-item.open').forEach(function(el){ el.classList.remove('open'); });
+      // Toggle clicked
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+})();
+</script>

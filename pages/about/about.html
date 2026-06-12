@@ -1,0 +1,1067 @@
+<!-- ═══════════════════════════════════════════════
+     ABOUT / OUR STORY - /about - Ladybird Ever After
+     Root class: .lb-about
+═══════════════════════════════════════════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link
+  href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Alice&display=swap"
+  rel="stylesheet">
+
+<style>
+  /* ════════════════════════════════════════
+   ROOT & RESET
+════════════════════════════════════════ */
+  .lb-about {
+    --green: #5B6239;
+    --green-dk: #3a3f25;
+    --green-hv: #4a5130;
+    --gold: #B8964E;
+    --gold-lt: #D4AF71;
+    --cream: #F5F0E8;
+    --warm: #FDFAF4;
+    --stone: #8C8070;
+    --txt: #1A1A18;
+    --txt-mid: #4A4A42;
+    --pad-x: clamp(1.2rem, 5vw, 5rem);
+    --pad-y: clamp(3.5rem, 7vw, 6rem);
+    font-family: 'Alice', serif;
+    font-weight: 300;
+    color: var(--txt);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .lb-about *,
+  .lb-about *::before,
+  .lb-about *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .lb-about img {
+    display: block;
+  }
+
+  .lb-about h1,
+  .lb-about h2,
+  .lb-about h3,
+  .lb-about h4 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    line-height: 1.18;
+  }
+
+  .lb-about em {
+    font-style: italic;
+    color: var(--gold-lt);
+  }
+
+  .lb-about a {
+    color: var(--gold);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color .3s;
+  }
+
+  .lb-about a:hover {
+    color: var(--green);
+  }
+
+  .lb-about .overline {
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    font-size: .58rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: .9rem;
+  }
+
+  .lb-about .overline::after {
+    content: '';
+    flex: 0 0 28px;
+    height: 1px;
+    background: var(--gold);
+    opacity: .5;
+  }
+
+  .lb-about .overline.ctr {
+    justify-content: center;
+  }
+
+  .lb-about .overline.ctr::before {
+    content: '';
+    flex: 0 0 28px;
+    height: 1px;
+    background: var(--gold);
+    opacity: .5;
+  }
+
+  .lb-about .btn {
+    display: inline-block;
+    font-family: 'Alice', serif;
+    font-size: .74rem;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: .95rem 2.2rem;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all .3s;
+  }
+
+  .lb-about .btn-green {
+    background: var(--green);
+    color: var(--cream);
+    border-color: var(--green);
+  }
+
+  .lb-about .btn-green:hover {
+    background: var(--green-hv);
+    border-color: var(--green-hv);
+  }
+
+  .lb-about .btn-gold {
+    background: var(--gold);
+    color: var(--green);
+    border-color: var(--gold);
+  }
+
+  .lb-about .btn-gold:hover {
+    background: transparent;
+    color: var(--gold-lt);
+    border-color: var(--gold-lt);
+  }
+
+  .lb-about .btn-outline-light {
+    background: transparent;
+    color: var(--cream);
+    border-color: rgba(245, 240, 232, .35);
+  }
+
+  .lb-about .btn-outline-light:hover {
+    border-color: var(--cream);
+    color: var(--cream);
+  }
+
+  /* ════════════════════════════════════════
+   HERO (PATTERN 2: INTERIOR)
+════════════════════════════════════════ */
+  .lb-about .hero-interior {
+    position: relative;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    padding: clamp(6.5rem, 14vw, 10rem) var(--pad-x) clamp(5rem, 10vw, 8rem);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .lb-about .hero-interior .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-image: url('https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/9d5c95cb-7aa7-4561-a666-b3be170bca1c/VW_Photography_Irish_elopement_dunluce-23.jpg?format=2500w');
+    background-size: cover;
+    background-position: center 35%;
+  }
+
+  .lb-about .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+        rgba(28, 28, 26, .55) 0%,
+        rgba(28, 28, 26, .75) 100%);
+  }
+
+  .lb-about .hero-interior-content {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+    margin: 0 auto;
+    animation: heroFadeUp .9s ease both;
+  }
+
+  .lb-about .hero-interior h1 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    font-size: clamp(2.2rem, 5.5vw, 4rem);
+    color: var(--warm);
+    line-height: 1.1;
+    margin-bottom: 1rem;
+  }
+
+  .lb-about .hero-interior h1 em {
+    font-style: italic;
+    color: var(--gold-lt);
+  }
+
+  .lb-about .hero-interior .hero-sub {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(.9rem, 1.8vw, 1.2rem);
+    color: rgba(253, 250, 244, .8);
+    line-height: 1.65;
+  }
+
+  .lb-about .hero-eyebrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .7rem;
+    font-size: .6rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: .9rem;
+  }
+
+  .lb-about .hero-eyebrow-line {
+    flex: 0 0 28px;
+    height: 1px;
+    background: var(--gold);
+    opacity: .5;
+  }
+
+  @keyframes heroFadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* ════════════════════════════════════════
+   ORIGIN STORY
+════════════════════════════════════════ */
+  .lb-about .origin {
+    background: var(--warm);
+    padding: var(--pad-y) var(--pad-x);
+  }
+
+  .lb-about .origin-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: center;
+  }
+
+  .lb-about .origin-img {
+    position: relative;
+  }
+
+  .lb-about .origin-img img {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+  }
+
+  .lb-about .origin-img-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--green-dk);
+    padding: .9rem 1.2rem;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: .72rem;
+    color: rgba(245, 240, 232, .6);
+    text-align: center;
+  }
+
+  .lb-about .origin-body {}
+
+  .lb-about .origin-body h2 {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    color: var(--txt);
+    margin-bottom: 1.4rem;
+  }
+
+  .lb-about .origin-body p {
+    font-size: .87rem;
+    line-height: 1.85;
+    color: var(--txt-mid);
+    margin-bottom: 1.1rem;
+  }
+
+  .lb-about .origin-body p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  /* ════════════════════════════════════════
+   LADYBIRD NAME CALLOUT
+════════════════════════════════════════ */
+  .lb-about .name-bar {
+    background: var(--green);
+    padding: clamp(2.5rem, 5vw, 4rem) var(--pad-x);
+    text-align: center;
+  }
+
+  .lb-about .name-bar-inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .lb-about .name-bar .overline {
+    color: var(--gold-lt);
+    justify-content: center;
+  }
+
+  .lb-about .name-bar .overline::before,
+  .lb-about .name-bar .overline::after {
+    background: var(--gold-lt);
+  }
+
+  .lb-about .name-bar h2 {
+    font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+    color: var(--warm);
+    margin-bottom: 1rem;
+  }
+
+  .lb-about .name-bar p {
+    font-size: .85rem;
+    line-height: 1.8;
+    color: rgba(245, 240, 232, .55);
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* ════════════════════════════════════════
+   THE TEAM - Yasmeen & Laurence
+════════════════════════════════════════ */
+  .lb-about .team {
+    background: var(--cream);
+    padding: var(--pad-y) var(--pad-x);
+  }
+
+  .lb-about .team-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .lb-about .team-heading {
+    text-align: center;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .lb-about .team-heading h2 {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    color: var(--txt);
+  }
+
+  .lb-about .team-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .lb-about .team-card {
+    background: var(--warm);
+    border: 1px solid rgba(91, 98, 57, .1);
+    overflow: hidden;
+  }
+
+  .lb-about .team-card-img {
+    position: relative;
+    padding-top: 120%;
+    overflow: hidden;
+  }
+
+  .lb-about .team-card-img img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    filter: saturate(.88);
+    transition: filter .4s;
+  }
+
+  .lb-about .team-card:hover .team-card-img img {
+    filter: saturate(1);
+  }
+
+  .lb-about .team-card-body {
+    padding: 1.8rem 1.6rem 2rem;
+  }
+
+  .lb-about .team-card-role {
+    font-size: .55rem;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: .5rem;
+  }
+
+  .lb-about .team-card-name {
+    font-size: 1.35rem;
+    color: var(--green);
+    margin-bottom: .25rem;
+  }
+
+  .lb-about .team-card-origin {
+    font-size: .68rem;
+    color: var(--stone);
+    margin-bottom: 1.2rem;
+    font-style: italic;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .lb-about .team-card p {
+    font-size: .82rem;
+    line-height: 1.8;
+    color: var(--txt-mid);
+    margin-bottom: .9rem;
+  }
+
+  .lb-about .team-card p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* ════════════════════════════════════════
+   TRUST PILLARS
+════════════════════════════════════════ */
+  .lb-about .pillars {
+    background: var(--warm);
+    padding: var(--pad-y) var(--pad-x);
+  }
+
+  .lb-about .pillars-inner {
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .lb-about .pillars-heading {
+    text-align: center;
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .lb-about .pillars-heading h2 {
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    color: var(--txt);
+  }
+
+  .lb-about .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .lb-about .pillar {
+    padding: 2.2rem 1.8rem;
+    border: 1px solid rgba(91, 98, 57, .1);
+    background: var(--cream);
+    text-align: center;
+    transition: box-shadow .35s;
+  }
+
+  .lb-about .pillar:hover {
+    box-shadow: 0 8px 30px rgba(0, 0, 0, .06);
+  }
+
+  .lb-about .pillar-icon {
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+    display: block;
+    opacity: .75;
+  }
+
+  .lb-about .pillar h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--green);
+    margin-bottom: .7rem;
+    line-height: 1.3;
+  }
+
+  .lb-about .pillar p {
+    font-size: .78rem;
+    line-height: 1.75;
+    color: var(--txt-mid);
+  }
+
+  /* ════════════════════════════════════════
+   US LOGISTICS SECTION
+════════════════════════════════════════ */
+  .lb-about .logistics {
+    background: var(--cream);
+    padding: var(--pad-y) var(--pad-x);
+  }
+
+  .lb-about .logistics-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2.5rem, 6vw, 5rem);
+    align-items: center;
+  }
+
+  .lb-about .logistics-body {}
+
+  .lb-about .logistics-body h2 {
+    font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+    color: var(--txt);
+    margin-bottom: 1.4rem;
+  }
+
+  .lb-about .logistics-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .lb-about .logistics-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .lb-about .logistics-list-icon {
+    flex-shrink: 0;
+    width: 2.2rem;
+    height: 2.2rem;
+    background: rgba(184, 150, 78, .12);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .9rem;
+    margin-top: .05rem;
+  }
+
+  .lb-about .logistics-list-text h4 {
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--txt);
+    margin-bottom: .2rem;
+    font-family: 'Alice', serif;
+  }
+
+  .lb-about .logistics-list-text p {
+    font-size: .78rem;
+    line-height: 1.7;
+    color: var(--txt-mid);
+  }
+
+  .lb-about .logistics-img {
+    position: relative;
+  }
+
+  .lb-about .logistics-img img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    object-fit: cover;
+  }
+
+  .lb-about .logistics-img-overlay {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    background: var(--warm);
+    padding: 1.2rem 1.4rem;
+    border-left: 3px solid var(--gold);
+    max-width: 260px;
+  }
+
+  .lb-about .logistics-img-overlay p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: .8rem;
+    color: var(--txt-mid);
+    line-height: 1.65;
+  }
+
+  /* ════════════════════════════════════════
+   CTA BAND
+════════════════════════════════════════ */
+  .lb-about .cta-band {
+    background: var(--green);
+    padding: var(--pad-y) var(--pad-x);
+    text-align: center;
+  }
+
+  .lb-about .cta-band-inner {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .lb-about .cta-band .overline {
+    color: var(--gold-lt);
+    justify-content: center;
+    margin-bottom: .75rem;
+  }
+
+  .lb-about .cta-band .overline::before,
+  .lb-about .cta-band .overline::after {
+    background: var(--gold-lt);
+  }
+
+  .lb-about .cta-band h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
+    line-height: 1.2;
+    color: var(--warm);
+    margin-bottom: .75rem;
+  }
+
+  .lb-about .cta-band h2 em {
+    font-style: italic;
+    color: var(--gold-lt);
+  }
+
+  .lb-about .cta-band-sub {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: .83rem;
+    color: rgba(245, 240, 232, .55);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .lb-about .cta-band-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.2rem;
+  }
+
+  .lb-about .cta-band-tertiary {
+    font-size: .68rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: rgba(245, 240, 232, .35);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: rgba(184, 150, 78, .35);
+    transition: color .3s;
+  }
+
+  .lb-about .cta-band-tertiary:hover {
+    color: var(--gold-lt);
+  }
+
+  /* ════════════════════════════════════════
+   REVEAL & RESPONSIVE
+════════════════════════════════════════ */
+  .lb-about .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .65s ease, transform .65s ease;
+  }
+
+  .lb-about .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 900px) {
+    .lb-about .origin-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .lb-about .logistics-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .lb-about .logistics-img {
+      order: -1;
+    }
+
+    .lb-about .pillars-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .lb-about .team-grid {
+      grid-template-columns: 1fr;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .lb-about .pillars-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<div class="lb-about">
+
+  <!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+  <section class="hero-interior">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-interior-content">
+      <p class="hero-eyebrow">
+        <span class="hero-eyebrow-line"></span>
+        Our Story
+        <span class="hero-eyebrow-line"></span>
+      </p>
+      <h1>We Lived It. We Loved It.<br><em>We Help You Do the Same.</em></h1>
+      <p class="hero-sub">US-based Ireland elopement &amp; wedding planners - without the stress.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+     ORIGIN STORY
+══════════════════════════════════════ -->
+  <section class="origin">
+    <div class="origin-inner">
+      <div class="origin-img reveal">
+        <img
+          src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/6d89b1e6-2ba0-4231-a7c2-04b80767b432/YasmeenandLaurenceCliffs+%281%29.jpeg?format=2500w"
+          alt="Yasmeen and Laurence - founders of Ladybird Ever After" loading="lazy">
+        <div class="origin-img-caption">"We lived it. We loved it. We help you do the same (just without any stress!)"
+        </div>
+      </div>
+      <div class="origin-body reveal">
+        <div class="overline">It all started at a bar named Ladybird</div>
+        <h2>How a bar named Ladybird became a <em>business built on love.</em></h2>
+        <p>We met in Atlanta, Georgia - at a bar on the Beltline called Ladybird Grove &amp; Mess Hall. One pint
+          led to another, and before we knew it, we were planning our wedding.</p>
+        <p>Like a lot of couples, we initially planned to have our wedding in the States. But the more we explored that
+          path, the more overwhelmed we felt. Laurence is from Ireland. Yasmeen is from Atlanta - and suddenly,
+          the idea of an Irish wedding with wild cliffs, old stone churches, and pub-filled joy started calling to us.
+        </p>
+        <p>So we planned our wedding 4,000 miles away on the west coast of Ireland. It was beautiful. It was chaotic. It
+          was unforgettable. And it made us realise: there has to be an easier way.</p>
+        <p style="margin-top:1.4rem"><strong>Ladybird Ever After was born from that experience.</strong></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+     NAME CALLOUT
+══════════════════════════════════════ -->
+  <div class="name-bar reveal">
+    <div class="name-bar-inner">
+      <div class="overline ctr">The name</div>
+      <h2>It all started at a bar named <em>Ladybird.</em></h2>
+      <p>Ladybird Grove &amp; Mess Hall, Atlanta. The place where our story began - and the inspiration for
+        everything that came after.</p>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+     TEAM - Yasmeen & Laurence
+══════════════════════════════════════ -->
+  <section class="team">
+    <div class="team-inner">
+      <div class="team-heading reveal">
+        <div class="overline ctr">Meet the planners</div>
+        <h2>We aren&rsquo;t a faceless agency.<br>We&rsquo;re a husband-and-wife team who personally handle <em>every
+            detail.</em></h2>
+      </div>
+      <div class="team-grid">
+
+        <div class="team-card reveal">
+          <div class="team-card-img">
+            <img
+              src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/8bb0d31a-1417-47d6-b8df-b08bd894d4f3/ly4.webp?content-type=image%2Fwebp"
+              alt="Yasmeen McNally - co-founder Ladybird Ever After" loading="lazy">
+          </div>
+          <div class="team-card-body">
+            <div class="team-card-role">Co-Founder &amp; Planning Lead</div>
+            <h3 class="team-card-name">Yasmeen</h3>
+            <div class="team-card-origin">From Atlanta, Georgia, USA</div>
+            <p>Yasmeen brings a meticulous, tech-forward approach to wedding curation, transitioning from working in
+              Human Resources at Google to full-time wedding planning in 2022.</p>
+            <p>Her obsessive attention to detail, warm communication style, and love of organisation are the reason our
+              couples arrive in Ireland feeling completely relaxed and taken care of.</p>
+          </div>
+        </div>
+
+        <div class="team-card reveal">
+          <div class="team-card-img">
+            <img
+              src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/61a06b89-fd8e-439f-870e-862027f12ca8/ly2.webp?content-type=image%2Fwebp"
+              alt="Laurence McNally - co-founder Ladybird Ever After" loading="lazy">
+          </div>
+          <div class="team-card-body">
+            <div class="team-card-role">Co-Founder &amp; Vendor Lead</div>
+            <h3 class="team-card-name">Laurence</h3>
+            <div class="team-card-origin">From Carrickmacross, Co. Monaghan, Ireland</div>
+            <p>Laurence grew up in the heart of Irish hospitality - his family has run a thriving pub in
+              Carrickmacross, Co. Monaghan, since 1955. He brings the strategic eye of a former Director of AI Marketing
+              at Coca-Cola to every wedding we plan.</p>
+            <p>He knows Ireland&rsquo;s best venues, its best vendors, and exactly how to make a destination wedding
+              feel effortless from 4,000 miles away.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+     TRUST PILLARS
+══════════════════════════════════════ -->
+  <section class="pillars">
+    <div class="pillars-inner">
+      <div class="pillars-heading reveal">
+        <div class="overline ctr">The Ladybird standard</div>
+        <h2>High-touch planning. <em>Zero stress.</em></h2>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar reveal">
+          <span class="pillar-icon">&#11088;</span>
+          <h3>Vetted Excellence</h3>
+          <p>We only work with premium, proven vendors we&rsquo;d trust with our own wedding - because we already
+            did.</p>
+        </div>
+        <div class="pillar reveal">
+          <span class="pillar-icon">&#127919;</span>
+          <h3>Expert Support</h3>
+          <p>Strategic planning with us in your time zone, and on-the-ground magic from our trusted local Irish team
+            when you land.</p>
+        </div>
+        <div class="pillar reveal">
+          <span class="pillar-icon">&#128084;</span>
+          <h3>Personal Attention</h3>
+          <p>We don&rsquo;t do hundreds of weddings a year. We do yours, with the care and responsiveness your love
+            story deserves.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+     TRUST PROOF SCRIPT INJECTION
+══════════════════════════════════════ -->
+  <script>
+    (function () {
+
+      /* ── 1. Load fonts ── */
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Alice&display=swap';
+      document.head.appendChild(link);
+
+      /* ── 2. Inject CSS ── */
+      var css = document.createElement('style');
+      css.textContent = [
+        '#lb-proof-root { font-family:Alice,serif; font-weight:300; color:#1A1A18; }',
+        '#lb-proof-root *,#lb-proof-root *::before,#lb-proof-root *::after { margin:0; padding:0; box-sizing:border-box; }',
+        '#lb-proof-root .proof { background:#FDFAF4; padding:clamp(1.5rem,3vw,2.5rem) clamp(1.2rem,5vw,5rem); border-top:1px solid rgba(91,98,57,.08); border-bottom:1px solid rgba(91,98,57,.08); }',
+        '#lb-proof-root .proof-inner { max-width:900px; margin:0 auto; }',
+        '#lb-proof-root .proof-label { text-align:center; margin-bottom:1.2rem; }',
+        '#lb-proof-root .proof-label span { font-size:.58rem; letter-spacing:.3em; text-transform:uppercase; color:#B8964E; font-weight:600; display:inline-flex; align-items:center; gap:.6rem; }',
+        '#lb-proof-root .proof-label span::before,#lb-proof-root .proof-label span::after { content:""; width:28px; height:1px; background:#B8964E; opacity:.45; }',
+        '#lb-proof-root .proof-stats { display:flex; justify-content:center; flex-wrap:wrap; gap:clamp(1.5rem,4vw,3.5rem); }',
+        '#lb-proof-root .proof-stat { text-align:center; min-width:100px; }',
+        '#lb-proof-root .proof-stat-num { font-family:Playfair Display,serif; font-size:clamp(2rem,3.5vw,2.8rem); font-weight:600; color:#5B6239; line-height:1; }',
+        '#lb-proof-root .proof-stat-label { font-size:.62rem; letter-spacing:.15em; text-transform:uppercase; color:#8C8070; margin-top:.45rem; line-height:1.4; }',
+        '#lb-proof-root .proof-divider { width:50px; height:1px; background:#B8964E; opacity:.3; margin:1rem auto 0; }',
+        '#lb-proof-root .proof-featured { display:flex; align-items:center; justify-content:center; gap:.8rem; margin-top:1rem; }',
+        '#lb-proof-root .proof-featured-label { font-size:.58rem; letter-spacing:.25em; text-transform:uppercase; color:#8C8070; white-space:nowrap; }',
+        '#lb-proof-root .proof-featured a { display:inline-flex; align-items:center; transition:opacity .4s; text-decoration:none; }',
+        '#lb-proof-root .proof-featured a:hover { opacity:.7; }',
+        '#lb-proof-root .proof-featured img { height:26px; width:auto; display:block; }',
+        '#lb-proof-root .reveal { opacity:0; transform:translateY(20px); transition:opacity .7s ease,transform .7s ease; }',
+        '#lb-proof-root .reveal.in { opacity:1; transform:translateY(0); }',
+        '@media(max-width:400px){#lb-proof-root .proof-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 1rem;}}'
+      ].join('\n');
+      document.head.appendChild(css);
+
+      /* ── 3. Build HTML ── */
+      var stats = [
+        { target: 100, suffix: '+', label: 'Happy<br>Couples' },
+        { target: 100, suffix: '+', label: 'Vendors &amp; Venues<br>Personally Vetted' },
+        { target: 5, suffix: '★', label: 'Average Couple<br>Rating' },
+        { target: 29, suffix: '', label: 'US States<br>&amp; Counting' }
+      ];
+
+      var statsHTML = stats.map(function (s) {
+        return '<div class="proof-stat">' +
+          '<div class="proof-stat-num" data-target="' + s.target + '" data-suffix="' + s.suffix + '">0</div>' +
+          '<div class="proof-stat-label">' + s.label + '</div>' +
+          '</div>';
+      }).join('');
+
+      var root = document.createElement('div');
+      root.id = 'lb-proof-root';
+      root.innerHTML =
+        '<div class="proof reveal">' +
+        '<div class="proof-inner">' +
+        '<div class="proof-label"><span>Trusted by Couples Across the US &amp; Canada</span></div>' +
+        '<div class="proof-stats">' + statsHTML + '</div>' +
+        '<div class="proof-divider"></div>' +
+        '<div class="proof-featured">' +
+        '<span class="proof-featured-label">As Featured In</span>' +
+        '<a href="https://www.independent.ie/business/money/i-bought-my-wedding-dress-for-20-on-depop-meet-the-irish-couples-walking-down-the-aisle-for-less/a1281301504.html" target="_blank" rel="noopener">' +
+        '<img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/596a3b01-01e5-4752-ac13-daa11ea53342/irishinde-nobg.png?format=500w" alt="Irish Independent">' +
+        '</a>' +
+        '</div>' +
+        '</div>' +
+        '</div>';
+
+      /* Insert where this script tag lives */
+      var scriptTag = document.currentScript;
+      scriptTag.parentNode.insertBefore(root, scriptTag);
+
+      /* ── 4. Kill Squarespace spacing ── */
+      var section = root.closest('[data-section-id]') || root.closest('.page-section');
+      if (section) {
+        var sid = section.getAttribute('data-section-id');
+        if (sid) {
+          var nuke = document.createElement('style');
+          nuke.textContent =
+            '[data-section-id="' + sid + '"],' +
+            '[data-section-id="' + sid + '"] .content-wrapper,' +
+            '[data-section-id="' + sid + '"] .section-border' +
+            '{ padding:0 !important; min-height:0 !important; height:auto !important; margin:0 !important; }';
+          document.head.appendChild(nuke);
+        }
+      }
+      var p = root.parentElement;
+      while (p && p !== document.body) {
+        p.style.setProperty('padding', '0', 'important');
+        p.style.setProperty('min-height', '0', 'important');
+        p.style.setProperty('margin', '0', 'important');
+        p = p.parentElement;
+      }
+
+      /* ── 5. Reveal + animated counters ── */
+      var counted = false;
+      function animateCounters() {
+        if (counted) return;
+        counted = true;
+        root.querySelectorAll('.proof-stat-num[data-target]').forEach(function (el) {
+          var target = parseInt(el.getAttribute('data-target'));
+          var suffix = el.getAttribute('data-suffix') || '';
+          var duration = 1600;
+          var startTime = null;
+          function step(ts) {
+            if (!startTime) startTime = ts;
+            var progress = Math.min((ts - startTime) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            el.textContent = Math.round(eased * target) + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        });
+      }
+
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            animateCounters();
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      root.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+
+    })();
+  </script>
+
+  <!-- ══════════════════════════════════════
+     US LOGISTICS
+══════════════════════════════════════ -->
+  <section class="logistics">
+    <div class="logistics-inner">
+      <div class="logistics-body reveal">
+        <div class="overline">Seamless from the US</div>
+        <h2>Planning a destination wedding shouldn&rsquo;t feel like a <em>second job.</em></h2>
+        <ul class="logistics-list">
+          <li>
+            <div class="logistics-list-icon">&#128181;</div>
+            <div class="logistics-list-text">
+              <h4>All-In Pricing in US Dollars</h4>
+              <p>No "starting from" language, no hidden booking fees, no surprise exchange rates. One clear price.</p>
+            </div>
+          </li>
+          <li>
+            <div class="logistics-list-icon">&#128179;</div>
+            <div class="logistics-list-text">
+              <h4>Simple US Payments</h4>
+              <p>No international wire transfers or cash-on-the-day required. We accept Venmo and credit cards.</p>
+            </div>
+          </li>
+          <li>
+            <div class="logistics-list-icon">&#127981;</div>
+            <div class="logistics-list-text">
+              <h4>US Based &amp; Fully Insured</h4>
+              <p>We&rsquo;re a registered, fully insured US business. We meet on your schedule, in your time zone.</p>
+            </div>
+          </li>
+          <li>
+            <div class="logistics-list-icon">&#9993;</div>
+            <div class="logistics-list-text">
+              <h4>One Point of Contact</h4>
+              <p>No chasing multiple vendors. One planner, one contract, one inbox. We handle all communication with
+                Irish suppliers on your behalf.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="logistics-img reveal">
+        <img
+          src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/1768531509003-N0C3BLOPY9WI7FQXP2X3/LandY3.jpg?format=1000w"
+          alt="Ireland wedding planning" loading="lazy">
+        <div class="logistics-img-overlay">
+          <p>"When you work with us, you know exactly what you&rsquo;re getting and exactly who is standing behind you."
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+     CTA BAND - rich dark, no image overlay
+══════════════════════════════════════ -->
+  <section class="cta-band">
+    <div class="cta-band-inner reveal">
+      <div class="overline ctr">Ready to begin</div>
+      <h2>Let&rsquo;s plan your<br><em>Irish love story.</em></h2>
+      <p class="cta-band-sub">Book a free 30-minute call. We&rsquo;ll listen to your vision and recommend the perfect
+        package - no pressure, no commitment.</p>
+      <div class="cta-band-links">
+        <a href="/get-in-touch" class="btn btn-gold">Book My Free Call &rarr;</a>
+        <a href="/packages" class="btn btn-outline-light">See Packages</a>
+      </div>
+  </section>
+
+</div><!-- /lb-about -->
+
+<script>
+  (function () {
+    var els = document.querySelectorAll('.lb-about .reveal');
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e, i) {
+          if (e.isIntersecting) {
+            setTimeout(function () { e.target.classList.add('in'); }, i * 60);
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+      els.forEach(function (el) { io.observe(el); });
+    } else {
+      els.forEach(function (el) { el.classList.add('in'); });
+    }
+  })();
+</script>

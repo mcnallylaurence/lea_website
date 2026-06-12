@@ -1,0 +1,163 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Alice:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --white: #FFFFFF;
+    --off-white: #F9F7F4;
+    --gold: #B8964E;
+    --gold-lt: #D4AF71;
+    --green: #5B6239;
+    --txt: #1A1A18;
+    --txt-mid: #4A4A42;
+    --pad-x: clamp(1.2rem, 5vw, 5rem);
+    --pad-y: clamp(3.5rem, 7vw, 6rem);
+  }
+
+  .lb-lesson * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .lb-lesson {
+    font-family: 'Alice', serif;
+    font-weight: 300;
+    color: var(--txt);
+    line-height: 1.6;
+  }
+
+  .lesson-section {
+    background: var(--white);
+    padding: var(--pad-y) var(--pad-x);
+  }
+
+  .lesson-section:nth-child(even) {
+    background: var(--off-white);
+  }
+
+  .lesson-section-in {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  .lesson-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    line-height: 1.2;
+    color: var(--txt);
+    margin-bottom: 1.6rem;
+  }
+
+  .lesson-section h2 em {
+    color: var(--gold-lt);
+    font-style: italic;
+  }
+
+  .lesson-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    color: var(--txt);
+    margin-top: 1.8rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .lesson-section p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    color: var(--txt);
+  }
+
+  .lesson-section strong {
+    color: var(--txt);
+    font-weight: 600;
+  }
+
+  .lesson-section ul {
+    margin: 1.5rem 0 1.5rem 1.8rem;
+    list-style: none;
+  }
+
+  .lesson-section ul li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.7rem;
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .lesson-section ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: bold;
+  }
+
+  .lesson-callout {
+    background: rgba(184, 150, 78, 0.05);
+    border-left: 4px solid var(--gold);
+    padding: 1.6rem;
+    margin: 2rem 0;
+  }
+
+  .lesson-callout strong {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  @media (max-width: 600px) {
+    .lesson-section {
+      padding: 2.5rem var(--pad-x);
+    }
+  }
+</style>
+
+<div class="lb-lesson">
+  <section class="lesson-section">
+    <div class="lesson-section-in">
+      <h2>Why Travel Insurance <em>Matters</em></h2>
+      <p>We strongly recommend that every couple-and every guest-purchases travel insurance before an international trip. This is not a box-ticking exercise. It is the difference between a bad situation and a financially ruinous one.</p>
+      <p>Think about what is at stake: transatlantic flights, accommodation across multiple nights, vendor deposits, and a wedding that cannot simply be rescheduled at short notice. A missed connection, a medical emergency, a lost suitcase containing the dress, or an unexpected illness the week before departure can unravel plans that took a year to build.</p>
+      <div class="lesson-callout">
+        <strong>Travel insurance covers the financial exposure when things go wrong.</strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="lesson-section">
+    <div class="lesson-section-in">
+      <h2>Our Travel Insurance <em>Partner</em></h2>
+      <a href='https://buy.bhtp.com/?partnerNumber=A1416&agentCode=AA4857'>
+        <img src="https://assets.bhtp.com/cms-assets/32623/1761572676-bhtp-partner-banner-airplane_full-banner-468x60.png" alt="Berkshire Hathaway Travel Protection" width="975" height="125" class="lesson-image" style="max-width: 100%; height: auto; margin-bottom: 1.5rem;" />
+      </a>
+      <p>We've partnered with Berkshire Hathaway Travel Protection to offer comprehensive travel insurance tailored for destination weddings. They specialize in the exact coverage you need for international wedding trips.</p>
+      <p><em>Transparency note: Ladybird receives a small commission from policies purchased through this link. This does not affect your price-it simply helps us continue supporting couples.</em></p>
+      <a href='https://buy.bhtp.com/?partnerNumber=A1416&agentCode=AA4857' style="display: inline-block; background-color: #B8964E; color: #FFFFFF; padding: 0.75rem 1.5rem; text-decoration: none; border-radius: 4px; font-weight: 600; margin-top: 1rem;">Get a Quote</a>
+    </div>
+  </section>
+
+  <section class="lesson-section">
+    <div class="lesson-section-in">
+      <h2>What Good Travel Insurance Should <em>Cover</em></h2>
+      <ul>
+        <li>Trip cancellation and interruption</li>
+        <li>Emergency medical treatment abroad (US insurance rarely covers international care)</li>
+        <li>Medical evacuation</li>
+        <li>Baggage loss or delay</li>
+        <li>Flight delay and missed connection</li>
+      </ul>
+      <p>Ladybird Ever After has a trusted insurance partner that offers quotes tailored to international travel for wedding trips. Ask us for details.</p>
+    </div>
+  </section>
+
+  <section class="lesson-section">
+    <div class="lesson-section-in">
+      <h2>When to Buy Your <em>Policy</em></h2>
+      <p>Buy your policy as soon as you book your flights. Most cancellation coverage only applies to events that occur after the policy is purchased-not before. Waiting until the week before you travel leaves the majority of your financial exposure unprotected.</p>
+    </div>
+  </section>
+</div>

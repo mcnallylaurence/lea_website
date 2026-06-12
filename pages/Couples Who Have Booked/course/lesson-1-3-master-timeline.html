@@ -1,0 +1,185 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Alice:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --white: #FFFFFF;
+    --off-white: #F9F7F4;
+    --gold: #B8964E;
+    --gold-lt: #D4AF71;
+    --green: #5B6239;
+    --txt: #1A1A18;
+    --txt-mid: #4A4A42;
+    --pad-x: clamp(1.2rem, 5vw, 5rem);
+    --pad-y: clamp(3.5rem, 7vw, 6rem);
+  }
+
+  .lb-lesson * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .lb-lesson {
+    font-family: 'Alice', serif;
+    font-weight: 300;
+    color: var(--txt);
+    line-height: 1.6;
+  }
+
+  .lesson-section {
+    background: var(--white);
+    padding: var(--pad-y) var(--pad-x);
+  }
+
+  .lesson-section:nth-child(even) {
+    background: var(--off-white);
+  }
+
+  .lesson-section-in {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  .lesson-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    line-height: 1.2;
+    color: var(--txt);
+    margin-bottom: 1.6rem;
+  }
+
+  .lesson-section h2 em {
+    color: var(--gold-lt);
+    font-style: italic;
+  }
+
+  .lesson-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    color: var(--txt);
+    margin-top: 1.8rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .lesson-section p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    color: var(--txt);
+  }
+
+  .lesson-section strong {
+    color: var(--txt);
+    font-weight: 600;
+  }
+
+  .lesson-section ul {
+    margin: 1.5rem 0 1.5rem 1.8rem;
+    list-style: none;
+  }
+
+  .lesson-section ul li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.7rem;
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .lesson-section ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: bold;
+  }
+
+  .lesson-callout {
+    background: rgba(184, 150, 78, 0.05);
+    border-left: 4px solid var(--gold);
+    padding: 1.6rem;
+    margin: 2rem 0;
+  }
+
+  .lesson-callout strong {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  @media (max-width: 600px) {
+    .lesson-section {
+      padding: 2.5rem var(--pad-x);
+    }
+  }
+</style>
+
+<div class="lb-lesson">
+  <section class="lesson-section">
+    <div class="lesson-section-in">
+      <h2>What Ladybird <em>Handles</em> For You</h2>
+      <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/88a49d41-c5b9-45fc-9568-3500765da174/Mollie_Ryan.webp" alt="Ireland wedding" class="lesson-image">
+      <ul>
+        <li>Sourcing and liaising with your venue and all vendors</li>
+        <li>Building the master timeline for your wedding day</li>
+        <li>Coordinating with vendors behind the scenes throughout the planning process</li>
+        <li>Handling all logistics, setups, and troubleshooting on the day itself</li>
+        <li>Paying your Irish vendors in euro or pound sterling on your behalf (this is part of why the single USD contract matters-you never send money abroad)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="lesson-section">
+    <div class="lesson-section-in">
+      <h2>What You <em>Handle</em></h2>
+      <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/1772242993530-PY5WMRG2WWU1VB0Y449N/JandK.webp" alt="Ireland wedding" class="lesson-image">
+      <ul>
+        <li>Your legal paperwork for a legally binding marriage (we guide you through exactly what to do and when, but the forms require your personal information and signatures)</li>
+        <li>Booking your own flights and personal travel arrangements</li>
+        <li>Gathering RSVPs from your guests for larger celebrations</li>
+        <li>Selecting your wedding attire and rings</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="lesson-section">
+    <div class="lesson-section-in">
+      <h2>The Planning <em>Roadmap</em></h2>
+      <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/1772242750929-32OKC31NFH6BB3X4MWFB/KandE.webp" alt="Ireland wedding" class="lesson-image">
+      <p>Whether you book us two years out or two months before your wedding, the approach is the same: lock in the big pieces immediately, then pace the rest so everything happens in the right order. Some things-like booking coach transfers-cannot be done too far in advance because schedules change. Here is the exact sequence.</p>
+
+      <h3>Immediately After You Book</h3>
+      <p><strong>Discovery Call and Venue:</strong> Our very first step is a call to understand your vision so we can identify and lock in your venue. Everything else-vendors, logistics, timeline-flows from the venue. This happens before anything else.</p>
+      <p><strong>Primary Vendors:</strong> Once the venue is confirmed, we immediately secure your high-demand vendors, such as your photographer and your celebrant. We will formally introduce you and securely share your information with them. You do not need to think about the finer details just yet-your primary vendors will reach out to you directly when the timing is right for them to begin planning the specifics of your day.</p>
+
+      <h3>The 12-Month Mark</h3>
+      <p><strong>Guest Communication:</strong> For larger parties, this is when you should start gathering guest addresses and sending save-the-dates. Your guests need maximum lead time for international travel-the earlier they know, the more likely they are to commit and the better the airfares they can find.</p>
+
+      <h3>The 9-Month Mark</h3>
+      <p><strong>Legal Paperwork:</strong> If you are having a legally binding wedding in Ireland, this is when you file your notification with the Civil Registration Service. Starting at nine months gives you significant buffer against any administrative delays or document issues.</p>
+
+      <h3>The 6-Month Mark</h3>
+      <p><strong>Hair and Makeup:</strong> We lock in your glam team.</p>
+      <p><strong>Hard RSVP Cutoff:</strong> We need your final, confirmed headcount six months out. This number drives every remaining decision: your dinner setup, seating plan, catering quantities, and final vendor logistics. Treat this deadline seriously.</p>
+
+      <h3>The 4 to 5-Month Mark</h3>
+      <p><strong>Formal Invitations:</strong> Send your formal invites with all the final details your guests need: venue address, accommodation suggestions, travel tips, and the schedule for the wedding day (in broad strokes).</p>
+      <p><strong>Attire and Rings:</strong> Finalize your wedding rings. Begin dress alterations and suit fittings. This takes longer than most people expect-especially if your dress needs multiple fittings.</p>
+
+      <h3>The 3-Month Mark</h3>
+      <p><strong>High-Level Day Timeline:</strong> We build the structural flow of your wedding day: ceremony time, transportation windows, dinner timing, key moments. We cannot build an accurate minute-by-minute timeline any further in advance than this, so this is when the real shape of your day comes into focus.</p>
+      <p><strong>Vow Building:</strong> You begin working closely with your celebrant on your ceremony script, personal vows, readings, and any symbolic rituals you want to include.</p>
+
+      <h3>The 1 to 3-Month Mark</h3>
+      <p><strong>Ceremony Script:</strong> You finalize the exact wording of your ceremony-every reading, every declaration, your music selections.</p>
+
+      <h3>One Month Out</h3>
+      <p><strong>The Final Timeline:</strong> Exactly one month before your wedding, we deliver your precise minute-by-minute timeline for the day. Every vendor knows where to be and when. Every transfer is booked. Every detail is confirmed.</p>
+      <div class="lesson-callout">
+        <strong>From here, your job is simple:</strong> pack your bags and get on the plane. We handle everything else.
+      </div>
+    </div>
+  </section>
+</div>

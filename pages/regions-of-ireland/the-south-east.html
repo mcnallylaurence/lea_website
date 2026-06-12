@@ -1,0 +1,786 @@
+<!-- ═══════════════════════════════════════
+     THE SOUTH EAST, REGION PAGE
+     Ladybird Ever After · Root: .lb-se
+═══════════════════════════════════════ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Alice&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
+<style>
+/* ════════════════════════════════════════
+   ROOT & RESET
+════════════════════════════════════════ */
+.lb-se {
+  --green:    #5B6239;
+  --green-dk: #3a3f25;
+  --green-hv: #4a5130;
+  --gold:     #B8964E;
+  --gold-lt:  #D4AF71;
+  --cream:    #F5F0E8;
+  --warm:     #FDFAF4;
+  --stone:    #8C8070;
+  --txt:      #1A1A18;
+  --txt-mid:  #4A4A42;
+  --pad-x: clamp(1.2rem, 5vw, 5rem);
+  --pad-y: clamp(3.5rem, 7vw, 6rem);
+  font-family: 'Alice', serif;
+  font-weight: 300;
+  color: var(--txt);
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+.lb-se *,
+.lb-se *::before,
+.lb-se *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+
+.lb-se img { display: block; }
+
+/* ════════════════════════════════════════
+   OVERLINE
+════════════════════════════════════════ */
+.lb-se .se-ol {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  font-size: .6rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.lb-se .se-ol::after { content: ''; flex: 0 0 28px; height: 1px; background: var(--gold); opacity: .5; }
+.lb-se .se-ol.ctr { justify-content: center; }
+.lb-se .se-ol.ctr::before { content: ''; flex: 0 0 28px; height: 1px; background: var(--gold); opacity: .5; }
+
+/* ════════════════════════════════════════
+   BREADCRUMB
+════════════════════════════════════════ */
+.lb-se .se-breadcrumb { background: var(--cream); padding: .9rem var(--pad-x); border-bottom: 1px solid rgba(91,98,57,.1); }
+.lb-se .se-breadcrumb-in { max-width: 820px; margin: 0 auto; display: flex; align-items: center; gap: .5rem; font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; color: var(--stone); }
+.lb-se .se-breadcrumb a { color: var(--stone); text-decoration: none; transition: color .3s; }
+.lb-se .se-breadcrumb a:hover { color: var(--green); }
+.lb-se .se-breadcrumb .sep { opacity: .4; }
+.lb-se .se-breadcrumb .current { color: var(--green); }
+
+/* ════════════════════════════════════════
+   HERO
+════════════════════════════════════════ */
+.lb-se .se-hero { background: var(--warm); padding: var(--pad-y) var(--pad-x) calc(var(--pad-y) * .75); text-align: center; }
+.lb-se .se-hero-in { max-width: 640px; margin: 0 auto; }
+
+.lb-se .se-hero h1 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(2.2rem, 4.5vw, 3.2rem); line-height: 1.18; color: var(--txt); margin-bottom: 1.2rem; }
+.lb-se .se-hero h1 em { font-style: italic; color: var(--gold-lt); }
+.lb-se .se-hero-sub { font-size: clamp(.88rem, 1.6vw, 1rem); line-height: 1.75; color: var(--txt-mid); margin-bottom: 1.6rem; }
+.lb-se .se-hero-meta { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--stone); }
+
+/* ════════════════════════════════════════
+   QUICK FACTS STRIP
+════════════════════════════════════════ */
+.lb-se .se-facts { background: var(--cream); border-top: 1px solid rgba(91,98,57,.1); border-bottom: 1px solid rgba(91,98,57,.1); padding: 1.6rem var(--pad-x); }
+.lb-se .se-facts-in { max-width: 820px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+.lb-se .se-fact { text-align: center; }
+.lb-se .se-fact-value { font-family: 'Playfair Display', serif; font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--green); line-height: 1.1; margin-bottom: .25rem; }
+.lb-se .se-fact-label { font-size: .58rem; letter-spacing: .18em; text-transform: uppercase; color: var(--stone); font-weight: 600; }
+.lb-se .se-fact-divider { width: 1px; height: 2rem; background: rgba(91,98,57,.15); flex-shrink: 0; }
+@media (max-width: 600px) { .lb-se .se-fact-divider { display: none; } .lb-se .se-facts-in { gap: 1.4rem; } }
+
+/* ════════════════════════════════════════
+   INTRO / EDITORIAL
+════════════════════════════════════════ */
+.lb-se .se-intro { background: var(--warm); padding: var(--pad-y) var(--pad-x); }
+.lb-se .se-intro-in { max-width: 820px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+
+.lb-se .se-intro h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; color: var(--txt); margin-bottom: 1.2rem; }
+.lb-se .se-intro h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-se .se-intro p { font-size: .88rem; line-height: 1.82; color: var(--txt-mid); margin-bottom: 1.1rem; }
+.lb-se .se-intro p:last-child { margin-bottom: 0; }
+
+.lb-se .se-highlights { list-style: none; display: flex; flex-direction: column; gap: .8rem; }
+.lb-se .se-highlights li { display: flex; align-items: flex-start; gap: .9rem; font-size: .85rem; line-height: 1.6; color: var(--txt-mid); }
+.lb-se .se-highlights li::before { content: ''; flex-shrink: 0; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin-top: .42em; }
+.lb-se .se-highlights-heading { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.1rem, 2vw, 1.35rem); line-height: 1.2; color: var(--txt); margin-bottom: 1rem; }
+
+/* ════════════════════════════════════════
+   LOCATIONS DEEP-DIVE
+════════════════════════════════════════ */
+.lb-se .se-places { background: var(--cream); padding: var(--pad-y) var(--pad-x); }
+.lb-se .se-places-in { max-width: 820px; margin: 0 auto; }
+.lb-se .se-places-header { text-align: center; margin-bottom: 3rem; }
+.lb-se .se-places-header h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; color: var(--txt); margin-bottom: .6rem; }
+.lb-se .se-places-header h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-se .se-places-header p { font-size: .88rem; color: var(--txt-mid); line-height: 1.7; max-width: 560px; margin: 0 auto; }
+
+.lb-se .se-place-list { display: flex; flex-direction: column; gap: 2.4rem; }
+.lb-se .se-place { border-left: 2px solid rgba(184,150,78,.3); padding-left: 1.8rem; }
+.lb-se .se-place h3 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(1rem, 1.8vw, 1.25rem); color: var(--txt); margin-bottom: .5rem; line-height: 1.2; }
+.lb-se .se-place h3 em { font-style: italic; color: var(--gold-lt); }
+.lb-se .se-place-county { font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: .7rem; }
+.lb-se .se-place p { font-size: .85rem; line-height: 1.82; color: var(--txt-mid); }
+
+/* ════════════════════════════════════════
+   BEST FOR STRIP
+════════════════════════════════════════ */
+.lb-se .se-best { background: var(--warm); padding: var(--pad-y) var(--pad-x); }
+.lb-se .se-best-in { max-width: 820px; margin: 0 auto; text-align: center; }
+.lb-se .se-best h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; color: var(--txt); margin-bottom: .7rem; }
+.lb-se .se-best h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-se .se-best-sub { font-size: .88rem; color: var(--txt-mid); line-height: 1.7; margin-bottom: 2.4rem; max-width: 540px; margin-left: auto; margin-right: auto; }
+.lb-se .se-best-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+.lb-se .se-best-tile { background: var(--cream); border: 1px solid rgba(91,98,57,.1); padding: 1.6rem 1.4rem; text-align: left; }
+.lb-se .se-best-tile-icon { width: 32px; height: 32px; margin-bottom: 1rem; color: var(--gold); }
+.lb-se .se-best-tile-title { font-family: 'Playfair Display', serif; font-weight: 400; font-size: .92rem; color: var(--txt); margin-bottom: .5rem; line-height: 1.3; }
+.lb-se .se-best-tile-desc { font-size: .8rem; line-height: 1.7; color: var(--txt-mid); }
+@media (max-width: 720px) { .lb-se .se-best-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .lb-se .se-best-grid { grid-template-columns: 1fr; } }
+
+/* ════════════════════════════════════════
+   VENUES SECTION
+════════════════════════════════════════ */
+.lb-se .se-venues { background: var(--cream); padding: var(--pad-y) var(--pad-x); }
+.lb-se .se-venues-in { max-width: 900px; margin: 0 auto; }
+.lb-se .se-venues-header { text-align: center; margin-bottom: 3rem; }
+.lb-se .se-venues-header h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; color: var(--txt); margin-bottom: .6rem; }
+.lb-se .se-venues-header h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-se .se-venues-header p { font-size: .88rem; color: var(--txt-mid); line-height: 1.7; }
+
+.lb-se .se-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+.lb-se .se-card { background: var(--warm); border: 1px solid rgba(91,98,57,.08); border-radius: 2px; overflow: hidden; position: relative; transition: box-shadow .3s, transform .3s; display: flex; flex-direction: column; }
+.lb-se .se-card:hover { box-shadow: 0 6px 28px rgba(26,26,24,.1); transform: translateY(-3px); }
+.lb-se .se-card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+.lb-se .se-card-img-placeholder { width: 100%; aspect-ratio: 4/3; background: linear-gradient(135deg, var(--cream), rgba(184,150,78,.12)); display: flex; align-items: center; justify-content: center; }
+.lb-se .se-card-img-placeholder svg { width: 40px; height: 40px; opacity: .25; }
+.lb-se .se-card-body { padding: 1.4rem 1.4rem 1.6rem; flex: 1; display: flex; flex-direction: column; }
+.lb-se .se-card-county { font-size: .58rem; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: .5rem; }
+.lb-se .se-card h3 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(.95rem, 1.4vw, 1.15rem); line-height: 1.25; color: var(--txt); margin-bottom: .6rem; }
+.lb-se .se-card-rule { width: 28px; height: 1px; background: var(--gold); opacity: .5; margin-bottom: .75rem; }
+.lb-se .se-card-desc { font-size: .8rem; line-height: 1.72; color: var(--txt-mid); flex: 1; margin-bottom: 1.1rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.lb-se .se-card-link { font-size: .68rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--green); text-decoration: none; display: inline-flex; align-items: center; gap: .4rem; transition: color .3s; margin-top: auto; }
+.lb-se .se-card-link::after { content: '→'; transition: transform .3s; }
+.lb-se .se-card:hover .se-card-link { color: var(--gold); }
+.lb-se .se-card:hover .se-card-link::after { transform: translateX(4px); }
+.lb-se .se-card-link::before { content: ''; position: absolute; inset: 0; z-index: 1; }
+
+.lb-se .se-loading { grid-column: 1 / -1; text-align: center; padding: 3rem 0; color: var(--stone); font-size: .85rem; letter-spacing: .08em; }
+.lb-se .se-loading-spinner { display: inline-block; width: 28px; height: 28px; border: 2px solid rgba(91,98,57,.15); border-top-color: var(--green); border-radius: 50%; animation: se-spin .8s linear infinite; margin-bottom: .8rem; }
+@keyframes se-spin { to { transform: rotate(360deg); } }
+.lb-se .se-error { grid-column: 1 / -1; text-align: center; padding: 3rem 0; color: var(--txt-mid); font-size: .88rem; line-height: 1.7; }
+.lb-se .se-error a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ════════════════════════════════════════
+   VIEW TOGGLE
+════════════════════════════════════════ */
+.lb-se .se-view-toggle { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2.5rem; }
+.lb-se .se-toggle-btn { background: transparent; border: none; font-family: 'Alice', serif; font-size: .68rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--stone); cursor: pointer; padding-bottom: .4rem; border-bottom: 2px solid transparent; transition: all .3s; }
+.lb-se .se-toggle-btn.active { color: var(--green); border-bottom-color: var(--gold); }
+.lb-se .se-toggle-btn:hover:not(.active) { color: var(--gold-lt); }
+
+/* ════════════════════════════════════════
+   MAP VIEW
+════════════════════════════════════════ */
+.lb-se .se-map-wrap { display: none; width: 100%; height: 560px; border: 1px solid rgba(91,98,57,.15); border-radius: 2px; overflow: hidden; }
+.lb-se .se-map-wrap.active { display: block; }
+.lb-se .se-grid.hidden { display: none; }
+
+#se-map { width: 100%; height: 100%; background: var(--cream); }
+#se-map .leaflet-tile-pane { filter: saturate(0.18) brightness(1.06) sepia(0.18) contrast(0.92); }
+
+.leaflet-popup-content-wrapper { border-radius: 3px !important; background: #FDFAF4 !important; border: none !important; box-shadow: 0 8px 32px rgba(26,26,24,.18), 0 1px 4px rgba(26,26,24,.08) !important; padding: 0 !important; overflow: hidden; }
+.leaflet-popup-tip { background: #FDFAF4 !important; box-shadow: none !important; }
+.leaflet-popup-close-button { color: #8C8070 !important; font-size: 18px !important; top: 8px !important; right: 10px !important; }
+.leaflet-popup-close-button:hover { color: #1A1A18 !important; }
+.leaflet-popup-content { margin: 0 !important; width: 210px !important; }
+
+.lb-se-popup-img { width: 100%; height: 120px; object-fit: cover; display: block; }
+.lb-se-popup-body { padding: 14px 16px 16px; text-align: center; font-family: 'Alice', serif; }
+.lb-se-popup-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 400; color: #1A1A18; margin: 0 0 8px; line-height: 1.2; }
+.lb-se-popup-rule { width: 24px; height: 1px; background: #B8964E; margin: 0 auto 10px; }
+.lb-se-popup-county { font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: #8C8070; margin-bottom: 10px; }
+.lb-se-popup-link { display: inline-block; font-size: .62rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: #F5F0E8 !important; background: #5B6239; text-decoration: none !important; padding: 7px 16px; border-radius: 2px; transition: background .2s; }
+.lb-se-popup-link:hover { background: #3a3f25; }
+
+@keyframes se-pulse { 0% { transform: scale(1); opacity: .6; } 70% { transform: scale(2.2); opacity: 0; } 100% { transform: scale(2.2); opacity: 0; } }
+.se-marker-wrap { position: relative; width: 14px; height: 14px; }
+.se-marker-dot { width: 14px; height: 14px; background: #B8964E; border: 2.5px solid #fff; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,.35); position: relative; z-index: 1; }
+.se-marker-pulse { position: absolute; top: 0; left: 0; width: 14px; height: 14px; background: #B8964E; border-radius: 50%; animation: se-pulse 2s ease-out infinite; }
+
+/* ════════════════════════════════════════
+   PLANNING STRIP
+════════════════════════════════════════ */
+.lb-se .se-planning { background: var(--warm); padding: var(--pad-y) var(--pad-x); }
+.lb-se .se-planning-in { max-width: 820px; margin: 0 auto; }
+.lb-se .se-planning h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; color: var(--txt); margin-bottom: .6rem; }
+.lb-se .se-planning h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-se .se-planning-intro { font-size: .88rem; color: var(--txt-mid); line-height: 1.8; margin-bottom: 2.4rem; max-width: 620px; }
+.lb-se .se-planning-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.lb-se .se-planning-item { background: var(--cream); border: 1px solid rgba(91,98,57,.08); padding: 1.6rem 1.5rem; }
+.lb-se .se-planning-item h3 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: .95rem; color: var(--txt); margin-bottom: .55rem; line-height: 1.3; }
+.lb-se .se-planning-item p { font-size: .8rem; line-height: 1.75; color: var(--txt-mid); }
+@media (max-width: 600px) { .lb-se .se-planning-grid { grid-template-columns: 1fr; } }
+
+/* ════════════════════════════════════════
+   FAQ STRIP
+════════════════════════════════════════ */
+.lb-se .se-faq { background: var(--cream); padding: var(--pad-y) var(--pad-x); }
+.lb-se .se-faq-in { max-width: 820px; margin: 0 auto; }
+.lb-se .se-faq h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; color: var(--txt); margin-bottom: .6rem; }
+.lb-se .se-faq h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-se .se-faq-intro { font-size: .88rem; color: var(--txt-mid); line-height: 1.8; margin-bottom: 2.4rem; max-width: 600px; }
+.lb-se .se-faq-list { display: flex; flex-direction: column; gap: 0; }
+.lb-se .se-faq-item { border-top: 1px solid rgba(91,98,57,.12); }
+.lb-se .se-faq-item:last-child { border-bottom: 1px solid rgba(91,98,57,.12); }
+.lb-se .se-faq-q { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.2rem 0; cursor: pointer; list-style: none; }
+.lb-se .se-faq-q::-webkit-details-marker { display: none; }
+.lb-se .se-faq-q-text { font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(.88rem, 1.5vw, 1rem); color: var(--txt); line-height: 1.4; }
+.lb-se .se-faq-icon { flex-shrink: 0; width: 18px; height: 18px; color: var(--gold); transition: transform .3s; }
+.lb-se details[open] .se-faq-icon { transform: rotate(45deg); }
+.lb-se .se-faq-a { padding: 0 0 1.2rem; font-size: .85rem; line-height: 1.82; color: var(--txt-mid); }
+.lb-se .se-faq-a a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ════════════════════════════════════════
+   RELATED CONTENT
+════════════════════════════════════════ */
+.lb-se .se-related { background: var(--warm); padding: var(--pad-y) var(--pad-x); }
+.lb-se .se-related-in { max-width: 820px; margin: 0 auto; }
+.lb-se .se-related-header { margin-bottom: 2.4rem; }
+.lb-se .se-related h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.3rem, 2.2vw, 1.7rem); line-height: 1.2; color: var(--txt); margin-bottom: .5rem; }
+.lb-se .se-related h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-se .se-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.lb-se .se-related-col h3 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--green); margin-bottom: 1rem; padding-bottom: .6rem; border-bottom: 1px solid rgba(91,98,57,.15); }
+.lb-se .se-related-col ul { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+.lb-se .se-related-col ul li a { font-size: .82rem; line-height: 1.5; color: var(--txt-mid); text-decoration: none; display: flex; align-items: baseline; gap: .4rem; transition: color .25s; }
+.lb-se .se-related-col ul li a::before { content: '›'; color: var(--gold); font-size: .9rem; flex-shrink: 0; }
+.lb-se .se-related-col ul li a:hover { color: var(--green); }
+@media (max-width: 700px) { .lb-se .se-related-grid { grid-template-columns: 1fr; gap: 1.8rem; } }
+
+/* ════════════════════════════════════════
+   CTA BAR
+════════════════════════════════════════ */
+.lb-se .se-cta { background: var(--green); padding: clamp(3rem, 6vw, 5rem) var(--pad-x); text-align: center; }
+.lb-se .se-cta-in { max-width: 560px; margin: 0 auto; }
+.lb-se .se-cta h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.4rem, 2.5vw, 2rem); line-height: 1.2; color: var(--warm); margin-bottom: .8rem; }
+.lb-se .se-cta h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-se .se-cta-sub { font-size: .88rem; line-height: 1.7; color: rgba(245,240,232,.55); font-style: italic; font-family: 'Playfair Display', serif; margin-bottom: 2rem; }
+.lb-se .btn-gold { display: inline-block; font-family: 'Alice', serif; font-size: .74rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; padding: .95rem 2.2rem; background: var(--gold); color: var(--green); border: 2px solid var(--gold); text-decoration: none; transition: all .3s; }
+.lb-se .btn-gold:hover { background: transparent; border-color: var(--gold-lt); color: var(--gold-lt); }
+.lb-se .btn-ghost { display: inline-block; font-family: 'Alice', serif; font-size: .74rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; padding: .95rem 2.2rem; background: transparent; color: var(--warm); border: 2px solid rgba(245,240,232,.45); text-decoration: none; transition: all .3s; }
+.lb-se .btn-ghost:hover { border-color: var(--warm); color: var(--warm); }
+.lb-se .se-cta-links { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+.lb-se .se-cta-tertiary { display: inline-block; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(245,240,232,.6); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(184,150,78,.4); transition: color .3s; }
+.lb-se .se-cta-tertiary:hover { color: var(--gold-lt); }
+
+/* ════════════════════════════════════════
+   SCROLL REVEAL
+════════════════════════════════════════ */
+.lb-se .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+.lb-se .reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════ */
+@media (max-width: 820px) { .lb-se .se-intro-in { grid-template-columns: 1fr; gap: 2rem; } }
+@media (max-width: 720px) { .lb-se .se-grid { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; } }
+@media (max-width: 600px) {
+  .lb-se .se-map-wrap { height: 420px; }
+  .lb-se .se-grid { grid-template-columns: 1fr; }
+  .lb-se .btn-gold { display: block; text-align: center; }
+}
+</style>
+
+<div class="lb-se">
+
+  <!-- ── Breadcrumb ── -->
+  <nav class="se-breadcrumb" aria-label="Breadcrumb">
+    <div class="se-breadcrumb-in">
+      <a href="/">Home</a>
+      <span class="sep">›</span>
+      <a href="/regions-of-ireland">Regions of Ireland</a>
+      <span class="sep">›</span>
+      <span class="current">The South East</span>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="se-hero">
+    <div class="se-hero-in">
+      <div class="se-ol ctr reveal">Elopements &amp; Intimate Weddings in Ireland</div>
+      <h1 class="reveal">Elope in the <em>South East of Ireland</em></h1>
+      <p class="se-hero-sub reveal">
+        Medieval towns, golden coastlines, and Ireland's sunniest skies. The south east is a
+        region of hidden castles, ancient abbeys, and a warm, unhurried character that rewards
+        the couples who discover it.
+      </p>
+      <p class="se-hero-meta reveal">County Wexford &middot; County Waterford &middot; County Kilkenny</p>
+    </div>
+  </section>
+
+  <!-- ── Quick Facts Strip ── -->
+  <div class="se-facts">
+    <div class="se-facts-in">
+      <div class="se-fact">
+        <div class="se-fact-value">800+ Years</div>
+        <div class="se-fact-label">Hook Lighthouse</div>
+      </div>
+      <div class="se-fact-divider"></div>
+      <div class="se-fact">
+        <div class="se-fact-value">Most Sunshine</div>
+        <div class="se-fact-label">In All of Ireland</div>
+      </div>
+      <div class="se-fact-divider"></div>
+      <div class="se-fact">
+        <div class="se-fact-value">Copper Coast</div>
+        <div class="se-fact-label">UNESCO Geopark</div>
+      </div>
+      <div class="se-fact-divider"></div>
+      <div class="se-fact">
+        <div class="se-fact-value">Medieval City</div>
+        <div class="se-fact-label">Kilkenny Castle</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Intro / Editorial ── -->
+  <section class="se-intro" id="about">
+    <div class="se-intro-in">
+      <div class="reveal">
+        <div class="se-ol">About this region</div>
+        <h2>Medieval towns, golden coastline, <em>and Ireland's warmest corner</em></h2>
+        <p>
+          The south east is the sunniest part of Ireland, a fact that surprises many visitors
+          expecting grey skies. The Copper Coast of Waterford, the wide beaches of Wexford, and
+          the medieval streets of Kilkenny bask in more sunshine hours than almost anywhere else
+          on the island.
+        </p>
+        <p>
+          History is everywhere here. Hook Lighthouse in County Wexford is one of the oldest
+          operational lighthouses in the world, standing sentinel on a dramatic headland for
+          over 800 years. Tintern Abbey, the ruins of a 13th-century Cistercian monastery, sits
+          on the shores of an estuary surrounded by ancient woodland.
+        </p>
+        <p>
+          Kilkenny is one of Ireland's best-preserved medieval cities, its castle and narrow
+          lanes offering a uniquely intimate backdrop for a small celebration. For couples who
+          love history, warmth, and a quiet sense of discovery, the south east rarely disappoints.
+        </p>
+      </div>
+      <div class="reveal">
+        <p class="se-highlights-heading">What makes the South East special</p>
+        <ul class="se-highlights">
+          <li>Hook Lighthouse, one of the oldest lighthouses in the world</li>
+          <li>Kilkenny Castle and the medieval city's atmospheric lanes</li>
+          <li>Tintern Abbey, 13th-century ruins in an estuary woodland</li>
+          <li>The Copper Coast, UNESCO Geopark and dramatic sea cliffs</li>
+          <li>Ireland's highest sunshine hours and mildest climate</li>
+          <li>The wide sandy beaches of Wexford's coastline</li>
+          <li>A quieter, more intimate feel than Ireland's busiest tourist regions</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Locations Deep-Dive ── -->
+  <section class="se-places" id="locations">
+    <div class="se-places-in">
+      <div class="se-places-header reveal">
+        <div class="se-ol ctr">The Landscapes</div>
+        <h2>Three counties, <em>one unforgettable region</em></h2>
+        <p>County Wexford, County Waterford, and County Kilkenny each bring something entirely distinct to a south east elopement. Here is what to expect from each.</p>
+      </div>
+      <div class="se-place-list">
+
+        <div class="se-place reveal">
+          <div class="se-place-county">County Wexford</div>
+          <h3>Hook Head, Tintern Abbey, <em>and the Wexford coast</em></h3>
+          <p>County Wexford stretches from the broad estuary of the Slaney to the dramatic headland of Hook Head, where one of the world's oldest operational lighthouses has guided ships since the 13th century. A ceremony here, with the Atlantic crashing below the black and white tower, is one of Ireland's most striking and least-crowded settings. Inland, Tintern Abbey offers the romance of genuine medieval ruins surrounded by ancient woodland and tidal waterway -- a setting with no admission queues and an atmosphere no purpose-built venue can replicate. Wexford's long sandy coastline, including Curracloe and Rosslare, adds miles of uncrowded beach to the county's portfolio of ceremony options.</p>
+        </div>
+
+        <div class="se-place reveal">
+          <div class="se-place-county">County Waterford</div>
+          <h3>The Copper Coast and <em>Waterford city</em></h3>
+          <p>The Copper Coast UNESCO Geopark runs for twenty-five kilometres along the County Waterford coastline, a succession of dramatic sea cliffs, hidden coves, and headlands formed from some of the oldest rocks in Ireland. The geology gives the landscape an extraordinary colour and texture -- copper-stained cliffs catching the afternoon light above turquoise water. Waterford city, Ireland's oldest, adds an urban dimension with its medieval walls, Viking triangle, and excellent restaurants. For couples who want dramatic coastal scenery without travelling to the west, the Copper Coast is one of Ireland's most underrated ceremony locations. The county also reaches inland to the Comeragh Mountains, where quiet valleys and hidden waterfalls make for a different kind of elopement entirely.</p>
+        </div>
+
+        <div class="se-place reveal">
+          <div class="se-place-county">County Kilkenny</div>
+          <h3>Kilkenny Castle, medieval lanes, <em>and river valleys</em></h3>
+          <p>Kilkenny is the most intact medieval city in Ireland, its Norman castle dominating a bend in the River Nore and its narrow lanes preserving a scale and intimacy that larger cities have long since lost. A ceremony in or around Kilkenny has a built-in backdrop of 800 years of Irish history -- stone walls, tower houses, and a riverbank lined with ancient trees. Outside the city, the Nore and Barrow river valleys offer country house estates with the kind of understated elegance that defines the south east: not wild or windswept, but genuinely, quietly beautiful. For couples who want history without drama, or who simply prefer the warmth of a walled garden over a clifftop, Kilkenny is the natural answer.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Best For ── -->
+  <section class="se-best" id="best-for">
+    <div class="se-best-in">
+      <div class="se-ol ctr reveal">Who It Suits</div>
+      <h2 class="reveal">Is the South East right for <em>your elopement?</em></h2>
+      <p class="se-best-sub reveal">Every region in Ireland has its own character. Here is what the South East does best.</p>
+      <div class="se-best-grid">
+        <div class="se-best-tile reveal">
+          <svg class="se-best-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          <div class="se-best-tile-title">Couples who want reliable weather</div>
+          <p class="se-best-tile-desc">The south east receives more sunshine hours than any other part of Ireland. If settled skies and warmth matter to your planning, this region gives you the best statistical odds.</p>
+        </div>
+        <div class="se-best-tile reveal">
+          <svg class="se-best-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <div class="se-best-tile-title">History and atmosphere seekers</div>
+          <p class="se-best-tile-desc">Hook Lighthouse, Tintern Abbey, Kilkenny Castle -- the south east is one of Ireland's most historically rich regions, with genuine medieval character at every turn.</p>
+        </div>
+        <div class="se-best-tile reveal">
+          <svg class="se-best-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <div class="se-best-tile-title">Small intimate gatherings</div>
+          <p class="se-best-tile-desc">The south east's country houses, walled gardens, and abbey ruins suit a small group perfectly -- intimate without requiring a remote location or a long drive from Dublin.</p>
+        </div>
+        <div class="se-best-tile reveal">
+          <svg class="se-best-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div class="se-best-tile-title">Coastal ceremonies without the crowds</div>
+          <p class="se-best-tile-desc">The Copper Coast and Hook Head offer dramatic coastal settings that see a fraction of the visitor numbers at more famous locations. Genuine seclusion, without remote logistics.</p>
+        </div>
+        <div class="se-best-tile reveal">
+          <svg class="se-best-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <div class="se-best-tile-title">Couples based in Dublin</div>
+          <p class="se-best-tile-desc">Kilkenny is under two hours from Dublin by road, Wexford and Waterford not far behind. For guests travelling from Dublin Airport, the south east is one of the most accessible regions in Ireland.</p>
+        </div>
+        <div class="se-best-tile reveal">
+          <svg class="se-best-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>
+          <div class="se-best-tile-title">Garden and estate weddings</div>
+          <p class="se-best-tile-desc">The river valleys of Kilkenny and the wooded estates of Wexford are home to some of Ireland's most quietly beautiful country houses -- perfect for a ceremony that feels private and refined.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Venues ── -->
+  <section class="se-venues" id="venues">
+    <div class="se-venues-in">
+      <div class="se-venues-header reveal">
+        <div class="se-ol ctr">Our Venues</div>
+        <h2>South East Ireland <em>Venues</em></h2>
+        <p>Hand-picked locations for elopements and intimate weddings across Wexford, Waterford, and Kilkenny.</p>
+      </div>
+
+      <div class="se-view-toggle">
+        <button class="se-toggle-btn active" data-view="grid">List View</button>
+        <button class="se-toggle-btn" data-view="map">Map View</button>
+      </div>
+
+      <div class="se-grid" id="se-venue-grid">
+        <div class="se-loading">
+          <div class="se-loading-spinner"></div>
+          <p>Loading venues...</p>
+        </div>
+      </div>
+
+      <div class="se-map-wrap" id="se-map-wrap">
+        <div id="se-map"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Planning Strip ── -->
+  <section class="se-planning" id="planning">
+    <div class="se-planning-in">
+      <div class="se-ol reveal">Practical Information</div>
+      <h2 class="reveal">Planning your <em>South East elopement</em></h2>
+      <p class="se-planning-intro reveal">
+        The south east is one of Ireland's most straightforward regions to plan an elopement in
+        -- accessible, mild, and full of venues that welcome intimate celebrations. Here is what
+        to know before you start.
+      </p>
+      <div class="se-planning-grid">
+        <div class="se-planning-item reveal">
+          <h3>Getting to the south east</h3>
+          <p>Dublin Airport is the most convenient international arrival point, with Kilkenny under two hours by road and Wexford town around ninety minutes. Waterford Airport also handles some UK routes. The M9 motorway connects Dublin directly to Kilkenny, making this one of the easiest regions in Ireland to reach from an international flight.</p>
+        </div>
+        <div class="se-planning-item reveal">
+          <h3>Best time of year</h3>
+          <p>The south east's sunshine advantage is most pronounced from April through September, when the region reliably outperforms the rest of Ireland for dry, settled weather. June and early July offer the longest evenings. Autumn brings warm golden light and far fewer visitors -- September and October are some of the best months for photography across the region.</p>
+        </div>
+        <div class="se-planning-item reveal">
+          <h3>Legal ceremonies in the south east</h3>
+          <p>Every package we offer includes a legally recognised ceremony performed by a licensed Irish celebrant, registered with the HSE. Your marriage certificate is issued by the General Register Office of Ireland and is fully valid across the United States. We handle all notification requirements, paperwork, and advance filings on your behalf.</p>
+        </div>
+        <div class="se-planning-item reveal">
+          <h3>Historic site ceremonies</h3>
+          <p>Some of the south east's most atmospheric locations -- Tintern Abbey, Hook Lighthouse, and certain Kilkenny heritage sites -- require advance permissions from the OPW or local heritage bodies. We manage all of this as part of your planning, including any site-specific requirements around group size and timing.</p>
+        </div>
+        <div class="se-planning-item reveal">
+          <h3>Combining locations in one day</h3>
+          <p>The south east is compact enough to combine a ceremony at Hook Head with a celebratory dinner in Kilkenny the same evening. We plan multi-location days regularly in this region and handle all the routing, timing, and logistics so your photographer and celebrant are always in the right place.</p>
+        </div>
+        <div class="se-planning-item reveal">
+          <h3>Accommodation for guests</h3>
+          <p>Kilkenny, Waterford city, and Wexford town all have good hotels within easy reach of ceremony locations. The region's country house hotels are particularly well suited to small groups -- many offer exclusive-use options for intimate celebrations of up to thirty guests. We can recommend and help coordinate accommodation as part of your planning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ── -->
+  <section class="se-faq" id="faq">
+    <div class="se-faq-in">
+      <div class="se-ol reveal">Questions &amp; Answers</div>
+      <h2 class="reveal">Frequently asked questions about <em>eloping in the South East</em></h2>
+      <p class="se-faq-intro reveal">Everything couples ask us before booking a south east Ireland elopement.</p>
+      <div class="se-faq-list reveal">
+
+        <details class="se-faq-item">
+          <summary class="se-faq-q">
+            <span class="se-faq-q-text">Can we get married at Hook Lighthouse?</span>
+            <svg class="se-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </summary>
+          <p class="se-faq-a">Yes. Hook Lighthouse is an operational heritage site managed by Wexford County Council Heritage, and ceremonies on the headland require advance coordination with the site team. We manage all permissions as part of your planning and know exactly how to work with the site to get the best ceremony position -- the point looking out to sea is unlike anything else in Ireland. <a href="/get-in-touch">Get in touch to discuss availability.</a></p>
+        </details>
+
+        <details class="se-faq-item">
+          <summary class="se-faq-q">
+            <span class="se-faq-q-text">Is the south east a good choice if weather matters to us?</span>
+            <svg class="se-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </summary>
+          <p class="se-faq-a">Yes -- the south east is consistently the sunniest and driest region in Ireland. Met Eireann's long-term data places Wexford and Waterford at the top of the sunshine hours table year after year. That does not mean guaranteed sunshine, but it does mean the statistical odds are meaningfully better here than on the west coast. We also always plan a contingency for every outdoor ceremony regardless of region.</p>
+        </details>
+
+        <details class="se-faq-item">
+          <summary class="se-faq-q">
+            <span class="se-faq-q-text">How far is the south east from Dublin Airport?</span>
+            <svg class="se-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </summary>
+          <p class="se-faq-a">Kilkenny is roughly ninety minutes to two hours from Dublin Airport via the M9 motorway, making it one of the most accessible ceremony regions in Ireland for international arrivals. Wexford town is around two hours, Waterford city around two and a half hours. For guests combining an Irish elopement with time in Dublin, the south east is a natural first or last stop on a self-drive itinerary.</p>
+        </details>
+
+        <details class="se-faq-item">
+          <summary class="se-faq-q">
+            <span class="se-faq-q-text">Is a marriage in Ireland legally recognised in the United States?</span>
+            <svg class="se-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </summary>
+          <p class="se-faq-a">Yes. Ireland and the United States mutually recognise marriages performed in each country. Every ceremony we plan is conducted by a legally registered Irish celebrant, and your marriage is registered with the General Register Office of Ireland. We provide you with a certified Irish marriage certificate accepted across the US. <a href="/faqs">See all legal FAQs.</a></p>
+        </details>
+
+        <details class="se-faq-item">
+          <summary class="se-faq-q">
+            <span class="se-faq-q-text">Can we elope in Kilkenny city itself?</span>
+            <svg class="se-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </summary>
+          <p class="se-faq-a">Yes, and it is one of our most popular south east options. Kilkenny Castle and its parkland, the banks of the River Nore, and the walled gardens of Kilkenny's estates all make for beautiful, intimate ceremony locations. The medieval city also offers some of Ireland's best restaurants for a celebration dinner, so it lends itself well to a full elopement day without leaving town. <a href="/get-in-touch">Get in touch to discuss Kilkenny options.</a></p>
+        </details>
+
+        <details class="se-faq-item">
+          <summary class="se-faq-q">
+            <span class="se-faq-q-text">How many guests can we bring to a south east elopement?</span>
+            <svg class="se-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </summary>
+          <p class="se-faq-a">Our packages cover everything from just the two of you up to intimate celebrations with immediate family and close friends. The south east has particularly strong options for small group ceremonies -- country house estates in Kilkenny and Wexford can often accommodate exclusive-use bookings for groups of up to thirty. We will advise on what works best for your numbers and budget. <a href="/packages">View our packages.</a></p>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Related Content ── -->
+  <section class="se-related">
+    <div class="se-related-in">
+      <div class="se-related-header reveal">
+        <div class="se-ol">Keep exploring</div>
+        <h2>More to <em>discover</em></h2>
+      </div>
+      <div class="se-related-grid reveal">
+        <div class="se-related-col">
+          <h3>Other Regions</h3>
+          <ul>
+            <li><a href="/regions-of-ireland/dublin">Dublin</a></li>
+            <li><a href="/regions-of-ireland/northern-ireland">Northern Ireland</a></li>
+            <li><a href="/regions-of-ireland/the-west">The West</a></li>
+            <li><a href="/regions-of-ireland/the-south-west">The South West</a></li>
+            <li><a href="/regions-of-ireland/the-north-west">The North West</a></li>
+            <li><a href="/regions-of-ireland/the-midlands-east">The Midlands &amp; East</a></li>
+          </ul>
+        </div>
+        <div class="se-related-col">
+          <h3>Plan Your Day</h3>
+          <ul>
+            <li><a href="/packages">View Our Packages</a></li>
+            <li><a href="/venues">Browse All Venues</a></li>
+            <li><a href="/elopement-in-ireland">How It Works</a></li>
+            <li><a href="/faqs">Frequently Asked Questions</a></li>
+            <li><a href="/get-in-touch">Get in Touch</a></li>
+          </ul>
+        </div>
+        <div class="se-related-col">
+          <h3>Real Couples</h3>
+          <ul>
+            <li><a href="/happy-couples">All Couple Stories</a></li>
+            <li><a href="/about">About Ladybird</a></li>
+            <li><a href="/destination-weddings-ireland">Destination Weddings in Ireland</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="se-cta">
+    <div class="se-cta-in">
+      <div class="se-ol ctr reveal" style="color:var(--gold-lt);">Ready to begin?</div>
+      <h2 class="reveal">Let's plan your <em>South East Ireland elopement</em></h2>
+      <p class="se-cta-sub reveal">Tell us your vision and we'll handle every detail, from venue to vows.</p>
+      <div class="se-cta-links reveal">
+        <a href="/get-in-touch" class="btn-gold">Get in Touch</a>
+        <a href="/packages" class="btn-ghost">View Our Packages</a>
+      </div>
+      <a href="/happy-couples" class="se-cta-tertiary reveal">See Real Couple Stories</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  /* ── Scroll reveal ── */
+  const revealEls = document.querySelectorAll('.lb-se .reveal');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('in'), i * 60); obs.unobserve(e.target); } });
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+    revealEls.forEach(el => obs.observe(el));
+  } else { revealEls.forEach(el => el.classList.add('in')); }
+
+  const GRID     = document.getElementById('se-venue-grid');
+  const MAP_WRAP = document.getElementById('se-map-wrap');
+  const TAG      = 'South East';
+
+  let currentView = 'grid';
+  let map = null;
+  let markerLayer = null;
+  let regionItems = [];
+  let goldIcon = null;
+
+  /* ── View toggle ── */
+  document.querySelectorAll('.lb-se .se-toggle-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.lb-se .se-toggle-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      currentView = this.dataset.view;
+      if (currentView === 'grid') {
+        MAP_WRAP.classList.remove('active');
+        GRID.classList.remove('hidden');
+      } else {
+        GRID.classList.add('hidden');
+        MAP_WRAP.classList.add('active');
+        if (!map) initMap();
+        setTimeout(() => { if (map) map.invalidateSize(); renderMapPins(regionItems); }, 100);
+      }
+    });
+  });
+
+  /* ── Map init ── */
+  function initMap() {
+    goldIcon = L.divIcon({
+      className: '',
+      html: '<div class="se-marker-wrap"><div class="se-marker-pulse"></div><div class="se-marker-dot"></div></div>',
+      iconSize: [14, 14], iconAnchor: [7, 7], popupAnchor: [0, -10]
+    });
+    map = L.map('se-map', { zoomControl: false }).setView([52.35, -7.1], 8);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>'
+    }).addTo(map);
+    L.control.zoom({ position: 'bottomright' }).addTo(map);
+    markerLayer = L.layerGroup().addTo(map);
+  }
+
+  /* ── Render map pins ── */
+  function renderMapPins(items) {
+    if (!markerLayer) return;
+    markerLayer.clearLayers();
+    const bounds = [];
+    items.forEach(item => {
+      const html = item.body || item.excerpt || '';
+      const latM = html.match(/data-lat="([^"]+)"/);
+      const lngM = html.match(/data-long="([^"]+)"/);
+      const ctyM = html.match(/data-county="([^"]+)"/);
+      if (!latM || !lngM) return;
+      const lat = parseFloat(latM[1]);
+      const lng = parseFloat(lngM[1]);
+      if (isNaN(lat) || isNaN(lng)) return;
+      const imgSrc = item.assetUrl || item.thumbnailUrl || '';
+      const county = ctyM ? ctyM[1].replace(/,?\s*ireland$/i, '') : '';
+      const popupContent =
+        '<div>' +
+        (imgSrc ? '<img class="lb-se-popup-img" src="' + imgSrc + '" alt="' + item.title + '">' : '') +
+        '<div class="lb-se-popup-body">' +
+        '<h3 class="lb-se-popup-title">' + item.title + '</h3>' +
+        '<div class="lb-se-popup-rule"></div>' +
+        (county ? '<p class="lb-se-popup-county">Co. ' + county + ', Ireland</p>' : '') +
+        '<a href="' + item.fullUrl + '" class="lb-se-popup-link">View Venue</a>' +
+        '</div></div>';
+      L.marker([lat, lng], { icon: goldIcon })
+        .bindPopup(popupContent, { maxWidth: 210 })
+        .addTo(markerLayer);
+      bounds.push([lat, lng]);
+    });
+    if (bounds.length > 0) map.fitBounds(bounds, { padding: [40, 40], maxZoom: 12 });
+    else map.setView([52.35, -7.1], 8);
+  }
+
+  /* ── Build card ── */
+  function escHtml(str) { return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  function buildCard(item) {
+    const title  = item.title || 'Venue';
+    const href   = item.fullUrl || '/venues/p/' + (item.urlId || item.urlSlug || '');
+    const imgSrc = item.assetUrl || item.thumbnailUrl || null;
+    const county = (item.customContent && item.customContent.county) ? item.customContent.county : '';
+    const desc   = (item.excerpt || item.body || '').replace(/<[^>]*>/g, '').trim().slice(0, 180);
+    const imgHtml = imgSrc
+      ? `<img class="se-card-img" src="${escHtml(imgSrc)}" alt="${escHtml(title)}" loading="lazy">`
+      : `<div class="se-card-img-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>`;
+    const card = document.createElement('div');
+    card.className = 'se-card reveal';
+    card.innerHTML = `${imgHtml}<div class="se-card-body">${county ? `<span class="se-card-county">${escHtml(county)}</span>` : ''}<h3>${escHtml(title)}</h3><div class="se-card-rule"></div>${desc ? `<p class="se-card-desc">${escHtml(desc)}</p>` : ''}<a href="${escHtml(href)}" class="se-card-link">View venue</a></div>`;
+    return card;
+  }
+
+  /* ── Render grid ── */
+  function renderCards(items) {
+    if (!items.length) {
+      GRID.innerHTML = `<div class="se-error"><p>No venues found for this region yet, check back soon.</p><p><a href="/venues">Browse all venues &rarr;</a></p></div>`;
+      return;
+    }
+    GRID.innerHTML = '';
+    items.forEach(item => GRID.appendChild(buildCard(item)));
+    if (items.length % 3 === 1 && GRID.lastElementChild) GRID.lastElementChild.style.gridColumn = '2';
+    const cards = GRID.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('in'), i * 60); io.unobserve(e.target); } });
+      }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+      cards.forEach(el => io.observe(el));
+    } else { cards.forEach(el => el.classList.add('in')); }
+  }
+
+  /* ── Fetch ── */
+  async function loadVenues() {
+    try {
+      const res = await fetch('/venue?format=json&count=300');
+      if (!res.ok) throw new Error();
+      const data = await res.json();
+      const all = data.items || data.products || [];
+      regionItems = all.filter(item => (item.tags || []).some(t => t.toLowerCase() === TAG.toLowerCase()));
+      renderCards(regionItems);
+    } catch (err) {
+      console.warn('Ladybird venue fetch failed:', err);
+      GRID.innerHTML = `<div class="se-error"><p>Couldn't load venues right now.</p><p><a href="/venues">Browse all venues &rarr;</a></p></div>`;
+    }
+  }
+
+  loadVenues();
+}());
+</script>

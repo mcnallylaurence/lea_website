@@ -1,0 +1,708 @@
+<!-- Ladybird Ever After – FAQs Page – Squarespace Code Block -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Alice&display=swap" rel="stylesheet">
+
+<style>
+.lb-faq {
+  --green:    #5B6239;
+  --green-dk: #3a3f25;
+  --green-hv: #4a5130;
+  --gold:     #B8964E;
+  --gold-lt:  #D4AF71;
+  --cream:    #F5F0E8;
+  --warm:     #FDFAF4;
+  --stone:    #8C8070;
+  --txt:      #1A1A18;
+  --txt-mid:  #4A4A42;
+  --pad-x: clamp(1.2rem, 5vw, 5rem);
+  --pad-y: clamp(3.5rem, 7vw, 6rem);
+  font-family: 'Alice', serif;
+  font-weight: 300;
+  color: var(--txt);
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+.lb-faq *, .lb-faq *::before, .lb-faq *::after { margin:0; padding:0; box-sizing:border-box; }
+.lb-faq img { display:block; }
+.lb-faq h1, .lb-faq h2, .lb-faq h3 { font-family:'Playfair Display',serif; font-weight:300; }
+.lb-faq h1 em, .lb-faq h2 em, .lb-faq h3 em { font-style:italic; color:var(--gold-lt); }
+.lb-faq a { color:var(--gold); text-decoration:underline; text-underline-offset:3px; transition:color .3s; }
+.lb-faq a:hover { color:var(--green); }
+
+.lb-faq .label {
+  font-size:.6rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold);
+  font-weight:600; display:flex; align-items:center; gap:.6rem; margin-bottom:.75rem;
+}
+.lb-faq .label::after { content:''; flex:0 0 28px; height:1px; background:var(--gold); opacity:.5; }
+
+.lb-faq .btn {
+  display:inline-block; font-family:'Alice',serif; font-size:.74rem; font-weight:600;
+  letter-spacing:.15em; text-transform:uppercase; text-decoration:none; padding:.95rem 2.2rem;
+  border:2px solid transparent; cursor:pointer; transition:all .3s;
+}
+.lb-faq .btn-green { background:var(--green); color:var(--cream); border-color:var(--green); }
+.lb-faq .btn-green:hover { background:var(--green-hv); border-color:var(--green-hv); }
+.lb-faq .btn-gold { background:var(--gold); color:var(--green); border-color:var(--gold); }
+.lb-faq .btn-gold:hover { background:transparent; color:var(--gold-lt); border-color:var(--gold-lt); }
+
+/* ── JUMP NAV ── */
+.lb-faq .jumpnav {
+  background:var(--cream); padding:1rem var(--pad-x); border-bottom:1px solid rgba(91,98,57,.1);
+  position:sticky; top:0; z-index:100;
+}
+.lb-faq .jumpnav-inner {
+  max-width:820px; margin:0 auto; display:flex; flex-wrap:wrap; justify-content:center; gap:.6rem;
+}
+.lb-faq .jumpnav-link {
+  font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:var(--stone);
+  text-decoration:none; padding:.5rem 1rem; background:var(--warm);
+  border:1px solid rgba(91,98,57,.1); transition:all .3s; font-weight:600;
+}
+.lb-faq .jumpnav-link:hover { background:var(--green); color:var(--cream); border-color:var(--green); }
+.lb-faq .jumpnav-link.active { background:var(--green); color:var(--cream); border-color:var(--green); }
+
+/* ── FAQ SECTIONS ── */
+.lb-faq .faq-section { padding:var(--pad-y) var(--pad-x); }
+.lb-faq .faq-section:nth-child(odd) { background:var(--warm); }
+.lb-faq .faq-section:nth-child(even) { background:var(--cream); }
+.lb-faq .faq-section-inner { max-width:820px; margin:0 auto; }
+
+.lb-faq .faq-section-header { margin-bottom:clamp(1.2rem,2.5vw,2rem); }
+.lb-faq .faq-section-header h2 {
+  font-size:clamp(1.5rem,2.6vw,2rem); color:var(--txt); line-height:1.18; margin-bottom:.4rem;
+}
+.lb-faq .faq-section-header p { font-size:.8rem; color:var(--txt-mid); line-height:1.7; }
+
+/* ── FAQ ITEMS ── */
+.lb-faq .faq-item { border-bottom:1px solid rgba(91,98,57,.1); }
+.lb-faq .faq-item:first-of-type { border-top:1px solid rgba(91,98,57,.1); }
+
+.lb-faq .faq-q {
+  width:100%; background:none; border:none; font-family:'Alice',serif; font-size:.88rem;
+  color:var(--txt); padding:1.3rem 3rem 1.3rem 0; cursor:pointer; text-align:left;
+  position:relative; line-height:1.55; transition:color .3s; display:block;
+}
+.lb-faq .faq-q:hover { color:var(--green); }
+.lb-faq .faq-q::after {
+  content:'+'; position:absolute; right:0; top:50%; transform:translateY(-50%);
+  font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--gold);
+  transition:transform .3s; line-height:1;
+}
+.lb-faq .faq-item.open .faq-q { color:var(--green); }
+.lb-faq .faq-item.open .faq-q::after { content:'\2212'; }
+
+.lb-faq .faq-a { max-height:0; overflow:hidden; transition:max-height .45s ease; }
+.lb-faq .faq-item.open .faq-a { max-height:800px; }
+.lb-faq .faq-a-inner { padding:0 0 1.6rem; font-size:.82rem; line-height:1.85; color:var(--txt-mid); }
+.lb-faq .faq-a-inner p { margin-bottom:.8rem; }
+.lb-faq .faq-a-inner p:last-child { margin-bottom:0; }
+.lb-faq .faq-a-inner strong { color:var(--txt); font-weight:600; }
+.lb-faq .faq-a-inner ul { list-style:none; margin:.6rem 0; }
+.lb-faq .faq-a-inner ul li {
+  padding:.3rem 0 .3rem 1.2rem; position:relative; font-size:.82rem; line-height:1.7;
+}
+.lb-faq .faq-a-inner ul li::before { content:'✓'; position:absolute; left:0; color:var(--gold); font-size:.72rem; }
+
+/* ── GET IN TOUCH CTA ── */
+.lb-faq .cta-bar {
+  padding:var(--pad-y) var(--pad-x); background:var(--cream); text-align:center;
+}
+.lb-faq .cta-bar-box {
+  max-width:600px; margin:0 auto; background:var(--green); padding:clamp(2.5rem,5vw,3.5rem) clamp(2rem,4vw,3rem);
+}
+.lb-faq .cta-bar h2 { font-size:clamp(1.4rem,2.5vw,2rem); color:var(--warm); line-height:1.2; margin-bottom:.6rem; }
+.lb-faq .cta-bar p {
+  font-family:'Playfair Display',serif; font-style:italic; font-size:.85rem;
+  color:rgba(245,240,232,.55); line-height:1.7; margin-bottom:1.6rem;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes lbFaqFadeUp { from { opacity:0; transform:translateY(26px); } to { opacity:1; transform:translateY(0); } }
+.lb-faq .reveal { opacity:0; transform:translateY(18px); transition:opacity .65s ease, transform .65s ease; }
+.lb-faq .reveal.in { opacity:1; transform:translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width:600px) {
+  .lb-faq .faq-section { padding:2rem 1.2rem; }
+  .lb-faq .faq-q { font-size:.84rem; padding-right:2.2rem; }
+  .lb-faq .jumpnav-link { font-size:.56rem; padding:.4rem .7rem; }
+}
+</style>
+
+<div class="lb-faq">
+
+<!-- ══════════════════════════════════════
+     JUMP NAVIGATION
+══════════════════════════════════════ -->
+<div class="jumpnav">
+  <div class="jumpnav-inner">
+    <a href="#section-elopement" class="jumpnav-link">Elopements</a>
+    <a href="#section-legal" class="jumpnav-link">Legal Requirements</a>
+    <a href="#section-packages" class="jumpnav-link">Packages &amp; Costs</a>
+    <a href="#section-planning" class="jumpnav-link">Planning Process</a>
+    <a href="#section-venues" class="jumpnav-link">Venues &amp; Locations</a>
+    <a href="#section-logistics" class="jumpnav-link">Travel &amp; Logistics</a>
+    <a href="#section-policies" class="jumpnav-link">Policies</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 1: ELOPEMENTS IN IRELAND
+     Target keywords: what is an elopement, why elope,
+     elope in ireland, how to elope in ireland,
+     elopement ireland
+══════════════════════════════════════════════════════════ -->
+<div class="faq-section" id="section-elopement">
+  <div class="faq-section-inner">
+    <div class="faq-section-header reveal">
+      <p class="label">Elopements in Ireland</p>
+      <h2>Understanding <em>Elopements</em></h2>
+      <p>New to elopements? Here's everything you need to know about this modern, intimate way to get married.</p>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">What is an elopement?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>An elopement is a small, intimate wedding ceremony - typically around 16 guests or fewer. These are your nearest and dearest - the people you're closest to and already know what they're up to. You're not sending out formal invitations, RSVPs, or setting up a wedding website. You simply gather the people who matter most.</p>
+        <p>After the ceremony, the celebration is intentionally intimate - think a private room in a restaurant or a reserved dinner table rather than a DJ, first dance, and a party into the small hours. The focus is on the ceremony itself and a beautiful, relaxed celebration afterwards.</p>
+        <p>Modern elopements are nothing like the "running away to get married in secret" of the past. Today, they are intentional, beautifully planned celebrations of love - just without the guest list of 200 and the year of stressful planning.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">Why should I elope in Ireland?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Ireland is one of the most romantic and welcoming places in the world to elope. Here's why couples choose it:</p>
+        <ul>
+          <li><strong>No residency requirement:</strong> Unlike many countries, Ireland allows foreigners to legally marry without living there first. American and Canadian couples can have a fully legal wedding.</li>
+          <li><strong>Breathtaking locations:</strong> From the Cliffs of Moher to ancient castle ruins to the wild Kerry coastline, Ireland offers some of the most dramatic wedding backdrops on earth.</li>
+          <li><strong>Stress-free:</strong> With fewer details to manage, you can focus on what matters. We handle the planning, so your role is simple - make a few decisions and enjoy the experience.</li>
+          <li><strong>Cost-effective:</strong> An Irish elopement typically costs a fraction of a large US wedding, freeing up your budget for a honeymoon, a home, or simply peace of mind.</li>
+          <li><strong>It's entirely about you:</strong> Every detail is tailored to your love story - from the location to the vows to the celebratory pint of Guinness afterwards.</li>
+        </ul>
+        <p><a href="https://www.ladybirdeverafter.com/elopement-in-ireland">Learn more about eloping in Ireland &rarr;</a></p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">How many guests can I invite to my elopement?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Most of our elopements are around 16 guests or fewer. These are your nearest and dearest - close family and friends you don't need to send formal invitations to. Many couples choose just the two of them, while others bring a small group of the people closest to them.</p>
+        <p>If your guest count starts growing beyond that, our <a href="https://www.ladybirdeverafter.com/packages">Sl&aacute;inte, Ard, and R&iacute;R&aacute; packages</a> include dedicated wedding planning and reception coordination for larger intimate weddings.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">What is the difference between an elopement and a destination wedding?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>The main differences are scale and formality. An elopement is typically around 16 guests or fewer - your nearest and dearest who you don't need to send formal invitations to. After the ceremony, you'd celebrate with a private dinner in a restaurant or a reserved table. The focus is on the ceremony experience and quality time together.</p>
+        <p>Once you move into destination wedding territory, you're inviting people who may or may not be able to come - so you need a wedding website, RSVPs, and more traditional planning. The day itself includes more conventional elements like a first dance, a DJ, and a reception party. It's a bigger production with more moving parts.</p>
+        <p>We plan both. Our <a href="https://www.ladybirdeverafter.com/packages">F&aacute;ilte and Gr&aacute; packages</a> are built for elopements, while Sl&aacute;inte, Ard, and R&iacute;R&aacute; are designed for intimate destination weddings with full reception coordination, wedding planning, and on-the-day management.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">Can I have a traditional Irish ceremony?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Yes! Many of our couples incorporate beautiful Irish traditions into their ceremony. Popular elements include handfasting (a Celtic tradition where the couple's hands are bound together with ribbon or cord), reading of Irish blessings, and incorporating the Claddagh ring tradition. Your celebrant can weave these into either a legal or symbolic ceremony.</p>
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 2: LEGAL REQUIREMENTS
+     Target keywords: can americans get married in ireland,
+     how to get married in ireland, legal requirements,
+     documents needed, what age, can foreigners marry,
+     ireland marriage laws
+══════════════════════════════════════════════════════════ -->
+<div class="faq-section" id="section-legal">
+  <div class="faq-section-inner">
+    <div class="faq-section-header reveal">
+      <p class="label">Legal Requirements</p>
+      <h2>Getting legally married<br><em>in Ireland</em></h2>
+      <p>The legal process is simpler than most couples expect. Here are the details.</p>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">Can Americans legally get married in Ireland?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Yes! Both the Republic of Ireland and Northern Ireland welcome international couples. There is <strong>no residency requirement</strong> in either jurisdiction, meaning you do not need to be an Irish citizen or live in Ireland. US and Canadian citizens can have a fully legal, internationally recognised marriage.</p>
+        <p>The legal process differs depending on where you marry. In the <strong>Republic of Ireland</strong>, you must give at least three months' notice to the HSE (Health Service Executive). In <strong>Northern Ireland</strong>, you notify the local registrar between 14 and 28 days before your ceremony. We guide you through every step regardless of which jurisdiction you choose. <a href="https://www.ladybirdeverafter.com/blog/how-to-get-married-in-ireland">Read our complete legal guide &rarr;</a></p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">What documents do I need to get married in Ireland as a US citizen?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>The core documents are the same whether you marry in the Republic of Ireland or Northern Ireland:</p>
+        <ul>
+          <li><strong>Valid US passport</strong> (must be valid on the date of your ceremony)</li>
+          <li><strong>Original birth certificate</strong> (or a certified copy)</li>
+          <li><strong>Divorce decree</strong> (if previously married) or death certificate of a former spouse</li>
+        </ul>
+        <p>In the <strong>Republic of Ireland</strong>, you must also complete the <strong>notification process</strong> with the HSE at least three months before your ceremony date. In <strong>Northern Ireland</strong>, you notify the local registrar between 14 and 28 days before. Our team walks you through every step for whichever jurisdiction you choose, reviews your paperwork, and ensures nothing is missed. <a href="https://www.ladybirdeverafter.com/blog/getting-married-in-ireland-as-an-american">Read our US-specific documentation guide &rarr;</a></p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">Can foreigners from any country get married in Ireland?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Yes. Both the Republic of Ireland and Northern Ireland allow couples of any nationality to marry there, regardless of citizenship or residency status. The notification and documentation process differs between the two jurisdictions, but neither requires residency. While most of our couples come from the United States and Canada, we have also planned weddings for couples from the UK, Australia, Germany, and beyond.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">How does the legal process work step by step?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>The legal process for getting married in the Republic of Ireland involves four main steps:</p>
+        <p><strong>1. Notification (3+ months before):</strong> You submit a notification of your intention to marry to the HSE. This can be initiated remotely - you don't need to be in Ireland to start the process.</p>
+        <p><strong>2. Documentation:</strong> You provide the required documents (passport, birth certificate, etc.). We review everything before you submit.</p>
+        <p><strong>3. Acknowledgement:</strong> The HSE issues a Marriage Registration Form once your notification is approved. This typically takes a few weeks.</p>
+        <p><strong>4. Ceremony:</strong> Your registered celebrant performs the ceremony. After signing the Marriage Registration Form, your marriage is legally binding under Irish law and recognised internationally, including in the United States.</p>
+        <p><strong>Getting married in Northern Ireland?</strong> The process is different - you need to notify the local registrar between 14 and 28 days before your ceremony. However, we recommend doing this as early as possible to allow time to collect your paperwork in person.</p>
+        <p>We handle the coordination of this entire process for both jurisdictions. You'll never have to navigate Irish bureaucracy alone.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">Will my Irish marriage be legally recognised in the United States?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Yes. A legal marriage performed in either the Republic of Ireland or Northern Ireland is recognised in the United States. Once married, you can request a certified copy of your marriage certificate - from the General Register Office (Republic of Ireland) or the General Register Office for Northern Ireland - which can be used for name changes, tax filings, insurance, and all other legal purposes in the US.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">What is the legal age to get married in Ireland?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>The legal minimum age to get married is <strong>18 years old</strong> in both the Republic of Ireland and Northern Ireland. There are no exceptions and no parental consent provisions for younger marriages in either jurisdiction. Both parties must be at least 18 on the date of the ceremony.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">Can we have a symbolic ceremony instead of a legal one?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Absolutely. If you prefer to handle the legal paperwork at home (a quick courthouse visit before or after your trip) and have a purely symbolic ceremony in Ireland, that's a wonderful option. Symbolic ceremonies offer complete creative freedom - your celebrant can craft a fully personalised ritual without any legal formalities to work around.</p>
+        <p>Many of our couples choose this route, especially those on a tighter timeline (since legal ceremonies in the Republic of Ireland require 3 months' notice).</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">Do I need a visa to travel to Ireland?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p><strong>Republic of Ireland:</strong> US and Canadian citizens do not need a visa to enter the Republic of Ireland for stays of up to 90 days. You just need a valid passport.</p>
+        <p><strong>Northern Ireland:</strong> Northern Ireland is part of the United Kingdom, so different entry rules apply. US and Canadian citizens can visit visa-free under the UK's Electronic Travel Authorisation (ETA) scheme - check the latest UK government requirements before you travel.</p>
+        <p>It's important to know which jurisdiction your venue is in, as the Republic of Ireland and Northern Ireland have separate legal systems, entry requirements, and marriage processes. We guide you through all of this during planning.</p>
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 3: PACKAGES & COSTS
+     Target keywords: elopement packages ireland,
+     how much does it cost to elope in ireland,
+     all inclusive elopement packages ireland,
+     wedding packages ireland, elopement package,
+     ireland elopement packages, what is included
+══════════════════════════════════════════════════════════ -->
+<div class="faq-section" id="section-packages">
+  <div class="faq-section-inner">
+    <div class="faq-section-header reveal">
+      <p class="label">Packages &amp; Costs</p>
+      <h2>Pricing, packages,<br><em>&amp; what's included</em></h2>
+      <p>Transparent answers about costs and what you get.</p>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">How much does it cost to elope in Ireland?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Our elopement packages start at $4,900 for an intimate ceremony for two, including a celebrant and two hours of professional photography. Enhanced packages with professional styling (hair, makeup, bouquet) and four hours of photography start from $7,000. Full destination wedding packages with reception planning and on-the-day coordination range from $9,000 to $14,000+.</p>
+        <p>All pricing is in <strong>US dollars</strong> with no hidden international fees. We also offer flexible payment plans with <strong>0% interest financing</strong>, so you can spread the cost comfortably.</p>
+        <p>Beyond the package cost, couples should also budget for flights, accommodation, and the HSE marriage registration fee (~€200). Many of our couples find that the total cost of an Irish elopement is significantly less than a traditional wedding at home. <a href="https://www.ladybirdeverafter.com/packages">View all packages and pricing &rarr;</a></p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">What is included in an elopement package?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Every Ladybird Ever After package is all-inclusive and designed so you don't have to manage any international logistics. At minimum, every package includes:</p>
+        <ul>
+          <li><strong>Expert Irish celebrant</strong> for your legal or symbolic ceremony</li>
+          <li><strong>Professional photography</strong> (At least 2 hours)</li>
+          <li><strong>Full legal guidance</strong> for US and Canadian couples</li>
+          <li><strong>Location selection and booking</strong> from our 30+ curated venues</li>
+          <li><strong>US-based wedding planner</strong> available in your timezone</li>
+          <li><strong>Client portal access</strong> for managing every detail</li>
+          <li><strong>One US contract</strong> with pricing in USD and flexible payments</li>
+        </ul>
+        <p>Higher-tier packages add bridal styling (bouquet, hair, makeup), dedicated wedding planning, reception coordination, on-the-day coordination, ceremony music, and additional styling for your wedding party. <a href="https://www.ladybirdeverafter.com/packages">Compare all five packages &rarr;</a></p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">Are your Ireland wedding packages customisable?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Absolutely. Our packages are designed as a foundation - a robust starting point that handles all the complex logistics of getting married in Ireland from abroad. From there, your celebration is fully bespoke.</p>
+        <p>Want to add a vintage car? A harpist at your ceremony? A private dinner in a castle? A helicopter ride along the Wild Atlantic Way? We can make it happen. Every detail is tailored to your vision, your style, and your budget.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">Do I need to choose a package before moving forward?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>No. You don't need to commit to a specific package immediately. We can start with a deposit to secure your preferred date, which allows us to begin planning while your vision takes shape. Most couples refine their package choice during our planning calls as they learn more about what's possible.</p>
+        <p>If you're not sure where to start, <a href="https://www.ladybirdeverafter.com/schedule-a-call">book a free 15-minute call</a> and we'll help you figure out the best fit.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">How do payments work when getting married in Ireland from the US?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>We've designed a seamless payment experience specifically for North American couples:</p>
+        <ul>
+          <li><strong>One US contract</strong> - no navigating Irish legal terms</li>
+          <li><strong>Pricing in USD</strong> - no currency conversion surprises</li>
+          <li><strong>Pay by credit card</strong> - secure payments via Stripe</li>
+          <li><strong>Flexible payment plans</strong> - spread the cost with 0% interest</li>
+          <li><strong>We handle vendor payments</strong> - all foreign currency transfers and Irish vendor disbursements are managed by us</li>
+        </ul>
+        <p>You'll never need to wire money to an Irish bank account or deal with international payment headaches.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">Do you offer payment plans?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Yes. We offer flexible payment plans with <strong>0% interest financing</strong> to make budgeting for your wedding more manageable. After an initial deposit to secure your date, we work with you to create a payment schedule that fits your timeline and budget. <a href="https://www.ladybirdeverafter.com/get-in-touch">Contact us for details &rarr;</a></p>
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 4: PLANNING PROCESS
+     Target keywords: how does it work, how to plan,
+     wedding planner ireland, how far in advance
+══════════════════════════════════════════════════════════ -->
+<div class="faq-section" id="section-planning">
+  <div class="faq-section-inner">
+    <div class="faq-section-header reveal">
+      <p class="label">Planning Process</p>
+      <h2>How it all <em>works</em></h2>
+      <p>From your first enquiry to your wedding day, here's what to expect.</p>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">How does the planning process work?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>We've made getting married in Ireland as simple as possible:</p>
+        <p><strong>Step 1 - Discovery call:</strong> We have a free 15-minute call to hear your vision, answer your questions, and see if we're a good fit.</p>
+        <p><strong>Step 2 - Secure your date:</strong> A deposit locks in your preferred date and kicks off the planning process.</p>
+        <p><strong>Step 3 - We plan everything:</strong> Your dedicated planner helps you choose a location, coordinates vendors, guides you through legal requirements, and manages every detail via your personal client portal.</p>
+        <p><strong>Step 4 - You show up and get married:</strong> On the day, everything is in place. You simply arrive, say your vows, and soak in every magical moment.</p>
+        <p>With over 30 curated venues across Ireland, we handle coordination with every vendor. All you need to do is get your marriage notification submitted - and we guide you through that too.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">How far in advance should I start planning?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>For a <strong>legal ceremony</strong>, the absolute minimum is <strong>3 months</strong> (due to Ireland's legal notification requirement). However, we recommend <strong>6 to 12 months</strong> for the best availability - especially if you have a specific date, venue, or photographer in mind.</p>
+        <p>For a <strong>symbolic ceremony</strong> (where you handle the legal paperwork at home), we can work with shorter timelines. We have planned elopements in as little as 30 days, though this depends on vendor availability.</p>
+        <p>The earlier you reach out, the more flexibility we have. <a href="https://www.ladybirdeverafter.com/schedule-a-call">Book a free call to get started &rarr;</a></p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">Why should I choose Ladybird Ever After?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>We are the only elopement planning company that combines <strong>a US-based team</strong> (so we're in your timezone and speak your language) with <strong>deep local expertise in Ireland</strong> (so we know every venue, vendor, and hidden gem personally).</p>
+        <p>What makes us different:</p>
+        <ul>
+          <li><strong>US-based planner, Irish expertise:</strong> No 5-hour time difference to navigate</li>
+          <li><strong>One contract, one currency:</strong> Everything in USD through a single US contract</li>
+          <li><strong>30+ curated venues:</strong> We've personally vetted every location we recommend</li>
+          <li><strong>Award-winning vendor network:</strong> Ireland's best photographers, celebrants, florists, and musicians</li>
+          <li><strong>End-to-end service:</strong> From your first call to your last dance, we manage everything</li>
+        </ul>
+        <p><a href="https://www.ladybirdeverafter.com/about">Read our story &rarr;</a></p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">Do you provide vendor recommendations?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Yes. We work with a curated list of trusted Irish vendors - the best photographers, florists, celebrants, musicians, hair and makeup artists, and more. Every vendor in our network has been personally vetted through real weddings, and we match you with professionals who fit your style, budget, and location.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">Can I bring my own vendors?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>If you have specific vendors in mind - perhaps a photographer you've worked with before, or a musician you love - we are happy to collaborate with them. Just let us know early in the planning process so we can ensure seamless coordination.</p>
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 5: VENUES & LOCATIONS
+     Target keywords: where to elope in ireland,
+     best elopement locations ireland,
+     castle wedding ireland, cliffs of moher wedding
+══════════════════════════════════════════════════════════ -->
+<div class="faq-section" id="section-venues">
+  <div class="faq-section-inner">
+    <div class="faq-section-header reveal">
+      <p class="label">Venues &amp; Locations</p>
+      <h2>Choosing your perfect <em>setting</em></h2>
+      <p>Ireland is full of jaw-dropping ceremony locations. Here's how to pick yours.</p>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">Where are the best places to elope in Ireland?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>It depends on your style, but our most popular elopement locations include:</p>
+        <ul>
+          <li><strong><a href="https://www.ladybirdeverafter.com/cliffs-of-moher">Cliffs of Moher, Co. Clare</a></strong> - dramatic 700-foot sea cliffs on the Wild Atlantic Way. Iconic and unforgettable.</li>
+          <li><strong><a href="https://www.ladybirdeverafter.com/dunluce-castle">Dunluce Castle, Co. Antrim</a></strong> - medieval castle ruins perched on a basalt cliff overlooking the North Atlantic.</li>
+          <li><strong><a href="https://www.ladybirdeverafter.com/killarney-national-park">Killarney National Park, Co. Kerry</a></strong> - arrive by horse-drawn carriage to Ross Castle or exchange vows at ancient Muckross Abbey.</li>
+          <li><strong><a href="https://www.ladybirdeverafter.com/rahinnane-castle">Rahinnane Castle, Co. Kerry</a></strong> - a secluded 15th-century castle ruin on the Dingle Peninsula with sweeping Atlantic views.</li>
+          <li><strong><a href="https://www.ladybirdeverafter.com/dunquin-pier">Dunquin Pier, Co. Kerry</a></strong> - wild, remote, and utterly dramatic cliff-side ceremony setting.</li>
+        </ul>
+        <p>We have <a href="https://www.ladybirdeverafter.com/venues">over 30 curated venues</a> across Ireland, from castles and cliffs to cosy country houses and atmospheric pubs.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">How do I choose the right venue?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>We offer personalised venue recommendations based on your preferences. During your planning calls, we'll discuss what matters most to you - dramatic scenery, historical significance, privacy, proximity to a town for dinner afterwards, suitability for guests - and present options that match.</p>
+        <p>You don't need to choose a venue before booking. Many couples secure their date first and explore venue options with our guidance during the planning process.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">Can I get married at a castle in Ireland?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Yes! Ireland has some of the most extraordinary castle wedding venues in the world. Our venue directory includes both castle ruins (stunning outdoor ceremony backdrops like Dunluce and Rahinnane) and fully restored luxury castles with accommodation and reception facilities (like <a href="https://www.ladybirdeverafter.com/venues/p/kinnittycastle">Kinnitty Castle</a>, <a href="https://www.ladybirdeverafter.com/venues/p/ballyseedecastle">Ballyseede Castle</a>, and <a href="https://www.ladybirdeverafter.com/venues/p/cabracastle">Cabra Castle</a>).</p>
+        <p><a href="https://www.ladybirdeverafter.com/blog/how-to-get-married-in-an-irish-castle">Read our complete guide to castle weddings in Ireland &rarr;</a></p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">Can I book a package before choosing a location?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Absolutely. Many of our couples secure their Ladybird Ever After services and preferred date first, then explore locations with our guidance. This allows us to begin the planning process immediately while we help you discover the perfect atmospheric pub, coastal cliff, or dramatic Irish castle that fits your aesthetic.</p>
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 6: TRAVEL & LOGISTICS
+     Target keywords: eloping in ireland weather,
+     best time of year, what to expect
+══════════════════════════════════════════════════════════ -->
+<div class="faq-section" id="section-logistics">
+  <div class="faq-section-inner">
+    <div class="faq-section-header reveal">
+      <p class="label">Travel &amp; Logistics</p>
+      <h2>Getting there <em>&amp; getting ready</em></h2>
+      <p>Practical details for travelling from the US to Ireland for your wedding.</p>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">What is the best time of year to elope in Ireland?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Ireland is beautiful year-round, and we plan elopements in every season. Each offers something different:</p>
+        <p><strong>May &ndash; September (peak season):</strong> The longest daylight hours (sunset as late as 10pm in June!), milder temperatures (15&ndash;20&deg;C / 60&ndash;68&deg;F), and lush green landscapes. This is the most popular season, so book early.</p>
+        <p><strong>October &ndash; November (autumn):</strong> Golden light, dramatic skies, stunning foliage, and far fewer tourists at popular locations. Slightly cooler but still beautiful.</p>
+        <p><strong>December &ndash; February (winter):</strong> Moody, atmospheric, and deeply romantic. Shorter days but magical light. Castle venues with roaring fires create an incredible backdrop.</p>
+        <p><strong>March &ndash; April (spring):</strong> Wildflowers, baby lambs in the fields, and increasing daylight. A lovely time for photos.</p>
+        <p><a href="https://www.ladybirdeverafter.com/blog/eloping-in-ireland-weather-what-to-expect-in-every-season">Read our complete seasonal weather guide &rarr;</a></p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">What happens if the weather is bad on my wedding day?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Let's be honest - this is Ireland, and rain is always a possibility! But here's the truth: some of our most stunning photos were taken in moody, misty weather. Ireland's dramatic skies are part of its magic.</p>
+        <p>That said, we always prepare backup plans. Whether it's securing a covered area at your venue, having an indoor option available, or simply bringing a beautiful umbrella (which makes for incredible photos), we ensure that rain or shine, your day is perfect. Our experienced photographers know how to work with Irish weather beautifully.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">How long should I plan to stay in Ireland?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>We recommend at least <strong>4&ndash;5 days</strong> for an elopement trip - a day to arrive and settle in, your ceremony day, and a couple of days to explore as newlyweds. Many couples extend to 7&ndash;10 days to turn it into a combined wedding trip and honeymoon, exploring Ireland's stunning regions.</p>
+        <p>We can help with travel and accommodation recommendations to make the most of your time.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">Do you help with travel and accommodation planning?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Yes. While we don't book flights, we provide expert guidance on the best airports to fly into, accommodation near your venue, transportation between locations, and local recommendations for restaurants and activities. Couples who have booked with us also get access to our <a href="https://www.ladybirdeverafter.com/the-ever-after-roadmap">Ever After Roadmap</a> - an insider guide to help you plan every part of your trip.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">How do I get my wedding dress to Ireland safely?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>This is one of the most common concerns for our couples, and it's easier than you think. Most airlines allow wedding dresses as a carry-on garment bag or in overhead compartments if you ask at the gate. We've also worked with shipping services for couples who prefer to send their dress ahead.</p>
+        <p><a href="https://www.ladybirdeverafter.com/blog/how-to-get-your-wedding-dress-and-grooms-suit-to-ireland-in-one-perfect-piece">Read our complete guide to transporting your dress &rarr;</a></p>
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECTION 7: POLICIES
+══════════════════════════════════════════════════════════ -->
+<div class="faq-section" id="section-policies">
+  <div class="faq-section-inner">
+    <div class="faq-section-header reveal">
+      <p class="label">Policies</p>
+      <h2>The practical <em>details</em></h2>
+      <p>Cancellations, changes, and other policies.</p>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">What if I need to postpone or cancel my wedding?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>We understand that life is unpredictable. Our cancellation and postponement policies depend on your specific package and the vendors booked. We work closely with you to reschedule or adjust plans with minimal disruption.</p>
+        <p>If circumstances beyond your control arise (illness, travel restrictions, etc.), we'll do everything we can to find a solution - whether that's moving your date, adjusting your package, or transferring to a future celebration. Please refer to your contract for specific terms, and don't hesitate to reach out to discuss your situation.</p>
+      </div></div>
+    </div>
+
+    <div class="faq-item reveal">
+      <button class="faq-q">What if my guest list changes after booking?</button>
+      <div class="faq-a"><div class="faq-a-inner">
+        <p>Guest lists evolve - we get it. Whether people are added or drop off, we adjust accordingly. If your guest count grows beyond the scope of your current package, we'll provide a tailored quote for the additional coordination and services needed. We've planned celebrations from 2 to 50+ guests and can scale seamlessly.</p>
+      </div></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     FINAL CTA
+══════════════════════════════════════ -->
+<div class="cta-bar">
+  <div class="cta-bar-box reveal">
+    <h2>Still have <em>questions?</em></h2>
+    <p>We'd love to hear from you - every love story is unique.</p>
+    <a href="https://www.ladybirdeverafter.com/get-in-touch" class="btn btn-gold">Get in Touch</a>
+  </div>
+</div>
+
+</div><!-- /.lb-faq -->
+
+<!-- ══════════════════════════════════════
+     FAQ SCHEMA MARKUP
+══════════════════════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {"@type":"Question","name":"What is an elopement?","acceptedAnswer":{"@type":"Answer","text":"An elopement is a small, intimate wedding ceremony - typically with 20 guests or fewer. Unlike a traditional wedding, an elopement is highly personalised for the couple and often takes place at a meaningful or breathtaking outdoor location. Modern elopements are intentional, beautifully planned celebrations of love."}},
+    {"@type":"Question","name":"Why should I elope in Ireland?","acceptedAnswer":{"@type":"Answer","text":"Ireland has no residency requirement for foreigners to marry, offers breathtaking locations from the Cliffs of Moher to ancient castle ruins, is cost-effective compared to large US weddings, and provides a stress-free intimate experience. American and Canadian couples can have a fully legal wedding there."}},
+    {"@type":"Question","name":"Can Americans legally get married in Ireland?","acceptedAnswer":{"@type":"Answer","text":"Yes. Ireland allows couples of any nationality to legally marry there with no residency requirement. US and Canadian citizens need to give at least three months' notice to the HSE (Health Service Executive) and provide documents including a valid passport and birth certificate."}},
+    {"@type":"Question","name":"What documents do I need to get married in Ireland as a US citizen?","acceptedAnswer":{"@type":"Answer","text":"You need a valid US passport, original birth certificate or certified copy, and if applicable, a divorce decree or death certificate of a former spouse. You must also complete the notification process with Ireland's HSE at least three months before your ceremony date."}},
+    {"@type":"Question","name":"Can foreigners from any country get married in Ireland?","acceptedAnswer":{"@type":"Answer","text":"Yes. Ireland allows couples of any nationality to marry there, regardless of citizenship or residency status. The same notification and documentation process applies to all nationalities."}},
+    {"@type":"Question","name":"Will my Irish marriage be legally recognised in the United States?","acceptedAnswer":{"@type":"Answer","text":"Yes. A legal marriage performed in Ireland is recognised in the United States. You can request a certified copy of your marriage certificate from Ireland's General Register Office for use with name changes, tax filings, and all other legal purposes."}},
+    {"@type":"Question","name":"What is the legal age to get married in Ireland?","acceptedAnswer":{"@type":"Answer","text":"The legal minimum age to get married in Ireland is 18 years old. There are no exceptions and no parental consent provisions for younger marriages."}},
+    {"@type":"Question","name":"How much does it cost to elope in Ireland?","acceptedAnswer":{"@type":"Answer","text":"Elopement packages start under $4,000 for a ceremony for two including celebrant and photography. Enhanced packages with styling and extended photography range upward. All pricing is in USD with no hidden international fees, and 0% interest financing is available."}},
+    {"@type":"Question","name":"What is included in an elopement package?","acceptedAnswer":{"@type":"Answer","text":"Every package includes an expert Irish celebrant, professional photography, full legal guidance for US/Canadian couples, location selection and booking, a US-based wedding planner, client portal access, and one US contract with pricing in USD and flexible payments."}},
+    {"@type":"Question","name":"Are your Ireland wedding packages customizable?","acceptedAnswer":{"@type":"Answer","text":"Yes. Packages are designed as a foundation handling complex logistics. From there, celebrations are fully bespoke with complete artistic customisation - from vintage cars and harpists to private castle dinners."}},
+    {"@type":"Question","name":"How do payments work when getting married in Ireland from the US?","acceptedAnswer":{"@type":"Answer","text":"One US contract, pricing in USD, secure credit card payments via Stripe, flexible payment plans with 0% interest, and all foreign currency transfers and Irish vendor payments managed on your behalf."}},
+    {"@type":"Question","name":"How far in advance should I start planning?","acceptedAnswer":{"@type":"Answer","text":"For legal ceremonies, the minimum is 3 months due to Ireland's notification requirement. We recommend 6 to 12 months for best availability. For symbolic ceremonies, we can work with shorter timelines, sometimes as little as 30 days."}},
+    {"@type":"Question","name":"Where are the best places to elope in Ireland?","acceptedAnswer":{"@type":"Answer","text":"Popular locations include the Cliffs of Moher (dramatic sea cliffs), Dunluce Castle (medieval ruins overlooking the Atlantic), Killarney National Park (Ross Castle and Muckross Abbey), Rahinnane Castle (secluded Dingle Peninsula ruins), and Dunquin Pier (wild Atlantic clifftop). Over 30 curated venues are available."}},
+    {"@type":"Question","name":"Can I get married at a castle in Ireland?","acceptedAnswer":{"@type":"Answer","text":"Yes. Ireland offers both castle ruins as stunning outdoor ceremony backdrops (like Dunluce and Rahinnane) and fully restored luxury castles with accommodation and reception facilities (like Kinnitty Castle, Ballyseede Castle, and Cabra Castle)."}},
+    {"@type":"Question","name":"What is the best time of year to elope in Ireland?","acceptedAnswer":{"@type":"Answer","text":"Ireland is beautiful year-round. May through September offers the longest daylight (sunset as late as 10pm) and mild temperatures. Autumn offers golden light and fewer tourists. Winter provides moody, atmospheric romance. Each season has its own magic."}},
+    {"@type":"Question","name":"What happens if the weather is bad on my wedding day?","acceptedAnswer":{"@type":"Answer","text":"We always prepare backup plans including covered areas, indoor options, and beautiful umbrellas. Some of the most stunning elopement photos in Ireland are taken in moody, misty weather - it's part of the magic. Experienced photographers know how to work beautifully with Irish weather."}},
+    {"@type":"Question","name":"What is the difference between an elopement and a destination wedding?","acceptedAnswer":{"@type":"Answer","text":"The main difference is scale. An elopement is typically the couple alone or with a small group under 20, focused on the ceremony. A destination wedding involves a larger guest list and multi-day events. Ladybird Ever After plans both, with packages ranging from intimate elopements to full destination weddings."}}
+  ]
+}
+</script>
+
+<!-- ══════════════════════════════════════
+     SCRIPTS
+══════════════════════════════════════ -->
+<script>
+(function(){
+  var root = document.querySelector('.lb-faq');
+  if (!root) return;
+
+  // Reveal on scroll
+  var revEls = root.querySelectorAll('.reveal');
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e,i){
+      if(e.isIntersecting){
+        setTimeout(function(){ e.target.classList.add('in'); }, i*60);
+        obs.unobserve(e.target);
+      }
+    });
+  },{ threshold:0.05, rootMargin:'0px 0px -20px 0px' });
+  revEls.forEach(function(el){ obs.observe(el); });
+
+  // FAQ accordion - allow one open per section
+  root.querySelectorAll('.faq-q').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var item = this.parentElement;
+      var section = item.closest('.faq-section');
+      var isOpen = item.classList.contains('open');
+      // Close all in this section
+      section.querySelectorAll('.faq-item.open').forEach(function(el){ el.classList.remove('open'); });
+      // Toggle clicked
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Smooth scroll for jump nav (offset for sticky nav)
+  var jumpnav = root.querySelector('.jumpnav');
+  var jumpnavLinks = root.querySelectorAll('.jumpnav-link');
+
+  jumpnavLinks.forEach(function(link){
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      var target = document.querySelector(this.getAttribute('href'));
+      if(target){
+        var navH = jumpnav ? jumpnav.offsetHeight : 0;
+        var top = target.getBoundingClientRect().top + window.pageYOffset - navH;
+        window.scrollTo({ top:top, behavior:'smooth' });
+      }
+    });
+  });
+
+  // Highlight active jump nav link on scroll
+  var sections = [];
+  jumpnavLinks.forEach(function(link){
+    var id = link.getAttribute('href');
+    var sec = document.querySelector(id);
+    if(sec) sections.push({ el:sec, link:link });
+  });
+
+  function updateActiveLink(){
+    var navH = jumpnav ? jumpnav.offsetHeight + 10 : 10;
+    var current = null;
+    sections.forEach(function(s){
+      if(s.el.getBoundingClientRect().top <= navH) current = s;
+    });
+    jumpnavLinks.forEach(function(l){ l.classList.remove('active'); });
+    if(current) current.link.classList.add('active');
+  }
+  window.addEventListener('scroll', updateActiveLink, { passive:true });
+  updateActiveLink();
+})();
+</script>

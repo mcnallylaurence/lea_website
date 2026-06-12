@@ -1,0 +1,786 @@
+<!-- ═══════════════════════════════════════
+     THE WEST, REGION PAGE
+     Ladybird Ever After · Root: .lb-west
+═══════════════════════════════════════ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Alice&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
+<style>
+/* ════════════════════════════════════════
+   ROOT & RESET
+════════════════════════════════════════ */
+.lb-west {
+  --green:    #5B6239;
+  --green-dk: #3a3f25;
+  --green-hv: #4a5130;
+  --gold:     #B8964E;
+  --gold-lt:  #D4AF71;
+  --cream:    #F5F0E8;
+  --warm:     #FDFAF4;
+  --stone:    #8C8070;
+  --txt:      #1A1A18;
+  --txt-mid:  #4A4A42;
+  --pad-x: clamp(1.2rem, 5vw, 5rem);
+  --pad-y: clamp(3.5rem, 7vw, 6rem);
+  font-family: 'Alice', serif;
+  font-weight: 300;
+  color: var(--txt);
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+.lb-west *,
+.lb-west *::before,
+.lb-west *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+
+.lb-west img { display: block; }
+
+/* ════════════════════════════════════════
+   OVERLINE
+════════════════════════════════════════ */
+.lb-west .west-ol {
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  font-size: .6rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.lb-west .west-ol::after { content: ''; flex: 0 0 28px; height: 1px; background: var(--gold); opacity: .5; }
+.lb-west .west-ol.ctr { justify-content: center; }
+.lb-west .west-ol.ctr::before { content: ''; flex: 0 0 28px; height: 1px; background: var(--gold); opacity: .5; }
+
+/* ════════════════════════════════════════
+   BREADCRUMB
+════════════════════════════════════════ */
+.lb-west .west-breadcrumb { background: var(--cream); padding: .9rem var(--pad-x); border-bottom: 1px solid rgba(91,98,57,.1); }
+.lb-west .west-breadcrumb-in { max-width: 820px; margin: 0 auto; display: flex; align-items: center; gap: .5rem; font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; color: var(--stone); }
+.lb-west .west-breadcrumb a { color: var(--stone); text-decoration: none; transition: color .3s; }
+.lb-west .west-breadcrumb a:hover { color: var(--green); }
+.lb-west .west-breadcrumb .sep { opacity: .4; }
+.lb-west .west-breadcrumb .current { color: var(--green); }
+
+/* ════════════════════════════════════════
+   HERO (Pattern 3: Utility Typographic)
+════════════════════════════════════════ */
+.lb-west .west-hero { background: var(--warm); padding: var(--pad-y) var(--pad-x) calc(var(--pad-y) * .75); text-align: center; }
+.lb-west .west-hero-in { max-width: 640px; margin: 0 auto; }
+
+.lb-west .west-hero h1 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(2.2rem, 4.5vw, 3.2rem); line-height: 1.18; color: var(--txt); margin-bottom: 1.2rem; }
+.lb-west .west-hero h1 em { font-style: italic; color: var(--gold-lt); }
+.lb-west .west-hero-sub { font-size: clamp(.88rem, 1.6vw, 1rem); line-height: 1.75; color: var(--txt-mid); margin-bottom: 1.6rem; }
+.lb-west .west-hero-meta { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--stone); }
+
+/* ════════════════════════════════════════
+   QUICK FACTS STRIP
+════════════════════════════════════════ */
+.lb-west .west-facts { background: var(--cream); border-top: 1px solid rgba(91,98,57,.1); border-bottom: 1px solid rgba(91,98,57,.1); padding: 1.6rem var(--pad-x); }
+.lb-west .west-facts-in { max-width: 820px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+.lb-west .west-fact { text-align: center; }
+.lb-west .west-fact-value { font-family: 'Playfair Display', serif; font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--green); line-height: 1.1; margin-bottom: .25rem; }
+.lb-west .west-fact-label { font-size: .58rem; letter-spacing: .18em; text-transform: uppercase; color: var(--stone); font-weight: 600; }
+.lb-west .west-fact-divider { width: 1px; height: 2rem; background: rgba(91,98,57,.15); flex-shrink: 0; }
+@media (max-width: 600px) { .lb-west .west-fact-divider { display: none; } .lb-west .west-facts-in { gap: 1.4rem; } }
+
+/* ════════════════════════════════════════
+   INTRO / EDITORIAL
+════════════════════════════════════════ */
+.lb-west .west-intro { background: var(--warm); padding: var(--pad-y) var(--pad-x); }
+.lb-west .west-intro-in { max-width: 820px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+
+.lb-west .west-intro h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; color: var(--txt); margin-bottom: 1.2rem; }
+.lb-west .west-intro h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-west .west-intro p { font-size: .88rem; line-height: 1.82; color: var(--txt-mid); margin-bottom: 1.1rem; }
+.lb-west .west-intro p:last-child { margin-bottom: 0; }
+
+.lb-west .west-highlights { list-style: none; display: flex; flex-direction: column; gap: .8rem; }
+.lb-west .west-highlights li { display: flex; align-items: flex-start; gap: .9rem; font-size: .85rem; line-height: 1.6; color: var(--txt-mid); }
+.lb-west .west-highlights li::before { content: ''; flex-shrink: 0; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin-top: .42em; }
+.lb-west .west-highlights-heading { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.1rem, 2vw, 1.35rem); line-height: 1.2; color: var(--txt); margin-bottom: 1rem; }
+
+/* ════════════════════════════════════════
+   LOCATIONS DEEP-DIVE
+════════════════════════════════════════ */
+.lb-west .west-places { background: var(--cream); padding: var(--pad-y) var(--pad-x); }
+.lb-west .west-places-in { max-width: 820px; margin: 0 auto; }
+.lb-west .west-places-header { text-align: center; margin-bottom: 3rem; }
+.lb-west .west-places-header h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; color: var(--txt); margin-bottom: .6rem; }
+.lb-west .west-places-header h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-west .west-places-header p { font-size: .88rem; color: var(--txt-mid); line-height: 1.7; max-width: 560px; margin: 0 auto; }
+
+.lb-west .west-place-list { display: flex; flex-direction: column; gap: 2.4rem; }
+.lb-west .west-place { border-left: 2px solid rgba(184,150,78,.3); padding-left: 1.8rem; }
+.lb-west .west-place h3 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(1rem, 1.8vw, 1.25rem); color: var(--txt); margin-bottom: .5rem; line-height: 1.2; }
+.lb-west .west-place h3 em { font-style: italic; color: var(--gold-lt); }
+.lb-west .west-place-county { font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: .7rem; }
+.lb-west .west-place p { font-size: .85rem; line-height: 1.82; color: var(--txt-mid); }
+
+/* ════════════════════════════════════════
+   BEST FOR STRIP
+════════════════════════════════════════ */
+.lb-west .west-best { background: var(--warm); padding: var(--pad-y) var(--pad-x); }
+.lb-west .west-best-in { max-width: 820px; margin: 0 auto; text-align: center; }
+.lb-west .west-best h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; color: var(--txt); margin-bottom: .7rem; }
+.lb-west .west-best h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-west .west-best-sub { font-size: .88rem; color: var(--txt-mid); line-height: 1.7; margin-bottom: 2.4rem; max-width: 540px; margin-left: auto; margin-right: auto; }
+.lb-west .west-best-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+.lb-west .west-best-tile { background: var(--cream); border: 1px solid rgba(91,98,57,.1); padding: 1.6rem 1.4rem; text-align: left; }
+.lb-west .west-best-tile-icon { width: 32px; height: 32px; margin-bottom: 1rem; color: var(--gold); }
+.lb-west .west-best-tile-title { font-family: 'Playfair Display', serif; font-weight: 400; font-size: .92rem; color: var(--txt); margin-bottom: .5rem; line-height: 1.3; }
+.lb-west .west-best-tile-desc { font-size: .8rem; line-height: 1.7; color: var(--txt-mid); }
+@media (max-width: 720px) { .lb-west .west-best-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .lb-west .west-best-grid { grid-template-columns: 1fr; } }
+
+/* ════════════════════════════════════════
+   PLANNING STRIP
+════════════════════════════════════════ */
+.lb-west .west-planning { background: var(--cream); padding: var(--pad-y) var(--pad-x); }
+.lb-west .west-planning-in { max-width: 820px; margin: 0 auto; }
+.lb-west .west-planning h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; color: var(--txt); margin-bottom: .6rem; }
+.lb-west .west-planning h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-west .west-planning-intro { font-size: .88rem; color: var(--txt-mid); line-height: 1.8; margin-bottom: 2.4rem; max-width: 620px; }
+.lb-west .west-planning-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.lb-west .west-planning-item { background: var(--warm); border: 1px solid rgba(91,98,57,.08); padding: 1.6rem 1.5rem; }
+.lb-west .west-planning-item h3 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: .95rem; color: var(--txt); margin-bottom: .55rem; line-height: 1.3; }
+.lb-west .west-planning-item p { font-size: .8rem; line-height: 1.75; color: var(--txt-mid); }
+@media (max-width: 600px) { .lb-west .west-planning-grid { grid-template-columns: 1fr; } }
+
+/* ════════════════════════════════════════
+   VENUES SECTION
+════════════════════════════════════════ */
+.lb-west .west-venues { background: var(--warm); padding: var(--pad-y) var(--pad-x); }
+.lb-west .west-venues-in { max-width: 900px; margin: 0 auto; }
+.lb-west .west-venues-header { text-align: center; margin-bottom: 3rem; }
+.lb-west .west-venues-header h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; color: var(--txt); margin-bottom: .6rem; }
+.lb-west .west-venues-header h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-west .west-venues-header p { font-size: .88rem; color: var(--txt-mid); line-height: 1.7; }
+
+.lb-west .west-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+.lb-west .west-card { background: var(--cream); border: 1px solid rgba(91,98,57,.08); border-radius: 2px; overflow: hidden; position: relative; transition: box-shadow .3s, transform .3s; display: flex; flex-direction: column; }
+.lb-west .west-card:hover { box-shadow: 0 6px 28px rgba(26,26,24,.1); transform: translateY(-3px); }
+.lb-west .west-card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+.lb-west .west-card-img-placeholder { width: 100%; aspect-ratio: 4/3; background: linear-gradient(135deg, var(--cream), rgba(184,150,78,.12)); display: flex; align-items: center; justify-content: center; }
+.lb-west .west-card-img-placeholder svg { width: 40px; height: 40px; opacity: .25; }
+.lb-west .west-card-body { padding: 1.4rem 1.4rem 1.6rem; flex: 1; display: flex; flex-direction: column; }
+.lb-west .west-card-county { font-size: .58rem; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: .5rem; }
+.lb-west .west-card h3 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(.95rem, 1.4vw, 1.15rem); line-height: 1.25; color: var(--txt); margin-bottom: .6rem; }
+.lb-west .west-card-rule { width: 28px; height: 1px; background: var(--gold); opacity: .5; margin-bottom: .75rem; }
+.lb-west .west-card-desc { font-size: .8rem; line-height: 1.72; color: var(--txt-mid); flex: 1; margin-bottom: 1.1rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.lb-west .west-card-link { font-size: .68rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--green); text-decoration: none; display: inline-flex; align-items: center; gap: .4rem; transition: color .3s; margin-top: auto; }
+.lb-west .west-card-link::after { content: '→'; transition: transform .3s; }
+.lb-west .west-card:hover .west-card-link { color: var(--gold); }
+.lb-west .west-card:hover .west-card-link::after { transform: translateX(4px); }
+.lb-west .west-card-link::before { content: ''; position: absolute; inset: 0; z-index: 1; }
+
+.lb-west .west-loading { grid-column: 1 / -1; text-align: center; padding: 3rem 0; color: var(--stone); font-size: .85rem; letter-spacing: .08em; }
+.lb-west .west-loading-spinner { display: inline-block; width: 28px; height: 28px; border: 2px solid rgba(91,98,57,.15); border-top-color: var(--green); border-radius: 50%; animation: west-spin .8s linear infinite; margin-bottom: .8rem; }
+@keyframes west-spin { to { transform: rotate(360deg); } }
+.lb-west .west-error { grid-column: 1 / -1; text-align: center; padding: 3rem 0; color: var(--txt-mid); font-size: .88rem; line-height: 1.7; }
+.lb-west .west-error a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ════════════════════════════════════════
+   VIEW TOGGLE
+════════════════════════════════════════ */
+.lb-west .west-view-toggle { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2.5rem; }
+.lb-west .west-toggle-btn { background: transparent; border: none; font-family: 'Alice', serif; font-size: .68rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--stone); cursor: pointer; padding-bottom: .4rem; border-bottom: 2px solid transparent; transition: all .3s; }
+.lb-west .west-toggle-btn.active { color: var(--green); border-bottom-color: var(--gold); }
+.lb-west .west-toggle-btn:hover:not(.active) { color: var(--gold-lt); }
+
+/* ════════════════════════════════════════
+   MAP VIEW
+════════════════════════════════════════ */
+.lb-west .west-map-wrap { display: none; width: 100%; height: 560px; border: 1px solid rgba(91,98,57,.15); border-radius: 2px; overflow: hidden; }
+.lb-west .west-map-wrap.active { display: block; }
+.lb-west .west-grid.hidden { display: none; }
+
+#west-map { width: 100%; height: 100%; background: var(--cream); }
+#west-map .leaflet-tile-pane { filter: saturate(0.18) brightness(1.06) sepia(0.18) contrast(0.92); }
+
+.leaflet-popup-content-wrapper { border-radius: 3px !important; background: #FDFAF4 !important; border: none !important; box-shadow: 0 8px 32px rgba(26,26,24,.18), 0 1px 4px rgba(26,26,24,.08) !important; padding: 0 !important; overflow: hidden; }
+.leaflet-popup-tip { background: #FDFAF4 !important; box-shadow: none !important; }
+.leaflet-popup-close-button { color: #8C8070 !important; font-size: 18px !important; top: 8px !important; right: 10px !important; }
+.leaflet-popup-close-button:hover { color: #1A1A18 !important; }
+.leaflet-popup-content { margin: 0 !important; width: 210px !important; }
+
+.lb-west-popup-img { width: 100%; height: 120px; object-fit: cover; display: block; }
+.lb-west-popup-body { padding: 14px 16px 16px; text-align: center; font-family: 'Alice', serif; }
+.lb-west-popup-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 400; color: #1A1A18; margin: 0 0 8px; line-height: 1.2; }
+.lb-west-popup-rule { width: 24px; height: 1px; background: #B8964E; margin: 0 auto 10px; }
+.lb-west-popup-county { font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: #8C8070; margin-bottom: 10px; }
+.lb-west-popup-link { display: inline-block; font-size: .62rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: #F5F0E8 !important; background: #5B6239; text-decoration: none !important; padding: 7px 16px; border-radius: 2px; transition: background .2s; }
+.lb-west-popup-link:hover { background: #3a3f25; }
+
+@keyframes west-pulse { 0% { transform: scale(1); opacity: .6; } 70% { transform: scale(2.2); opacity: 0; } 100% { transform: scale(2.2); opacity: 0; } }
+.west-marker-wrap { position: relative; width: 14px; height: 14px; }
+.west-marker-dot { width: 14px; height: 14px; background: #B8964E; border: 2.5px solid #fff; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,.35); position: relative; z-index: 1; }
+.west-marker-pulse { position: absolute; top: 0; left: 0; width: 14px; height: 14px; background: #B8964E; border-radius: 50%; animation: west-pulse 2s ease-out infinite; }
+
+/* ════════════════════════════════════════
+   FAQ STRIP
+════════════════════════════════════════ */
+.lb-west .west-faq { background: var(--cream); padding: var(--pad-y) var(--pad-x); }
+.lb-west .west-faq-in { max-width: 820px; margin: 0 auto; }
+.lb-west .west-faq h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; color: var(--txt); margin-bottom: .6rem; }
+.lb-west .west-faq h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-west .west-faq-intro { font-size: .88rem; color: var(--txt-mid); line-height: 1.8; margin-bottom: 2.4rem; max-width: 600px; }
+.lb-west .west-faq-list { display: flex; flex-direction: column; gap: 0; }
+.lb-west .west-faq-item { border-top: 1px solid rgba(91,98,57,.12); }
+.lb-west .west-faq-item:last-child { border-bottom: 1px solid rgba(91,98,57,.12); }
+.lb-west .west-faq-q { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.2rem 0; cursor: pointer; list-style: none; }
+.lb-west .west-faq-q::-webkit-details-marker { display: none; }
+.lb-west .west-faq-q-text { font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(.88rem, 1.5vw, 1rem); color: var(--txt); line-height: 1.4; }
+.lb-west .west-faq-icon { flex-shrink: 0; width: 18px; height: 18px; color: var(--gold); transition: transform .3s; }
+.lb-west details[open] .west-faq-icon { transform: rotate(45deg); }
+.lb-west .west-faq-a { padding: 0 0 1.2rem; font-size: .85rem; line-height: 1.82; color: var(--txt-mid); }
+.lb-west .west-faq-a a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ════════════════════════════════════════
+   RELATED CONTENT
+════════════════════════════════════════ */
+.lb-west .west-related { background: var(--warm); padding: var(--pad-y) var(--pad-x); }
+.lb-west .west-related-in { max-width: 820px; margin: 0 auto; }
+.lb-west .west-related-header { margin-bottom: 2.4rem; }
+.lb-west .west-related h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.3rem, 2.2vw, 1.7rem); line-height: 1.2; color: var(--txt); margin-bottom: .5rem; }
+.lb-west .west-related h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-west .west-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.lb-west .west-related-col h3 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--green); margin-bottom: 1rem; padding-bottom: .6rem; border-bottom: 1px solid rgba(91,98,57,.15); }
+.lb-west .west-related-col ul { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+.lb-west .west-related-col ul li a { font-size: .82rem; line-height: 1.5; color: var(--txt-mid); text-decoration: none; display: flex; align-items: baseline; gap: .4rem; transition: color .25s; }
+.lb-west .west-related-col ul li a::before { content: '›'; color: var(--gold); font-size: .9rem; flex-shrink: 0; }
+.lb-west .west-related-col ul li a:hover { color: var(--green); }
+@media (max-width: 700px) { .lb-west .west-related-grid { grid-template-columns: 1fr; gap: 1.8rem; } }
+
+/* ════════════════════════════════════════
+   CTA BAR
+════════════════════════════════════════ */
+.lb-west .west-cta { background: var(--green); padding: clamp(3rem, 6vw, 5rem) var(--pad-x); text-align: center; }
+.lb-west .west-cta-in { max-width: 560px; margin: 0 auto; }
+.lb-west .west-cta h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.4rem, 2.5vw, 2rem); line-height: 1.2; color: var(--warm); margin-bottom: .8rem; }
+.lb-west .west-cta h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-west .west-cta-sub { font-size: .88rem; line-height: 1.7; color: rgba(245,240,232,.55); font-style: italic; font-family: 'Playfair Display', serif; margin-bottom: 2rem; }
+
+.lb-west .btn-gold { display: inline-block; font-family: 'Alice', serif; font-size: .74rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; padding: .95rem 2.2rem; background: var(--gold); color: var(--green); border: 2px solid var(--gold); text-decoration: none; transition: all .3s; }
+.lb-west .btn-gold:hover { background: transparent; border-color: var(--gold-lt); color: var(--gold-lt); }
+.lb-west .btn-ghost { display: inline-block; font-family: 'Alice', serif; font-size: .74rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; padding: .95rem 2.2rem; background: transparent; color: var(--warm); border: 2px solid rgba(245,240,232,.45); text-decoration: none; transition: all .3s; }
+.lb-west .btn-ghost:hover { border-color: var(--warm); color: var(--warm); }
+.lb-west .west-cta-links { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+.lb-west .west-cta-tertiary { display: inline-block; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(245,240,232,.6); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(184,150,78,.4); transition: color .3s; }
+.lb-west .west-cta-tertiary:hover { color: var(--gold-lt); }
+
+/* ════════════════════════════════════════
+   SCROLL REVEAL
+════════════════════════════════════════ */
+.lb-west .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+.lb-west .reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════ */
+@media (max-width: 820px) { .lb-west .west-intro-in { grid-template-columns: 1fr; gap: 2rem; } }
+@media (max-width: 720px) { .lb-west .west-grid { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; } }
+@media (max-width: 600px) {
+  .lb-west .west-map-wrap { height: 420px; }
+  .lb-west .west-grid { grid-template-columns: 1fr; }
+  .lb-west .btn-gold { display: block; text-align: center; }
+}
+</style>
+
+<div class="lb-west">
+
+  <!-- ── Breadcrumb ── -->
+  <nav class="west-breadcrumb" aria-label="Breadcrumb">
+    <div class="west-breadcrumb-in">
+      <a href="/">Home</a>
+      <span class="sep">›</span>
+      <a href="/regions-of-ireland">Regions of Ireland</a>
+      <span class="sep">›</span>
+      <span class="current">The West</span>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="west-hero">
+    <div class="west-hero-in">
+      <div class="west-ol ctr reveal">Elopements &amp; Intimate Weddings in Ireland</div>
+      <h1 class="reveal">Get Married in <em>the West of Ireland</em></h1>
+      <p class="west-hero-sub reveal">
+        The Cliffs of Moher rising above a churning Atlantic. The pale limestone of the Burren
+        stretching to the sea. Wild Connemara, lake and mountain and silence. The west of Ireland
+        is the country at its most unforgettable.
+      </p>
+      <p class="west-hero-meta reveal">County Clare &middot; County Galway &middot; County Mayo &middot; Connemara</p>
+    </div>
+  </section>
+
+  <!-- ── Quick Facts Strip ── -->
+  <div class="west-facts">
+    <div class="west-facts-in">
+      <div class="west-fact">
+        <div class="west-fact-value">Wild Atlantic</div>
+        <div class="west-fact-label">Way Coastline</div>
+      </div>
+      <div class="west-fact-divider"></div>
+      <div class="west-fact">
+        <div class="west-fact-value">700 Feet</div>
+        <div class="west-fact-label">Cliffs of Moher</div>
+      </div>
+      <div class="west-fact-divider"></div>
+      <div class="west-fact">
+        <div class="west-fact-value">Shannon Airport</div>
+        <div class="west-fact-label">International Arrivals</div>
+      </div>
+      <div class="west-fact-divider"></div>
+      <div class="west-fact">
+        <div class="west-fact-value">3 Counties</div>
+        <div class="west-fact-label">Iconic Landscapes</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Intro / Editorial ── -->
+  <section class="west-intro" id="about">
+    <div class="west-intro-in">
+      <div class="reveal">
+        <div class="west-ol">About this region</div>
+        <h2>Where the Atlantic meets <em>the edge of Europe</em></h2>
+        <p>
+          The west of Ireland is the country's wild heart. It's where you'll find the most iconic
+          scenery in Ireland -- the Cliffs of Moher rising 200 metres above a churning sea, the
+          lunar limestone of the Burren, and the glassy lakes and mountains of Connemara stretching
+          endlessly westward.
+        </p>
+        <p>
+          This is a landscape that commands awe. The light here is extraordinary -- soft and
+          golden one moment, dramatic and stormy the next. It's the kind of backdrop that
+          transforms every photograph into something cinematic.
+        </p>
+        <p>
+          Whether you dream of a clifftop ceremony with nothing but ocean in every direction, or
+          a quiet celebration beside a Connemara lough with mountains as your witness, the west
+          delivers moments that feel genuinely timeless.
+        </p>
+      </div>
+      <div class="reveal">
+        <p class="west-highlights-heading">What makes the West special</p>
+        <ul class="west-highlights">
+          <li>The Cliffs of Moher, one of Ireland's most iconic natural landmarks</li>
+          <li>The otherworldly limestone landscape of the Burren</li>
+          <li>Wild Connemara -- lakes, mountains, and bog as far as the eye can see</li>
+          <li>The rugged Atlantic coastline of County Mayo</li>
+          <li>Galway city nearby for guests, with its own unique charm</li>
+          <li>Shannon Airport within easy reach for international arrivals</li>
+          <li>Extraordinary ever-changing Atlantic light for photography</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Locations Deep-Dive ── -->
+  <section class="west-places" id="locations">
+    <div class="west-places-in">
+      <div class="west-places-header reveal">
+        <div class="west-ol ctr">The Landscapes</div>
+        <h2>Four places that make <em>the West iconic</em></h2>
+        <p>The west of Ireland isn't one place -- it's four distinct landscapes, each with its own character and its own magic.</p>
+      </div>
+      <div class="west-place-list">
+
+        <div class="west-place reveal">
+          <div class="west-place-county">County Clare</div>
+          <h3>The Cliffs of Moher and <em>the Burren</em></h3>
+          <p>County Clare is home to two of the most photographed landscapes in Ireland. The Cliffs of Moher stretch for eight kilometres along the Atlantic coast, rising up to 214 metres and offering views out to the Aran Islands on a clear day. Elopements at the Cliffs require permits, and as a licensed planner we handle all the paperwork so you can focus on the moment itself. Inland, the Burren is unlike anything else in Ireland -- a vast expanse of grey limestone pavement, ancient dolmens, and rare wildflowers that bloom in the cracks between the rock. It feels like another world, and it photographs like one too.</p>
+        </div>
+
+        <div class="west-place reveal">
+          <div class="west-place-county">County Galway</div>
+          <h3>Connemara -- loughs, mountains, <em>and wild sky</em></h3>
+          <p>Connemara is the Ireland that many couples picture when they imagine eloping here. A patchwork of lakes and bog, overshadowed by the Twelve Bens mountain range and edged by a coastline of tiny islands and hidden strands. The light shifts constantly -- Atlantic weather rolling in off the ocean, turning the landscape silver and gold by turns. The village of Clifden makes a natural base, with Kylemore Abbey and the Sky Road offering ceremony settings that feel genuinely cinematic. Galway city, just over an hour east, is one of Ireland's most vibrant cities and a natural choice for a wedding dinner or a night out before or after your ceremony.</p>
+        </div>
+
+        <div class="west-place reveal">
+          <div class="west-place-county">County Mayo</div>
+          <h3>Achill Island and the <em>north Mayo coast</em></h3>
+          <p>County Mayo is the west at its most dramatic and least visited. Achill Island is connected to the mainland by a bridge, making it accessible without sacrificing remoteness -- the beaches here are some of the finest in Ireland, and the cliffs of Minaun and Croaghaun rival anything on the Causeway Coast. Inland, Croagh Patrick rises steeply above Clew Bay, its pyramid silhouette reflected in the water below. This is landscape for couples who want something genuinely wild, away from the more visited corners of Clare and Connemara.</p>
+        </div>
+
+        <div class="west-place reveal">
+          <div class="west-place-county">Aran Islands</div>
+          <h3>Inis Mor, Inis Meain, <em>and Inis Oirr</em></h3>
+          <p>For the most remote and atmospheric elopement in the west, consider the Aran Islands. Reached by ferry from Rossaveal or by small plane from Connemara Airport, these three islands sit in Galway Bay and feel like a different century. Inis Mor is the largest, home to the Iron Age fort of Dun Aengus perched on a clifftop 100 metres above the Atlantic. Inis Oirr is the smallest and most intimate -- a tight knot of stone walls, wildflowers, and a shipwreck half-buried in the sand. An Aran Islands elopement takes more planning, but the results are like nothing else in Ireland.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Best For ── -->
+  <section class="west-best" id="best-for">
+    <div class="west-best-in">
+      <div class="west-ol ctr reveal">Who It Suits</div>
+      <h2 class="reveal">Is the West of Ireland right for <em>your elopement?</em></h2>
+      <p class="west-best-sub reveal">Every region in Ireland has its own character. Here is what the West does best.</p>
+      <div class="west-best-grid">
+        <div class="west-best-tile reveal">
+          <svg class="west-best-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div class="west-best-tile-title">Couples who want iconic scenery</div>
+          <p class="west-best-tile-desc">If the Cliffs of Moher or Connemara feature in your vision of Ireland, the west is the only place to be. These are the landscapes that define the country's image worldwide.</p>
+        </div>
+        <div class="west-best-tile reveal">
+          <svg class="west-best-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/><path d="M12 2L2 7l10 5 10-5-10-5z"/></svg>
+          <div class="west-best-tile-title">Adventure-focused elopements</div>
+          <p class="west-best-tile-desc">Clifftop walks, island ferries, mountain trails -- the west rewards couples who want their ceremony to feel like an adventure, not just a location.</p>
+        </div>
+        <div class="west-best-tile reveal">
+          <svg class="west-best-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          <div class="west-best-tile-title">Photography-first couples</div>
+          <p class="west-best-tile-desc">The Atlantic light in the west is unlike anywhere else in Ireland -- golden hours that last, dramatic skies, and landscapes that do the heavy lifting for your photographer.</p>
+        </div>
+        <div class="west-best-tile reveal">
+          <svg class="west-best-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <div class="west-best-tile-title">Guests travelling via Shannon</div>
+          <p class="west-best-tile-desc">Shannon Airport offers transatlantic routes with US Customs pre-clearance, making it the most convenient entry point in Ireland for American guests flying in.</p>
+        </div>
+        <div class="west-best-tile reveal">
+          <svg class="west-best-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <div class="west-best-tile-title">Couples who want to explore</div>
+          <p class="west-best-tile-desc">The west pairs naturally with a road trip along the Wild Atlantic Way -- combine your ceremony with days exploring Galway, Clare, and Mayo at your own pace.</p>
+        </div>
+        <div class="west-best-tile reveal">
+          <svg class="west-best-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <div class="west-best-tile-title">Relaxed, pub-finish celebrations</div>
+          <p class="west-best-tile-desc">Galway and the west's traditional towns are made for a relaxed evening after your ceremony -- live music in a pub, fresh Atlantic seafood, and no formal agenda.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Venues ── -->
+  <section class="west-venues" id="venues">
+    <div class="west-venues-in">
+      <div class="west-venues-header reveal">
+        <div class="west-ol ctr">Our Venues</div>
+        <h2>West of Ireland <em>Venues</em></h2>
+        <p>Hand-picked locations for elopements and intimate weddings across Clare, Galway, and Mayo.</p>
+      </div>
+
+      <div class="west-view-toggle">
+        <button class="west-toggle-btn active" data-view="grid">List View</button>
+        <button class="west-toggle-btn" data-view="map">Map View</button>
+      </div>
+
+      <div class="west-grid" id="west-venue-grid">
+        <div class="west-loading">
+          <div class="west-loading-spinner"></div>
+          <p>Loading venues...</p>
+        </div>
+      </div>
+
+      <div class="west-map-wrap" id="west-map-wrap">
+        <div id="west-map"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Planning Strip ── -->
+  <section class="west-planning" id="planning">
+    <div class="west-planning-in">
+      <div class="west-ol reveal">Practical Information</div>
+      <h2 class="reveal">Planning your <em>West of Ireland elopement</em></h2>
+      <p class="west-planning-intro reveal">
+        The west rewards preparation. Some of its most spectacular locations require permits,
+        seasonal timing, and local knowledge to get right. Here is what to know before you start.
+      </p>
+      <div class="west-planning-grid">
+        <div class="west-planning-item reveal">
+          <h3>Cliffs of Moher ceremonies</h3>
+          <p>The Cliffs of Moher are a protected UNESCO Geopark site. Ceremonies at the cliffs require advance permits from Clare County Council and the OPW. As your licensed planner, we handle all permit applications, liaise with site management, and ensure your ceremony is fully compliant -- so you simply arrive and get married.</p>
+        </div>
+        <div class="west-planning-item reveal">
+          <h3>Getting to the west</h3>
+          <p>Shannon Airport (SNN) serves the region with direct transatlantic routes and pre-clearance for US travellers. Ireland West Airport Knock (NOC) serves County Mayo. Galway city is roughly two hours from Dublin Airport, making a self-drive combination trip straightforward for international couples.</p>
+        </div>
+        <div class="west-planning-item reveal">
+          <h3>Best time of year</h3>
+          <p>May, June, and September offer the best balance of long daylight hours and manageable crowds. July and August bring the longest evenings but also peak visitor numbers at the Cliffs. Winter ceremonies from November through February can be extraordinary -- empty landscapes and dramatic skies -- but require flexibility around weather.</p>
+        </div>
+        <div class="west-planning-item reveal">
+          <h3>Weather and flexibility</h3>
+          <p>The west faces the full force of the Atlantic, and weather can change quickly. We always plan a contingency for outdoor ceremonies and know which venues offer covered options with equally dramatic views. Golden-hour light after a passing shower is one of the west's great gifts to elopement photography.</p>
+        </div>
+        <div class="west-planning-item reveal">
+          <h3>Legal ceremonies in the west</h3>
+          <p>Every package we offer includes a legally recognised ceremony performed by a licensed Irish celebrant. Your marriage is registered with the General Register Office of Ireland and fully valid in the United States. We handle the civil formalities, the HSE notification, and all required paperwork.</p>
+        </div>
+        <div class="west-planning-item reveal">
+          <h3>Combining locations in one day</h3>
+          <p>The west lends itself beautifully to a multi-location day -- ceremony at the Cliffs, afternoon portraits along the Burren coast, evening in Galway. We plan the routing, the timing, and the logistics so your photographer and celebrant are always exactly where they need to be.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ── -->
+  <section class="west-faq" id="faq">
+    <div class="west-faq-in">
+      <div class="west-ol reveal">Questions &amp; Answers</div>
+      <h2 class="reveal">Frequently asked questions about <em>eloping in the west</em></h2>
+      <p class="west-faq-intro reveal">Everything couples ask us before booking a west of Ireland elopement.</p>
+      <div class="west-faq-list reveal">
+
+ 
+
+        <details class="west-faq-item">
+          <summary class="west-faq-q">
+            <span class="west-faq-q-text">How far in advance do we need to book a west of Ireland elopement?</span>
+            <svg class="west-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </summary>
+          <p class="west-faq-a">For peak season dates (May through September), we recommend booking at least four to six months in advance to secure your preferred venues and dates. Irish civil law also requires a minimum three-month notice period before the ceremony date, so the sooner you get in touch the more options we can offer you. Off-peak dates in autumn and winter can often be arranged more quickly. <a href="/get-in-touch">Get in touch to check availability.</a></p>
+        </details>
+
+        <details class="west-faq-item">
+          <summary class="west-faq-q">
+            <span class="west-faq-q-text">Is a marriage in Ireland legally valid in the United States?</span>
+            <svg class="west-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </summary>
+          <p class="west-faq-a">Yes. Ireland and the United States have mutual recognition of marriages performed in each country. Every ceremony we plan uses a legally registered Irish celebrant, and your marriage is registered with the General Register Office of Ireland. We provide you with a certified marriage certificate that is accepted across the US. <a href="/faqs">See all legal FAQs.</a></p>
+        </details>
+
+        <details class="west-faq-item">
+          <summary class="west-faq-q">
+            <span class="west-faq-q-text">What is the best airport to fly into for a west of Ireland elopement?</span>
+            <svg class="west-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </summary>
+          <p class="west-faq-a">Shannon Airport (SNN) is the closest international airport to County Clare and the Cliffs of Moher, and it offers US pre-clearance on transatlantic flights -- meaning you clear US customs before you board for the return journey. For Connemara and Galway, Dublin Airport is roughly two hours by road and offers the widest choice of transatlantic routes. Ireland West Airport Knock (NOC) is convenient for County Mayo.</p>
+        </details>
+
+        <details class="west-faq-item">
+          <summary class="west-faq-q">
+            <span class="west-faq-q-text">Can we bring guests to a west of Ireland elopement?</span>
+            <svg class="west-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </summary>
+          <p class="west-faq-a">Absolutely. Our packages range from just the two of you up to intimate celebrations with family and close friends. Some locations in the west, including the Cliffs of Moher, have specific guidelines on group sizes at the ceremony site -- we factor these in when planning your day and will advise on what works best for your numbers. <a href="/packages">View our packages to find the right fit.</a></p>
+        </details>
+
+        <details class="west-faq-item">
+          <summary class="west-faq-q">
+            <span class="west-faq-q-text">What happens if the weather is bad on the day?</span>
+            <svg class="west-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </summary>
+          <p class="west-faq-a">The west of Ireland has Atlantic weather, which means it can change quickly -- but it can also deliver extraordinary light in the breaks between showers. We always plan a weather contingency as part of your day, including a backup venue or timing flexibility where possible. Some of the most memorable elopement photographs we have seen have been taken in soft rain or dramatic cloud. We will never leave you without a plan.</p>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Related Content ── -->
+  <section class="west-related">
+    <div class="west-related-in">
+      <div class="west-related-header reveal">
+        <div class="west-ol">Keep exploring</div>
+        <h2>More to <em>discover</em></h2>
+      </div>
+      <div class="west-related-grid reveal">
+        <div class="west-related-col">
+          <h3>Other Regions</h3>
+          <ul>
+            <li><a href="/regions-of-ireland/dublin">Dublin</a></li>
+            <li><a href="/regions-of-ireland/northern-ireland">Northern Ireland</a></li>
+            <li><a href="/regions-of-ireland/the-south-west">The South West</a></li>
+            <li><a href="/regions-of-ireland/the-north-west">The North West</a></li>
+            <li><a href="/regions-of-ireland/the-midlands-east">The Midlands &amp; East</a></li>
+            <li><a href="/regions-of-ireland/the-south-east">The South East</a></li>
+          </ul>
+        </div>
+        <div class="west-related-col">
+          <h3>Plan Your Day</h3>
+          <ul>
+            <li><a href="/cliffs-of-moher-elopement">Cliffs of Moher Elopements</a></li>
+            <li><a href="/packages">View Our Packages</a></li>
+            <li><a href="/venues">Browse All Venues</a></li>
+            <li><a href="/elopement-in-ireland">How It Works</a></li>
+            <li><a href="/faqs">Frequently Asked Questions</a></li>
+            <li><a href="/get-in-touch">Get in Touch</a></li>
+          </ul>
+        </div>
+        <div class="west-related-col">
+          <h3>Real Couples</h3>
+          <ul>
+            <li><a href="/happy-couples">All Couple Stories</a></li>
+            <li><a href="/about">About Ladybird</a></li>
+            <li><a href="/destination-weddings-ireland">Destination Weddings in Ireland</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="west-cta">
+    <div class="west-cta-in">
+      <div class="west-ol ctr reveal" style="color:var(--gold-lt);">Ready to begin?</div>
+      <h2 class="reveal">Let's plan your <em>West of Ireland elopement</em></h2>
+      <p class="west-cta-sub reveal">Tell us your vision and we'll handle every detail, from permits to vows.</p>
+      <div class="west-cta-links reveal">
+        <a href="/get-in-touch" class="btn-gold">Get in Touch</a>
+        <a href="/packages" class="btn-ghost">View Our Packages</a>
+      </div>
+      <a href="/happy-couples" class="west-cta-tertiary reveal">See Real Couple Stories</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  /* ── Scroll reveal ── */
+  const revealEls = document.querySelectorAll('.lb-west .reveal');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('in'), i * 60); obs.unobserve(e.target); } });
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+    revealEls.forEach(el => obs.observe(el));
+  } else { revealEls.forEach(el => el.classList.add('in')); }
+
+  const GRID     = document.getElementById('west-venue-grid');
+  const MAP_WRAP = document.getElementById('west-map-wrap');
+  const TAG      = 'West';
+
+  let currentView = 'grid';
+  let map = null;
+  let markerLayer = null;
+  let regionItems = [];
+  let goldIcon = null;
+
+  /* ── View toggle ── */
+  document.querySelectorAll('.lb-west .west-toggle-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.lb-west .west-toggle-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      currentView = this.dataset.view;
+      if (currentView === 'grid') {
+        MAP_WRAP.classList.remove('active');
+        GRID.classList.remove('hidden');
+      } else {
+        GRID.classList.add('hidden');
+        MAP_WRAP.classList.add('active');
+        if (!map) initMap();
+        setTimeout(() => { if (map) map.invalidateSize(); renderMapPins(regionItems); }, 100);
+      }
+    });
+  });
+
+  /* ── Map init ── */
+  function initMap() {
+    goldIcon = L.divIcon({
+      className: '',
+      html: '<div class="west-marker-wrap"><div class="west-marker-pulse"></div><div class="west-marker-dot"></div></div>',
+      iconSize: [14, 14], iconAnchor: [7, 7], popupAnchor: [0, -10]
+    });
+    map = L.map('west-map', { zoomControl: false }).setView([53.45, -9.1], 8);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>'
+    }).addTo(map);
+    L.control.zoom({ position: 'bottomright' }).addTo(map);
+    markerLayer = L.layerGroup().addTo(map);
+  }
+
+  /* ── Render map pins ── */
+  function renderMapPins(items) {
+    if (!markerLayer) return;
+    markerLayer.clearLayers();
+    const bounds = [];
+    items.forEach(item => {
+      const html = item.body || item.excerpt || '';
+      const latM = html.match(/data-lat="([^"]+)"/);
+      const lngM = html.match(/data-long="([^"]+)"/);
+      const ctyM = html.match(/data-county="([^"]+)"/);
+      if (!latM || !lngM) return;
+      const lat = parseFloat(latM[1]);
+      const lng = parseFloat(lngM[1]);
+      if (isNaN(lat) || isNaN(lng)) return;
+      const imgSrc = item.assetUrl || item.thumbnailUrl || '';
+      const county = ctyM ? ctyM[1].replace(/,?\s*ireland$/i, '') : '';
+      const popupContent =
+        '<div>' +
+        (imgSrc ? '<img class="lb-west-popup-img" src="' + imgSrc + '" alt="' + item.title + '">' : '') +
+        '<div class="lb-west-popup-body">' +
+        '<h3 class="lb-west-popup-title">' + item.title + '</h3>' +
+        '<div class="lb-west-popup-rule"></div>' +
+        (county ? '<p class="lb-west-popup-county">Co. ' + county + ', Ireland</p>' : '') +
+        '<a href="' + item.fullUrl + '" class="lb-west-popup-link">View Venue</a>' +
+        '</div></div>';
+      L.marker([lat, lng], { icon: goldIcon })
+        .bindPopup(popupContent, { maxWidth: 210 })
+        .addTo(markerLayer);
+      bounds.push([lat, lng]);
+    });
+    if (bounds.length > 0) map.fitBounds(bounds, { padding: [40, 40], maxZoom: 12 });
+    else map.setView([53.45, -9.1], 8);
+  }
+
+  /* ── Build card ── */
+  function escHtml(str) { return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  function buildCard(item) {
+    const title  = item.title || 'Venue';
+    const href   = item.fullUrl || '/venues/p/' + (item.urlId || item.urlSlug || '');
+    const imgSrc = item.assetUrl || item.thumbnailUrl || null;
+    const county = (item.customContent && item.customContent.county) ? item.customContent.county : '';
+    const desc   = (item.excerpt || item.body || '').replace(/<[^>]*>/g, '').trim().slice(0, 180);
+    const imgHtml = imgSrc
+      ? `<img class="west-card-img" src="${escHtml(imgSrc)}" alt="${escHtml(title)}" loading="lazy">`
+      : `<div class="west-card-img-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>`;
+    const card = document.createElement('div');
+    card.className = 'west-card reveal';
+    card.innerHTML = `${imgHtml}<div class="west-card-body">${county ? `<span class="west-card-county">${escHtml(county)}</span>` : ''}<h3>${escHtml(title)}</h3><div class="west-card-rule"></div>${desc ? `<p class="west-card-desc">${escHtml(desc)}</p>` : ''}<a href="${escHtml(href)}" class="west-card-link">View venue</a></div>`;
+    return card;
+  }
+
+  /* ── Render grid ── */
+  function renderCards(items) {
+    if (!items.length) {
+      GRID.innerHTML = `<div class="west-error"><p>No venues found for this region yet, check back soon.</p><p><a href="/venues">Browse all venues &rarr;</a></p></div>`;
+      return;
+    }
+    GRID.innerHTML = '';
+    items.forEach(item => GRID.appendChild(buildCard(item)));
+    if (items.length % 3 === 1 && GRID.lastElementChild) GRID.lastElementChild.style.gridColumn = '2';
+    const cards = GRID.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('in'), i * 60); io.unobserve(e.target); } });
+      }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+      cards.forEach(el => io.observe(el));
+    } else { cards.forEach(el => el.classList.add('in')); }
+  }
+
+  /* ── Fetch ── */
+  async function loadVenues() {
+    try {
+      const res = await fetch('/venue?format=json&count=300');
+      if (!res.ok) throw new Error();
+      const data = await res.json();
+      const all = data.items || data.products || [];
+      regionItems = all.filter(item => (item.tags || []).some(t => t.toLowerCase() === TAG.toLowerCase()));
+      renderCards(regionItems);
+    } catch (err) {
+      console.warn('Ladybird venue fetch failed:', err);
+      GRID.innerHTML = `<div class="west-error"><p>Couldn't load venues right now.</p><p><a href="/venues">Browse all venues &rarr;</a></p></div>`;
+    }
+  }
+
+  loadVenues();
+}());
+</script>

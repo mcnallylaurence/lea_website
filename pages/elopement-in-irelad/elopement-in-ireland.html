@@ -1,0 +1,856 @@
+<!-- ═══════════════════════════════════════
+     ELOPEMENT IN IRELAND, SERVICE PAGE
+     Ladybird Ever After · Root: .lb-elope
+═══════════════════════════════════════ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Alice&display=swap" rel="stylesheet">
+
+<style>
+.lb-elope {
+  --green:    #5B6239;
+  --green-dk: #3a3f25;
+  --green-hv: #4a5130;
+  --gold:     #B8964E;
+  --gold-lt:  #D4AF71;
+  --cream:    #F5F0E8;
+  --warm:     #FDFAF4;
+  --stone:    #8C8070;
+  --txt:      #1A1A18;
+  --txt-mid:  #4A4A42;
+  --pad-x: clamp(1.2rem, 5vw, 5rem);
+  --pad-y: clamp(3.5rem, 7vw, 6rem);
+  font-family: 'Alice', serif;
+  font-weight: 300;
+  color: var(--txt);
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+.lb-elope *, .lb-elope *::before, .lb-elope *::after { margin: 0; padding: 0; box-sizing: border-box; }
+.lb-elope img { display: block; }
+
+.lb-elope .el-ol { display: flex; align-items: center; gap: .7rem; font-size: .6rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 1rem; }
+.lb-elope .el-ol::after { content: ''; flex: 0 0 28px; height: 1px; background: var(--gold); opacity: .5; }
+.lb-elope .el-ol.ctr { justify-content: center; }
+.lb-elope .el-ol.ctr::before { content: ''; flex: 0 0 28px; height: 1px; background: var(--gold); opacity: .5; }
+
+/* ── Breadcrumb ── */
+.lb-elope .el-breadcrumb { background: var(--cream); padding: .9rem var(--pad-x); border-bottom: 1px solid rgba(91,98,57,.1); }
+.lb-elope .el-breadcrumb-in { max-width: 820px; margin: 0 auto; display: flex; align-items: center; gap: .5rem; font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; color: var(--stone); }
+.lb-elope .el-breadcrumb a { color: var(--stone); text-decoration: none; transition: color .3s; }
+.lb-elope .el-breadcrumb a:hover { color: var(--green); }
+.lb-elope .el-breadcrumb .sep { opacity: .4; }
+.lb-elope .el-breadcrumb .current { color: var(--green); }
+
+/* ── Hero ── */
+.lb-elope .el-hero { background: var(--warm); padding: var(--pad-y) var(--pad-x) calc(var(--pad-y) * .75); text-align: center; }
+.lb-elope .el-hero-in { max-width: 720px; margin: 0 auto; }
+.lb-elope .el-hero h1 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(2rem, 4.5vw, 3.2rem); line-height: 1.18; color: var(--txt); margin-bottom: 1.2rem; }
+.lb-elope .el-hero h1 em { font-style: italic; color: var(--gold-lt); }
+.lb-elope .el-hero-sub { font-size: clamp(.88rem, 1.6vw, 1rem); line-height: 1.75; color: var(--txt-mid); margin-bottom: .8rem; }
+.lb-elope .el-hero-byline { font-size: .72rem; color: var(--stone); line-height: 1.6; margin-bottom: 1.8rem; font-style: italic; }
+.lb-elope .el-hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ── Shared prose sections ── */
+.lb-elope .el-prose { padding: var(--pad-y) var(--pad-x); }
+.lb-elope .el-prose.bg-cream { background: var(--cream); }
+.lb-elope .el-prose.bg-warm  { background: var(--warm); }
+.lb-elope .el-prose.bg-dark  { background: var(--green-dk); }
+.lb-elope .el-prose-in { max-width: 820px; margin: 0 auto; }
+.lb-elope .el-prose-in.narrow { max-width: 680px; }
+.lb-elope .el-prose h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; color: var(--txt); margin-bottom: 1.2rem; }
+.lb-elope .el-prose h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-elope .el-prose h3 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(1.05rem, 1.8vw, 1.25rem); line-height: 1.3; color: var(--txt); margin-bottom: .7rem; margin-top: 1.8rem; }
+.lb-elope .el-prose p { font-size: .88rem; line-height: 1.82; color: var(--txt-mid); margin-bottom: 1.1rem; }
+.lb-elope .el-prose p:last-child { margin-bottom: 0; }
+.lb-elope .el-prose ul { list-style: none; display: flex; flex-direction: column; gap: .7rem; margin-bottom: 1.1rem; }
+.lb-elope .el-prose ul li { display: flex; align-items: flex-start; gap: .9rem; font-size: .86rem; line-height: 1.65; color: var(--txt-mid); }
+.lb-elope .el-prose ul li::before { content: ''; flex-shrink: 0; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin-top: .44em; }
+.lb-elope .el-prose strong { color: var(--txt); font-weight: 600; }
+
+/* ── Two-col intro ── */
+.lb-elope .el-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+
+/* ── Includes list ── */
+.lb-elope .el-includes { list-style: none; display: flex; flex-direction: column; gap: .8rem; }
+.lb-elope .el-includes li { display: flex; align-items: flex-start; gap: .9rem; font-size: .85rem; line-height: 1.6; color: var(--txt-mid); }
+.lb-elope .el-includes li::before { content: ''; flex-shrink: 0; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin-top: .42em; }
+.lb-elope .el-includes-heading { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.1rem, 2vw, 1.35rem); line-height: 1.2; color: var(--txt); margin-bottom: 1rem; }
+
+/* ── Steps ── */
+.lb-elope .el-steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2.5rem; }
+.lb-elope .el-step { background: var(--cream); padding: 2rem 1.6rem; border: 1px solid rgba(91,98,57,.08); }
+.lb-elope .el-step-num { font-family: 'Playfair Display', serif; font-weight: 300; font-size: 2.4rem; color: rgba(184,150,78,.25); line-height: 1; margin-bottom: .8rem; }
+.lb-elope .el-step h3 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: 1rem; line-height: 1.3; color: var(--txt); margin-bottom: .7rem; margin-top: 0; }
+.lb-elope .el-step p { font-size: .82rem; line-height: 1.75; color: var(--txt-mid); margin-bottom: 0; }
+
+/* ── Why-cards ── */
+.lb-elope .el-why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2.5rem; }
+.lb-elope .el-why-card { background: var(--cream); padding: 2rem 1.6rem; border: 1px solid rgba(91,98,57,.08); }
+.lb-elope .el-why-card h3 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: 1rem; color: var(--txt); margin-bottom: .6rem; margin-top: 0; }
+.lb-elope .el-why-card p { font-size: .82rem; line-height: 1.75; color: var(--txt-mid); margin-bottom: 0; }
+
+/* ── Region sections ── */
+.lb-elope .el-region { padding: var(--pad-y) var(--pad-x); }
+.lb-elope .el-region:nth-child(odd) { background: var(--cream); }
+.lb-elope .el-region:nth-child(even) { background: var(--warm); }
+.lb-elope .el-region-in { max-width: 820px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+.lb-elope .el-region h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.4rem, 2.4vw, 1.85rem); line-height: 1.2; color: var(--txt); margin-bottom: 1rem; }
+.lb-elope .el-region h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-elope .el-region p { font-size: .88rem; line-height: 1.82; color: var(--txt-mid); margin-bottom: 1rem; }
+.lb-elope .el-region p:last-of-type { margin-bottom: 1.4rem; }
+.lb-elope .el-region-meta { font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--stone); font-weight: 600; margin-bottom: 1.2rem; }
+.lb-elope .el-region-link { display: inline-flex; align-items: center; gap: .4rem; font-size: .68rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--green); text-decoration: none; border-bottom: 1px solid rgba(184,150,78,.35); padding-bottom: .15rem; transition: color .3s, border-color .3s; }
+.lb-elope .el-region-link::after { content: '→'; transition: transform .3s; }
+.lb-elope .el-region-link:hover { color: var(--gold); border-color: var(--gold); }
+.lb-elope .el-region-link:hover::after { transform: translateX(3px); }
+.lb-elope .el-region-tag { font-size: .58rem; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: .3rem; }
+.lb-elope .el-region-highlights { list-style: none; display: flex; flex-direction: column; gap: .7rem; }
+.lb-elope .el-region-highlights li { display: flex; align-items: flex-start; gap: .8rem; font-size: .82rem; line-height: 1.6; color: var(--txt-mid); }
+.lb-elope .el-region-highlights li::before { content: ''; flex-shrink: 0; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); margin-top: .44em; }
+
+/* ── Legal comparison table ── */
+.lb-elope .el-table-wrap { overflow-x: auto; margin-top: 2rem; }
+.lb-elope .el-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+.lb-elope .el-table th { font-family: 'Playfair Display', serif; font-weight: 400; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--warm); background: var(--green); padding: .9rem 1rem; text-align: left; }
+.lb-elope .el-table td { padding: .75rem 1rem; border-bottom: 1px solid rgba(91,98,57,.1); color: var(--txt-mid); vertical-align: top; line-height: 1.6; }
+.lb-elope .el-table tr:nth-child(even) td { background: rgba(245,240,232,.5); }
+.lb-elope .el-table td:first-child { font-weight: 600; color: var(--txt); white-space: nowrap; }
+
+/* ── Season table ── */
+.lb-elope .el-season-table { width: 100%; border-collapse: collapse; font-size: .82rem; margin-top: 2rem; }
+.lb-elope .el-season-table th { font-family: 'Playfair Display', serif; font-weight: 400; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: var(--warm); background: var(--green); padding: .9rem 1rem; text-align: left; }
+.lb-elope .el-season-table td { padding: .75rem 1rem; border-bottom: 1px solid rgba(91,98,57,.1); color: var(--txt-mid); vertical-align: top; line-height: 1.6; }
+.lb-elope .el-season-table tr:nth-child(even) td { background: rgba(245,240,232,.5); }
+.lb-elope .el-season-table td:first-child { font-weight: 600; color: var(--txt); }
+
+/* ── Alert box ── */
+.lb-elope .el-alert { background: rgba(184,150,78,.12); border: 1px solid rgba(184,150,78,.35); border-left: 4px solid var(--gold); padding: 1.4rem 1.6rem; margin: 2rem 0; }
+.lb-elope .el-alert-title { font-family: 'Playfair Display', serif; font-weight: 600; font-size: .9rem; color: var(--txt); margin-bottom: .6rem; }
+.lb-elope .el-alert p { font-size: .84rem; line-height: 1.75; color: var(--txt-mid); margin-bottom: .5rem; }
+.lb-elope .el-alert p:last-child { margin-bottom: 0; }
+.lb-elope .el-alert ul { list-style: none; display: flex; flex-direction: column; gap: .4rem; margin-bottom: .5rem; }
+.lb-elope .el-alert ul li { display: flex; align-items: flex-start; gap: .8rem; font-size: .84rem; line-height: 1.6; color: var(--txt-mid); }
+.lb-elope .el-alert ul li::before { content: ''; flex-shrink: 0; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); margin-top: .45em; }
+
+/* ── About / who we are ── */
+.lb-elope .el-about { background: var(--green-dk); padding: var(--pad-y) var(--pad-x); }
+.lb-elope .el-about-in { max-width: 820px; margin: 0 auto; }
+.lb-elope .el-about h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; color: var(--warm); margin-bottom: 1.2rem; }
+.lb-elope .el-about h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-elope .el-about p { font-size: .88rem; line-height: 1.82; color: rgba(245,240,232,.75); margin-bottom: 1.1rem; }
+.lb-elope .el-about p:last-child { margin-bottom: 0; }
+.lb-elope .el-about ul { list-style: none; display: flex; flex-direction: column; gap: .7rem; margin-bottom: 1.4rem; }
+.lb-elope .el-about ul li { display: flex; align-items: flex-start; gap: .9rem; font-size: .86rem; line-height: 1.65; color: rgba(245,240,232,.75); }
+.lb-elope .el-about ul li::before { content: ''; flex-shrink: 0; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin-top: .44em; }
+.lb-elope .el-about-link { display: inline-flex; align-items: center; gap: .4rem; font-size: .68rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--gold-lt); text-decoration: none; border-bottom: 1px solid rgba(212,175,113,.4); padding-bottom: .15rem; transition: color .3s, border-color .3s; }
+.lb-elope .el-about-link:hover { color: var(--warm); border-color: var(--warm); }
+
+/* ── Mistakes ── */
+.lb-elope .el-mistake { margin-bottom: 2.4rem; padding-bottom: 2.4rem; border-bottom: 1px solid rgba(91,98,57,.12); }
+.lb-elope .el-mistake:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+.lb-elope .el-mistake-num { font-family: 'Playfair Display', serif; font-weight: 300; font-size: 1.8rem; color: rgba(184,150,78,.3); line-height: 1; margin-bottom: .5rem; }
+.lb-elope .el-mistake h3 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(1rem, 1.8vw, 1.2rem); color: var(--txt); margin-bottom: .8rem; }
+.lb-elope .el-mistake p { font-size: .88rem; line-height: 1.82; color: var(--txt-mid); margin-bottom: .9rem; }
+.lb-elope .el-mistake p:last-child { margin-bottom: 0; }
+.lb-elope .el-tip { background: rgba(184,150,78,.1); border-left: 3px solid var(--gold); padding: .9rem 1.1rem; font-size: .84rem; line-height: 1.7; color: var(--txt-mid); }
+.lb-elope .el-tip strong { color: var(--txt); }
+
+/* ── FAQ ── */
+.lb-elope .el-faq-item { border-bottom: 1px solid rgba(91,98,57,.12); padding: 1.4rem 0; }
+.lb-elope .el-faq-item:first-child { border-top: 1px solid rgba(91,98,57,.12); }
+.lb-elope .el-faq-q { font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(.95rem, 1.6vw, 1.1rem); color: var(--txt); margin-bottom: .7rem; }
+.lb-elope .el-faq-a { font-size: .88rem; line-height: 1.82; color: var(--txt-mid); }
+
+/* ── CTA ── */
+.lb-elope .el-cta { background: var(--green-dk); padding: clamp(3rem, 6vw, 5rem) var(--pad-x); text-align: center; }
+.lb-elope .el-cta-in { max-width: 560px; margin: 0 auto; }
+.lb-elope .el-cta h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.4rem, 2.5vw, 2rem); line-height: 1.2; color: var(--warm); margin-bottom: .8rem; }
+.lb-elope .el-cta h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-elope .el-cta-sub { font-size: .88rem; line-height: 1.7; color: rgba(245,240,232,.55); font-style: italic; font-family: 'Playfair Display', serif; margin-bottom: 2rem; }
+.lb-elope .el-cta-links { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+.lb-elope .el-cta-tertiary { display: inline-block; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(245,240,232,.6); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(184,150,78,.4); transition: color .3s; }
+.lb-elope .el-cta-tertiary:hover { color: var(--gold-lt); }
+
+/* ── Buttons ── */
+.lb-elope .btn-gold { display: inline-block; font-family: 'Alice', serif; font-size: .74rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; padding: .95rem 2.2rem; background: var(--gold); color: var(--green); border: 2px solid var(--gold); text-decoration: none; transition: all .3s; }
+.lb-elope .btn-gold:hover { background: transparent; border-color: var(--gold-lt); color: var(--gold-lt); }
+.lb-elope .btn-ghost { display: inline-block; font-family: 'Alice', serif; font-size: .74rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; padding: .95rem 2.2rem; background: transparent; color: var(--warm); border: 2px solid rgba(245,240,232,.45); text-decoration: none; transition: all .3s; }
+.lb-elope .btn-ghost:hover { border-color: var(--warm); color: var(--warm); }
+
+/* ── Reveal ── */
+.lb-elope .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+.lb-elope .reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ── Responsive ── */
+@media (max-width: 820px) {
+  .lb-elope .el-2col,
+  .lb-elope .el-region-in { grid-template-columns: 1fr; gap: 2rem; }
+}
+@media (max-width: 680px) {
+  .lb-elope .el-steps-grid,
+  .lb-elope .el-why-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+}
+@media (max-width: 520px) {
+  .lb-elope .btn-gold { display: block; text-align: center; }
+  .lb-elope .el-hero-btns { flex-direction: column; align-items: stretch; }
+  .lb-elope .el-table td, .lb-elope .el-table th { padding: .6rem .7rem; font-size: .76rem; }
+}
+</style>
+
+<div class="lb-elope">
+
+  <nav class="el-breadcrumb" aria-label="Breadcrumb">
+    <div class="el-breadcrumb-in">
+      <a href="/">Home</a>
+      <span class="sep">›</span>
+      <span class="current">Elopement in Ireland</span>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="el-hero">
+    <div class="el-hero-in">
+      <div class="el-ol ctr reveal">Elopements &amp; Intimate Weddings in Ireland</div>
+      <h1 class="reveal">Elopement in Ireland: <em>The Complete Guide</em> for U.S. Couples (2026–2027)</h1>
+      <p class="el-hero-sub reveal">
+        Your love story. Ireland's wild beauty. One perfect day.
+      </p>
+      <p class="el-hero-byline reveal">
+        Planning an elopement in Ireland from the U.S.? This guide covers everything: legal requirements, the best regions, seasonal timing, travel logistics, and how to avoid the mistakes that turn dream days into stressful ones.<br>
+        Written by Ladybird Ever After, an Ireland-based elopement planning company founded by an Irish-American couple who did exactly this themselves.
+      </p>
+      <div class="el-hero-btns reveal">
+        <a href="/get-in-touch" class="btn-gold">Get in Touch</a>
+        <a href="/packages" class="btn-ghost">View Our Packages</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Why Ireland ── -->
+  <section class="el-prose bg-cream">
+    <div class="el-prose-in reveal">
+      <div class="el-ol">The case for Ireland</div>
+      <h2>Why Get Married in Ireland? <em>(Elopement or Full Wedding)</em></h2>
+      <p>Choosing to get married in Ireland isn't just about picking a location — it's about choosing a completely different experience. While the average American wedding now exceeds $35,000 for a few hours in a ballroom, a destination wedding in Ireland offers a level of luxury, history, and atmosphere that is simply unattainable at that price point in the U.S.</p>
+
+      <h3>Why Choose a Destination Wedding in Ireland?</h3>
+      <p>For couples planning a full-scale celebration with family and friends, Ireland reframes what your budget can achieve.</p>
+      <ul>
+        <li><strong>Exclusive use venues:</strong> Instead of a four-hour window at a local hotel, your budget can secure the exclusive use of a 15th-century castle or a Georgian manor house for the entire weekend.</li>
+        <li><strong>Transparent all-inclusive pricing:</strong> Unlike U.S. venues that add surprise gratuities and "service taxes," Irish wedding venues typically bundle catering, staff, and décor into a single, transparent price. More of your money goes toward the experience, not the logistics.</li>
+        <li><strong>The famous Irish welcome:</strong> Irish hospitality culture ensures your guests feel genuinely celebrated rather than processed. Plus, the party doesn't end at 11pm — most Irish receptions run until 2:00 or 3:00am.</li>
+        <li><strong>Logistical ease:</strong> With no language barrier and direct flights from most major U.S. hubs, planning from abroad is remarkably stress-free.</li>
+      </ul>
+
+      <h3>The Magic of Eloping in Ireland</h3>
+      <p>If the "performance" of a traditional wedding doesn't suit you, eloping in Ireland offers total freedom and raw, natural beauty.</p>
+      <ul>
+        <li><strong>Epic landscapes:</strong> Imagine exchanging vows on a wild clifftop in Kerry, amidst ancient ruins in Connemara, or inside a hidden sea cave along the Causeway Coast.</li>
+        <li><strong>A day built for two:</strong> An Irish elopement removes the pressure of guest lists and timelines. It allows for an intimate, unhurried day focused entirely on your connection.</li>
+        <li><strong>Ultimate versatility:</strong> Within a single afternoon's drive, you can move from dramatic mountain passes to lush green boglands, providing a cinematic backdrop for your wedding photography that no single U.S. destination can match.</li>
+      </ul>
+
+      <h3>Practical Benefits for U.S. Couples</h3>
+      <ul>
+        <li><strong>The perfect honeymoon launchpad:</strong> You're already in Europe. Once the "I dos" are done, you're a short, inexpensive flight away from Paris, Rome, or London.</li>
+        <li><strong>Scenic variety:</strong> From the rugged Wild Atlantic Way to the historic castles of the Ancient East, the diversity of landscapes within a small radius is unparalleled.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── Who we are ── -->
+  <section class="el-about">
+    <div class="el-about-in">
+      <div class="el-ol reveal" style="color:var(--gold-lt);">Who we are</div>
+      <h2 class="reveal">Ladybird Ever After: <em>founded by a couple who lived this</em></h2>
+      <p class="reveal">Ladybird Ever After was founded by Laurence and Yasmeen, an Irish-American couple who bypassed the American wedding machine entirely and celebrated their own wedding in Ireland. That firsthand experience is our superpower.</p>
+      <p class="reveal">Yasmeen understands exactly what U.S. couples are walking away from. Laurence knows Ireland's landscapes, vendors, road conditions, and local access in a way that no planner operating from a laptop 4,000 miles away ever can. Together, we bridge those two worlds with a planning process that feels genuinely easy for our clients — from first enquiry to the moment you raise a glass at the end of your day.</p>
+      <p class="reveal">We're a boutique, all-inclusive planning company serving U.S. couples across the full island — Republic of Ireland and Northern Ireland both. We're also a registered U.S. entity (Atlanta, Georgia), which means you sign a single contract governed by U.S. law, pay in fixed USD, and are fully protected against currency fluctuations.</p>
+      <ul class="reveal">
+        <li>Founded by a couple who lived this path — we know both sides of the Atlantic intimately</li>
+        <li>All-inclusive planning with no hidden costs or surprise fees</li>
+        <li>No regional bias — we work across the entire island and choose locations based on what's right for you</li>
+        <li>Registered in the U.S. with a single USD contract for full client protection</li>
+        <li>Boutique model — limited couples per year means you get our full attention</li>
+      </ul>
+      <a href="/our-story" class="el-about-link reveal">Read More of Our Story</a>
+    </div>
+  </section>
+
+  <!-- ── Legal Guide ── -->
+  <section class="el-prose bg-warm">
+    <div class="el-prose-in reveal">
+      <div class="el-ol">Legal guide</div>
+      <h2>How to Elope in Ireland <em>as a U.S. Citizen</em></h2>
+      <p>This is the first question every U.S. couple asks, and the answer is more flexible than most expect. You have two paths.</p>
+
+      <h3>Option 1: Symbolic Ceremony in Ireland (Most Popular)</h3>
+      <p>The vast majority of U.S. couples we work with choose this route. You legally marry at home before you travel — at a courthouse or in a small civil ceremony — and then hold your symbolic ceremony in Ireland wherever you wish.</p>
+      <p>Why most couples choose this:</p>
+      <ul>
+        <li>No notice periods, government paperwork, or fees in Ireland</li>
+        <li>Complete location freedom — clifftops, ruins, beaches, private estates, anywhere</li>
+        <li>No requirement for a registered officiant or witnesses on the day</li>
+        <li>Maximum privacy, no restrictions</li>
+      </ul>
+      <p>Your symbolic ceremony is every bit as meaningful as a legal one. You write your own vows, choose your setting, and celebrate exactly as you wish. The only difference is where the paperwork happens.</p>
+
+      <h3>Option 2: Legally Binding Ceremony in Ireland</h3>
+      <p>If you want your Ireland ceremony to be the legal event, this is absolutely achievable — but it requires advance planning and the right documentation.</p>
+      <ul>
+        <li><strong>Republic of Ireland:</strong> Minimum three months' notice to the HSE. Original long-form birth certificates required. Ceremony must take place at a venue accessible to the public, with an approved officiant and two witnesses over 18.</li>
+        <li><strong>Northern Ireland:</strong> Statutory minimum of 28 days, but we strongly recommend 10–12 weeks to allow for document checks, immigration processing, and any delays.</li>
+      </ul>
+
+      <h3>Republic of Ireland vs Northern Ireland: Marriage Requirements</h3>
+      <p>Essential differences for planning your Irish wedding or elopement in 2026.</p>
+
+      <div class="el-table-wrap">
+        <table class="el-table">
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Republic of Ireland</th>
+              <th>Northern Ireland</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Minimum Notice</td><td>3 months — strict</td><td>28 days (10–12 weeks recommended)</td></tr>
+            <tr><td>Best Lead Time</td><td>9–12 months</td><td>10–12 weeks minimum</td></tr>
+            <tr><td>Notification Fee</td><td>€200</td><td>£44 (£22 per person)</td></tr>
+            <tr><td>Document Type</td><td>Marriage Registration Form (MRF / "Green Folder")</td><td>Marriage Schedule</td></tr>
+            <tr><td>Schedule Validity</td><td>6 months</td><td>12 months</td></tr>
+            <tr><td>Humanist Weddings</td><td>Legal since 2012</td><td>Legal since 2018</td></tr>
+            <tr><td>Minimum Age</td><td>18 — no exceptions</td><td>16 with parental consent</td></tr>
+            <tr><td>Witness Minimum Age</td><td>18+</td><td>16+</td></tr>
+            <tr><td>Immigration Checks</td><td>Moderate</td><td>Intensive — UK Home Office</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Regions ── -->
+  <section class="el-prose bg-cream">
+    <div class="el-prose-in reveal">
+      <div class="el-ol">Where to elope</div>
+      <h2>Where to Elope in Ireland: <em>Region by Region</em></h2>
+      <p>Ireland has extraordinary landscapes in every direction. The challenge isn't finding somewhere beautiful — it's choosing the region that genuinely works for your elopement day in real conditions. Here's our honest breakdown.</p>
+    </div>
+  </section>
+
+  <!-- ── Region: Northern Ireland / Causeway Coast ── -->
+  <section class="el-region" id="northern-ireland">
+    <div class="el-region-in">
+      <div class="reveal">
+        <p class="el-region-meta">Antrim · Down · Derry · Fermanagh</p>
+        <div class="el-ol">Most popular</div>
+        <h2>The <em>Causeway Coast</em>, Northern Ireland</h2>
+        <p>For most U.S. couples, the Causeway Coast delivers the best all-round elopement experience on the island — not just because of the scenery, but because of the planning mechanics. World-class locations are typically within 10–20 minutes of each other, meaning less time in a car and more time actually living your day.</p>
+        <p>The coastline's natural geography also provides genuine shelter options when weather shifts — which in Ireland, it always eventually does.</p>
+        <p>Key locations: <strong>Dunluce Castle</strong> — a 16th-century clifftop ruin where we secure access to adjacent private land away from the public footpath. <strong>Kinbane Castle</strong> — a profoundly isolated limestone headland with dramatic sea stack views. <strong>Mussenden Temple</strong> — an 18th-century rotunda perched 120 feet above the Atlantic. <strong>The Dark Hedges</strong> — most effective at dawn before tourist coaches arrive. <strong>Ballintoy Harbour</strong> — a sheltered cove ideal for intimate ceremonies close to the water.</p>
+        <a href="/regions-of-ireland/northern-ireland" class="el-region-link">Explore Northern Ireland</a>
+      </div>
+      <div class="reveal">
+        <div class="el-region-tag">Why couples choose the Causeway Coast</div>
+        <ul class="el-region-highlights">
+          <li>Dunluce Castle — 16th-century ruin with private land access</li>
+          <li>Kinbane Castle — isolated limestone headland, dramatic sea stacks</li>
+          <li>Mussenden Temple — rotunda perched 120ft above the Atlantic</li>
+          <li>The Dark Hedges — ancient beech tunnel, best at dawn</li>
+          <li>High location density — more ceremony time, less driving</li>
+          <li>Natural shelter options built into every location cluster</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Region: The South West ── -->
+  <section class="el-region" id="the-south-west">
+    <div class="el-region-in">
+      <div class="reveal">
+        <p class="el-region-meta">Kerry · Cork</p>
+        <div class="el-ol">Elopements in</div>
+        <h2>County Kerry &amp; <em>The Dingle Peninsula</em></h2>
+        <p>Kerry is breathtaking — arguably Ireland's most iconic coastal scenery. The Skellig Coast, Slea Head Drive, Minard Castle's storm-beach boulders, the glacial scale of the Gap of Dunloe. The photography potential here is extraordinary.</p>
+        <p>The planning trade-off is driving time. Locations are often 45–60 minutes apart on narrow, winding roads. Kerry works best for couples who want to base themselves in one area and sink into it, rather than those hoping to cover multiple dramatic spots in a single day.</p>
+        <a href="/regions-of-ireland/the-south-west" class="el-region-link">Explore the South West</a>
+      </div>
+      <div class="reveal">
+        <div class="el-region-tag">Why couples choose Kerry</div>
+        <ul class="el-region-highlights">
+          <li>Iconic lakeside castles with private ceremony spaces</li>
+          <li>Slea Head Drive — dramatic coastal scenery on the Dingle Peninsula</li>
+          <li>Minard Castle's storm-beach boulders — a unique setting</li>
+          <li>Gap of Dunloe — glacial mountain pass of extraordinary scale</li>
+          <li>Year-round lush greenery from the Gulf Stream climate</li>
+          <li>Cork Airport for easy international access</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Region: The West ── -->
+  <section class="el-region" id="the-west">
+    <div class="el-region-in">
+      <div class="reveal">
+        <p class="el-region-meta">Galway · Mayo · Clare</p>
+        <div class="el-ol">Elopements in</div>
+        <h2>County Galway <em>&amp; Connemara</em></h2>
+        <p>Connemara is "savage beauty" — peat bogs, quartzite mountains (the Twelve Bens), shimmering loughs, and crumbling stone walls. It has a melancholy, timeless quality that certain couples connect with deeply. Less crowd pressure than Kerry, a genuinely remote feeling even in peak season, and an aesthetic that photographs completely differently from the coastal cliffs.</p>
+        <p>Standout locations: The Sky Road for sunset Atlantic views, the Coral Beach for its unexpected white shoreline, Kylemore Abbey for Victorian Gothic drama set against the mountains.</p>
+        <a href="/regions-of-ireland/the-west" class="el-region-link">Explore the West</a>
+      </div>
+      <div class="reveal">
+        <div class="el-region-tag">Why couples choose Connemara</div>
+        <ul class="el-region-highlights">
+          <li>The Twelve Bens — quartzite mountains above vast bogland</li>
+          <li>Sky Road, Clifden — sunset Atlantic views</li>
+          <li>Kylemore Abbey — Victorian Gothic drama in the mountains</li>
+          <li>The Coral Beach — unexpected white shoreline in Connemara</li>
+          <li>Less crowd pressure than Kerry even in peak season</li>
+          <li>Shannon Airport — easy gateway for U.S. arrivals</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Region: The North West ── -->
+  <section class="el-region" id="the-north-west">
+    <div class="el-region-in">
+      <div class="reveal">
+        <p class="el-region-meta">Donegal · Sligo · Leitrim</p>
+        <div class="el-ol">Elopements in</div>
+        <h2>County <em>Donegal</em></h2>
+        <p>The most remote and private elopement destination on the island. Donegal's Slieve League cliffs are nearly three times the height of the Cliffs of Moher — one of the most humbling natural scales in Ireland. The Fanad Head Lighthouse and Glenveagh National Park offer a wilderness that feels genuinely untouched.</p>
+        <p>The logistics are real: Donegal is a long drive from most airports and locations are spread far apart. We recommend it for couples who are already planning an extended Ireland road trip and can give the region the time it deserves.</p>
+        <a href="/regions-of-ireland/the-north-west" class="el-region-link">Explore the North West</a>
+      </div>
+      <div class="reveal">
+        <div class="el-region-tag">Why couples choose Donegal</div>
+        <ul class="el-region-highlights">
+          <li>Slieve League — nearly 3× the height of the Cliffs of Moher</li>
+          <li>Fanad Head Lighthouse on a remote Atlantic peninsula</li>
+          <li>Glenveagh National Park — wilderness that feels truly untouched</li>
+          <li>Malin Head, Ireland's most northerly point</li>
+          <li>Vast, empty Atlantic beaches with no crowds</li>
+          <li>A genuine sense of remoteness few other regions can match</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Region: Clare / Cliffs of Moher ── -->
+  <section class="el-region" id="county-clare">
+    <div class="el-region-in">
+      <div class="reveal">
+        <p class="el-region-meta">County Clare</p>
+        <div class="el-ol">Elopements in</div>
+        <h2>County Clare: <em>Cliffs of Moher</em></h2>
+        <p>A ceremony at the Cliffs of Moher main visitor area at 2pm is one of the most common DIY mistakes we see. Over 1.5 million visitors per year. Bus tours in your background. Harsh midday light. Zero privacy.</p>
+        <p>We use <strong>Hag's Head</strong> instead — the quieter southern end of the same cliff system, accessible via private landowner arrangement, with equivalent drama and none of the crowds. This is the kind of local knowledge that only comes from being on the ground.</p>
+        <a href="/regions-of-ireland/the-west" class="el-region-link">Explore County Clare &amp; the West</a>
+      </div>
+      <div class="reveal">
+        <div class="el-region-tag">The Ladybird approach to Clare</div>
+        <ul class="el-region-highlights">
+          <li>Hag's Head — equivalent cliff drama, private landowner access</li>
+          <li>No tour buses, no crowds, complete privacy</li>
+          <li>Morning and evening timing for best light and solitude</li>
+          <li>The Burren's limestone pavements — otherworldly and unique</li>
+          <li>Loop Head Peninsula for dramatic clifftop alternatives</li>
+          <li>Shannon Airport just 45 minutes away</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Region: Ancient East / Estates ── -->
+  <section class="el-region" id="the-midlands-east">
+    <div class="el-region-in">
+      <div class="reveal">
+        <p class="el-region-meta">Wicklow · Kildare · Meath · Westmeath</p>
+        <div class="el-ol">Elopements in</div>
+        <h2>Ireland's Ancient East: <em>Estates &amp; Stately Homes</em></h2>
+        <p>For couples who want grandeur over wildness — Palladian architecture, manicured gardens, butler service — the Ancient East is the answer. <strong>Boyne Hill House (Meath):</strong> a hidden gem 35 minutes from Dublin with a Secret Garden and private tunnel. <strong>Bellinter House (Meath):</strong> Palladian masterpiece by Richard Cassels, balancing historic grandeur with a cool, retro-chic interior.</p>
+        <p><strong>Tinakilly Country House (Wicklow):</strong> A Victorian merchant prince's mansion with Irish Sea views and manicured gardens. <strong>Rathsallagh House (Wicklow):</strong> 530 acres of parkland, world-renowned for hospitality and food, with no room hire fees and a late-night residents' bar.</p>
+        <a href="/regions-of-ireland/the-midlands-east" class="el-region-link">Explore the Midlands &amp; East</a>
+      </div>
+      <div class="reveal">
+        <div class="el-region-tag">Why couples choose the Ancient East</div>
+        <ul class="el-region-highlights">
+          <li>Boyne Hill House — Secret Garden ceremony, 35 mins from Dublin</li>
+          <li>Bellinter House — Palladian architecture with relaxed modern spirit</li>
+          <li>Tinakilly Country House — Victorian manor, views of the Irish Sea</li>
+          <li>Rathsallagh House — 530 acres, no room hire fees, late-night bar</li>
+          <li>Glendalough — glacial valley with ancient monastic ruins</li>
+          <li>Newgrange and Hill of Tara — Ireland's oldest sacred sites</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Region: Dublin ── -->
+  <section class="el-region" id="dublin">
+    <div class="el-region-in">
+      <div class="reveal">
+        <p class="el-region-meta">Dublin · Wicklow · Kildare</p>
+        <div class="el-ol">Elopements in</div>
+        <h2>County Dublin: <em>Urban Elegance</em></h2>
+        <p>Dublin suits couples who want to pair a historic ceremony with Michelin-starred dining and high-end city living. Dublin City Hall offers a stunning Georgian rotunda for civil ceremonies. Howth Head and Castle — just 30 minutes from the city centre — delivers dramatic coastal cliffs without the four-hour drive west.</p>
+        <p>The city's energy makes it perfect for couples who want their wedding day to spill naturally into a celebration in a world-class restaurant or a night at a beautiful hotel. The most accessible city in Ireland for international arrivals.</p>
+        <a href="/regions-of-ireland/dublin" class="el-region-link">Explore Dublin</a>
+      </div>
+      <div class="reveal">
+        <div class="el-region-tag">Why couples choose Dublin</div>
+        <ul class="el-region-highlights">
+          <li>Dublin City Hall — Georgian rotunda for civil ceremonies</li>
+          <li>Howth Head — dramatic coastal cliffs 30 minutes from the city</li>
+          <li>Castle estates within 30 minutes of the city centre</li>
+          <li>Wicklow Mountains — a wild escape just south of Dublin</li>
+          <li>Dublin Airport, the most connected hub in Ireland</li>
+          <li>Michelin-starred restaurants for a post-ceremony celebration</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Region: South East ── -->
+  <section class="el-region" id="the-south-east">
+    <div class="el-region-in">
+      <div class="reveal">
+        <p class="el-region-meta">Wexford · Waterford · Kilkenny</p>
+        <div class="el-ol">Elopements in</div>
+        <h2>The <em>South East</em></h2>
+        <p>Ireland's sunniest corner is also one of its most historically rich. Medieval Kilkenny, ancient Hook Lighthouse, Tintern Abbey's estuary ruins, and the golden beaches of Wexford offer a warmth — in every sense — that surprises many visiting couples.</p>
+        <p>The Copper Coast UNESCO Geopark provides a dramatic backdrop of sea cliffs and coves for elopements that want scale without the crowds of the more visited western regions.</p>
+        <a href="/regions-of-ireland/the-south-east" class="el-region-link">Explore the South East</a>
+      </div>
+      <div class="reveal">
+        <div class="el-region-tag">Why couples choose the South East</div>
+        <ul class="el-region-highlights">
+          <li>Hook Lighthouse — one of the oldest lighthouses in the world</li>
+          <li>Kilkenny's medieval city and castle</li>
+          <li>Tintern Abbey ruins in ancient estuary woodland</li>
+          <li>The Copper Coast UNESCO Geopark</li>
+          <li>Ireland's highest sunshine hours</li>
+          <li>A quieter, more intimate feel than busier tourist regions</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Best time of year ── -->
+  <section class="el-prose bg-cream">
+    <div class="el-prose-in reveal">
+      <div class="el-ol">Seasonal timing</div>
+      <h2>Best Time of Year <em>to Elope in Ireland</em></h2>
+      <p>There's no single best month. Only better trade-offs depending on what matters most to you.</p>
+
+      <h3>April &amp; May: Our Quiet Favourite</h3>
+      <p>The landscape is at its most vivid green, wildflowers are appearing, and the summer crowds haven't arrived yet. Days are lengthening fast. May offers the best balance of good light, manageable weather, and calm locations — and it's the month we'd choose for ourselves.</p>
+
+      <h3>June, July &amp; August: Long Days, Busier Locations</h3>
+      <p>Sunset falls as late as 10:30pm on the northern coast in June — extraordinary for photography. The trade-off is crowd levels, which peak in July and August. Early morning ceremonies (8–9am starts) can still deliver total solitude even at popular locations. Summer is worth it if you plan around the light, not against it.</p>
+
+      <h3>September &amp; October: The Sweet Spot</h3>
+      <p>Autumn light in Ireland is softer, warmer, and more atmospheric than summer. Crowd levels drop sharply after mid-September. October brings dramatic skies, turning colours, and a cinematic quality to every landscape. Highly recommended for couples who prioritise photography and privacy equally.</p>
+
+      <h3>November through March: Maximum Privacy, Weather Dependent</h3>
+      <p>Winter elopements in Ireland are genuinely magical for the right couple. Short days, dramatic skies, fog-draped ruins, near-total solitude. The key is building genuine flexibility into your timeline — which is something we do as standard for every winter booking.</p>
+
+      <div class="el-table-wrap">
+        <table class="el-season-table">
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Weather &amp; Temperature</th>
+              <th>Crowd Levels &amp; Sunset Times</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>March – May</td>
+              <td>7–11°C (45–52°F). Spring blooms and baby lambs. Passing showers frequent.</td>
+              <td>Low–Medium. Sunsets 6:30pm – 9:00pm.</td>
+            </tr>
+            <tr>
+              <td>June – August</td>
+              <td>14–16°C (57–61°F). Warmest &amp; driest months. Vibrant landscapes.</td>
+              <td>High. Sunsets peak near 9:57pm.</td>
+            </tr>
+            <tr>
+              <td>Sept – Nov</td>
+              <td>7–13°C (45–56°F). Golden foliage and moody skies.</td>
+              <td>Medium–Low. Sunsets shift 8:00pm → 4:30pm.</td>
+            </tr>
+            <tr>
+              <td>Dec – Feb</td>
+              <td>5–7°C (41–45°F). Cold, damp, and highly atmospheric. High winds common.</td>
+              <td>Very Low. Early sunsets from 4:06pm. Meticulous planning required.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Ireland Weather: What to Actually Expect</h3>
+      <p>Ireland's weather is changeable, not extreme. The variable that matters most isn't rain — it's wind. Cloudy skies actually act as a natural softbox for photography, producing soft, flattering light that direct sun can't match. Wind on exposed coastlines is the real planning consideration.</p>
+      <p>This is why every timeline we build includes genuine shelter options and backup locations — not as a contingency, but as a built-in feature of how we plan. A weather shift in Ireland is normal. It shouldn't collapse your day.</p>
+    </div>
+  </section>
+
+  <!-- ── UK ETA Alert ── -->
+  <section class="el-prose bg-warm">
+    <div class="el-prose-in reveal">
+      <div class="el-alert">
+        <p class="el-alert-title">Critical Travel Alert: UK ETA Requirement (from 25 February 2026)</p>
+        <p>From 25 February 2026, all U.S. citizens require a UK Electronic Travel Authorisation (ETA) to enter Northern Ireland — including if you fly into Dublin and drive north.</p>
+        <ul>
+          <li>Cost: approximately £16 per person</li>
+          <li>Valid for multiple visits over 2 years once approved</li>
+          <li>Apply via gov.uk/eta/apply</li>
+          <li>Airlines will deny boarding without a valid ETA — apply before you book flights</li>
+          <li>The requirement applies the moment you cross the land border into Northern Ireland</li>
+        </ul>
+        <p>We include ETA guidance in our onboarding process for every couple with a Northern Ireland elopement and flag the deadline well in advance.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── The Ladybird Process ── -->
+  <section class="el-prose bg-cream">
+    <div class="el-prose-in reveal">
+      <div class="el-ol">How we work</div>
+      <h2>The Ladybird Process: <em>What All-Inclusive Actually Means</em></h2>
+      <p>We use the phrase all-inclusive deliberately, because for most planning companies it means a checklist. For us, it means you don't have to think about anything except showing up.</p>
+
+      <h3>Before You Arrive</h3>
+      <ul>
+        <li>In-depth discovery call to understand your vision, priorities, and travel plans</li>
+        <li>Region and location selection based on season, aesthetic, and logistics</li>
+        <li>Full vendor sourcing and booking — photographer, florist, hair &amp; makeup, celebrant or officiant</li>
+        <li>Accommodation recommendations chosen with travel flow and early starts in mind</li>
+        <li>Legal pathway guidance — symbolic or legal, we explain both clearly and handle whichever you choose</li>
+        <li>Detailed timeline creation built around light quality, tide times, and crowd patterns</li>
+        <li>Landowner permissions and access arrangements where required</li>
+        <li>UK ETA guidance for Northern Ireland elopements</li>
+        <li>Single USD contract with fixed pricing — no currency risk, no surprise fees</li>
+      </ul>
+
+      <h3>On Your Day</h3>
+      <ul>
+        <li>We are your single point of contact — no chasing vendors, no logistics on your wedding morning</li>
+        <li>Real-time weather monitoring in the days before with genuine backup plans ready</li>
+        <li>On-the-ground coordination so you experience your day rather than manage it</li>
+        <li>Calm, warm support throughout so you stay fully present with each other</li>
+      </ul>
+
+      <h3>After Your Day</h3>
+      <p>We handle the logistics of your gallery delivery. You'll receive your professional photos and cinematic film directly, meaning you can spend your honeymoon enjoying the memories instead of chasing down photographers or videographers. We also provide recommended honeymoon itineraries and mini-moon suggestions — London, Edinburgh, Paris, and Rome are all 1–2 hour flights from Dublin or Belfast.</p>
+    </div>
+  </section>
+
+  <!-- ── Common Mistakes ── -->
+  <section class="el-prose bg-warm">
+    <div class="el-prose-in reveal">
+      <div class="el-ol">Honest advice</div>
+      <h2>Common Mistakes <em>That Ruin Ireland Elopements</em></h2>
+      <p>The romanticised image of a DIY elopement — just you, a map, and a rental car — often meets a harsh reality check once you hit the rural Irish coastline. Here are the traps we see couples fall into most often.</p>
+
+      <div class="el-mistake">
+        <div class="el-mistake-num">01</div>
+        <h3>The "World Explorer" vs. the Local Expert</h3>
+        <p>Many international planners advertise elopements in Ireland, Italy, Bali, and Greece all on the same page. The reality? Many have never set foot on the island. You cannot "know" Ireland from a Google search. You need someone who knows which roads flood in November, which farmers will let you use their private field for a bottle of whiskey, and which vendors actually show up on time when the weather turns.</p>
+        <div class="el-tip"><strong>Expert tip:</strong> Never pay a planning fee unless you have a guaranteed total cost. At Ladybird Ever After, we provide one contract with a locked-in USD price. You'll never be surprised by a sudden "travel fee" or a shift in the Euro exchange rate.</div>
+      </div>
+
+      <div class="el-mistake">
+        <div class="el-mistake-num">02</div>
+        <h3>The Infrastructure &amp; "GPS Lie"</h3>
+        <p>If you're used to the wide, straight lanes of I-85 or the 405, driving in Ireland is going to be a culture shock. Ireland's rural roads are charming, but they are narrow and winding. A two-hour drive in Ireland is significantly more draining than a two-hour cruise down a U.S. interstate.</p>
+        <p>If Google Maps says a drive will take 60 minutes, budget 90. Between slow-moving tractors, stone walls that leave no room for error, and the inevitable sheep-blocked road, DIY couples frequently miss their sunset photography window because they underestimated the transit.</p>
+        <div class="el-tip"><strong>Expert insight:</strong> Don't spend your wedding day white-knuckling a steering wheel. We plan our timelines with "Irish time" in mind, ensuring you arrive at your ceremony relaxed and ready.</div>
+      </div>
+
+      <div class="el-mistake">
+        <div class="el-mistake-num">03</div>
+        <h3>Sourcing Vendors from 4,000 Miles Away</h3>
+        <p>Vetting local talent is difficult when you aren't on the ground. If you are determined to do it yourself — follow our Instagram, where we regularly tag our favourite local vendors, or send us a message. Seriously. If you're stuck on a location or need a recommendation, pop us a DM. We're happy to point you in the right direction.</p>
+      </div>
+
+      <div class="el-mistake">
+        <div class="el-mistake-num">04</div>
+        <h3>The "Vendor-First" Location Trap</h3>
+        <p>One of the most common mistakes U.S. couples make is booking their photographer or celebrant before they've finalised their location. Most photographers and celebrants are based in a specific region — they are naturally going to suggest locations in their backyard, and highly unlikely to encourage you to look at a setting that would require hours of travel for them.</p>
+        <p>When you lead with a single vendor, your scenic options are suddenly restricted to their backyard. You might miss out on the location of your dreams simply because it wasn't convenient for the first person you hired.</p>
+        <div class="el-tip"><strong>The Ladybird advantage:</strong> Because we are experience-led planners who work across the entire island, we have no regional bias. We bring the right team to the right location — not the other way around.</div>
+      </div>
+
+      <div class="el-mistake">
+        <div class="el-mistake-num">05</div>
+        <h3>Choosing Your Level of Stress</h3>
+        <p>A DIY elopement in a foreign country will be stressful. You are the point of contact for every delivery, every weather delay, and every legal hiccup. If you want to spend your wedding morning drinking coffee and looking at the ocean rather than calling a lost florist, that's where we come in. We offer a white-glove, one-contract experience where your only job is to show up and be present.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Extending the trip ── -->
+  <section class="el-prose bg-cream">
+    <div class="el-prose-in reveal">
+      <div class="el-ol">The bigger picture</div>
+      <h2>Extending Your Trip: <em>The Ireland Elopement Honeymoon</em></h2>
+      <p>Most couples treat the elopement as the centrepiece of a longer Ireland trip rather than a standalone event. We recommend building your travel around the elopement, not squeezing it in.</p>
+      <p>A structure many couples love:</p>
+      <ul>
+        <li><strong>2–3 days before:</strong> arrive, settle in, explore your region at a slow pace</li>
+        <li><strong>Wedding day:</strong> your centrepiece — fully planned, perfectly timed</li>
+        <li><strong>3–5 days after:</strong> drive somewhere new, follow your curiosity, decompress</li>
+      </ul>
+      <p>Many couples also add a European mini-moon. Dublin and Belfast both have excellent connections to London, Edinburgh, Paris, Rome, and Amsterdam — often short flights and inexpensive. Wild Irish coastline followed by a few days in a European city is a combination that rarely disappoints.</p>
+    </div>
+  </section>
+
+  <!-- ── FAQ ── -->
+  <section class="el-prose bg-warm">
+    <div class="el-prose-in reveal">
+      <div class="el-ol">Common questions</div>
+      <h2>Frequently Asked Questions <em>About Eloping &amp; Getting Married in Ireland</em></h2>
+
+      <div class="el-faq-item">
+        <p class="el-faq-q">How much does it cost to elope in Ireland from the US?</p>
+        <p class="el-faq-a">The total cost of eloping in Ireland from the US typically ranges from $8,000 to $20,000 depending on your choices. This covers flights (roughly $900–$1,400 per person from most U.S. hubs), accommodation, a planning package, photographer, florist, hair and makeup, and any ceremony costs. A full destination wedding with guests costs more, but almost always comes in well below the $35,000+ average for a comparable U.S. wedding — and what your budget buys in Ireland is incomparably better.</p>
+      </div>
+
+      <div class="el-faq-item">
+        <p class="el-faq-q">Is an elopement or wedding in Ireland legally valid in the US?</p>
+        <p class="el-faq-a">Yes — a legally binding ceremony performed in Ireland is recognised in the United States. You'll receive an Irish marriage certificate, which is accepted as legal proof of marriage by U.S. authorities. If you opt for a symbolic ceremony in Ireland and complete the legal paperwork at a U.S. courthouse first, your American marriage certificate is your legal document and is equally valid everywhere.</p>
+      </div>
+
+      <div class="el-faq-item">
+        <p class="el-faq-q">Do US citizens need a visa to get married in Ireland?</p>
+        <p class="el-faq-a">No visa is required for U.S. citizens visiting Ireland for stays under 90 days. However, from 25 February 2026, a UK Electronic Travel Authorisation (ETA) is required to enter Northern Ireland — even if you fly into Dublin and drive north. The ETA costs approximately £16 per person and is applied for online via GOV.UK before travel.</p>
+      </div>
+
+      <div class="el-faq-item">
+        <p class="el-faq-q">What documents do US citizens need to get married legally in Ireland?</p>
+        <p class="el-faq-a">For a legal ceremony in the Republic of Ireland, you'll need valid passports (with at least 6 months remaining validity), original long-form birth certificates (not the short version), and if either partner has been previously married, official documentation proving the marriage ended — a divorce decree or death certificate. Northern Ireland has similar requirements. We handle all document coordination for our couples.</p>
+      </div>
+
+      <div class="el-faq-item">
+        <p class="el-faq-q">Can I get married in Ireland if I've been divorced?</p>
+        <p class="el-faq-a">Yes. Divorced U.S. citizens can legally marry in Ireland. You'll need to provide your original divorce decree as proof that your previous marriage has legally ended. It's important to bring official documentation rather than copies, and to factor in additional processing time if documents need to be translated or certified. We manage this process for all our couples.</p>
+      </div>
+
+      <div class="el-faq-item">
+        <p class="el-faq-q">What is a symbolic ceremony in Ireland and is it meaningful?</p>
+        <p class="el-faq-a">A symbolic ceremony is a personal, heartfelt ceremony that is not legally binding — you complete the legal paperwork at a U.S. courthouse before or after your trip, and hold your symbolic ceremony in Ireland wherever you choose. It is every bit as meaningful, emotional, and "real" as a legal ceremony. The vast majority of U.S. couples we work with choose this route because it gives them complete freedom over location, no advance paperwork in Ireland, and total privacy — without a registrar or government oversight on the day.</p>
+      </div>
+
+      <div class="el-faq-item">
+        <p class="el-faq-q">Can you legally elope on private property in Ireland?</p>
+        <p class="el-faq-a">For a legally binding ceremony in the Republic of Ireland, the location must have a postal address or be an identifiable public landmark — private property is not permitted for legal ceremonies. For Northern Ireland, similar restrictions apply. This is one of the key reasons most U.S. couples choose a symbolic ceremony instead: a symbolic ceremony can take place absolutely anywhere — a private clifftop, a farmer's field, a hidden beach — with no location restrictions whatsoever.</p>
+      </div>
+
+      <div class="el-faq-item">
+        <p class="el-faq-q">What is handfasting and can we include it in our Irish ceremony?</p>
+        <p class="el-faq-a">Handfasting is an ancient Celtic ritual where the couple's hands are bound together with ribbon or cord — the literal origin of the phrase "tying the knot." It can be incorporated into both symbolic and legal ceremonies in Ireland and is a beautiful way to connect your ceremony to Irish heritage and tradition. It's one of our most requested ceremony elements from U.S. couples.</p>
+      </div>
+
+      <div class="el-faq-item">
+        <p class="el-faq-q">How far in advance do we need to plan an elopement in Ireland?</p>
+        <p class="el-faq-a">We recommend starting the planning process 6–12 months before your intended date. This allows time to secure your preferred vendors, accommodation, and locations — all of which book up, especially in peak season. If you're planning a legally binding ceremony, you also need to factor in the notice periods (3 months minimum for the Republic, 28 days for Northern Ireland). We have planned elopements at 30 days' notice, but earlier always means calmer.</p>
+      </div>
+
+      <div class="el-faq-item">
+        <p class="el-faq-q">What is the difference between an elopement and a destination wedding in Ireland?</p>
+        <p class="el-faq-a">An elopement typically means just the two of you, or a very small group of up to 10 people, with a ceremony in a wild or intimate outdoor setting. A destination wedding involves more guests (usually 10–100+), a licensed venue, catering, and a full reception. Ladybird Ever After plans both — and many couples fall somewhere in between, with a small outdoor ceremony followed by a private dinner at a castle or country house.</p>
+      </div>
+
+      <div class="el-faq-item">
+        <p class="el-faq-q">What should I wear to elope in Ireland?</p>
+        <p class="el-faq-a">The most important consideration is practicality alongside style. Ireland's coastal landscapes often involve uneven ground, grass, and wind — so footwear matters as much as your dress or suit. Lightweight fabrics that move in the breeze photograph beautifully. Layers are your friend in all seasons. We advise every couple on what to expect from their specific location and time of year so you arrive prepared and comfortable, not caught off guard.</p>
+      </div>
+
+      <div class="el-faq-item">
+        <p class="el-faq-q">Can we get married in an Irish castle?</p>
+        <p class="el-faq-a">Yes — and this is one of Ireland's great advantages. Ireland has over 30,000 castles and ruins, ranging from privately owned working estates that can be exclusively hired for a full weekend wedding, to atmospheric ruins on clifftops where you can hold a symbolic ceremony. We work with both. The experience of exclusive-use castle hire in Ireland is genuinely incomparable to anything available at a similar price point in the United States.</p>
+      </div>
+
+      <div class="el-faq-item">
+        <p class="el-faq-q">Is same-sex marriage legal in Ireland?</p>
+        <p class="el-faq-a">Yes. Same-sex marriage is fully legal and equally recognised in both the Republic of Ireland (since 2015) and Northern Ireland (since 2020). All couples receive the same legal rights and recognition. We warmly welcome and celebrate all couples.</p>
+      </div>
+
+      <div class="el-faq-item">
+        <p class="el-faq-q">Do we need witnesses for our ceremony in Ireland?</p>
+        <p class="el-faq-a">For a legally binding ceremony in either the Republic of Ireland or Northern Ireland, two adult witnesses must be present. For a symbolic ceremony, witnesses are not legally required — it can be just the two of you. If witnesses are needed and you're eloping privately, this can be arranged discreetly without altering the feel of your day.</p>
+      </div>
+
+      <div class="el-faq-item">
+        <p class="el-faq-q">How long should we spend in Ireland for our elopement or wedding?</p>
+        <p class="el-faq-a">We recommend a minimum of 7 days, and ideally 10–14. This gives you time to arrive, settle in, and decompress from travel before your ceremony — and time to explore and enjoy Ireland afterwards without feeling rushed. Many couples use Ireland as the launchpad for a European honeymoon, with short inexpensive flights from Dublin or Belfast to cities like London, Paris, Rome, or Edinburgh.</p>
+      </div>
+
+      <div class="el-faq-item">
+        <p class="el-faq-q">Is it safe to drive in Ireland as an American?</p>
+        <p class="el-faq-a">Ireland is very safe, but driving takes adjustment. Roads are narrower than most U.S. drivers are used to, particularly in rural areas, and you drive on the left. If Google Maps says a journey takes 60 minutes, budget 90 — tractors, sheep, and single-track coastal roads are all real variables. We build "Irish time" into every timeline we create so you arrive at your ceremony relaxed, not stressed from the drive.</p>
+      </div>
+
+      <div class="el-faq-item">
+        <p class="el-faq-q">What currency does Ireland use?</p>
+        <p class="el-faq-a">The Republic of Ireland uses the Euro (€). Northern Ireland uses the British Pound Sterling (£) as it is part of the UK. If your elopement includes both jurisdictions — crossing from the Republic into Northern Ireland — you may want a small amount of both currencies, though card payments are widely accepted almost everywhere.</p>
+      </div>
+
+      <div class="el-faq-item">
+        <p class="el-faq-q">Can we include Irish cultural traditions in our ceremony?</p>
+        <p class="el-faq-a">Absolutely — and we'd encourage it. Popular Irish ceremony traditions include handfasting (binding hands with cord or ribbon), a Claddagh ring exchange, a Celtic love knot blessing, and including traditional Irish music or poetry. These elements work beautifully in both symbolic and legal ceremonies and are a meaningful way to connect your day to the place you've chosen.</p>
+      </div>
+
+      <div class="el-faq-item">
+        <p class="el-faq-q">What happens if it rains on our elopement day?</p>
+        <p class="el-faq-a">Honestly? Some of our most beautiful elopement days have had rain. Soft celtic mist over cliffs, dramatic skies, puddles catching the light — Ireland in the rain is cinematic in a way that a blue-sky day sometimes isn't. That said, we always have genuine backup plans built into every timeline, not as a last resort, but as a standard part of how we plan. Weather in Ireland is changeable, not catastrophic — and with the right planning, it rarely collapses a day.</p>
+      </div>
+
+      <div class="el-faq-item">
+        <p class="el-faq-q">Do you plan destination weddings as well as elopements in Ireland?</p>
+        <p class="el-faq-a">Yes. Ladybird Ever After plans both intimate elopements and full destination weddings across Ireland and Northern Ireland. Whether you're envisioning just the two of you on a clifftop at sunrise, or a 60-person celebration in an exclusive-use Georgian manor, we build every event from scratch around your specific vision. Many couples also fall somewhere in between — a small outdoor ceremony for 15 guests followed by a private dinner. Get in touch and we'll find the format that fits you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="el-cta">
+    <div class="el-cta-in">
+      <div class="el-ol ctr reveal" style="color:var(--gold-lt);">Ready to begin?</div>
+      <h2 class="reveal">Start planning your <em>Ireland elopement</em></h2>
+      <p class="el-cta-sub reveal">Ladybird Ever After takes on a limited number of couples each year to ensure every elopement gets the full attention it deserves. If you're thinking about 2026 or 2027, now is the right time to get in touch.</p>
+      <div class="el-cta-links reveal">
+        <a href="/get-in-touch" class="btn-gold">Get in Touch</a>
+        <a href="/packages" class="btn-ghost">View Our Packages</a>
+      </div>
+      <a href="/happy-couples" class="el-cta-tertiary reveal">See Real Couple Stories</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  const revealEls = document.querySelectorAll('.lb-elope .reveal');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('in'), i * 60);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+    revealEls.forEach(el => obs.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+}());
+</script>

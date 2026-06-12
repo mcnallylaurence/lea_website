@@ -1,0 +1,713 @@
+{
+  "brand": {
+    "name": "Ladybird Ever After",
+    "abbreviation": "LEA",
+    "market": "Republic of Ireland",
+    "year": 2026,
+    "currency": "USD",
+    "fx_note": "All USD prices use EUR->USD rate of 1.26 (5% safety factor applied to today's rate of ~1.154)",
+    "contact": {
+      "email": "info@ladybirdeverafter.com",
+      "phone": "+1 (770) 826-6446"
+    },
+    "data_basis": "198 real proposals across 12 months",
+    "positioning": "US-based concierge wedding planning service for couples marrying in Ireland. One US-based contract in USD, one point of contact, full vendor management.",
+    "package_philosophy": "Guest counts are routing guidance used on intro calls — not hard contractual limits. Vendor cost variations at margins are absorbed within package margin and never passed on as line items."
+  },
+  "fx": {
+    "eur_to_usd_today": 1.1538,
+    "eur_to_usd_30_days": 1.1612,
+    "eur_to_usd_90_days": 1.1728,
+    "eur_to_usd_1_year": 1.0905,
+    "eur_to_usd_h1_2026_industry_expectation": 1.2000,
+    "eur_to_usd_with_safety_factor": 1.2600,
+    "safety_factor_pct": 5,
+    "addon_margin_multiplier": 1.3
+  },
+  "package_categories": {
+    "elopement": {
+      "description": "Intimate ceremonies with a small number of guests. Adventure-focused, flexible locations across Ireland. Designed for couples who want a deeply personal experience without the formality of a traditional wedding.",
+      "packages": ["failte", "gra"]
+    },
+    "wedding": {
+      "description": "Walk-down-the-aisle weddings with a full ceremony feel. Structured planning with a dedicated wedding planner, reception planning, and support for guest logistics.",
+      "packages": ["slainte", "ard"]
+    }
+  },
+  "packages": {
+    "failte": {
+      "display_name": "Fáilte",
+      "category": "elopement",
+      "guest_guidance": {
+        "min": 2,
+        "max": 4,
+        "note": "Guidance only — not a contractual limit"
+      },
+      "price": {
+        "rounded_usd": 4900,
+        "cogs_usd": 2016,
+        "planning_fee_usd": 2850,
+        "net_profit_usd": 2711,
+        "gross_margin_pct": 55.33
+      },
+      "sales_performance": {
+        "close_rate_pct": 33,
+        "expected_profit_per_proposal_usd": 894,
+        "strategic_role": "Entry-point elopement — captures intimate couples and feeds pipeline"
+      },
+      "target_audience": "Two-person elopements and very small intimate ceremonies. Couples who want to elope in Ireland with minimal guests — often just the two of them or with 1–2 witnesses. Budget-conscious relative to other packages but still full-service.",
+      "included": [
+        {
+          "item": "Expert Irish celebrant",
+          "cost_usd": 882,
+          "note": "Included in base price"
+        },
+        {
+          "item": "2-hour elopement photography",
+          "cost_usd": 1134,
+          "note": "Base photography tier for this package. Upgrade options available."
+        },
+        {
+          "item": "Venue curation and booking",
+          "cost_usd": 0,
+          "note": "LEA-delivered service. All venue communications and contracts handled on couple's behalf."
+        },
+        {
+          "item": "Legal marriage guidance",
+          "cost_usd": 0,
+          "note": "Full support navigating Irish marriage paperwork and timelines"
+        },
+        {
+          "item": "US-based contract in USD",
+          "cost_usd": 0,
+          "note": "One invoice, one point of contact, no international transfers"
+        },
+        {
+          "item": "Unlimited planning calls with dedicated elopement planner",
+          "cost_usd": 0,
+          "note": "No session limits or restrictions"
+        },
+        {
+          "item": "Travel guidance — all of Ireland",
+          "cost_usd": 0,
+          "note": "Full trip guidance, not just the wedding location"
+        },
+        {
+          "item": "Dinner reservation coordination",
+          "cost_usd": 0,
+          "note": "LEA-delivered. Securing the right restaurant for the couple post-ceremony."
+        }
+      ],
+      "not_included": [
+        "Flowers / bouquet & buttonhole",
+        "Hair stylist",
+        "Makeup artist",
+        "Day-after dinner planning",
+        "Reception planning",
+        "On-the-day coordinator",
+        "Guest hotline",
+        "Hotel room block coordination"
+      ],
+      "addons": [
+        {
+          "item": "3-hour elopement photography upgrade",
+          "price_adjustment_usd": 400,
+          "direction": "upgrade"
+        },
+        {
+          "item": "4-hour elopement photography upgrade",
+          "price_adjustment_usd": 800,
+          "direction": "upgrade"
+        },
+        {
+          "item": "Flowers / bouquet & buttonhole",
+          "price_adjustment_usd": 500,
+          "direction": "addon"
+        },
+        {
+          "item": "Hair stylist",
+          "price_adjustment_usd": 500,
+          "direction": "addon"
+        },
+        {
+          "item": "Makeup artist",
+          "price_adjustment_usd": 500,
+          "direction": "addon"
+        },
+        {
+          "item": "Vintage car",
+          "price_adjustment_usd": 1000,
+          "direction": "addon"
+        },
+        {
+          "item": "On-the-day coordinator",
+          "price_adjustment_usd": 1800,
+          "direction": "addon"
+        },
+        {
+          "item": "Ceremony music",
+          "price_adjustment_usd": 980,
+          "direction": "addon"
+        },
+        {
+          "item": "Wedding venue scouting",
+          "price_adjustment_usd": 800,
+          "direction": "addon"
+        },
+        {
+          "item": "Welcome dinner planning",
+          "price_adjustment_usd": 700,
+          "direction": "addon"
+        },
+        {
+          "item": "Day 2 planning",
+          "price_adjustment_usd": 700,
+          "direction": "addon"
+        },
+        {
+          "item": "Guest hotline",
+          "price_adjustment_usd": 700,
+          "direction": "addon"
+        },
+        {
+          "item": "Hotel room block coordination",
+          "price_adjustment_usd": 400,
+          "direction": "addon"
+        },
+        {
+          "item": "Church wedding supplement",
+          "price_adjustment_usd": 300,
+          "direction": "addon"
+        },
+        {
+          "item": "Additional hair or makeup (per person)",
+          "price_adjustment_usd": 150,
+          "direction": "addon"
+        }
+      ],
+      "sales_routing": "Lead with Fáilte for 2–4 guest enquiries. If couple's vision feels larger or they mention wanting more on the day, explore Grá."
+    },
+    "gra": {
+      "display_name": "Grá",
+      "category": "elopement",
+      "guest_guidance": {
+        "min": 5,
+        "max": 12,
+        "note": "Guidance only — not a contractual limit. Photography vendor uses elopement rate up to 12 guests."
+      },
+      "price": {
+        "rounded_usd": 6800,
+        "cogs_usd": 3282,
+        "planning_fee_usd": 3500,
+        "net_profit_usd": 3518,
+        "gross_margin_pct": 51.73
+      },
+      "sales_performance": {
+        "close_rate_pct": 40,
+        "expected_profit_per_proposal_usd": 1407,
+        "strategic_role": "Solid mid-tier elopement — most popular with close family groups. Monitor close rate before any price adjustment."
+      },
+      "target_audience": "Small group elopements — couples bringing close family or a small circle of friends. The ceremony still feels intimate and adventure-led but with more people to share it. Common profile: couple + parents + 1–2 siblings or best friends.",
+      "included": [
+        {
+          "item": "Expert Irish celebrant",
+          "cost_usd": 882,
+          "note": "Included in base price"
+        },
+        {
+          "item": "3-hour elopement photography",
+          "cost_usd": 1386,
+          "note": "Mid-tier elopement photography. Upgrade or downgrade available."
+        },
+        {
+          "item": "Flowers / bouquet & buttonhole",
+          "cost_usd": 340,
+          "note": "Included at base price"
+        },
+        {
+          "item": "Hair stylist",
+          "cost_usd": 340,
+          "note": "Included at base price"
+        },
+        {
+          "item": "Makeup artist",
+          "cost_usd": 334,
+          "note": "Included at base price"
+        },
+        {
+          "item": "Venue curation and booking",
+          "cost_usd": 0,
+          "note": "LEA-delivered"
+        },
+        {
+          "item": "Legal marriage guidance",
+          "cost_usd": 0
+        },
+        {
+          "item": "US-based contract in USD",
+          "cost_usd": 0
+        },
+        {
+          "item": "Unlimited planning calls with dedicated elopement planner",
+          "cost_usd": 0
+        },
+        {
+          "item": "Travel guidance — all of Ireland",
+          "cost_usd": 0
+        },
+        {
+          "item": "Dinner reservation coordination",
+          "cost_usd": 0,
+          "note": "LEA-delivered"
+        },
+        {
+          "item": "Day-after dinner planning",
+          "cost_usd": 0,
+          "note": "LEA-delivered. Included from Grá upward."
+        }
+      ],
+      "not_included": [
+        "Reception planning",
+        "On-the-day coordinator",
+        "Guest hotline",
+        "Hotel room block coordination"
+      ],
+      "addons": [
+        {
+          "item": "4-hour elopement photography upgrade",
+          "price_adjustment_usd": 400,
+          "direction": "upgrade"
+        },
+        {
+          "item": "2-hour elopement photography downgrade",
+          "price_adjustment_usd": -400,
+          "direction": "reduction"
+        },
+        {
+          "item": "Vintage car",
+          "price_adjustment_usd": 1000,
+          "direction": "addon"
+        },
+        {
+          "item": "On-the-day coordinator",
+          "price_adjustment_usd": 1800,
+          "direction": "addon"
+        },
+        {
+          "item": "Ceremony music",
+          "price_adjustment_usd": 980,
+          "direction": "addon"
+        },
+        {
+          "item": "Wedding venue scouting",
+          "price_adjustment_usd": 800,
+          "direction": "addon"
+        },
+        {
+          "item": "Welcome dinner planning",
+          "price_adjustment_usd": 700,
+          "direction": "addon"
+        },
+        {
+          "item": "Day 2 planning",
+          "price_adjustment_usd": 700,
+          "direction": "addon"
+        },
+        {
+          "item": "Guest hotline",
+          "price_adjustment_usd": 700,
+          "direction": "addon"
+        },
+        {
+          "item": "Hotel room block coordination",
+          "price_adjustment_usd": 400,
+          "direction": "addon"
+        },
+        {
+          "item": "Church wedding supplement",
+          "price_adjustment_usd": 300,
+          "direction": "addon"
+        },
+        {
+          "item": "Additional hair or makeup (per person)",
+          "price_adjustment_usd": 150,
+          "direction": "addon"
+        }
+      ],
+      "sales_routing": "Lead with Grá for 5–12 guest enquiries. For couples at 10–12 guests, explore whether Sláinte better fits their vision — especially if they want reception planning or a more formal ceremony feel."
+    },
+    "slainte": {
+      "display_name": "Sláinte",
+      "category": "wedding",
+      "guest_guidance": {
+        "min": 13,
+        "max": 25,
+        "note": "Guidance only. Photography vendor switches to wedding rate above 12 guests — this cost difference is absorbed within the package margin and invisible to the couple."
+      },
+      "price": {
+        "rounded_usd": 8700,
+        "cogs_usd": 3786,
+        "planning_fee_usd": 4900,
+        "net_profit_usd": 4914,
+        "gross_margin_pct": 56.48
+      },
+      "sales_performance": {
+        "close_rate_pct": 75,
+        "expected_profit_per_proposal_usd": 3686,
+        "strategic_role": "Best converter in the portfolio. Highest expected profit per proposal — more than double any other package. Routing 13–25 guest enquiries here is the single highest-return action available.",
+        "performance_flag": "PRIORITY — do not route 13–25 guest couples to Ard by default"
+      },
+      "target_audience": "Couples who want a real wedding ceremony with guests — walking down the aisle, a dedicated wedding planner, and a structured day — but in an intimate Irish setting rather than a large venue. Typical profile: couple + 13–25 guests, often destination wedding from the US. Wants the full wedding feel without the scale of a traditional large wedding.",
+      "included": [
+        {
+          "item": "Expert Irish celebrant",
+          "cost_usd": 882,
+          "note": "Included at base price"
+        },
+        {
+          "item": "4-hour wedding photography",
+          "cost_usd": 1890,
+          "note": "Wedding-rate photography (vs elopement rate in Fáilte/Grá). Upgrade and downgrade available."
+        },
+        {
+          "item": "Flowers / bouquet & buttonhole",
+          "cost_usd": 340
+        },
+        {
+          "item": "Hair stylist",
+          "cost_usd": 340
+        },
+        {
+          "item": "Makeup artist",
+          "cost_usd": 334
+        },
+        {
+          "item": "Venue curation and booking",
+          "cost_usd": 0,
+          "note": "LEA-delivered"
+        },
+        {
+          "item": "Legal marriage guidance",
+          "cost_usd": 0
+        },
+        {
+          "item": "US-based contract in USD",
+          "cost_usd": 0
+        },
+        {
+          "item": "Unlimited planning calls with dedicated wedding planner",
+          "cost_usd": 0,
+          "note": "Wedding planner (not elopement planner) from Sláinte upward"
+        },
+        {
+          "item": "Travel guidance — all of Ireland",
+          "cost_usd": 0
+        },
+        {
+          "item": "Welcome dinner planning",
+          "cost_usd": 0,
+          "note": "LEA-delivered. Securing pre-wedding dinner for the group."
+        },
+        {
+          "item": "Day-after dinner planning",
+          "cost_usd": 0,
+          "note": "LEA-delivered"
+        },
+        {
+          "item": "Reception planning",
+          "cost_usd": 0,
+          "note": "LEA-delivered. Previously listed as reception coordination — renamed to reception planning. No external vendor cost."
+        },
+        {
+          "item": "Hotel room block coordination",
+          "cost_usd": 0,
+          "note": "LEA-delivered. Included from Sláinte upward."
+        }
+      ],
+      "not_included": [
+        "On-the-day coordinator (available as add-on)",
+        "Guest hotline (available as add-on)"
+      ],
+      "addons": [
+        {
+          "item": "Half-day wedding photography upgrade",
+          "price_adjustment_usd": 1500,
+          "direction": "upgrade"
+        },
+        {
+          "item": "Full-day wedding photography upgrade",
+          "price_adjustment_usd": 2500,
+          "direction": "upgrade"
+        },
+        {
+          "item": "2-hour wedding photography downgrade",
+          "price_adjustment_usd": -800,
+          "direction": "reduction"
+        },
+        {
+          "item": "Vintage car",
+          "price_adjustment_usd": 1000,
+          "direction": "addon"
+        },
+        {
+          "item": "On-the-day coordinator",
+          "price_adjustment_usd": 1800,
+          "direction": "addon"
+        },
+        {
+          "item": "Ceremony music",
+          "price_adjustment_usd": 980,
+          "direction": "addon"
+        },
+        {
+          "item": "Day 2 planning",
+          "price_adjustment_usd": 700,
+          "direction": "addon"
+        },
+        {
+          "item": "Guest hotline",
+          "price_adjustment_usd": 700,
+          "direction": "addon"
+        },
+        {
+          "item": "Church wedding supplement",
+          "price_adjustment_usd": 300,
+          "direction": "addon"
+        },
+        {
+          "item": "Additional hair or makeup (per person)",
+          "price_adjustment_usd": 150,
+          "direction": "addon"
+        }
+      ],
+      "sales_routing": "Default package for all 13–25 guest enquiries. Do not route to Ard unless couple explicitly needs on-the-day coordinator and guest hotline as standard inclusions. For 20–25 guest couples, default to Sláinte — the close rate difference is significant."
+    },
+    "ard": {
+      "display_name": "Ard",
+      "category": "wedding",
+      "guest_guidance": {
+        "min": 26,
+        "max": 50,
+        "note": "Guidance only — not a contractual limit"
+      },
+      "price": {
+        "rounded_usd": 9800,
+        "cogs_usd": 4731,
+        "planning_fee_usd": 5100,
+        "net_profit_usd": 5069,
+        "gross_margin_pct": 51.72
+      },
+      "sales_performance": {
+        "close_rate_pct": 30,
+        "expected_profit_per_proposal_usd": 1521,
+        "strategic_role": "Highest profit per win in the portfolio. Close rate is the constraint — not the price. Focus on routing accuracy and photography upgrade conversations.",
+        "performance_flag": "Close rate recovery from 30% to historical 37% would raise expected profit per proposal to ~$1,876"
+      },
+      "target_audience": "Couples hosting a full destination wedding in Ireland with a larger guest group. Wants the complete experience: dedicated wedding planner, on-the-day coordinator, guest hotline, reception planning, and comprehensive photography coverage. Often more logistically complex — hotel blocks, larger welcome dinners, multi-day events.",
+      "included": [
+        {
+          "item": "Expert Irish celebrant",
+          "cost_usd": 882
+        },
+        {
+          "item": "4-hour wedding photography",
+          "cost_usd": 1890,
+          "note": "Base photography. Upgrade to half-day or full-day strongly recommended for groups this size."
+        },
+        {
+          "item": "Flowers / bouquet & buttonhole",
+          "cost_usd": 340
+        },
+        {
+          "item": "Hair stylist",
+          "cost_usd": 340
+        },
+        {
+          "item": "Makeup artist",
+          "cost_usd": 334
+        },
+        {
+          "item": "On-the-day coordinator (6 hours)",
+          "cost_usd": 945,
+          "note": "Included as standard in Ard. Add-on in Sláinte and below."
+        },
+        {
+          "item": "Venue curation and booking",
+          "cost_usd": 0,
+          "note": "LEA-delivered"
+        },
+        {
+          "item": "Legal marriage guidance",
+          "cost_usd": 0
+        },
+        {
+          "item": "US-based contract in USD",
+          "cost_usd": 0
+        },
+        {
+          "item": "Unlimited planning calls with dedicated wedding planner",
+          "cost_usd": 0
+        },
+        {
+          "item": "Travel guidance — all of Ireland",
+          "cost_usd": 0
+        },
+        {
+          "item": "Welcome dinner planning",
+          "cost_usd": 0,
+          "note": "LEA-delivered"
+        },
+        {
+          "item": "Day-after dinner planning",
+          "cost_usd": 0,
+          "note": "LEA-delivered"
+        },
+        {
+          "item": "Reception planning",
+          "cost_usd": 0,
+          "note": "LEA-delivered"
+        },
+        {
+          "item": "Hotel room block coordination",
+          "cost_usd": 0,
+          "note": "LEA-delivered"
+        },
+        {
+          "item": "Guest hotline",
+          "cost_usd": 0,
+          "note": "Included as standard in Ard. Add-on in Sláinte and below."
+        },
+        {
+          "item": "Day 2 planning",
+          "cost_usd": 0,
+          "note": "LEA-delivered. Included as standard in Ard."
+        }
+      ],
+      "not_included": [],
+      "addons": [
+        {
+          "item": "Half-day wedding photography upgrade",
+          "price_adjustment_usd": 1500,
+          "direction": "upgrade"
+        },
+        {
+          "item": "Full-day wedding photography upgrade",
+          "price_adjustment_usd": 2500,
+          "direction": "upgrade"
+        },
+        {
+          "item": "Vintage car",
+          "price_adjustment_usd": 1000,
+          "direction": "addon"
+        },
+        {
+          "item": "Ceremony music",
+          "price_adjustment_usd": 980,
+          "direction": "addon"
+        },
+        {
+          "item": "Church wedding supplement",
+          "price_adjustment_usd": 300,
+          "direction": "addon"
+        },
+        {
+          "item": "Additional hair or makeup (per person)",
+          "price_adjustment_usd": 150,
+          "direction": "addon"
+        }
+      ],
+      "sales_routing": "Lead with Ard for 26–50 guest enquiries. Photography upgrade conversation (half-day or full-day) is strongly recommended for groups this size and is the primary upsell opportunity."
+    }
+  },
+  "beyond_packages": {
+    "ladybird_bespoke": {
+      "display_name": "Ladybird Bespoke",
+      "price_usd": 7000,
+      "margin": "~100%",
+      "cogs_usd": 0,
+      "description": "Pure planning fee for couples whose needs genuinely fall outside the four packages. LEA provides full planning expertise, local knowledge, vendor network access, and coordination. Couple pays all vendors directly.",
+      "positioning": "Premium custom engagement — not a fallback or budget alternative to Ard. Surface on intro calls only when couple's vision or group size clearly does not map to a standard package.",
+      "visibility": "Off pricing page — discussed on calls only"
+    },
+    "ladybird_lite": {
+      "display_name": "Ladybird Lite",
+      "status": "future_launch",
+      "price_usd": 400,
+      "margin": "~100%",
+      "description": "Self-service knowledge product. No ongoing manual LEA work after initial creation.",
+      "target_audience": "Budget-conscious couples planning an Irish elopement independently, and vow renewal couples who need guidance but not full concierge service.",
+      "includes": [
+        "Curated regional destination guide for Ireland",
+        "Vetted vendor directory with LEA's real contacts, price ranges, and approach notes",
+        "Budget tracker with expected cost ranges",
+        "Legal and symbolic ceremony guide",
+        "12-month planning timeline",
+        "Optional 30-minute strategy call add-on"
+      ],
+      "strategic_value": "Creates entry point into Ladybird brand at $400 with zero marginal cost per sale. Captures vow renewal market with no overlap with core package buyers. Warm lead pipeline into Fáilte and Grá."
+    }
+  },
+  "vendor_costs": {
+    "note": "EUR costs converted at EUR->USD 1.26 (5% safety factor). Services at $0 USD are LEA-delivered with near-zero incremental cost.",
+    "items": [
+      { "service": "Celebrant", "eur": 700, "usd": 882 },
+      { "service": "Flowers (bouquet & buttonhole)", "eur": 270, "usd": 340 },
+      { "service": "Makeup artist", "eur": 265, "usd": 334 },
+      { "service": "Hair stylist", "eur": 270, "usd": 340 },
+      { "service": "2-hour elopement photography", "eur": 900, "usd": 1134 },
+      { "service": "3-hour elopement photography", "eur": 1100, "usd": 1386 },
+      { "service": "4-hour elopement photography", "eur": 1300, "usd": 1638 },
+      { "service": "2-hour wedding photography", "eur": 1200, "usd": 1512 },
+      { "service": "4-hour wedding photography", "eur": 1500, "usd": 1890 },
+      { "service": "Half-day wedding photography", "eur": 2400, "usd": 3024 },
+      { "service": "Full-day wedding photography", "eur": 3000, "usd": 3780 },
+      { "service": "Vintage car", "eur": 600, "usd": 756 },
+      { "service": "On-the-day coordinator", "eur": 750, "usd": 945 },
+      { "service": "Ceremony music", "eur": 600, "usd": 756 },
+      { "service": "Additional hair or makeup (per person)", "eur": 90, "usd": 113 },
+      { "service": "Reception planning", "eur": 0, "usd": 0, "note": "LEA-delivered" },
+      { "service": "Dinner reservation coordination", "eur": 0, "usd": 0, "note": "LEA-delivered" },
+      { "service": "Welcome dinner planning", "eur": 0, "usd": 0, "note": "LEA-delivered" },
+      { "service": "Day 2 planning", "eur": 0, "usd": 0, "note": "LEA-delivered" },
+      { "service": "Guest hotline", "eur": 0, "usd": 0, "note": "LEA-delivered" },
+      { "service": "Hotel room block coordination", "eur": 0, "usd": 0, "note": "LEA-delivered" },
+      { "service": "Wedding venue scouting", "eur": 0, "usd": 0, "note": "LEA-delivered" }
+    ]
+  },
+  "photography_threshold_note": "Photography vendors charge a different rate for groups above 12 guests — approximately €1,350 elopement rate vs €1,500 wedding rate (~$203 USD difference at safety-factor FX). Grá covers up to 12 guests and uses the elopement rate. Sláinte starts at 13 guests and uses the wedding rate. The $203 difference is absorbed within Sláinte's margin. Couples see a clean all-in price — no surcharge conversation.",
+  "margin_policy": "All four packages must maintain gross margin at or above 50%. Adjusting package inclusions to protect margin is a last resort — pricing should be adjusted first if close rates or costs shift materially.",
+  "market_data_by_guest_band": [
+    { "band": "2 guests",     "deals": 10, "won": 4,  "lost": 6,  "close_rate_pct": 40, "avg_won_usd": 5150, "routed_to": "failte" },
+    { "band": "3-4 guests",   "deals": 12, "won": 4,  "lost": 8,  "close_rate_pct": 33, "avg_won_usd": 6900, "routed_to": "failte" },
+    { "band": "5-8 guests",   "deals": 15, "won": 7,  "lost": 8,  "close_rate_pct": 47, "avg_won_usd": 5571, "routed_to": "gra" },
+    { "band": "9-12 guests",  "deals": 14, "won": 4,  "lost": 10, "close_rate_pct": 29, "avg_won_usd": 6625, "routed_to": "gra" },
+    { "band": "13-16 guests", "deals": 18, "won": 10, "lost": 8,  "close_rate_pct": 56, "avg_won_usd": 8835, "routed_to": "slainte", "flag": "highest_close_rate_in_portfolio" },
+    { "band": "17-20 guests", "deals": 24, "won": 9,  "lost": 15, "close_rate_pct": 38, "avg_won_usd": 8344, "routed_to": "slainte" },
+    { "band": "21-25 guests", "deals": 11, "won": 3,  "lost": 8,  "close_rate_pct": 27, "avg_won_usd": 9783, "routed_to": "slainte_or_ard_boundary" },
+    { "band": "26-30 guests", "deals": 17, "won": 5,  "lost": 12, "close_rate_pct": 29, "avg_won_usd": 9340, "routed_to": "ard" },
+    { "band": "31-40 guests", "deals": 8,  "won": 2,  "lost": 6,  "close_rate_pct": 25, "avg_won_usd": 10954,"routed_to": "ard" },
+    { "band": "41-50 guests", "deals": 16, "won": 6,  "lost": 10, "close_rate_pct": 38, "avg_won_usd": 10008,"routed_to": "ard" }
+  ],
+  "key_strategic_insights": [
+    {
+      "insight": "20-guest routing correction",
+      "detail": "20 guests is the single most common guest count in the dataset (22 deals). Previously routed to Ard at close rate of 27%. Correctly routed to Sláinte at 75% close rate. Annual uplift from this correction alone: +$43,000 gross profit."
+    },
+    {
+      "insight": "Sláinte dominates on expected profit per proposal",
+      "detail": "At $3,686 expected profit per proposal, Sláinte generates more than double any other package. Volume of 13–25 guest enquiries routed correctly is the single highest-leverage sales action."
+    },
+    {
+      "insight": "Ard close rate is the constraint, not the price",
+      "detail": "Ard at 30% close rate generates $1,521 expected profit per proposal. If close rate recovers to historical 37%, expected profit per proposal rises to ~$1,876. Focus on routing accuracy, not price reduction."
+    },
+    {
+      "insight": "Grá is steady — monitor before adjusting",
+      "detail": "40% close rate and $1,407 per proposal. Performing steadily. No price adjustment warranted at this time."
+    },
+    {
+      "insight": "Fáilte is a funnel entry, not a revenue driver",
+      "detail": "At $894 per proposal, Fáilte earns its place by capturing couples and moving them into the pipeline. Not a revenue focus."
+    }
+  ]
+}

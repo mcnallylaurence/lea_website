@@ -1,0 +1,1962 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Say "I Do" in Ireland - Elopement Packages | Ladybird Ever After</title>
+    <meta name="description"
+        content="US-based Ireland elopement & wedding specialists. We handle all the legal paperwork, coordination and logistics. Pay in USD. Packages from $4,900. Instant availability check.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --green: #5B6239;
+            --green-dk: #3a3f25;
+            --green-hv: #4a5130;
+            --gold: #B8964E;
+            --gold-lt: #D4AF71;
+            --cream: #F5F0E8;
+            --warm: #FDFAF4;
+            --stone: #8C8070;
+            --txt: #1A1A18;
+            --txt-mid: #4A4A42;
+            --pad-x: clamp(1.2rem, 5vw, 5rem);
+            --pad-y: clamp(3.5rem, 7vw, 6rem);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: var(--cream);
+            color: var(--txt);
+            overflow-x: hidden;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+            opacity: .38;
+        }
+
+        /* ── TYPE ── */
+        h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 3.8vw, 3rem);
+            font-weight: 300;
+            line-height: 1.15;
+        }
+
+        h2 em {
+            font-style: italic;
+            color: var(--green);
+        }
+
+        .label {
+            font-size: 0.63rem;
+            letter-spacing: .3em;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            margin-bottom: .75rem;
+        }
+
+        .label::after {
+            content: '';
+            flex: 0 0 28px;
+            height: 1px;
+            background: var(--gold);
+            opacity: .5;
+        }
+
+        .label-lt {
+            color: var(--gold-lt);
+        }
+
+        .label-lt::after {
+            background: var(--gold-lt);
+        }
+
+        /* ── BUTTONS ── */
+        .btn {
+            display: inline-block;
+            font-family: 'Jost', sans-serif;
+            font-size: .74rem;
+            font-weight: 600;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: .95rem 2.2rem;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all .3s;
+        }
+
+        .btn-gold {
+            background: var(--gold);
+            color: var(--green);
+            border-color: var(--gold);
+        }
+
+        .btn-gold:hover {
+            background: transparent;
+            color: var(--gold-lt);
+            border-color: var(--gold-lt);
+        }
+
+        .btn-green {
+            background: var(--green);
+            color: var(--cream);
+            border-color: var(--green);
+        }
+
+        .btn-green:hover {
+            background: var(--green-hv);
+            border-color: var(--green-hv);
+        }
+
+        /* ── TOP BAR ── */
+        .top-bar {
+            background: var(--green);
+            padding: .48rem 0;
+            overflow: hidden;
+        }
+
+        .top-bar-track {
+            display: flex;
+            gap: 2.5rem;
+            white-space: nowrap;
+            animation: topscroll 22s linear infinite;
+        }
+
+        @keyframes topscroll {
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        .tbi {
+            font-size: .6rem;
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            color: rgba(245, 240, 232, .78);
+            flex-shrink: 0;
+        }
+
+        .tbi strong {
+            color: var(--gold-lt);
+        }
+
+        .tbdot {
+            color: var(--gold-lt);
+            opacity: .3;
+            font-size: .36rem;
+            flex-shrink: 0;
+        }
+
+        /* ── NAV ── */
+        nav {
+            position: relative;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: .7rem var(--pad-x);
+            background: var(--warm);
+            border-bottom: 1px solid rgba(91, 98, 57, .12);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 30px;
+            width: auto;
+            max-width: 130px;
+            display: block;
+            object-fit: contain;
+        }
+
+        nav .btn {
+            padding: .55rem 1.1rem;
+            font-size: .6rem;
+            flex-shrink: 0;
+        }
+
+        /* ══════════════════════════════════════
+   HERO - clean & compact
+══════════════════════════════════════ */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            min-height: 72vh;
+            background: var(--green);
+            overflow: hidden;
+        }
+
+        .hero-left {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 4rem clamp(1.5rem, 5vw, 4rem) 4rem clamp(1.5rem, 6vw, 5rem);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/56e3a576-08d2-4d62-b5b3-c58a6c4b7f61/KJCliffsofMoher6.webp');
+            background-size: cover;
+            background-position: center 30%;
+            opacity: .25;
+        }
+
+        .hero-grad {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(110deg, rgba(28, 28, 26, .9) 0%, rgba(28, 28, 26, .65) 60%, rgba(28, 28, 26, .4) 100%);
+        }
+
+        .hero-copy {
+            position: relative;
+            z-index: 2;
+            max-width: 520px;
+        }
+
+        .hero-ey {
+            font-size: .6rem;
+            letter-spacing: .32em;
+            text-transform: uppercase;
+            color: var(--gold-lt);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: .65rem;
+            margin-bottom: 1.2rem;
+            animation: fadeUp .8s ease both;
+        }
+
+        .hero-ey-line {
+            flex: 0 0 20px;
+            height: 1px;
+            background: var(--gold-lt);
+            opacity: .5;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.6rem, 5vw, 4.4rem);
+            font-weight: 300;
+            line-height: 1.06;
+            color: var(--warm);
+            margin-bottom: 1rem;
+            animation: fadeUp .8s ease .07s both;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--gold-lt);
+        }
+
+        /* ONE clean tagline - no paragraph */
+        .hero-tag {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: clamp(1rem, 1.6vw, 1.2rem);
+            color: rgba(253, 250, 244, .72);
+            margin-bottom: 2rem;
+            line-height: 1.5;
+            animation: fadeUp .8s ease .13s both;
+        }
+
+        /* Two trust pills only */
+        .hero-trust {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .6rem;
+            margin-bottom: 2rem;
+            animation: fadeUp .8s ease .19s both;
+        }
+
+        .trust-pill {
+            background: rgba(245, 240, 232, .1);
+            border: 1px solid rgba(212, 175, 113, .3);
+            color: rgba(245, 240, 232, .88);
+            padding: .35rem .85rem;
+            font-size: .62rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: .3rem;
+        }
+
+        .trust-pill span {
+            color: var(--gold-lt);
+        }
+
+        .hero-stars {
+            display: flex;
+            align-items: center;
+            gap: .65rem;
+            animation: fadeUp .8s ease .25s both;
+        }
+
+        .st-gold {
+            color: var(--gold);
+            font-size: .8rem;
+        }
+
+        .st-lbl {
+            font-size: .68rem;
+            color: rgba(245, 240, 232, .48);
+        }
+
+        /* Hero right - minimal CTA panel */
+        .hero-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 3rem 2.5rem;
+            background: rgba(28, 28, 26, .5);
+            backdrop-filter: blur(8px);
+            border-left: 1px solid rgba(212, 175, 113, .15);
+            gap: 1.5rem;
+        }
+
+        .hero-right-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+            font-weight: 300;
+            line-height: 1.15;
+            color: var(--warm);
+        }
+
+        .hero-right-title em {
+            font-style: italic;
+            color: var(--gold-lt);
+        }
+
+        .hero-right-sub {
+            font-size: .72rem;
+            color: rgba(245, 240, 232, .55);
+            line-height: 1.55;
+            font-weight: 300;
+        }
+
+        .hero-right-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .45rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(212, 175, 113, .15);
+        }
+
+        .hero-right-chips span {
+            font-size: .58rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: rgba(245, 240, 232, .5);
+        }
+
+        /* ── TICKER ── */
+        .ticker {
+            background: var(--green-hv);
+            padding: 1rem 0;
+            overflow: hidden;
+        }
+
+        .ticker-track {
+            display: flex;
+            gap: 3.5rem;
+            white-space: nowrap;
+            animation: tick 36s linear infinite;
+        }
+
+        .ticker-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes tick {
+            to {
+                transform: translateX(-50%);
+            }
+        }
+
+        .tq {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: .88rem;
+            color: rgba(245, 240, 232, .62);
+            flex-shrink: 0;
+        }
+
+        .tq strong {
+            font-style: normal;
+            font-size: .55rem;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+            color: var(--gold-lt);
+            margin-left: .4rem;
+            vertical-align: middle;
+        }
+
+        /* ── REVEAL ── */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity .7s ease, transform .7s ease;
+        }
+
+        .reveal.in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(26px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ── SPLITS ── */
+        .split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            overflow: hidden;
+        }
+
+        .split-cream {
+            background: var(--cream);
+        }
+
+        .split-warm {
+            background: var(--warm);
+        }
+
+        .split.flip .split-img {
+            order: 2;
+        }
+
+        .split.flip .split-text {
+            order: 1;
+        }
+
+        .split-img {
+            position: relative;
+            min-height: 420px;
+        }
+
+        .split-img img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(.85);
+        }
+
+        .split-text {
+            padding: var(--pad-y) clamp(1.5rem, 5vw, 4.5rem);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .split-text h2 {
+            margin-bottom: 1.1rem;
+        }
+
+        .split-text p {
+            font-size: .87rem;
+            line-height: 1.85;
+            color: var(--txt-mid);
+            font-weight: 300;
+            margin-bottom: .85rem;
+        }
+
+        .split-text p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .split-text p strong {
+            color: var(--green);
+            font-weight: 500;
+        }
+
+        .split-chips {
+            display: flex;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            margin-top: 1.4rem;
+        }
+
+        .split-chip {
+            font-size: .8rem;
+            color: var(--txt-mid);
+            display: flex;
+            align-items: center;
+            gap: .38rem;
+        }
+
+        /* ── PHOTO GRID ── */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background: var(--green-dk);
+        }
+
+        .photo-item {
+            position: relative;
+            padding-bottom: 70%;
+            overflow: hidden;
+        }
+
+        .photo-item img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: saturate(.82);
+            transition: transform .7s ease, filter .5s ease;
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.05);
+            filter: saturate(1);
+        }
+
+        /* Green accent blocks */
+        .photo-green {
+            background: var(--green);
+        }
+
+        .photo-green-dk {
+            background: var(--green-dk);
+        }
+
+        .photo-green-inner {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .photo-green-serif {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+            font-weight: 300;
+            line-height: 1.2;
+            color: var(--warm);
+            margin-bottom: .8rem;
+        }
+
+        .photo-green-serif em {
+            font-style: italic;
+            color: var(--gold-lt);
+        }
+
+        .photo-green-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.8rem, 5vw, 4.5rem);
+            font-weight: 300;
+            line-height: 1;
+            color: var(--gold-lt);
+            margin-bottom: .5rem;
+        }
+
+        .photo-green-sub {
+            font-size: clamp(.6rem, 1.1vw, .72rem);
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: rgba(245, 240, 232, .52);
+            line-height: 1.7;
+        }
+
+        /* ── WHY ── */
+        .why {
+            background: var(--warm);
+            padding: var(--pad-y) var(--pad-x);
+        }
+
+        .why-inner {
+            max-width: 1060px;
+            margin: 0 auto;
+        }
+
+        .why h2 {
+            margin-bottom: 2.5rem;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+        }
+
+        .why-card {
+            padding: 2rem 1.6rem;
+            border-right: 1px solid rgba(91, 98, 57, .1);
+            transition: background .3s;
+        }
+
+        .why-card:last-child {
+            border-right: none;
+        }
+
+        .why-card:hover {
+            background: rgba(91, 98, 57, .04);
+        }
+
+        .why-icon {
+            font-size: 1.4rem;
+            margin-bottom: .7rem;
+            display: block;
+        }
+
+        .why-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.12rem;
+            font-weight: 600;
+            color: var(--green);
+            margin-bottom: .4rem;
+        }
+
+        .why-card p {
+            font-size: .78rem;
+            line-height: 1.75;
+            color: var(--txt-mid);
+            font-weight: 300;
+        }
+
+        /* ══════════════════════════════════════
+   PACKAGES
+══════════════════════════════════════ */
+        .packages {
+            padding: var(--pad-y) var(--pad-x);
+            background: var(--cream);
+        }
+
+        .packages-inner {
+            max-width: 1060px;
+            margin: 0 auto;
+        }
+
+        .pkg-intro {
+            font-size: .85rem;
+            color: var(--txt-mid);
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 500px;
+            margin: .6rem 0 2.5rem;
+        }
+
+        .pkg-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            border: 1px solid rgba(91, 98, 57, .12);
+        }
+
+        .pkg-card {
+            padding: 1.8rem 1.4rem 2rem;
+            border-right: 1px solid rgba(91, 98, 57, .12);
+            cursor: pointer;
+            transition: all .3s;
+            position: relative;
+            background: var(--warm);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pkg-card:last-child {
+            border-right: none;
+        }
+
+        .pkg-card:hover,
+        .pkg-card.on {
+            background: var(--green);
+            color: var(--cream);
+            z-index: 1;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, .14);
+            transform: translateY(-3px);
+        }
+
+        .pkg-badge {
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            background: var(--gold);
+            color: var(--green);
+            font-size: .48rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            padding: .22rem .55rem;
+            font-weight: 700;
+        }
+
+        .pkg-irish {
+            font-size: .56rem;
+            letter-spacing: .24em;
+            text-transform: uppercase;
+            color: var(--stone);
+            margin-bottom: .18rem;
+        }
+
+        .pkg-card:hover .pkg-irish,
+        .pkg-card.on .pkg-irish {
+            color: rgba(245, 240, 232, .42);
+        }
+
+        .pkg-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--green);
+            margin-bottom: .18rem;
+            line-height: 1.2;
+        }
+
+        .pkg-card:hover .pkg-name,
+        .pkg-card.on .pkg-name {
+            color: var(--gold-lt);
+        }
+
+        .pkg-guests {
+            font-size: .62rem;
+            color: var(--stone);
+            margin-bottom: .9rem;
+            padding-bottom: .8rem;
+            border-bottom: 1px solid rgba(91, 98, 57, .1);
+        }
+
+        .pkg-card:hover .pkg-guests,
+        .pkg-card.on .pkg-guests {
+            color: rgba(245, 240, 232, .45);
+            border-color: rgba(245, 240, 232, .12);
+        }
+
+        .pkg-features {
+            list-style: none;
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+
+        .pkg-feat {
+            font-size: .67rem;
+            padding: .33rem 0;
+            border-bottom: 1px solid rgba(91, 98, 57, .07);
+            color: var(--txt-mid);
+            display: flex;
+            gap: .36rem;
+            line-height: 1.4;
+        }
+
+        .pkg-card:hover .pkg-feat,
+        .pkg-card.on .pkg-feat {
+            color: rgba(245, 240, 232, .7);
+            border-color: rgba(245, 240, 232, .1);
+        }
+
+        .pkg-feat::before {
+            content: '-';
+            color: var(--gold);
+            font-size: .56rem;
+            flex-shrink: 0;
+            margin-top: .1rem;
+        }
+
+        .pkg-price-block {
+            margin-top: auto;
+            padding-top: .85rem;
+            border-top: 1px solid rgba(91, 98, 57, .1);
+        }
+
+        .pkg-card:hover .pkg-price-block,
+        .pkg-card.on .pkg-price-block {
+            border-color: rgba(245, 240, 232, .14);
+        }
+
+        .pkg-from {
+            font-size: .53rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: var(--stone);
+            display: block;
+            margin-bottom: .12rem;
+        }
+
+        .pkg-card:hover .pkg-from,
+        .pkg-card.on .pkg-from {
+            color: rgba(245, 240, 232, .42);
+        }
+
+        .pkg-amount {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--green);
+            line-height: 1;
+        }
+
+        .pkg-card:hover .pkg-amount,
+        .pkg-card.on .pkg-amount {
+            color: var(--gold-lt);
+        }
+
+        .pkg-usd {
+            font-size: .58rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--stone);
+            margin-left: .18rem;
+            vertical-align: middle;
+        }
+
+        .pkg-card:hover .pkg-usd,
+        .pkg-card.on .pkg-usd {
+            color: rgba(245, 240, 232, .42);
+        }
+
+        /* ── INCLUDES ── */
+        .includes {
+            background: var(--green);
+            padding: var(--pad-y) var(--pad-x);
+        }
+
+        .includes-inner {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        .includes .label {
+            color: var(--gold-lt);
+        }
+
+        .includes .label::after {
+            background: var(--gold-lt);
+        }
+
+        .includes h2 {
+            color: var(--warm);
+            margin-bottom: 2rem;
+        }
+
+        .includes h2 em {
+            color: var(--gold-lt);
+        }
+
+        .inc-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .inc-item {
+            display: flex;
+            gap: .85rem;
+            align-items: flex-start;
+        }
+
+        .inc-em {
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            margin-top: .04rem;
+        }
+
+        .inc-h {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: .95rem;
+            font-weight: 600;
+            color: var(--gold-lt);
+            margin-bottom: .25rem;
+        }
+
+        .inc-p {
+            font-size: .73rem;
+            color: rgba(245, 240, 232, .57);
+            line-height: 1.65;
+            font-weight: 300;
+        }
+
+        /* ── TESTIMONIALS ── */
+        .testimonials {
+            background: var(--warm);
+            padding: var(--pad-y) var(--pad-x);
+        }
+
+        .testi-inner {
+            max-width: 1060px;
+            margin: 0 auto;
+        }
+
+        .testi-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.3rem;
+            margin-top: 2.4rem;
+        }
+
+        .testi-card {
+            padding: 1.7rem;
+            background: var(--cream);
+            border-bottom: 3px solid transparent;
+            transition: all .3s;
+        }
+
+        .testi-card:hover {
+            border-bottom-color: var(--gold);
+            transform: translateY(-3px);
+        }
+
+        .tq-mark {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4rem;
+            color: rgba(184, 150, 78, .1);
+            line-height: .7;
+            margin-bottom: .35rem;
+        }
+
+        .testi-stars {
+            color: var(--gold);
+            font-size: .66rem;
+            letter-spacing: .1em;
+            margin-bottom: .5rem;
+        }
+
+        .testi-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: .95rem;
+            font-style: italic;
+            line-height: 1.75;
+            color: var(--txt);
+            margin-bottom: 1rem;
+        }
+
+        .testi-by {
+            font-size: .6rem;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--stone);
+        }
+
+        /* ══════════════════════════════════════
+   BOTTOM FORM
+══════════════════════════════════════ */
+        .form-section {
+            position: relative;
+            padding: var(--pad-y) var(--pad-x);
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .form-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/4165ccfd-24ac-4fe6-9e00-b8c14a61904a/adrienne+and+josh.jpg');
+            background-size: cover;
+            background-position: center 20%;
+        }
+
+        .form-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(38, 43, 22, .94) 0%, rgba(55, 60, 35, .9) 100%);
+        }
+
+        .form-inner {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1060px;
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        .form-left {
+            color: var(--cream);
+        }
+
+        .form-left .label {
+            color: var(--gold-lt);
+        }
+
+        .form-left .label::after {
+            background: var(--gold-lt);
+        }
+
+        .form-left h2 {
+            color: var(--warm);
+            font-size: clamp(2rem, 3.5vw, 2.9rem);
+            margin-bottom: 1.2rem;
+        }
+
+        .form-left h2 em {
+            color: var(--gold-lt);
+        }
+
+        .form-left p {
+            font-size: .86rem;
+            line-height: 1.85;
+            color: rgba(245, 240, 232, .68);
+            font-weight: 300;
+            margin-bottom: 1.4rem;
+        }
+
+        .urgency-box {
+            background: rgba(184, 150, 78, .13);
+            border-left: 3px solid var(--gold);
+            padding: 1rem 1.1rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .urgency-box h4 {
+            font-family: 'Jost', sans-serif;
+            font-size: .7rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--gold-lt);
+            margin-bottom: .35rem;
+        }
+
+        .urgency-box p {
+            font-size: .8rem;
+            color: var(--cream);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .form-gs {
+            display: flex;
+            flex-direction: column;
+            gap: .6rem;
+        }
+
+        .form-g {
+            display: flex;
+            align-items: flex-start;
+            gap: .55rem;
+            font-size: .76rem;
+            color: rgba(245, 240, 232, .65);
+        }
+
+        .form-g::before {
+            content: '✓';
+            color: var(--gold-lt);
+            flex-shrink: 0;
+            font-weight: 600;
+            margin-top: .05rem;
+        }
+
+        .form-card {
+            background: var(--warm);
+            padding: 2.4rem 2.4rem 2rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, .28);
+            position: relative;
+        }
+
+        .form-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--gold-lt), var(--gold));
+        }
+
+        .form-card-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.45rem;
+            font-weight: 400;
+            color: var(--green);
+            margin-bottom: .22rem;
+            line-height: 1.2;
+        }
+
+        .form-card-title em {
+            font-style: italic;
+            color: var(--gold);
+        }
+
+        .form-card-sub {
+            font-size: .68rem;
+            color: var(--stone);
+            margin-bottom: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(91, 98, 57, .12);
+        }
+
+        /* HubSpot */
+        #hs-bottom .hs-form-private,
+        #hs-bottom form {
+            display: flex;
+            flex-direction: column;
+            gap: .62rem;
+        }
+
+        #hs-bottom .hs-form-field {
+            display: flex;
+            flex-direction: column;
+            gap: .24rem;
+        }
+
+        #hs-bottom label {
+            font-size: .57rem !important;
+            letter-spacing: .2em;
+            text-transform: uppercase;
+            color: var(--stone) !important;
+            font-weight: 600;
+            font-family: 'Jost', sans-serif !important;
+        }
+
+        #hs-bottom input[type="text"],
+        #hs-bottom input[type="email"],
+        #hs-bottom input[type="tel"],
+        #hs-bottom select,
+        #hs-bottom textarea {
+            background: var(--cream) !important;
+            border: 1px solid rgba(91, 98, 57, .18) !important;
+            border-radius: 0 !important;
+            color: var(--txt) !important;
+            padding: .75rem .88rem !important;
+            font-family: 'Jost', sans-serif !important;
+            font-size: .82rem !important;
+            font-weight: 300 !important;
+            outline: none !important;
+            width: 100% !important;
+            -webkit-appearance: none;
+            transition: border-color .25s;
+        }
+
+        #hs-bottom input:focus,
+        #hs-bottom select:focus,
+        #hs-bottom textarea:focus {
+            border-color: var(--gold) !important;
+        }
+
+        #hs-bottom textarea {
+            height: 80px !important;
+            resize: none;
+            line-height: 1.6;
+        }
+
+        #hs-bottom .hs-error-msgs {
+            list-style: none;
+            margin-top: .16rem;
+        }
+
+        #hs-bottom .hs-error-msg {
+            font-size: .64rem !important;
+            color: #b85c3a !important;
+            font-family: 'Jost', sans-serif !important;
+        }
+
+        #hs-bottom .hs-submit {
+            margin-top: .22rem;
+        }
+
+        #hs-bottom .hs-button {
+            background: var(--green) !important;
+            color: var(--cream) !important;
+            border: none !important;
+            padding: 1rem 2rem !important;
+            font-family: 'Jost', sans-serif !important;
+            font-size: .72rem !important;
+            font-weight: 600 !important;
+            letter-spacing: .16em !important;
+            text-transform: uppercase !important;
+            cursor: pointer !important;
+            transition: background .3s !important;
+            width: 100% !important;
+            border-radius: 0 !important;
+        }
+
+        #hs-bottom .hs-button:hover {
+            background: var(--green-hv) !important;
+        }
+
+        #hs-bottom fieldset {
+            max-width: 100% !important;
+            border: none !important;
+        }
+
+        #hs-bottom .form-columns-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: .62rem;
+        }
+
+        #hs-bottom .form-columns-2 .hs-form-field {
+            float: none !important;
+            width: 100% !important;
+        }
+
+        #hs-bottom .legal-consent-container {
+            font-size: .61rem !important;
+            color: var(--stone) !important;
+            font-family: 'Jost', sans-serif !important;
+            line-height: 1.5;
+        }
+
+        /* ── FLOAT CTA ── */
+        .float-cta {
+            position: fixed;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            z-index: 500;
+            background: var(--gold);
+            color: var(--green);
+            padding: .8rem 1.4rem;
+            font-family: 'Jost', sans-serif;
+            font-size: .64rem;
+            font-weight: 600;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            text-decoration: none;
+            box-shadow: 0 6px 26px rgba(0, 0, 0, .2);
+            transition: all .4s cubic-bezier(.34, 1.56, .64, 1);
+            transform: translateY(110px);
+            opacity: 0;
+        }
+
+        .float-cta.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .float-cta:hover {
+            background: var(--gold-lt);
+            transform: translateY(-2px);
+        }
+
+        /* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr 360px;
+            }
+
+            .pkg-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            .pkg-card:nth-child(3n) {
+                border-right: none;
+            }
+
+            .pkg-card:nth-child(1),
+            .pkg-card:nth-child(2),
+            .pkg-card:nth-child(4) {
+                border-right: 1px solid rgba(91, 98, 57, .12);
+            }
+
+            .pkg-card:nth-child(n+4) {
+                border-top: 1px solid rgba(91, 98, 57, .12);
+            }
+
+            .why-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .why-card {
+                border-right: none;
+                border-bottom: 1px solid rgba(91, 98, 57, .1);
+            }
+
+            .why-card:nth-child(odd) {
+                border-right: 1px solid rgba(91, 98, 57, .1);
+            }
+
+            .why-card:nth-last-child(-n+2) {
+                border-bottom: none;
+            }
+
+            .inc-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .testi-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .form-inner {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            /* Nav */
+            nav {
+                padding: .65rem 1.1rem;
+            }
+
+            nav .btn {
+                padding: .5rem .85rem;
+                font-size: .57rem;
+            }
+
+            /* Hero - stack vertically, cut the fat */
+            .hero {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .hero-left {
+                padding: 3.2rem 1.2rem 2.5rem;
+            }
+
+            .hero h1 {
+                font-size: clamp(2.1rem, 8.5vw, 2.9rem);
+                margin-bottom: .85rem;
+            }
+
+            .hero-tag {
+                font-size: .96rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero-trust {
+                gap: .4rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .trust-pill {
+                font-size: .56rem;
+                padding: .28rem .7rem;
+            }
+
+            .st-lbl {
+                font-size: .65rem;
+            }
+
+            /* Hero right panel - compact on mobile */
+            .hero-right {
+                padding: 1.8rem 1.2rem;
+                border-left: none;
+                border-top: 1px solid rgba(212, 175, 113, .15);
+                gap: 1.1rem;
+            }
+
+            .hero-right-title {
+                font-size: 1.55rem;
+            }
+
+            .hero-right-sub {
+                display: none;
+            }
+
+            /* hide on mobile - context is clear */
+
+            /* Splits */
+            .split {
+                grid-template-columns: 1fr;
+            }
+
+            .split.flip .split-img {
+                order: -1;
+            }
+
+            .split.flip .split-text {
+                order: 0;
+            }
+
+            .split-img {
+                min-height: 240px;
+            }
+
+            .split-text {
+                padding: 2.6rem 1.2rem;
+            }
+
+            /* Photos */
+            .photo-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            /* Why */
+            .why-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .why-card {
+                border-right: none !important;
+                border-bottom: 1px solid rgba(91, 98, 57, .1);
+            }
+
+            .why-card:nth-child(odd) {
+                border-right: 1px solid rgba(91, 98, 57, .1) !important;
+            }
+
+            .why-card:last-child,
+            .why-card:nth-last-child(2):nth-child(odd) {
+                border-bottom: none;
+            }
+
+            /* Packages - single col */
+            .pkg-grid {
+                grid-template-columns: 1fr;
+                border: none;
+            }
+
+            .pkg-card {
+                border: 1px solid rgba(91, 98, 57, .12) !important;
+                margin-bottom: -1px;
+                transform: none !important;
+            }
+
+            .pkg-card:hover,
+            .pkg-card.on {
+                transform: none !important;
+            }
+
+            /* Includes */
+            .inc-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            /* Testimonials */
+            .testi-grid {
+                grid-template-columns: 1fr;
+            }
+
+            /* Form */
+            .form-section {
+                padding: 2.8rem 1.2rem;
+            }
+
+            .form-inner {
+                gap: 2.5rem;
+            }
+
+            .form-card {
+                padding: 1.7rem 1.2rem;
+            }
+
+            #hs-bottom .form-columns-2 {
+                grid-template-columns: 1fr;
+            }
+
+            /* Float CTA - bottom bar */
+            .float-cta {
+                bottom: 0;
+                right: 0;
+                left: 0;
+                text-align: center;
+                box-shadow: 0 -3px 16px rgba(0, 0, 0, .12);
+                padding: .9rem 1rem;
+            }
+
+            body.fb-on {
+                padding-bottom: 46px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            nav .btn {
+                display: none;
+            }
+
+            .photo-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+        <div class="top-bar-track">
+            <span class="tbi"><strong>US-Based Team</strong> · Atlanta, GA</span><span class="tbdot">✦</span>
+            <span class="tbi">Pay in <strong>USD</strong> · No Wire Transfers</span><span class="tbdot">✦</span>
+            <span class="tbi">Legal Ceremony <strong>Included</strong></span><span class="tbdot">✦</span>
+            <span class="tbi">Packages from <strong>$4,900</strong></span><span class="tbdot">✦</span>
+            <span class="tbi"><strong>Instant</strong> Availability Reply</span><span class="tbdot">✦</span>
+            <span class="tbi"><strong>US-Based Team</strong> · Atlanta, GA</span><span class="tbdot">✦</span>
+            <span class="tbi">Pay in <strong>USD</strong> · No Wire Transfers</span><span class="tbdot">✦</span>
+            <span class="tbi">Legal Ceremony <strong>Included</strong></span><span class="tbdot">✦</span>
+            <span class="tbi">Packages from <strong>$4,900</strong></span><span class="tbdot">✦</span>
+            <span class="tbi"><strong>Instant</strong> Availability Reply</span>
+        </div>
+    </div>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#top" class="nav-logo">
+            <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/447b68ef-be3d-4843-ad3c-bdcf8acfab9f/Primary+Logo+Green+Font+No+Background.png?format=300w"
+                alt="Ladybird Ever After">
+        </a>
+        <a href="#enquire" class="btn btn-green">Check Availability</a>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero" id="top">
+        <div class="hero-left">
+            <div class="hero-bg"></div>
+            <div class="hero-grad"></div>
+            <div class="hero-copy">
+                <p class="hero-ey"><span class="hero-ey-line"></span>Ireland Elopement &amp; Wedding Specialists<span
+                        class="hero-ey-line"></span></p>
+                <h1>Say <em>"I Do"</em><br>in Ireland.</h1>
+                <p class="hero-tag">Every detail planned - you simply arrive and enjoy.</p>
+                <div class="hero-trust">
+                    <div class="trust-pill"><span>✓</span> Legal ceremony included</div>
+                    <div class="trust-pill"><span>✓</span> Pay in USD · From $4,900</div>
+                </div>
+                <div class="hero-stars">
+                    <span class="st-gold">★★★★★</span>
+                    <span class="st-lbl">100+ US couples · Every review 5 stars</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right CTA panel - clean -->
+        <div class="hero-right">
+            <div class="hero-right-title">Check your date.<br>Get pricing. <em>Instantly.</em></div>
+            <p class="hero-right-sub">Free · No obligation · Instant reply with availability &amp; pricing</p>
+            <a href="#enquire" class="btn btn-gold" style="text-align:center;">Check Availability &amp; Get Pricing
+                →</a>
+            <div class="hero-right-chips">
+                <span>⚡ Instant reply</span>
+                <span>&nbsp;·&nbsp;</span>
+                <span>✓ One US contract</span>
+                <span>&nbsp;·&nbsp;</span>
+                <span>✓ No wire transfers</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- TICKER -->
+    <div class="ticker">
+        <div class="ticker-track">
+            <span class="tq">"We were able to enjoy our day without any stress at all." <strong>- Kalee,
+                    Birmingham</strong></span>
+            <span class="tq">"They go above and beyond - absolutely choose Ladybird." <strong>- Jessica,
+                    Pittsburgh</strong></span>
+            <span class="tq">"We wish we could live the day over and over again." <strong>- Mollie &amp; Ryan,
+                    Boston</strong></span>
+            <span class="tq">"Our day was so magical - I can't stop smiling." <strong>- Maya, New York</strong></span>
+            <span class="tq">"From the very first consultation they understood our vision." <strong>- Kalee,
+                    Birmingham</strong></span>
+            <span class="tq">"We were able to enjoy our day without any stress at all." <strong>- Kalee,
+                    Birmingham</strong></span>
+            <span class="tq">"They go above and beyond - absolutely choose Ladybird." <strong>- Jessica,
+                    Pittsburgh</strong></span>
+            <span class="tq">"We wish we could live the day over and over again." <strong>- Mollie &amp; Ryan,
+                    Boston</strong></span>
+            <span class="tq">"Our day was so magical - I can't stop smiling." <strong>- Maya, New York</strong></span>
+            <span class="tq">"From the very first consultation they understood our vision." <strong>- Kalee,
+                    Birmingham</strong></span>
+        </div>
+    </div>
+
+    <!-- SPLIT 1 - our story -->
+    <div class="split split-cream">
+        <div class="split-img">
+            <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/88a49d41-c5b9-45fc-9568-3500765da174/Mollie_Ryan.webp"
+                alt="Couple in Ireland">
+        </div>
+        <div class="split-text reveal">
+            <p class="label">Our Story</p>
+            <h2>One team. One payment.<br><em>Built for you.</em></h2>
+            <p>We met in Atlanta and eloped on the west coast of Ireland. It was the best decision we ever made - and
+                the most stressful planning process of our lives. So we built Ladybird Ever After: exactly what we wish
+                we'd had.</p>
+            <p>Everything from legal ceremony coordination to premium photography - vetted, managed and paid through one
+                US contract.</p>
+            <div class="split-chips">
+                <span class="split-chip">🇺🇸 Atlanta-Based Team</span>
+                <span class="split-chip">💵 Fixed USD Pricing</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- PHOTO GRID 1 -->
+    <div class="photo-grid">
+        <div class="photo-item"><img
+                src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/4a360e61-a5ee-4257-8c13-41aeb9c6f650/HowthCastle.webp"
+                alt="Howth Castle wedding"></div>
+        <div class="photo-item"><img
+                src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/65ce1e16-90c7-4512-ab8f-608981a55e6b/LY9815.jpg"
+                alt="Ireland wedding ceremony"></div>
+        <div class="photo-item"><img
+                src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/f07e2fbb-7133-4fca-8eec-cc6f28459594/tandj1.webp"
+                alt="Couple in Ireland"></div>
+    </div>
+
+    <!-- SPLIT 2 - legal -->
+    <div class="split split-warm flip">
+        <div class="split-text reveal">
+            <p class="label">Paperwork Handled</p>
+            <h2>We handle the<br><em>confusing Irish legal stuff.</em></h2>
+            <p>Getting legally married in Ireland requires specific notice periods, state filings, and a certified
+                celebrant. Your marriage is <strong>100% legally recognized in the United States.</strong></p>
+            <p>Full legal ceremony coordination is included in every package. We guide you through every step - you just
+                show up and say "I do."</p>
+        </div>
+        <div class="split-img">
+            <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/1771901942852-U0NJ58L24O4HH8H5YCJ9/Haley_26Dom-240.webp"
+                alt="Couple during ceremony">
+        </div>
+    </div>
+
+    <!-- PHOTO GRID 2 -->
+    <div class="photo-grid">
+        <div class="photo-item"><img
+                src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/20352968-e3cd-44bc-bbe4-edec2adf9d79/JMReidys3.webp"
+                alt="Ireland pub wedding"></div>
+        <div class="photo-item photo-green">
+            <div class="photo-green-inner">
+                <p class="photo-green-serif">Every detail<br><em>taken care of.</em></p>
+                <p class="photo-green-sub">One US contract · One team · Zero chaos</p>
+            </div>
+        </div>
+        <div class="photo-item photo-green photo-green-dk">
+            <div class="photo-green-inner">
+                <p class="photo-green-num">100+</p>
+                <p class="photo-green-sub">US couples trusted Ladybird<br>Every review 5 stars ★★★★★</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- WHY -->
+    <div class="why">
+        <div class="why-inner">
+            <div class="reveal">
+                <p class="label">Why Choose Ladybird</p>
+                <h2>We've walked<br>in <em>your shoes.</em></h2>
+            </div>
+            <div class="why-grid" style="margin-top:2.4rem;">
+                <div class="why-card reveal">
+                    <span class="why-icon">👟</span>
+                    <h3>Founded by US Couple</h3>
+                    <p>We planned our own Irish wedding. We know exactly what American couples need - and what causes
+                        unnecessary stress.</p>
+                </div>
+                <div class="why-card reveal">
+                    <span class="why-icon">🏅</span>
+                    <h3>Guaranteed Quality</h3>
+                    <p>Personally vetted network of Ireland's best professionals - florists, celebrants, photographers.
+                        Zero reliability risk.</p>
+                </div>
+                <div class="why-card reveal">
+                    <span class="why-icon">🇺🇸</span>
+                    <h3>Zero International Admin</h3>
+                    <p>One US contact, one US contract, all billing in dollars. We manage every vendor payment so you
+                        stay fully present.</p>
+                </div>
+                <div class="why-card reveal">
+                    <span class="why-icon">✨</span>
+                    <h3>Beautifully Bespoke</h3>
+                    <p>Our packages are your starting foundation. Complete customization of every detail to your unique
+                        style and guest count.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- PACKAGES -->
+    <div class="packages" id="packages">
+        <div class="packages-inner">
+            <div class="reveal">
+                <p class="label">Elopement Packages</p>
+                <h2>Find your<br><em>foundation.</em></h2>
+                <p class="pkg-intro">Five collections designed around your guest count. Every package includes full
+                    legal guidance, US-based planning, and end-to-end coordination. All prices in USD - no hidden fees,
+                    ever.</p>
+            </div>
+            <div class="pkg-grid">
+
+                <div class="pkg-card reveal" onclick="activatePkg(this)">
+                    <div class="pkg-irish">Fáilte</div>
+                    <div class="pkg-name">Pure Elopement</div>
+                    <div class="pkg-guests">Up to 4 guests</div>
+                    <ul class="pkg-features">
+                        <li class="pkg-feat">Irish Celebrant &amp; Legal Guidance</li>
+                        <li class="pkg-feat">Premium Photography (2 hrs)</li>
+                        <li class="pkg-feat">Dedicated US Planner</li>
+                    </ul>
+                    <div class="pkg-price-block">
+                        <span class="pkg-from">Starting from</span>
+                        <span class="pkg-amount">$4,900</span><span class="pkg-usd">USD</span>
+                    </div>
+                </div>
+
+                <div class="pkg-card reveal" onclick="activatePkg(this)">
+                    <div class="pkg-irish">Grá</div>
+                    <div class="pkg-name">Enhanced Elopement</div>
+                    <div class="pkg-guests">Up to 8 guests</div>
+                    <ul class="pkg-features">
+                        <li class="pkg-feat">Celebrant &amp; Legal Guidance</li>
+                        <li class="pkg-feat">Photography (4 hrs)</li>
+                        <li class="pkg-feat">Bouquet &amp; Buttonhole</li>
+                        <li class="pkg-feat">Hair &amp; Makeup</li>
+                    </ul>
+                    <div class="pkg-price-block">
+                        <span class="pkg-from">Starting from</span>
+                        <span class="pkg-amount">$7,300</span><span class="pkg-usd">USD</span>
+                    </div>
+                </div>
+
+                <div class="pkg-card reveal" onclick="activatePkg(this)">
+                    <div class="pkg-irish">Sláinte</div>
+                    <div class="pkg-name">Intimate Wedding</div>
+                    <div class="pkg-guests">Up to 12 guests</div>
+                    <ul class="pkg-features">
+                        <li class="pkg-feat">Celebrant &amp; Legal Guidance</li>
+                        <li class="pkg-feat">Photography (4 hrs)</li>
+                        <li class="pkg-feat">Bouquet &amp; Buttonhole</li>
+                        <li class="pkg-feat">Hair &amp; Makeup</li>
+                        <li class="pkg-feat">Reception Coordination</li>
+                        <li class="pkg-feat">Dedicated Planner</li>
+                    </ul>
+                    <div class="pkg-price-block">
+                        <span class="pkg-from">Starting from</span>
+                        <span class="pkg-amount">$8,900</span><span class="pkg-usd">USD</span>
+                    </div>
+                </div>
+
+                <div class="pkg-card reveal" onclick="activatePkg(this)">
+                    <div class="pkg-irish">Ard</div>
+                    <div class="pkg-name">Bespoke Wedding</div>
+                    <div class="pkg-guests">Up to 28 guests</div>
+                    <ul class="pkg-features">
+                        <li class="pkg-feat">Celebrant &amp; Legal Guidance</li>
+                        <li class="pkg-feat">Photography (6 hrs)</li>
+                        <li class="pkg-feat">Bouquet &amp; Buttonhole</li>
+                        <li class="pkg-feat">Hair &amp; Makeup</li>
+                        <li class="pkg-feat">Reception + Coordinator</li>
+                    </ul>
+                    <div class="pkg-price-block">
+                        <span class="pkg-from">Starting from</span>
+                        <span class="pkg-amount">$12,200</span><span class="pkg-usd">USD</span>
+                    </div>
+                </div>
+
+                <div class="pkg-card reveal" onclick="activatePkg(this)">
+                    <div class="pkg-irish">RíRá</div>
+                    <div class="pkg-name">Ultimate Wedding</div>
+                    <div class="pkg-guests">Up to 48 guests</div>
+                    <ul class="pkg-features">
+                        <li class="pkg-feat">Celebrant &amp; Legal Guidance</li>
+                        <li class="pkg-feat">Photography (8 hrs)</li>
+                        <li class="pkg-feat">Full Florals + Music</li>
+                        <li class="pkg-feat">Hair &amp; Makeup for 3</li>
+                        <li class="pkg-feat">Planner + Day Coordinator</li>
+                    </ul>
+                    <div class="pkg-price-block">
+                        <span class="pkg-from">Starting from</span>
+                        <span class="pkg-amount">$14,900</span><span class="pkg-usd">USD</span>
+                    </div>
+                </div>
+
+            </div>
+            <div style="text-align:center;margin-top:2rem;" class="reveal">
+                <a href="#enquire" class="btn btn-green">Talk to Us About Packages</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- INCLUDES -->
+    <div class="includes">
+        <div class="includes-inner">
+            <div class="reveal">
+                <p class="label label-lt">Every Package Includes</p>
+                <h2 style="color:var(--warm)">Everything you need.<br><em>Nothing you don't.</em></h2>
+            </div>
+            <div class="inc-grid" style="margin-top:1.8rem;">
+                <div class="inc-item reveal"><span class="inc-em">💒</span>
+                    <div>
+                        <div class="inc-h">Ceremony Guidance</div>
+                        <p class="inc-p">Support for Traditional Celtic Handfasting or symbolic blessing of your
+                            choosing.</p>
+                    </div>
+                </div>
+                <div class="inc-item reveal"><span class="inc-em">🙋‍♀️</span>
+                    <div>
+                        <div class="inc-h">Your Personal Team</div>
+                        <p class="inc-p">A dedicated US-based Wedding Planner plus exclusive Client Portal access.</p>
+                    </div>
+                </div>
+                <div class="inc-item reveal"><span class="inc-em">✈️</span>
+                    <div>
+                        <div class="inc-h">Effortless Travel</div>
+                        <p class="inc-p">Expert guidance on all travel &amp; accommodation logistics for you and your
+                            guests.</p>
+                    </div>
+                </div>
+                <div class="inc-item reveal"><span class="inc-em">📍</span>
+                    <div>
+                        <div class="inc-h">Perfect Location</div>
+                        <p class="inc-p">Personalized location selection &amp; booking - iconic landmarks or hidden
+                            gems.</p>
+                    </div>
+                </div>
+                <div class="inc-item reveal"><span class="inc-em">💵</span>
+                    <div>
+                        <div class="inc-h">Zero Admin</div>
+                        <p class="inc-p">Fixed USD pricing with secure 0% interest financing options available.</p>
+                    </div>
+                </div>
+                <div class="inc-item reveal"><span class="inc-em">💳</span>
+                    <div>
+                        <div class="inc-h">Seamless Payments</div>
+                        <p class="inc-p">Flexible payment plans - one contract, we handle all vendor disbursements.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TESTIMONIALS -->
+    <div class="testimonials">
+        <div class="testi-inner">
+            <div class="reveal">
+                <p class="label">Real Love Stories</p>
+                <h2>Don't take our word.<br><em>Take theirs.</em></h2>
+            </div>
+            <div class="testi-grid">
+                <div class="testi-card reveal">
+                    <div class="tq-mark">"</div>
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-text">We had the most incredible experience! From the very first consultation, they
+                        made us feel so at ease and completely understood our vision for our special day.</p>
+                    <p class="testi-by">Kalee · Birmingham, AL</p>
+                </div>
+                <div class="testi-card reveal">
+                    <div class="tq-mark">"</div>
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-text">Ladybird Ever After did a phenomenal job. They go above and beyond for their
+                        couples. We simply enjoyed our day together without a single worry.</p>
+                    <p class="testi-by">Jessica · Pittsburgh, PA</p>
+                </div>
+                <div class="testi-card reveal">
+                    <div class="tq-mark">"</div>
+                    <div class="testi-stars">★★★★★</div>
+                    <p class="testi-text">We are forever grateful. We wish we could live the day over and over again. If
+                        you're thinking about it - just do it. Absolutely no regrets whatsoever.</p>
+                    <p class="testi-by">Mollie &amp; Ryan · Boston, MA</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTTOM FORM -->
+    <div class="form-section" id="enquire">
+        <div class="form-bg"></div>
+        <div class="form-overlay"></div>
+        <div class="form-inner">
+
+            <div class="form-left reveal">
+                <p class="label label-lt">Let's Get Started</p>
+                <h2>Check your date.<br>Get pricing. <em>Instantly.</em></h2>
+                <p>Submit below and we reply <strong style="color:var(--gold-lt)">instantly</strong> - you'll see if
+                    your date is available plus get real pricing for your vision right away.</p>
+                <div class="urgency-box">
+                    <h4>⚡ Instant Reply Guarantee</h4>
+                    <p>See date availability and real pricing within moments of submitting.</p>
+                </div>
+                <div class="form-gs">
+                    <div class="form-g">Free, no-obligation consultation</div>
+                    <div class="form-g">Pay in USD - no wire transfers</div>
+                    <div class="form-g">One US contract, one team, zero chaos</div>
+                    <div class="form-g">Legal ceremony included in every package</div>
+                </div>
+            </div>
+
+            <div class="form-card reveal">
+                <div class="form-card-title">Your Ireland wedding,<br><em>starts here.</em></div>
+                <p class="form-card-sub">Free · No obligation · Instant reply with availability &amp; pricing</p>
+                <div id="hs-bottom">
+                    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+                    <script>
+                        hbspt.forms.create({ portalId: "47524318", formId: "d1f83a24-30cd-4fdd-a890-851ba0872c2f", region: "na1" });
+                    </script>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FLOATING CTA -->
+    <a href="#enquire" class="float-cta" id="floatCta">Check Availability - Instant Reply</a>
+
+    <script>
+        const revEls = document.querySelectorAll('.reveal');
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach((e, i) => {
+                if (e.isIntersecting) {
+                    setTimeout(() => e.target.classList.add('in'), i * 60);
+                    obs.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
+        revEls.forEach(el => obs.observe(el));
+
+        const fc = document.getElementById('floatCta');
+        const formEl = document.getElementById('enquire');
+        const mob = () => window.innerWidth <= 700;
+        window.addEventListener('scroll', () => {
+            const past = window.scrollY > 500;
+            const atForm = formEl.getBoundingClientRect().top < window.innerHeight - 80;
+            const show = past && !atForm;
+            fc.classList.toggle('show', show);
+            if (mob()) document.body.classList.toggle('fb-on', show);
+        });
+
+        function activatePkg(card) {
+            document.querySelectorAll('.pkg-card').forEach(c => c.classList.remove('on'));
+            card.classList.add('on');
+            document.getElementById('enquire').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    </script>
+</body>
+
+</html>

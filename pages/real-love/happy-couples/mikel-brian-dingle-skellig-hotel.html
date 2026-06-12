@@ -1,0 +1,723 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Alice:wght@400&display=swap" rel="stylesheet">
+
+<style>
+.lb-story {
+  --green:    #5B6239;
+  --green-dk: #3a3f25;
+  --green-hv: #4a5130;
+  --gold:     #B8964E;
+  --gold-lt:  #D4AF71;
+  --cream:    #F5F0E8;
+  --warm:     #FDFAF4;
+  --stone:    #8C8070;
+  --txt:      #1A1A18;
+  --txt-mid:  #4A4A42;
+  --pad-x: clamp(1.2rem, 5vw, 5rem);
+  --pad-y: clamp(3.5rem, 7vw, 6rem);
+  font-family: 'Alice', serif;
+  font-weight: 300;
+  color: var(--txt);
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+.lb-story *, .lb-story *::before, .lb-story *::after { margin:0; padding:0; box-sizing:border-box; }
+.lb-story img { display:block; }
+.lb-story h1, .lb-story h2, .lb-story h3, .lb-story h4 { font-family:'Playfair Display',serif; font-weight:300; }
+.lb-story h1 em, .lb-story h2 em, .lb-story h3 em { font-style:italic; color:var(--gold-lt); }
+.lb-story a { color:inherit; }
+
+.lb-story .label {
+  font-size:.6rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold);
+  font-weight:600; display:flex; align-items:center; gap:.6rem; margin-bottom:.75rem;
+}
+.lb-story .label::after { content:''; flex:0 0 28px; height:1px; background:var(--gold); opacity:.5; }
+
+.lb-story .btn {
+  display:inline-block; font-family:'Alice',serif; font-size:.74rem; font-weight:600;
+  letter-spacing:.15em; text-transform:uppercase; text-decoration:none; padding:.95rem 2.2rem;
+  border:2px solid transparent; cursor:pointer; transition:all .3s;
+}
+.lb-story .btn-green { background:var(--green); color:var(--cream); border-color:var(--green); }
+.lb-story .btn-green:hover { background:var(--green-hv); border-color:var(--green-hv); }
+.lb-story .btn-gold { background:var(--gold); color:var(--green); border-color:var(--gold); }
+.lb-story .btn-gold:hover { background:transparent; color:var(--gold-lt); border-color:var(--gold-lt); }
+
+/* ── HERO ── */
+.lb-story .hero {
+  position:relative; background:var(--green-dk); overflow:hidden; display:flex;
+  flex-direction: column; align-items:center; justify-content:center; text-align:center; min-height:70vh;
+}
+.lb-story .hero-bg {
+  position:absolute; inset:0;
+  background-image:url('https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/c0532057-0095-47c2-9f85-f2cfc134c1b7/mb_dingleskellighotel00020.webp?content-type=image%2Fwebp');
+  background-size:cover; background-position:center 45%; 
+}
+.lb-story .hero-grad {
+  position:absolute; inset:0;
+  background:linear-gradient(to bottom, rgba(28,28,26,.55) 0%, rgba(28,28,26,.75) 100%);
+}
+.lb-story .hero-content {
+  position:relative; z-index:2; padding:clamp(6.5rem,14vw,10rem) var(--pad-x) clamp(5rem,10vw,8rem);
+  max-width:700px; margin:0 auto; animation:lbStoryFadeUp .9s ease both;
+}
+.lb-story .hero-eyebrow {
+  font-size:.55rem; letter-spacing:.35em; text-transform:uppercase; color:var(--gold-lt);
+  font-weight:500; margin-bottom:1rem; display:flex; align-items:center; justify-content:center; gap:.7rem;
+}
+.lb-story .hero-eyebrow-line { flex:0 0 20px; height:1px; background:var(--gold-lt); opacity:.45; }
+.lb-story .hero h1 { font-size:clamp(2.4rem,5.5vw,4rem); color:var(--warm); line-height:1.05; margin-bottom:.6rem; }
+.lb-story .hero-location {
+  font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1rem,1.8vw,1.25rem);
+  color:rgba(253,250,244,.55); line-height:1.5;
+}
+.lb-story .hero-meta {
+  display:flex; justify-content:center; gap:1.5rem; flex-wrap:wrap; margin-top:1.2rem; padding-top:1.2rem;
+  border-top:1px solid rgba(253,250,244,.12);
+}
+.lb-story .hero-meta-item { font-size:.65rem; color:rgba(253,250,244,.4); letter-spacing:.08em; }
+.lb-story .hero-meta-item strong { color:rgba(253,250,244,.65); font-weight:600; }
+
+/* ── INTRO ── */
+.lb-story .intro {
+  background:var(--cream); padding:var(--pad-y) var(--pad-x);
+}
+.lb-story .intro-inner {
+  max-width:720px; margin:0 auto; text-align:center;
+}
+.lb-story .intro h2 { font-size:clamp(1.6rem,3vw,2.2rem); color:var(--txt); line-height:1.18; margin-bottom:1.2rem; }
+.lb-story .intro p { font-size:.88rem; line-height:1.85; color:var(--txt-mid); margin-bottom:1rem; }
+.lb-story .intro p:last-of-type { margin-bottom:0; }
+.lb-story .intro-divider { width:50px; height:1px; background:var(--gold); opacity:.4; margin:1.8rem auto; }
+
+/* ── PHOTO GALLERY ── */
+.lb-story .gallery { background:var(--warm); padding:var(--pad-y) var(--pad-x); }
+.lb-story .gallery-inner { max-width:1000px; margin:0 auto; }
+.lb-story .gallery-header { text-align:center; margin-bottom:clamp(1.5rem,3vw,2.5rem); }
+.lb-story .gallery-header h2 { font-size:clamp(1.6rem,2.8vw,2.2rem); color:var(--txt); line-height:1.18; }
+
+.lb-story .gallery-grid {
+  display:grid; gap:6px;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:auto auto;
+}
+.lb-story .gallery-item {
+  position:relative; overflow:hidden; cursor:pointer;
+}
+.lb-story .gallery-item img {
+  width:100%; height:100%; object-fit:cover; display:block;
+  filter:saturate(.85); transition:transform .6s ease, filter .4s;
+}
+.lb-story .gallery-item:hover img { transform:scale(1.03); filter:saturate(1); }
+.lb-story .gallery-item--hero {
+  grid-column:1 / -1;
+}
+.lb-story .gallery-item--hero img { height:clamp(300px,40vw,500px); }
+.lb-story .gallery-item--half img { height:clamp(250px,30vw,400px); }
+
+/* ── LIGHTBOX ── */
+.lb-story .lb-lightbox {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.96); z-index: 99999;
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.25s;
+}
+.lb-story .lb-lightbox.lb-lightbox--open { opacity: 1; pointer-events: all; }
+.lb-story .lb-lb-inner { max-width: 92vw; max-height: 90vh; display: flex; align-items: center; justify-content: center; }
+.lb-story #lb-lb-img { max-width: 92vw; max-height: 88vh; object-fit: contain; border-radius: 2px; box-shadow: 0 8px 60px rgba(0,0,0,0.5); transition: opacity 0.2s; }
+.lb-story .lb-lb-close { position: absolute; top: 18px; right: 22px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 18px; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: 2px; transition: background 0.2s; }
+.lb-story .lb-lb-close:hover { background: rgba(255,255,255,0.2); }
+.lb-story .lb-lb-nav { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); color: #fff; font-size: 20px; width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; cursor: pointer; border-radius: 2px; transition: background 0.2s; }
+.lb-story .lb-lb-nav:hover { background: rgba(255,255,255,0.18); }
+.lb-story .lb-lb-prev { left: 16px; }
+.lb-story .lb-lb-next { right: 16px; }
+.lb-story .lb-lb-counter { position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.5); font-size: 12px; letter-spacing: 0.1em; }
+
+/* ── REVIEW ── */
+.lb-story .review-section {
+  background:var(--green); padding:var(--pad-y) var(--pad-x); position:relative; overflow:hidden;
+}
+.lb-story .review-bg-pattern {
+  position:absolute; inset:0; opacity:.04;
+  background-image:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23F5F0E8' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+.lb-story .review-inner {
+  max-width:800px; margin:0 auto; text-align:center; position:relative; z-index:2;
+}
+.lb-story .review-stars {
+  font-size:1.1rem; letter-spacing:.3rem; color:var(--gold-lt); margin-bottom:1.2rem;
+}
+.lb-story .review-quote {
+  font-family:'Playfair Display',serif; font-style:italic;
+  font-size:clamp(1rem,1.2vw,1.1rem); color:var(--warm); line-height:1.75;
+  margin-bottom:1.6rem; position:relative; padding:0 1rem;
+}
+.lb-story .review-quote::before {
+  content:'\201C'; font-family:'Playfair Display',serif; font-size:4rem;
+  color:var(--gold); opacity:.3; position:absolute; top:-.8rem; left:-.8rem;
+  line-height:1;
+}
+.lb-story .review-quote p {
+  margin-bottom: 1rem;
+}
+.lb-story .review-quote p:last-of-type {
+  margin-bottom: 0;
+}
+.lb-story .review-attribution {
+  font-size:.72rem; color:rgba(245,240,232,.45); letter-spacing:.08em; margin-bottom:.3rem;
+}
+.lb-story .review-attribution strong { color:rgba(245,240,232,.7); font-weight:600; }
+
+.lb-story .review-badge {
+  display:inline-flex; align-items:center; gap:.5rem;
+  background:rgba(245,240,232,.08); padding:.5rem 1.1rem;
+  margin-top:1rem; transition:background .3s;
+}
+.lb-story .review-badge:hover { background:rgba(245,240,232,.14); }
+.lb-story .review-badge-icon { width:18px; height:18px; }
+.lb-story .review-badge-text {
+  font-size:.6rem; letter-spacing:.1em; text-transform:uppercase;
+  color:rgba(245,240,232,.55); font-weight:600; text-decoration:none;
+}
+
+/* ── DETAILS STRIP ── */
+.lb-story .details {
+  background:var(--cream); padding:clamp(2rem,4vw,3rem) var(--pad-x);
+  border-bottom:1px solid rgba(91,98,57,.08);
+}
+.lb-story .details-inner {
+  max-width:800px; margin:0 auto;
+  display:flex; justify-content:center; gap:clamp(1.5rem,4vw,3.5rem); flex-wrap:wrap;
+}
+.lb-story .detail-item { text-align:center; }
+.lb-story .detail-label {
+  font-size:.55rem; letter-spacing:.2em; text-transform:uppercase;
+  color:var(--stone); margin-bottom:.25rem;
+}
+.lb-story .detail-value {
+  font-family:'Playfair Display',serif; font-size:.95rem; color:var(--green); font-weight:600;
+}
+.lb-story .detail-value a {
+  color:var(--green); text-decoration:underline; text-decoration-color:var(--gold);
+  text-underline-offset:3px; transition:color .3s;
+}
+.lb-story .detail-value a:hover { color:var(--gold); }
+
+/* ── VENUE SPOTLIGHT ── */
+.lb-story .venue-spot {
+  background:var(--warm); padding:var(--pad-y) var(--pad-x);
+}
+.lb-story .venue-spot-inner {
+  max-width:900px; margin:0 auto;
+  display:grid; grid-template-columns:1fr 1.1fr; gap:clamp(2rem,4vw,4rem); align-items:center;
+}
+.lb-story .venue-spot-img {
+  position:relative; overflow:hidden; height:clamp(280px,30vw,380px);
+}
+.lb-story .venue-spot-img img {
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  filter:saturate(.85); transition:transform .7s ease;
+}
+.lb-story .venue-spot-img:hover img { transform:scale(1.03); }
+.lb-story .venue-spot-body h3 {
+  font-size:clamp(1.4rem,2.4vw,1.8rem); color:var(--txt); line-height:1.18; margin-bottom:.6rem;
+}
+.lb-story .venue-spot-body p {
+  font-size:.82rem; line-height:1.8; color:var(--txt-mid); margin-bottom:1rem;
+}
+.lb-story .venue-spot-body p:last-of-type { margin-bottom:1.4rem; }
+.lb-story .venue-spot-tags {
+  display:flex; flex-wrap:wrap; gap:.4rem; margin-bottom:1.4rem;
+}
+.lb-story .venue-tag {
+  font-size:.55rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--stone); background:var(--cream); padding:.28rem .65rem;
+  border:1px solid rgba(91,98,57,.08);
+}
+
+/* ── OTHER COUPLES ── */
+.lb-story .others { background:var(--cream); padding:var(--pad-y) var(--pad-x); }
+.lb-story .others-inner { max-width:960px; margin:0 auto; }
+.lb-story .others-header { text-align:center; margin-bottom:clamp(1.5rem,3vw,2.5rem); }
+.lb-story .others-header h2 { font-size:clamp(1.5rem,2.6vw,2rem); color:var(--txt); line-height:1.18; }
+
+.lb-story .others-grid {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:1px solid rgba(91,98,57,.1);
+}
+.lb-story .others-card {
+  text-decoration:none; color:var(--txt); background:var(--warm); overflow:hidden;
+  border-right:1px solid rgba(91,98,57,.1); transition:all .4s;
+}
+.lb-story .others-card:last-child { border-right:none; }
+.lb-story .others-card:hover { background:rgba(91,98,57,.03); transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,.06); }
+.lb-story .others-card-img { position:relative; height:200px; overflow:hidden; }
+.lb-story .others-card-img img {
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  filter:saturate(.8); transition:transform .6s ease, filter .4s;
+}
+.lb-story .others-card:hover .others-card-img img { transform:scale(1.06); filter:saturate(1); }
+.lb-story .others-card-img-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(28,28,26,.5) 0%, rgba(28,28,26,0) 55%); z-index:1;
+}
+.lb-story .others-card-body { padding:1.1rem 1rem 1.3rem; }
+.lb-story .others-card h3 { font-size:.88rem; font-weight:600; color:var(--green); line-height:1.25; margin-bottom:.2rem; }
+.lb-story .others-card p { font-size:.65rem; color:var(--stone); letter-spacing:.04em; }
+
+/* ── FINAL CTA ── */
+.lb-story .final-cta {
+  position:relative; padding:clamp(3rem,7vw,5rem) var(--pad-x);
+  text-align:center; overflow:hidden;
+}
+.lb-story .final-cta-bg {
+  position:absolute; inset:0;
+  background-image:url('https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/6fd60605-ee5b-4eca-883b-bc010e66aabd/mb_dingleskellighotel00002.webp?content-type=image%2Fwebp');
+  background-size:cover; background-position:center 40%;
+}
+.lb-story .final-cta-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(26,30,35,.90) 0%, rgba(38,42,48,.85) 100%);
+}
+.lb-story .final-cta-content { position:relative; z-index:2; max-width:580px; margin:0 auto; }
+.lb-story .final-cta h2 {
+  font-size:clamp(1.6rem,3vw,2.4rem); color:var(--warm); line-height:1.15; margin-bottom:.8rem;
+}
+.lb-story .final-cta .cta-subtitle {
+  font-family:'Playfair Display',serif; font-style:italic; font-size:.9rem;
+  color:rgba(245,240,232,.58); line-height:1.7; margin-bottom:2rem;
+}
+.lb-story .final-cta-buttons {
+  display:flex; align-items:center; justify-content:center; flex-wrap:wrap;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes lbStoryFadeUp { from { opacity:0; transform:translateY(26px); } to { opacity:1; transform:translateY(0); } }
+.lb-story .reveal { opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+.lb-story .reveal.in { opacity:1; transform:translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width:900px) {
+  .lb-story .venue-spot-inner { grid-template-columns:1fr; }
+  .lb-story .others-grid { grid-template-columns:repeat(2,1fr); }
+  .lb-story .others-card:nth-child(2) { border-right:none; }
+}
+@media (max-width:600px) {
+  .lb-story .hero { min-height:55vh; }
+  .lb-story .gallery-grid { grid-template-columns:1fr; }
+  .lb-story .gallery-item--half img { height:clamp(220px,50vw,320px); }
+  .lb-story .intro, .lb-story .gallery, .lb-story .venue-spot, .lb-story .others { padding:2.5rem 1.2rem; }
+  .lb-story .others-grid { grid-template-columns:1fr 1fr; }
+  .lb-story .details-inner { gap:1.2rem; }
+}
+</style>
+
+<div class="lb-story">
+
+<div id="lb-lightbox" class="lb-lightbox" aria-hidden="true">
+  <button class="lb-lb-close" aria-label="Close">✕</button>
+  <button class="lb-lb-prev lb-lb-nav" aria-label="Previous">&#8592;</button>
+  <button class="lb-lb-next lb-lb-nav" aria-label="Next">&#8594;</button>
+  <div class="lb-lb-inner"><img id="lb-lb-img" src="" alt=""></div>
+  <div class="lb-lb-counter" id="lb-lb-counter"></div>
+</div>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grad"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">
+      <span class="hero-eyebrow-line"></span>
+      Real Love Story
+      <span class="hero-eyebrow-line"></span>
+    </p>
+    <h1>Mikel & <em>Brian</em></h1>
+    <p class="hero-location">A Beautiful Celebration at Dingle Skellig Hotel & Rahinnane Castle</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>Venue:</strong> Dingle Skellig Hotel</div>
+      <div class="hero-meta-item"><strong>Location:</strong> Dingle, Co. Kerry</div>
+      <div class="hero-meta-item"><strong>Package:</strong> Full Planning</div>
+      <div class="hero-meta-item"><strong>Photos:</strong> Aidan Fitzgerald</div>
+    </div>
+  </div>
+</div>
+
+<div class="intro">
+  <div class="intro-inner reveal">
+    <p class="label" style="justify-content:center;">Their Story</p>
+    <h2>Absolute perfection on the <em>Dingle Peninsula.</em></h2>
+    <p>Mikel and Brian dreamed of a breathtaking Irish wedding but didn’t want the grueling effort of planning it themselves. Coming over from Maryland while Mikel was finishing her PhD, they trusted the Ladybird Ever After team to meticulously organize their micro wedding from afar.</p>
+    <p>The day unfolded beautifully. They shared an unforgettable, breathtaking ceremony amidst the historic ruins of Rahinnane Castle, surrounded by their closest family and friends. Afterwards, the party continued with a lively DJ reception at the stunning Dingle Skellig Hotel, overlooking Dingle Bay. Ladybird ensured every little detail, from the florist to the venue staff, was perfectly aligned with their vision, allowing Mikel and Brian to be fully present and soak in every second of their perfect day.</p>
+    <p style="font-style: italic; color: var(--stone); font-size: 0.8rem; margin-top: 1rem;">Photography by Aidan Fitzgerald</p>
+    <div class="intro-divider"></div>
+  </div>
+</div>
+
+<div class="gallery">
+  <div class="gallery-inner">
+    <div class="gallery-header reveal">
+      <p class="label" style="justify-content:center;">The Gallery</p>
+      <h2>Moments from <em>their day.</em></h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item gallery-item--hero lb-gallery-trigger" data-index="0">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/969b9090-c0f8-49c2-a806-866bfd146e1f/mb_dingleskellighotel00001.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 1" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="1">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/6fd60605-ee5b-4eca-883b-bc010e66aabd/mb_dingleskellighotel00002.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 2" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="2">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/a9f925a0-cdd5-4083-8f9d-6b3b91c6a818/mb_dingleskellighotel00003.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 3" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="3">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/477f2927-478a-4b95-9ec1-095ae913700c/mb_dingleskellighotel00004.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 4" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="4">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/084cb861-d46a-491d-9a1c-49b42fca690b/mb_dingleskellighotel00005.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 5" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--hero lb-gallery-trigger" data-index="5">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/b59e16ed-fd4f-40f5-8009-68011b9466e4/mb_dingleskellighotel00006.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 6" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="6">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/6227e3b8-e77c-4563-9b9b-3a001f38fc2f/mb_dingleskellighotel00007.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 7" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="7">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/ed848fde-2085-49db-a37f-3c2215b266d6/mb_dingleskellighotel00008.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 8" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="8">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/8cb3c1df-85aa-4b7b-8df1-3c432bbf67c8/mb_dingleskellighotel00009.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 9" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="9">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/5343e2f8-378f-4501-aa5a-11deaa6a16a7/mb_dingleskellighotel00010.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 10" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--hero lb-gallery-trigger" data-index="10">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/465d620d-bb53-43ae-90dd-220f895488c4/mb_dingleskellighotel00011.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 11" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="11">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/4601a736-48ca-40ee-98cd-81aed0a5e233/mb_dingleskellighotel00012.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 12" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="12">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/e672e1e4-d88b-4bd1-96b8-f9de52b30dee/mb_dingleskellighotel00013.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 13" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="13">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/c68eaae7-3cac-40da-bf02-ef8c16dea5cb/mb_dingleskellighotel00014.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 14" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="14">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/e12e772f-1c4a-463a-b215-4a5595d71ea5/mb_dingleskellighotel00015.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 15" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--hero lb-gallery-trigger" data-index="15">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/7dcd30f7-00e6-4b10-8253-2aa63d99f16f/mb_dingleskellighotel00016.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 16" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="16">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/a05cdeb2-1e8b-4828-900d-8e030933e689/mb_dingleskellighotel00017.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 17" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="17">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/c88b341f-74a9-4492-b7b4-b0241f02e2d8/mb_dingleskellighotel00018.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 18" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="18">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/61d0b23d-f2f3-4fd4-a0c4-67b0b88369af/mb_dingleskellighotel00019.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 19" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="19">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/c0532057-0095-47c2-9f85-f2cfc134c1b7/mb_dingleskellighotel00020.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 20" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--hero lb-gallery-trigger" data-index="20">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/3705ecd1-36e9-45fc-a229-738a6ba83e4f/mb_dingleskellighotel00021.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 21" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="21">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/e89cfcec-19dd-4e3d-8adc-4a3349a84285/mb_dingleskellighotel00022.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 22" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="22">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/1617392c-37be-4df2-95c9-740416189f20/mb_dingleskellighotel00023.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 23" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="23">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/0ee7270f-f6ff-4a81-ae1f-c959ebc5cbdb/mb_dingleskellighotel00024.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 24" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="24">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/8d303b50-0c3e-4579-b4d3-c11b0aba90fd/mb_dingleskellighotel00025.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 25" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--hero lb-gallery-trigger" data-index="25">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/9279404f-7f04-4b88-b047-73c962f03323/mb_dingleskellighotel00026.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 26" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="26">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/29c7d3a6-2f2f-47ad-bc87-0043ae59c114/mb_dingleskellighotel00027.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 27" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="27">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/dde673c7-d73a-45dc-ab16-965665bf7267/mb_dingleskellighotel00028.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 28" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="28">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/cee735f4-4b64-4704-a960-c1766986f6df/mb_dingleskellighotel00029.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 29" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="29">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/f4e0d3c1-a96d-4256-b5dc-bf9ad8350707/mb_dingleskellighotel00030.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 30" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--hero lb-gallery-trigger" data-index="30">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/e2c3fcfb-cb13-410b-94b4-4c24656b1455/mb_dingleskellighotel00031.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 31" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="31">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/2cbb72d6-405c-43e9-abe5-d9e0364a33a0/mb_dingleskellighotel00032.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 32" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="32">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/925ee39f-4708-4618-af56-1a9ae0ffc078/mb_dingleskellighotel00033.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 33" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="33">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/6fb5b925-2b73-416c-b8b1-96cbec08cd5e/mb_dingleskellighotel00034.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 34" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="34">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/1ead36ac-3c68-4fd3-8371-9b45feaf565b/mb_dingleskellighotel00035.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 35" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--hero lb-gallery-trigger" data-index="35">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/04ee2657-ee65-4ffc-9f2c-385c8bc3986b/mb_dingleskellighotel00036.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 36" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="36">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/0c40a67e-d2cc-4f59-aeeb-ea2ecdef6ec9/mb_dingleskellighotel00037.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 37" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="37">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/4a12cb7b-49fc-4dd6-9f62-8b4986aade79/mb_dingleskellighotel00038.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 38" loading="lazy">
+      </div>
+      <div class="gallery-item gallery-item--half lb-gallery-trigger" data-index="38">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/8fee5285-c030-4ed6-a348-c33b292f1ab9/mb_dingleskellighotel00039.webp?content-type=image%2Fwebp" alt="Mikel and Brian wedding gallery photo 39" loading="lazy">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="review-section">
+  <div class="review-bg-pattern"></div>
+  <div class="review-inner reveal">
+    <div class="review-stars">★★★★★</div>
+    <div class="review-quote" style="font-size: clamp(.9rem, 1.2vw, 1rem); line-height: 1.6;">
+      <p>Our wedding day was absolute perfection, and we have Ladybird Ever After to thank for that. Hiring Yasmeen and Laurence was one of the best, if not the best, decisions we made while planning our micro wedding. I honestly cannot speak highly enough of them both. Their organization, attention to detail, consistency, availability, and responsiveness are unmatched.</p>
+      <p>We had a clear vision for how we wanted our day to look and feel, and they brought it to life beautifully. The entire experience felt incredibly personal because the Ladybird team is clearly so passionate about what they do.</p>
+      <p>They went above and beyond to make our day perfect, from helping us find the right florist, DJ, photographer, venue, celebrant, and hair and makeup artists, to calmly handling every little emergency that popped up. Their thoughtful advice shaped so many of our vendor choices and always aligned perfectly with our vision.</p>
+      <p>It speaks volumes when other vendors—photographers, hair and makeup artists, venue staff—go out of their way to compliment how seamless and well-organized your wedding planners are. If there were any hiccups on the day, we genuinely had no idea. We were able to be fully present and soak in every second, thanks to the peace of mind Yasmeen and Laurence provided.</p>
+      <p>We are deeply grateful for their hard work and dedication, which truly shows in every detail. We now have memories we’ll cherish for a lifetime. We already miss working with this amazing duo, and we give them our highest recommendation for anyone planning one of the most important and happiest days of their lives. You will not regret it.</p>
+    </div>
+    <p class="review-attribution"><strong>Mikel & Brian</strong> — Dingle Skellig Hotel, Co. Kerry</p>
+
+    <a href="https://maps.app.goo.gl/vLdRNiBiYvAeLVSF7" target="_blank" rel="noopener" class="review-badge" style="text-decoration:none;">
+      <svg class="review-badge-icon" viewBox="0 0 24 24" fill="none">
+        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A10.96 10.96 0 001 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+      </svg>
+      <span class="review-badge-text">Verified Google Review</span>
+    </a>
+  </div>
+</div>
+
+<div class="details">
+  <div class="details-inner reveal">
+    <div class="detail-item">
+      <div class="detail-label">Venues</div>
+      <div class="detail-value"><a href="https://www.ladybirdeverafter.com/venues/p/dingleskellighotel">Dingle Skellig Hotel & Rahinnane Castle</a></div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">County</div>
+      <div class="detail-value">Co. Kerry</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Region</div>
+      <div class="detail-value"><a href="/regions-of-ireland/the-south-west">South West</a></div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Package</div>
+      <div class="detail-value"><a href="https://www.ladybirdeverafter.com/packages">Full Planning</a></div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Photographer</div>
+      <div class="detail-value">Aidan Fitzgerald</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Type</div>
+      <div class="detail-value">Wedding</div>
+    </div>
+  </div>
+</div>
+
+<div class="venue-spot">
+  <div class="venue-spot-inner">
+    <div class="venue-spot-img reveal">
+      <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/a9f925a0-cdd5-4083-8f9d-6b3b91c6a818/mb_dingleskellighotel00003.webp?content-type=image%2Fwebp"
+           alt="Dingle Skellig Hotel">
+    </div>
+    <div class="venue-spot-body reveal">
+      <p class="label">About the Location</p>
+      <h3>Dingle Skellig Hotel & Rahinnane Castle,<br><em>Co. Kerry</em></h3>
+      <p>Situated in the heart of the wild South West, this incredible double venue combination offers couples a majestic blend of ancient history and coastal luxury. The dramatic ruins of Rahinnane Castle provide a breathtaking backdrop for a truly unforgettable and deeply romantic ceremony.</p>
+      <p>Following the vows, a short scenic journey brings you to the Dingle Skellig Hotel, a premier coastal destination overlooking the magnificent Dingle Bay. With its world-class hospitality, sweeping sea views, and outstanding amenities, it perfectly completes a magical Irish wedding experience on the Dingle Peninsula.</p>
+      <div class="venue-spot-tags">
+        <span class="venue-tag">Dingle Peninsula</span>
+        <span class="venue-tag">Historic Castle</span>
+        <span class="venue-tag">Coastal Views</span>
+        <span class="venue-tag">South West</span>
+      </div>
+      <a href="https://www.ladybirdeverafter.com/venues/p/dingleskellighotel" class="btn btn-green">Explore Dingle Skellig Hotel</a>
+    </div>
+  </div>
+</div>
+
+<div class="others">
+  <div class="others-inner">
+    <div class="others-header reveal">
+      <p class="label" style="justify-content:center;">More Love Stories</p>
+      <h2>Our Happy <em>Couples</em></h2>
+    </div>
+    <div class="others-grid reveal">
+      <a href="https://www.ladybirdeverafter.com/happy-couples/krystial-kurtis-kinnitty-castle" class="others-card">
+        <div class="others-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/01262369-9c68-419c-abc2-d0158a877260/kk1.webp?format=1000w" alt="Krystial and Kurtis at Kinnitty Castle">
+          <div class="others-card-img-overlay"></div>
+        </div>
+        <div class="others-card-body">
+          <h3>Krystial &amp; Kurtis</h3>
+          <p>Kinnitty Castle</p>
+        </div>
+      </a>
+      <a href="https://www.ladybirdeverafter.com/happy-couples/kalee-kristian-cliffs-of-moher" class="others-card">
+        <div class="others-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/c27defc9-d04b-4631-92e2-a60eafd809f0/Kalee%26Kristian-60.jpg?format=1000w" alt="Kalee and Kristian at the Cliffs of Moher">
+          <div class="others-card-img-overlay"></div>
+        </div>
+        <div class="others-card-body">
+          <h3>Kalee &amp; Kristian</h3>
+          <p>Cliffs of Moher</p>
+        </div>
+      </a>
+      <a href="https://www.ladybirdeverafter.com/happy-couples/jessica-kyle-ross-castle" class="others-card">
+        <div class="others-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/5e5dc75c-a834-4e3a-9edb-427b51cf940f/DC1_7641.jpg?format=1000w" alt="Jessica and Kyle at Ross Castle">
+          <div class="others-card-img-overlay"></div>
+        </div>
+        <div class="others-card-body">
+          <h3>Jessica &amp; Kyle</h3>
+          <p>Ross Castle</p>
+        </div>
+      </a>
+      <a href="https://www.ladybirdeverafter.com/happy-couples/mollie-ryan-dunquin-pier" class="others-card">
+        <div class="others-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/7d7d6ea1-cb11-47d4-a5a8-122c899f0901/MandR_Dingle3.jpg?format=1000w" alt="Mollie and Ryan at Dunquin Pier">
+          <div class="others-card-img-overlay"></div>
+        </div>
+        <div class="others-card-body">
+          <h3>Mollie &amp; Ryan</h3>
+          <p>Dunquin Pier</p>
+        </div>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:2rem;" class="reveal">
+      <a href="https://www.ladybirdeverafter.com/real-love" class="btn btn-green">See All Love Stories</a>
+    </div>
+  </div>
+</div>
+
+<div class="final-cta">
+  <div class="final-cta-bg"></div>
+  <div class="final-cta-overlay"></div>
+  <div class="final-cta-content reveal">
+    <p class="label" style="justify-content:center;color:var(--gold-lt);">Your Story Starts Here</p>
+    <h2>Ready to write your own<br><em>Irish love story?</em></h2>
+    <p class="cta-subtitle">Every fairytale needs a beginning. Let's start planning yours.</p>
+    <div class="final-cta-buttons">
+      <a href="https://www.ladybirdeverafter.com/get-in-touch" class="btn btn-gold">Get In Touch</a>
+    </div>
+  </div>
+</div>
+
+</div><script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Mikel & Brian: A Wedding at Dingle Skellig Hotel",
+  "description": "Real wedding story of Mikel and Brian who celebrated their incredible day in Dingle, Co. Kerry, planned by Ladybird Ever After.",
+  "image": "https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/969b9090-c0f8-49c2-a806-866bfd146e1f/mb_dingleskellighotel00001.webp?content-type=image%2Fwebp",
+  "author": {
+    "@type": "Organization",
+    "name": "Ladybird Ever After",
+    "url": "https://www.ladybirdeverafter.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ladybird Ever After",
+    "url": "https://www.ladybirdeverafter.com"
+  },
+  "about": {
+    "@type": "Event",
+    "name": "Mikel & Brian Wedding",
+    "location": {
+      "@type": "Place",
+      "name": "Dingle Skellig Hotel",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Dingle",
+        "addressRegion": "Co. Kerry",
+        "addressCountry": "IE"
+      }
+    }
+  }
+}
+</script>
+
+<script>
+(function(){
+  var root = document.querySelector('.lb-story');
+  if (!root) return;
+  var revEls = root.querySelectorAll('.reveal');
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(e,i){
+      if(e.isIntersecting){
+        setTimeout(function(){ e.target.classList.add('in'); }, i*80);
+        obs.unobserve(e.target);
+      }
+    });
+  },{ threshold:0.07, rootMargin:'0px 0px -30px 0px' });
+  revEls.forEach(function(el){ obs.observe(el); });
+
+  // Lightbox
+  var lbImages = [];
+  var trigEls = root.querySelectorAll('.lb-gallery-trigger');
+  trigEls.forEach(function(el) {
+    var img = el.querySelector('img');
+    if(img) lbImages.push({ src: img.src.replace('1500w', '2500w').replace('800w', '2500w'), alt: img.alt });
+  });
+
+  if (lbImages.length > 0) {
+    var lightbox = document.getElementById('lb-lightbox');
+    var lbImg = document.getElementById('lb-lb-img');
+    var idx = 0;
+    
+    function updateLb() {
+      lbImg.style.opacity = 0;
+      setTimeout(function() {
+        lbImg.src = lbImages[idx].src;
+        lbImg.alt = lbImages[idx].alt;
+        document.getElementById('lb-lb-counter').textContent = (idx + 1) + ' / ' + lbImages.length;
+        lbImg.onload = function() { lbImg.style.opacity = 1; };
+      }, 150);
+    }
+    
+    trigEls.forEach(function(el) {
+      el.addEventListener('click', function() {
+        idx = parseInt(this.getAttribute('data-index'), 10);
+        updateLb();
+        lightbox.classList.add('lb-lightbox--open');
+        lightbox.setAttribute('aria-hidden', 'false');
+      });
+    });
+    
+    function closeLb() { lightbox.classList.remove('lb-lightbox--open'); lightbox.setAttribute('aria-hidden', 'true'); }
+    function prevLb() { idx = (idx === 0) ? lbImages.length - 1 : idx - 1; updateLb(); }
+    function nextLb() { idx = (idx === lbImages.length - 1) ? 0 : idx + 1; updateLb(); }
+    
+    lightbox.querySelector('.lb-lb-close').addEventListener('click', closeLb);
+    lightbox.querySelector('.lb-lb-prev').addEventListener('click', prevLb);
+    lightbox.querySelector('.lb-lb-next').addEventListener('click', nextLb);
+    lightbox.addEventListener('click', function(e) { if(e.target === lightbox || e.target.classList.contains('lb-lb-inner')) closeLb(); });
+    
+    document.addEventListener('keydown', function(e) {
+      if (!lightbox.classList.contains('lb-lightbox--open')) return;
+      if (e.key === 'Escape') closeLb();
+      if (e.key === 'ArrowLeft') prevLb();
+      if (e.key === 'ArrowRight') nextLb();
+    });
+  }
+})();
+</script>

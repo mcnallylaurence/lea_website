@@ -1,0 +1,1944 @@
+<!-- ================================================================
+     LADYBIRD EVER AFTER : ELOPEMENT IN IRELAND : LANDING PAGE
+     URL: /-elopement-in-ireland
+     Scope: .lb-elop
+     ================================================================ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Alice&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+
+<style>
+/* ====================================================================
+   SCOPE & RESET
+   ==================================================================== */
+.lb-elop, .lb-elop *, .lb-elop *::before, .lb-elop *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+.lb-elop {
+  /* -- Color tokens -- */
+  --green:    #5B6239;
+  --green-dk: #3a3f25;
+  --green-hv: #4a5130;
+  --gold:     #B8964E;
+  --gold-lt:  #D4AF71;
+  --cream:    #F5F0E8;
+  --warm:     #FDFAF4;
+  --stone:    #8C8070;
+  --txt:      #1A1A18;
+  --txt-mid:  #4A4A42;
+  /* -- Spacing tokens -- */
+  --pad-x: clamp(1.2rem, 5vw, 5rem);
+  --pad-y: clamp(3.5rem, 7vw, 6rem);
+
+  font-family: 'Alice', serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--txt);
+  background: var(--warm);
+  -webkit-text-size-adjust: 100%;
+}
+.lb-elop img { display: block; max-width: 100%; }
+.lb-elop a { color: inherit; text-decoration: none; }
+.lb-elop button { font-family: inherit; cursor: pointer; background: none; border: none; color: inherit; }
+.lb-elop h1, .lb-elop h2, .lb-elop h3 {
+  font-family: 'Playfair Display', serif; font-weight: 300;
+  letter-spacing: -.005em;
+}
+.lb-elop em {
+  font-style: italic; color: var(--gold-lt); font-family: 'Playfair Display', serif;
+}
+
+/* ====================================================================
+   COMPONENT : OVERLINE LABEL
+   ==================================================================== */
+.lb-elop .ol {
+  display: inline-flex; align-items: center; gap: .8rem;
+  font-size: .65rem; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--gold); font-weight: 600; line-height: 1;
+  margin-bottom: 1.1rem;
+}
+.lb-elop .ol::after {
+  content: ""; display: block; flex: 0 0 28px; height: 1px;
+  background: var(--gold); opacity: .5;
+}
+.lb-elop .ol-center {
+  display: flex; align-items: center; justify-content: center;
+  gap: .8rem; font-size: .65rem; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--gold); font-weight: 600; line-height: 1;
+  margin-bottom: 1.1rem;
+}
+.lb-elop .ol-center::before,
+.lb-elop .ol-center::after {
+  content: ""; display: block; flex: 0 0 28px; height: 1px;
+  background: var(--gold); opacity: .5;
+}
+
+/* ====================================================================
+   COMPONENT : BUTTONS
+   ==================================================================== */
+.lb-elop .btn {
+  display: inline-block;
+  font-family: 'Alice', serif; font-weight: 600;
+  font-size: .74rem; letter-spacing: .15em; text-transform: uppercase;
+  padding: .95rem 2.2rem; line-height: 1;
+  border: 2px solid transparent; border-radius: 1px;
+  transition: all .3s; text-align: center; cursor: pointer;
+}
+.lb-elop .btn-green {
+  background: var(--green); color: var(--cream); border-color: var(--green);
+}
+.lb-elop .btn-green:hover { background: var(--green-hv); border-color: var(--green-hv); }
+.lb-elop .btn-gold {
+  background: var(--gold); color: var(--green); border-color: var(--gold);
+}
+.lb-elop .btn-gold:hover {
+  background: transparent; color: var(--gold-lt); border-color: var(--gold-lt);
+}
+.lb-elop .btn-outline-light {
+  background: transparent; color: var(--warm); border-color: rgba(253,250,244,.7);
+}
+.lb-elop .btn-outline-light:hover {
+  background: rgba(253,250,244,.1); border-color: var(--warm);
+}
+
+/* ====================================================================
+   1. TICKER BAR
+   ==================================================================== */
+.lb-elop .ticker {
+  background: var(--green-dk); color: var(--cream);
+  padding: .55rem 0; overflow: hidden; position: relative;
+  border-bottom: 1px solid rgba(184,150,78,.25);
+}
+.lb-elop .ticker-track {
+  display: flex; gap: 3rem; white-space: nowrap;
+  animation: ticker-scroll 38s linear infinite;
+  width: max-content;
+}
+.lb-elop .ticker-item {
+  font-size: .68rem; letter-spacing: .2em; text-transform: uppercase;
+  font-weight: 600; display: inline-flex; align-items: center; gap: 3rem;
+}
+.lb-elop .ticker-item::after {
+  content: "✦"; color: var(--gold); font-size: .55rem;
+}
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* ====================================================================
+   2. NAVIGATION
+   ==================================================================== */
+.lb-elop .nav {
+  background: var(--cream);
+  border-bottom: 1px solid rgba(91,98,57,.1);
+  padding: .9rem clamp(1.2rem, 5vw, 5rem);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1.5rem; flex-wrap: wrap;
+  position: relative; z-index: 50;
+}
+.lb-elop .nav-logo img { height: 38px; width: auto; }
+.lb-elop .nav-links {
+  display: flex; gap: 2rem; list-style: none; align-items: center;
+}
+.lb-elop .nav-links a {
+  font-size: .68rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--stone); font-weight: 600; transition: color .3s;
+}
+.lb-elop .nav-links a:hover { color: var(--green); }
+.lb-elop .nav-cta { white-space: nowrap; }
+.lb-elop .nav-burger { display: none; }
+.lb-elop .nav-burger span {
+  transition: transform .3s ease, opacity .3s ease;
+  display: block;
+}
+.lb-elop .nav-burger.open span:first-child {
+  transform: rotate(45deg) translateY(10px);
+}
+.lb-elop .nav-burger.open span:nth-child(2) {
+  opacity: 0;
+}
+.lb-elop .nav-burger.open span:last-child {
+  transform: rotate(-45deg) translateY(-10px);
+}
+
+/* ====================================================================
+   3. HERO (Pattern 1 : Immersive : conversion-led)
+   ==================================================================== */
+.lb-elop .hero {
+  position: relative;
+  width: 100vw; margin-left: calc(50% - 50vw);
+  min-height: 92vh;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; overflow: hidden;
+}
+.lb-elop .hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/64945ff0-69ca-4b28-abfe-a21e851366f1/Kalee%26Kristian-270.webp?content-type=image%2Fwebp');
+  background-size: cover;
+  background-position: center 30%;
+}
+.lb-elop .hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom,
+    rgba(20,22,18,.55) 0%,
+    rgba(20,22,18,.45) 40%,
+    rgba(20,22,18,.7) 100%);
+}
+.lb-elop .hero-content {
+  position: relative; z-index: 2;
+  max-width: 820px; padding: 5rem var(--pad-x) 4rem;
+  animation: heroFadeUp .9s ease both;
+}
+.lb-elop .hero h1 {
+  font-size: clamp(2.8rem, 7.5vw, 5.6rem);
+  color: var(--warm);
+  line-height: 1.05;
+  letter-spacing: -.015em;
+  margin-bottom: 1.4rem;
+}
+.lb-elop .hero h1 .line-break { display: block; }
+.lb-elop .hero-sub {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: clamp(1rem, 1.7vw, 1.2rem);
+  color: rgba(253,250,244,.85);
+  line-height: 1.6; max-width: 540px; margin: 0 auto 2.4rem;
+}
+.lb-elop .hero-ctas {
+  display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  margin-bottom: 1.8rem;
+}
+.lb-elop .hero-stars {
+  color: var(--warm); font-size: .72rem; letter-spacing: .12em;
+  text-transform: uppercase; opacity: .85; line-height: 1.6;
+}
+.lb-elop .hero-stars .stars {
+  color: var(--gold-lt); font-size: .9rem; letter-spacing: .1em;
+  margin-right: .4rem;
+}
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ====================================================================
+   4. TESTIMONIALS
+   ==================================================================== */
+.lb-elop .testimonials {
+  background: var(--cream);
+  padding: var(--pad-y) var(--pad-x);
+}
+.lb-elop .testimonials-inner {
+  max-width: 1180px; margin: 0 auto;
+}
+.lb-elop .testimonials-head {
+  text-align: center; margin-bottom: 3.2rem;
+}
+.lb-elop .testimonials-head h2 {
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  line-height: 1.18;
+  color: var(--txt);
+}
+.lb-elop .t-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.8rem;
+}
+.lb-elop .t-card {
+  background: var(--warm);
+  border: 1px solid rgba(91,98,57,.1);
+  padding: 2rem 1.8rem;
+  display: flex; flex-direction: column;
+  position: relative;
+}
+.lb-elop .t-card::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: var(--gold);
+}
+.lb-elop .t-stars {
+  color: var(--gold); font-size: .9rem;
+  letter-spacing: .15em; margin-bottom: 1rem;
+}
+.lb-elop .t-quote {
+  font-family: 'Playfair Display', serif; font-weight: 400; font-style: italic;
+  font-size: 1rem; line-height: 1.7;
+  color: var(--txt-mid); margin-bottom: 1.4rem;
+  flex-grow: 1;
+}
+.lb-elop .t-attrib {
+  font-size: .68rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--green); font-weight: 600;
+  padding-top: 1rem; border-top: 1px solid rgba(91,98,57,.12);
+}
+.lb-elop .t-closer {
+  text-align: center; max-width: 640px; margin: 3rem auto 1.6rem;
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: 1.05rem; line-height: 1.7; color: var(--txt-mid);
+}
+.lb-elop .t-cta-wrap { text-align: center; }
+
+/* ====================================================================
+   5. FOUNDER STORY
+   ==================================================================== */
+.lb-elop .founder {
+  background: var(--warm);
+  padding: var(--pad-y) var(--pad-x);
+}
+.lb-elop .founder-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1.05fr;
+  gap: clamp(2rem, 5vw, 4.5rem); align-items: center;
+}
+.lb-elop .founder-img-wrap {
+  position: relative; aspect-ratio: 4/5; overflow: hidden;
+  border-radius: 1px;
+}
+.lb-elop .founder-img-wrap img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.lb-elop .founder-badge {
+  position: absolute; top: 1.2rem; left: 1.2rem;
+  background: var(--cream); color: var(--green);
+  padding: .55rem .9rem;
+  font-size: .58rem; letter-spacing: .25em; text-transform: uppercase;
+  font-weight: 600; line-height: 1;
+  border: 1px solid rgba(184,150,78,.4);
+}
+.lb-elop .founder-body h2 {
+  font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+  line-height: 1.18; color: var(--txt);
+  margin-bottom: 1.4rem;
+}
+.lb-elop .founder-body p {
+  font-size: .98rem; line-height: 1.78;
+  color: var(--txt-mid); margin-bottom: 1.1rem;
+}
+.lb-elop .founder-link {
+  display: inline-block; margin-top: .8rem;
+  color: var(--gold); text-decoration: underline; text-underline-offset: 4px;
+  font-size: .72rem; letter-spacing: .2em; text-transform: uppercase;
+  font-weight: 600; transition: color .3s;
+}
+.lb-elop .founder-link:hover { color: var(--green); }
+
+/* ====================================================================
+   6. FEAR-KILLER (dark green)
+   ==================================================================== */
+.lb-elop .fear {
+  background: var(--green-dk);
+  padding: var(--pad-y) var(--pad-x);
+  width: 100vw; margin-left: calc(50% - 50vw);
+  position: relative; overflow: hidden;
+}
+.lb-elop .fear-inner {
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.1fr 1fr;
+  gap: clamp(2rem, 5vw, 4.5rem); align-items: center;
+}
+.lb-elop .fear-body .ol { color: var(--gold-lt); }
+.lb-elop .fear-body .ol::after { background: var(--gold-lt); }
+.lb-elop .fear-body h2 {
+  font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+  line-height: 1.18; color: var(--warm);
+  margin-bottom: 1.5rem;
+}
+.lb-elop .fear-body p {
+  font-size: 1rem; line-height: 1.78;
+  color: rgba(253,250,244,.85); margin-bottom: 1.2rem;
+}
+.lb-elop .fear-cta { margin-top: 1.4rem; }
+.lb-elop .fear-img {
+  aspect-ratio: 4/5; overflow: hidden; position: relative;
+}
+.lb-elop .fear-img img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+
+/* ====================================================================
+   7. WHATS INCLUDED (icon grid)
+   ==================================================================== */
+.lb-elop .included {
+  background: var(--cream);
+  padding: var(--pad-y) var(--pad-x);
+}
+.lb-elop .included-inner {
+  max-width: 1180px; margin: 0 auto;
+}
+.lb-elop .included-head {
+  text-align: center; max-width: 680px;
+  margin: 0 auto 3.5rem;
+}
+.lb-elop .included-head h2 {
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  line-height: 1.18;
+  color: var(--txt); margin-bottom: 1rem;
+}
+.lb-elop .included-head p {
+  font-size: 1rem; line-height: 1.7;
+  color: var(--txt-mid);
+}
+.lb-elop .included-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 1px solid rgba(91,98,57,.1);
+  border-left: 1px solid rgba(91,98,57,.1);
+}
+.lb-elop .inc-tile {
+  padding: 2.2rem 1.8rem;
+  border-right: 1px solid rgba(91,98,57,.1);
+  border-bottom: 1px solid rgba(91,98,57,.1);
+  background: var(--warm);
+  display: flex; flex-direction: column; gap: .9rem;
+}
+.lb-elop .inc-icon {
+  width: 38px; height: 38px;
+  color: var(--gold);
+  display: flex; align-items: center; justify-content: center;
+}
+.lb-elop .inc-icon svg { width: 100%; height: 100%; }
+.lb-elop .inc-tile h3 {
+  font-size: 1.15rem; font-weight: 400;
+  color: var(--green); line-height: 1.3;
+}
+.lb-elop .inc-tile p {
+  font-size: .9rem; line-height: 1.7;
+  color: var(--txt-mid);
+}
+
+/* ====================================================================
+   8. HOW IT WORKS (3 steps)
+   ==================================================================== */
+.lb-elop .howit {
+  background: var(--warm);
+  padding: var(--pad-y) var(--pad-x);
+}
+.lb-elop .howit-inner {
+  max-width: 1180px; margin: 0 auto;
+}
+.lb-elop .howit-head {
+  text-align: center; max-width: 680px; margin: 0 auto 3.5rem;
+}
+.lb-elop .howit-head h2 {
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  line-height: 1.18; color: var(--txt); margin-bottom: 1rem;
+}
+.lb-elop .howit-head .sub {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: 1.02rem; color: var(--txt-mid); line-height: 1.7;
+}
+.lb-elop .steps {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 2rem; position: relative;
+}
+.lb-elop .step {
+  text-align: center; padding: 0 .6rem;
+}
+.lb-elop .step-num {
+  width: 56px; height: 56px; margin: 0 auto 1.2rem;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif; font-weight: 400;
+  font-size: 1.4rem; color: var(--gold);
+}
+.lb-elop .step h3 {
+  font-size: 1.25rem; color: var(--green); margin-bottom: .8rem;
+}
+.lb-elop .step p {
+  font-size: .92rem; line-height: 1.78; color: var(--txt-mid);
+  max-width: 320px; margin: 0 auto;
+}
+.lb-elop .howit-cta {
+  text-align: center; margin-top: 3.2rem;
+}
+
+/* ====================================================================
+   9. LOCATION SHOWCASE
+   ==================================================================== */
+.lb-elop .locs {
+  background: var(--green);
+  padding: var(--pad-y) var(--pad-x);
+}
+.lb-elop .locs-inner {
+  max-width: 1280px; margin: 0 auto;
+}
+.lb-elop .locs-head {
+  text-align: center; max-width: 780px; margin: 0 auto 3.2rem;
+}
+.lb-elop .locs-head .ol-center { color: var(--gold-lt); }
+.lb-elop .locs-head .ol-center::before,
+.lb-elop .locs-head .ol-center::after { background: var(--gold-lt); }
+.lb-elop .locs-head h2 {
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  line-height: 1.18; color: var(--warm); margin-bottom: 1rem;
+}
+.lb-elop .locs-head p {
+  font-size: .98rem; line-height: 1.75;
+  color: rgba(253,250,244,.85);
+}
+.lb-elop .locs-image-link {
+  display: block; width: 100%;
+  border-radius: 1px; overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+  text-decoration: none;
+}
+.lb-elop .locs-image {
+  display: block; width: 100%; height: auto;
+}
+.lb-elop .locs-cta {
+  text-align: center; margin-top: 2.4rem;
+}
+
+/* ====================================================================
+   10. PHOTO GALLERY (dark)
+   ==================================================================== */
+.lb-elop .gallery {
+  background: var(--green-dk);
+  padding: var(--pad-y) var(--pad-x);
+  width: 100vw; margin-left: calc(50% - 50vw);
+}
+.lb-elop .gallery-inner {
+  max-width: 1280px; margin: 0 auto;
+}
+.lb-elop .gallery-head {
+  text-align: center; max-width: 680px; margin: 0 auto 3rem;
+}
+.lb-elop .gallery-head .ol-center { color: var(--gold-lt); }
+.lb-elop .gallery-head .ol-center::before,
+.lb-elop .gallery-head .ol-center::after { background: var(--gold-lt); }
+.lb-elop .gallery-head h2 {
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  line-height: 1.18; color: var(--warm); margin-bottom: 1rem;
+}
+.lb-elop .gallery-head .sub {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: 1rem; color: rgba(253,250,244,.7); line-height: 1.7;
+}
+.lb-elop .gal-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: .5rem;
+}
+.lb-elop .gal-item {
+  position: relative; overflow: hidden; aspect-ratio: 3/4;
+  background: #000;
+}
+.lb-elop .gal-item.tall { grid-row: span 2; aspect-ratio: 3/8; }
+.lb-elop .gal-item img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform .7s ease, opacity .4s ease;
+}
+.lb-elop .gal-cap {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.75), transparent 50%);
+  display: flex; align-items: flex-end; padding: 1rem;
+  opacity: 0; transition: opacity .35s;
+}
+.lb-elop .gal-item:hover .gal-cap { opacity: 1; }
+.lb-elop .gal-item:hover img { transform: scale(1.05); }
+.lb-elop .gal-cap-text {
+  color: var(--warm); font-size: .8rem; letter-spacing: .05em; line-height: 1.4;
+}
+.lb-elop .gal-cap-text strong {
+  display: block; font-family: 'Playfair Display', serif; font-weight: 400;
+  font-size: .95rem; margin-bottom: .15rem;
+}
+.lb-elop .gal-link-wrap {
+  text-align: center; margin-top: 2.6rem;
+}
+.lb-elop .gal-link {
+  color: var(--gold-lt); text-decoration: underline;
+  text-underline-offset: 4px;
+  font-size: .72rem; letter-spacing: .22em; text-transform: uppercase;
+  font-weight: 600;
+}
+.lb-elop .gal-link:hover { color: var(--warm); }
+
+/* ====================================================================
+   11. FAQ
+   ==================================================================== */
+.lb-elop .faq {
+  background: var(--warm);
+  padding: var(--pad-y) var(--pad-x);
+}
+.lb-elop .faq-inner {
+  max-width: 820px; margin: 0 auto;
+}
+.lb-elop .faq-head {
+  text-align: center; margin-bottom: 3rem;
+}
+.lb-elop .faq-head h2 {
+  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  line-height: 1.2; color: var(--txt);
+}
+.lb-elop .faq-list { border-top: 1px solid rgba(91,98,57,.12); }
+.lb-elop .faq-item { border-bottom: 1px solid rgba(91,98,57,.12); }
+.lb-elop .faq-q {
+  width: 100%; text-align: left;
+  padding: 1.4rem 3rem 1.4rem 0;
+  font-family: 'Playfair Display', serif; font-weight: 400;
+  font-size: 1.05rem; color: var(--txt); line-height: 1.4;
+  position: relative;
+}
+.lb-elop .faq-q::after {
+  content: "+"; position: absolute; right: 0; top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem; color: var(--gold); transition: transform .3s;
+  line-height: 1;
+}
+.lb-elop .faq-item.open .faq-q::after { content: "\2212"; }
+.lb-elop .faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height .45s ease;
+}
+.lb-elop .faq-item.open .faq-a { max-height: 800px; }
+.lb-elop .faq-a-inner {
+  padding: 0 0 1.6rem;
+  font-size: .95rem; line-height: 1.8; color: var(--txt-mid);
+}
+
+/* ====================================================================
+   12. PARTNER LOGOS
+   ==================================================================== */
+.lb-elop .partners {
+  background: var(--green);
+  padding: clamp(2.5rem, 5vw, 4rem) var(--pad-x);
+  border-top: 1px solid rgba(184,150,78,.15);
+  border-bottom: 1px solid rgba(184,150,78,.15);
+}
+.lb-elop .partners-inner {
+  max-width: 1180px; margin: 0 auto; text-align: center;
+}
+.lb-elop .partners-label {
+  font-size: .62rem; letter-spacing: .3em; text-transform: uppercase;
+  color: rgba(253,250,244,.7); font-weight: 600;
+  margin-bottom: 2rem;
+}
+.lb-elop .partners-row {
+  display: flex; flex-wrap: wrap; gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: center; justify-content: center;
+}
+.lb-elop .partners-row {
+  display: flex; flex-wrap: wrap; gap: clamp(1.5rem, 4vw, 3.5rem);
+  align-items: center; justify-content: center;
+}
+.lb-elop .partners-row img {
+  height: auto; width: auto; max-height: 42px; max-width: 140px;
+  object-fit: contain;
+  filter: brightness(0) invert(1) opacity(.4);
+  transition: filter .35s;
+}
+.lb-elop .partners-row img:hover {
+  filter: brightness(0) invert(1) opacity(.85);
+}
+
+/* ====================================================================
+   13. FINAL CTA + FORM
+   ==================================================================== */
+.lb-elop .finalcta {
+  position: relative; overflow: hidden;
+  width: 100vw; margin-left: calc(50% - 50vw);
+  padding: var(--pad-y) var(--pad-x);
+  background: #3d4556;
+}
+.lb-elop .finalcta-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/1771902459285-GMRMHKOK9VGV88JISVHW/T%26R_465.webp?content-type=image%2Fwebp');
+  background-size: cover; background-position: center 40%;
+  opacity: 1;
+}
+.lb-elop .finalcta-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right,
+    rgba(26,26,24,.92) 0%,
+    rgba(26,26,24,.88) 50%,
+    rgba(26,26,24,.82) 100%);
+}
+.lb-elop .finalcta-inner {
+  position: relative; z-index: 2;
+  max-width: 1180px; margin: 0 auto;
+  display: grid; grid-template-columns: 1.2fr 0.9fr;
+  gap: clamp(2rem, 5vw, 4rem); align-items: center;
+}
+.lb-elop .fc-left .ol { color: var(--gold-lt); }
+.lb-elop .fc-left .ol::after { background: var(--gold-lt); }
+.lb-elop .fc-left h2 {
+  font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+  line-height: 1.15; color: var(--warm);
+  margin-bottom: 1.2rem;
+}
+.lb-elop .fc-left > p {
+  font-size: .95rem; line-height: 1.7;
+  color: rgba(253,250,244,.85); margin-bottom: 1.4rem;
+}
+.lb-elop .fc-urgency {
+  background: rgba(0,0,0,.18); border-left: 3px solid var(--gold);
+  padding: .9rem 1.1rem; margin-bottom: 1.6rem;
+}
+.lb-elop .fc-urgency-label {
+  font-size: .62rem; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--gold-lt); font-weight: 600; margin-bottom: .35rem;
+  display: block;
+}
+.lb-elop .fc-urgency-text {
+  font-size: .9rem; line-height: 1.6; color: rgba(253,250,244,.85);
+}
+.lb-elop .fc-checks {
+  list-style: none; display: flex; flex-direction: column; gap: .7rem;
+}
+.lb-elop .fc-checks li {
+  font-size: .9rem; line-height: 1.5; color: rgba(253,250,244,.92);
+  padding-left: 1.7rem; position: relative;
+}
+.lb-elop .fc-checks li::before {
+  content: "✓"; position: absolute; left: 0; top: 0;
+  color: var(--gold-lt); font-weight: 600;
+  font-size: .95rem;
+}
+
+.lb-elop .fc-card {
+  background: var(--warm); border-top: 3px solid var(--gold);
+  padding: 1.5rem clamp(1.2rem, 3vw, 1.8rem);
+  box-shadow: 0 18px 60px rgba(0,0,0,.18);
+}
+.lb-elop .fc-card-title {
+  font-family: 'Playfair Display', serif; font-weight: 400;
+  font-size: 1.2rem; line-height: 1.2; color: var(--txt);
+  margin-bottom: .3rem;
+}
+.lb-elop .fc-card-sub {
+  font-size: .62rem; letter-spacing: .2em; text-transform: uppercase;
+  color: var(--stone); font-weight: 600; line-height: 1.4;
+  margin-bottom: .8rem;
+}
+/* Soft styling for HubSpot embedded fields */
+.lb-elop .fc-form .hs-form-field { margin-bottom: .5rem; }
+.lb-elop .fc-form label {
+  font-size: .62rem; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--stone); font-weight: 600;
+  display: block; margin-bottom: .2rem;
+}
+.lb-elop .fc-form input[type="text"],
+.lb-elop .fc-form input[type="email"],
+.lb-elop .fc-form input[type="tel"],
+.lb-elop .fc-form input[type="number"],
+.lb-elop .fc-form select,
+.lb-elop .fc-form textarea {
+  width: 100%; padding: .55rem .7rem;
+  background: var(--cream);
+  border: 1px solid rgba(91,98,57,.15);
+  font-family: 'Alice', serif; font-size: .85rem;
+  color: var(--txt);
+}
+.lb-elop .fc-form .hs-button,
+.lb-elop .fc-form input[type="submit"] {
+  width: 100%; margin-top: .5rem;
+  background: var(--green); color: var(--cream);
+  border: 2px solid var(--green);
+  padding: .75rem 1.6rem;
+  font-family: 'Alice', serif; font-weight: 600;
+  font-size: .68rem; letter-spacing: .15em; text-transform: uppercase;
+  cursor: pointer; transition: all .3s;
+}
+.lb-elop .fc-form .hs-button:hover,
+.lb-elop .fc-form input[type="submit"]:hover {
+  background: var(--green-hv); border-color: var(--green-hv);
+}
+
+/* ====================================================================
+   14. FLOATING CTA
+   ==================================================================== */
+.lb-elop .float-cta {
+  position: fixed; bottom: 1.6rem; right: 1.6rem;
+  z-index: 90;
+  opacity: 0; transform: translateY(12px); pointer-events: none;
+  transition: opacity .4s ease, transform .4s ease;
+}
+.lb-elop .float-cta.visible {
+  opacity: 1; transform: translateY(0); pointer-events: auto;
+}
+.lb-elop .float-cta a {
+  background: var(--gold); color: var(--green);
+  padding: 1rem 1.8rem;
+  font-family: 'Alice', serif; font-weight: 600;
+  font-size: .74rem; letter-spacing: .15em; text-transform: uppercase;
+  border: 2px solid var(--gold);
+  box-shadow: 0 8px 28px rgba(0,0,0,.18);
+  display: inline-block; transition: all .3s;
+}
+.lb-elop .float-cta a:hover {
+  background: var(--gold-lt); border-color: var(--gold-lt);
+}
+
+/* ====================================================================
+   QUIZ : Eloping or Wedding?
+   ==================================================================== */
+.lb-elop .quiz {
+  background: var(--warm);
+  padding: var(--pad-y) var(--pad-x);
+}
+.lb-elop .quiz-shell {
+  max-width: 760px; margin: 0 auto;
+  background: var(--cream);
+  border: 1px solid rgba(91,98,57,.1);
+  padding: clamp(2rem, 5vw, 3.6rem) clamp(1.4rem, 4vw, 3rem);
+  position: relative;
+}
+.lb-elop .quiz-shell::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: var(--gold);
+}
+.lb-elop .quiz-screen { display: none; animation: quizFade .4s ease; }
+.lb-elop .quiz-screen.active { display: block; }
+@keyframes quizFade {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* -- Intro screen -- */
+.lb-elop .quiz-intro { text-align: center; }
+.lb-elop .quiz-intro h2 {
+  font-size: clamp(1.7rem, 3.2vw, 2.4rem);
+  line-height: 1.18; color: var(--txt);
+  margin-bottom: 1.1rem;
+}
+.lb-elop .quiz-intro p {
+  font-size: 1rem; line-height: 1.75; color: var(--txt-mid);
+  max-width: 560px; margin: 0 auto 2rem;
+}
+.lb-elop .quiz-start {
+  display: inline-flex; flex-direction: column; align-items: center;
+  gap: .35rem;
+  background: var(--green); color: var(--cream);
+  border: 2px solid var(--green);
+  padding: 1.05rem 2.4rem;
+  font-family: 'Alice', serif; font-weight: 600;
+  font-size: .74rem; letter-spacing: .15em; text-transform: uppercase;
+  cursor: pointer; transition: all .3s; line-height: 1.1;
+}
+.lb-elop .quiz-start:hover { background: var(--green-hv); border-color: var(--green-hv); }
+.lb-elop .quiz-start-meta {
+  font-size: .58rem; font-weight: 500;
+  letter-spacing: .2em; opacity: .75; text-transform: uppercase;
+}
+
+/* -- Question screen -- */
+.lb-elop .quiz-progress {
+  display: flex; align-items: center; gap: 1rem;
+  margin-bottom: 2rem;
+}
+.lb-elop .quiz-progress-bar {
+  flex: 1; height: 2px;
+  background: rgba(91,98,57,.15); overflow: hidden;
+}
+.lb-elop .quiz-progress-fill {
+  height: 100%; background: var(--gold);
+  width: 0; transition: width .45s ease;
+}
+.lb-elop .quiz-progress-text {
+  font-size: .62rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--stone); font-weight: 600; white-space: nowrap;
+}
+.lb-elop .quiz-question {
+  font-family: 'Playfair Display', serif; font-weight: 400;
+  font-size: clamp(1.35rem, 2.6vw, 1.8rem);
+  line-height: 1.25; color: var(--txt);
+  margin-bottom: .6rem;
+}
+.lb-elop .quiz-question em { color: var(--gold-lt); font-style: italic; }
+.lb-elop .quiz-help {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: .92rem; color: var(--stone); line-height: 1.6;
+  margin-bottom: 1.8rem;
+}
+.lb-elop .quiz-options {
+  display: flex; flex-direction: column; gap: .65rem;
+  margin-bottom: 1.8rem;
+}
+.lb-elop .quiz-option {
+  display: block; width: 100%; text-align: left;
+  background: var(--warm);
+  border: 1px solid rgba(91,98,57,.12);
+  padding: 1rem 1.2rem;
+  font-family: 'Alice', serif; font-size: .95rem;
+  color: var(--txt); line-height: 1.5;
+  cursor: pointer; transition: all .25s ease;
+}
+.lb-elop .quiz-option:hover {
+  border-color: var(--gold); background: #fff;
+  transform: translateX(4px);
+}
+.lb-elop .quiz-option-title {
+  display: block; font-weight: 400;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem; color: var(--green);
+  margin-bottom: .15rem;
+}
+.lb-elop .quiz-option-desc {
+  display: block; font-size: .85rem;
+  color: var(--txt-mid); line-height: 1.5;
+}
+.lb-elop .quiz-back {
+  background: transparent; color: var(--stone);
+  font-family: 'Alice', serif; font-size: .68rem;
+  letter-spacing: .2em; text-transform: uppercase;
+  font-weight: 600;
+  padding: .6rem 0; cursor: pointer;
+  border-top: 1px solid rgba(91,98,57,.1);
+  width: 100%; text-align: left;
+  margin-top: .4rem; transition: color .3s;
+}
+.lb-elop .quiz-back:hover { color: var(--green); }
+
+/* -- Result screen -- */
+.lb-elop .quiz-result-eyebrow {
+  font-size: .65rem; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--gold); font-weight: 600; margin-bottom: 1rem;
+}
+.lb-elop .quiz-result-title {
+  font-family: 'Playfair Display', serif; font-weight: 300;
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  line-height: 1.15; color: var(--txt);
+  margin-bottom: 1.1rem;
+}
+.lb-elop .quiz-result-title em { color: var(--gold-lt); font-style: italic; }
+.lb-elop .quiz-result-summary {
+  font-size: 1rem; line-height: 1.78;
+  color: var(--txt-mid); margin-bottom: 2rem;
+}
+.lb-elop .quiz-result-list-head {
+  font-size: .62rem; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--stone); font-weight: 600;
+  margin-bottom: 1rem;
+}
+.lb-elop .quiz-result-list {
+  list-style: none; margin-bottom: 2.2rem;
+  border-top: 1px solid rgba(91,98,57,.12);
+}
+.lb-elop .quiz-result-list li {
+  position: relative;
+  padding: .85rem 0 .85rem 1.6rem;
+  border-bottom: 1px solid rgba(91,98,57,.08);
+  font-size: .95rem; line-height: 1.6;
+  color: var(--txt-mid);
+}
+.lb-elop .quiz-result-list li::before {
+  content: ""; position: absolute; left: 0; top: 1.15rem;
+  width: 14px; height: 1px; background: var(--gold);
+}
+.lb-elop .quiz-result-actions {
+  display: flex; gap: .8rem; flex-wrap: wrap;
+  margin-bottom: 1.4rem;
+}
+.lb-elop .quiz-result-note {
+  text-align: center; padding-top: 1.4rem;
+  border-top: 1px solid rgba(91,98,57,.1);
+  font-size: .85rem; color: var(--stone); line-height: 1.6;
+}
+.lb-elop .quiz-result-note a {
+  color: var(--gold); text-decoration: underline;
+  text-underline-offset: 3px; transition: color .3s;
+}
+.lb-elop .quiz-result-note a:hover { color: var(--green); }
+.lb-elop .quiz-restart {
+  background: transparent;
+  color: var(--green); border: 2px solid rgba(91,98,57,.3);
+  padding: .95rem 2.2rem;
+  font-family: 'Alice', serif; font-weight: 600;
+  font-size: .74rem; letter-spacing: .15em; text-transform: uppercase;
+  cursor: pointer; transition: all .3s;
+}
+.lb-elop .quiz-restart:hover {
+  border-color: var(--green); background: var(--warm);
+}
+
+.lb-elop .quiz-result-package {
+  background: rgba(184, 150, 78, .08);
+  border-left: 3px solid var(--gold);
+  padding: 1.2rem; margin: 2rem 0 1.2rem;
+  border-radius: 1px;
+}
+.lb-elop .quiz-result-package-label {
+  font-size: .62rem; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--stone); font-weight: 600; margin-bottom: .3rem;
+}
+.lb-elop .quiz-result-package-name {
+  font-family: 'Playfair Display', serif; font-weight: 400;
+  font-size: 1.3rem; color: var(--txt); margin-bottom: .4rem;
+}
+.lb-elop .quiz-result-timeline {
+  font-size: .9rem; color: var(--txt-mid); line-height: 1.6;
+  margin-bottom: 0;
+}
+
+.lb-elop .quiz-result-investment {
+  background: var(--cream);
+  border: 1px solid rgba(91, 98, 57, .1);
+  padding: 1.2rem; margin-bottom: 1.8rem;
+  border-radius: 1px;
+}
+.lb-elop .quiz-result-invest-label {
+  font-size: .62rem; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--stone); font-weight: 600; margin-bottom: .4rem;
+}
+.lb-elop .quiz-result-invest-range {
+  font-family: 'Playfair Display', serif; font-weight: 400;
+  font-size: 1.6rem; color: var(--green); margin-bottom: .6rem;
+}
+.lb-elop .quiz-result-invest-desc {
+  font-size: .85rem; color: var(--txt-mid); line-height: 1.6; margin-bottom: 0;
+}
+
+/* ====================================================================
+   SCROLL REVEAL
+   ==================================================================== */
+.lb-elop .reveal {
+  opacity: 0; transform: translateY(18px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+.lb-elop .reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ====================================================================
+   RESPONSIVE : single breakpoint at 600px
+   ==================================================================== */
+@media (max-width: 900px) {
+  .lb-elop .t-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+  .lb-elop .founder-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .lb-elop .fear-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .lb-elop .included-grid { grid-template-columns: repeat(2, 1fr); }
+  .lb-elop .steps { grid-template-columns: 1fr; gap: 2.2rem; }
+  .lb-elop .gal-grid { grid-template-columns: repeat(2, 1fr); }
+  .lb-elop .gal-item.tall { grid-row: auto; aspect-ratio: 3/4; }
+  .lb-elop .finalcta-inner { grid-template-columns: 1fr; gap: 2.2rem; }
+}
+@media (max-width: 600px) {
+  .lb-elop .nav { padding: .8rem 1.2rem; }
+  .lb-elop .nav-links {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    background: var(--cream); border-bottom: 1px solid rgba(91,98,57,.1);
+    flex-direction: column; gap: 0; padding: 1.2rem 1.2rem; z-index: 100;
+  }
+  .lb-elop .nav-links.open {
+    display: flex;
+  }
+  .lb-elop .nav-links li {
+    border-bottom: 1px solid rgba(91,98,57,.08);
+    padding: .8rem 0;
+  }
+  .lb-elop .nav-links li:last-child {
+    border-bottom: none;
+  }
+  .lb-elop .nav-links a {
+    font-size: .75rem;
+  }
+  .lb-elop .nav-cta {
+    width: 100%; text-align: center; margin-top: 1rem;
+    padding: .8rem; font-size: .7rem;
+  }
+  .lb-elop .nav-burger {
+    display: flex; flex-direction: column; gap: 4px;
+    width: 28px; height: 22px; justify-content: center;
+  }
+  .lb-elop .nav-burger span {
+    display: block; width: 100%; height: 1.5px; background: var(--green);
+  }
+  .lb-elop .hero { min-height: 86vh; }
+  .lb-elop .hero h1 { font-size: clamp(2.4rem, 9vw, 3.4rem); }
+  .lb-elop .hero-ctas { flex-direction: column; width: 100%; gap: .75rem; }
+  .lb-elop .hero-ctas .btn { width: 100%; }
+  .lb-elop .included-grid { grid-template-columns: 1fr; }
+  .lb-elop .locs-grid { grid-template-columns: 1fr; }
+  .lb-elop .float-cta {
+    bottom: 0; right: 0; left: 0;
+  }
+  .lb-elop .float-cta a {
+    display: block; text-align: center;
+    margin: 0; border-radius: 0;
+    padding: 1.1rem;
+  }
+  .lb-elop .partners-row img { height: 28px; }
+  .lb-elop .gal-grid { gap: .35rem; }
+  .lb-elop .quiz-shell { padding: 1.8rem 1.2rem; }
+  .lb-elop .quiz-result-actions { flex-direction: column; }
+  .lb-elop .quiz-result-actions .btn,
+  .lb-elop .quiz-result-actions .quiz-restart { width: 100%; }
+}
+</style>
+
+<!-- ================================================================
+     PAGE MARKUP
+     ================================================================ -->
+<div class="lb-elop">
+
+  <!-- =============================================================
+       1. TICKER BAR
+       ============================================================= -->
+  <div class="ticker" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-item">US-Based Team : Atlanta, GA</span>
+      <span class="ticker-item">Pay in USD : No Wire Transfers</span>
+      <span class="ticker-item">Legal Ceremony Included</span>
+      <span class="ticker-item">All-Inclusive from $4,900</span>
+      <span class="ticker-item">100+ US Couples Helped</span>
+      <span class="ticker-item">Popular Dates Book 8+ Months Out</span>
+      <span class="ticker-item">US-Based Team : Atlanta, GA</span>
+      <span class="ticker-item">Pay in USD : No Wire Transfers</span>
+      <span class="ticker-item">Legal Ceremony Included</span>
+      <span class="ticker-item">All-Inclusive from $4,900</span>
+      <span class="ticker-item">100+ US Couples Helped</span>
+      <span class="ticker-item">Popular Dates Book 8+ Months Out</span>
+    </div>
+  </div>
+
+  <!-- =============================================================
+       2. NAVIGATION
+       ============================================================= -->
+  <nav class="nav" aria-label="Primary">
+    <a href="/" class="nav-logo">
+      <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/447b68ef-be3d-4843-ad3c-bdcf8acfab9f/Primary+Logo+Green+Font+No+Background.png?content-type=image%2Fpng" alt="Ladybird Ever After">
+    </a>
+    <ul class="nav-links">
+      <li><a href="/packages">Packages</a></li>
+      <li><a href="/venues">Venues</a></li>
+      <li><a href="/real-love">Real Weddings</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/faqs">FAQs</a></li>
+    </ul>
+    <a href="#contact" class="btn btn-green nav-cta">Get In Touch</a>
+    <button class="nav-burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </nav>
+
+  <!-- =============================================================
+       3. HERO
+       ============================================================= -->
+  <section class="hero">
+    <div class="hero-bg" role="img" aria-label="A real Ladybird Ever After couple at the Cliffs of Moher"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1>
+        Elope in Ireland.
+        <span class="line-break"><em>We've been waiting for you.</em></span>
+      </h1>
+      <p class="hero-sub">
+        A husband-and-wife team from Atlanta. One contract. Everything handled.
+      </p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn btn-gold">Get In Touch</a>
+        <a href="#quiz" class="btn btn-outline-light">Take the Quiz</a>
+      </div>
+      <p class="hero-stars">
+        <span class="stars">★★★★★</span> 100+ US couples
+      </p>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       4. TESTIMONIALS
+       ============================================================= -->
+  <section class="testimonials">
+    <div class="testimonials-inner">
+      <div class="testimonials-head reveal">
+        <p class="ol-center">Don't Take Our Word For It</p>
+        <h2>Take <em>theirs.</em></h2>
+      </div>
+      <div class="t-grid">
+        <article class="t-card reveal">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-quote">"Ladybird Ever After did a phenomenal job. When I first reached out, I didn't know much other than that we wanted to elope in Ireland. My husband and I were able to simply enjoy our day together without worry. They go above and beyond. Absolutely choose Ladybird Ever After."</p>
+          <p class="t-attrib">Jessica + Kyle &nbsp;·&nbsp; Pittsburgh, PA</p>
+        </article>
+        <article class="t-card reveal">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-quote">"We had the most incredible experience. We were able to enjoy our day without any stress at all. From the very first consultation, they made us feel completely at ease and understood our vision perfectly."</p>
+          <p class="t-attrib">Kalee + Kristian &nbsp;·&nbsp; Birmingham, AL</p>
+        </article>
+        <article class="t-card reveal">
+          <div class="t-stars">★★★★★</div>
+          <p class="t-quote">"We are forever grateful. We wish we could live the day over and over again. If you're thinking about eloping in Ireland, just do it. Absolutely no regrets whatsoever."</p>
+          <p class="t-attrib">Mollie + Ryan &nbsp;·&nbsp; Boston, MA</p>
+        </article>
+      </div>
+      <p class="t-closer reveal">
+        Every single one of these couples was once right where you are. Dreaming about Ireland, a little nervous about the logistics, and wondering if it was actually possible. It is. And we'd love to show you how.
+      </p>
+      <div class="t-cta-wrap reveal">
+        <a href="#contact" class="btn btn-green">Get In Touch</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       5. FOUNDER STORY
+       ============================================================= -->
+  <section class="founder">
+    <div class="founder-inner">
+      <div class="founder-img-wrap reveal">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/e4e0b779-04cb-499d-a1da-99af1aeb9bf1/YasmeenandLaurenceCliffs+%281%29.jpg?content-type=image%2Fjpeg" alt="Yasmeen and Laurence, founders of Ladybird Ever After, on the Irish coast">
+        <span class="founder-badge">Founded in Atlanta, GA</span>
+      </div>
+      <div class="founder-body reveal">
+        <p class="ol">We Lived It First</p>
+        <h2>We help you do the same. <em>Just without the stress.</em></h2>
+        <p>We're Yasmeen and Laurence. We met in Atlanta (at a bar called Ladybird, actually) and decided to get married on the west coast of Ireland.</p>
+        <p>It was the best decision we ever made, and the most chaotic planning experience of our lives. Trying to coordinate vendors across time zones, figure out Irish marriage law from a laptop in Georgia, wire money to people we'd never met. It was a lot.</p>
+        <p>Laurence grew up in Ireland. Yasmeen's a native Atlantan. Together, we built Ladybird Ever After so your experience is the one we wish we'd had: completely seamless, completely personal, and completely unforgettable.</p>
+        <p>We're not a big agency. We don't do hundreds of weddings a year. We do yours, and we treat it that way.</p>
+        <a href="/about" class="founder-link">Read Our Full Story →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       6. FEAR-KILLER
+       ============================================================= -->
+  <section class="fear">
+    <div class="fear-inner">
+      <div class="fear-body reveal">
+        <p class="ol">One Team. One Payment. Zero Stress.</p>
+        <h2>Here's what planning your elopement <em>actually looks like</em> with us.</h2>
+        <p>No chasing vendors across time zones. No figuring out euros. No contracts in a language you barely understand. No spending your engagement doing admin instead of enjoying it.</p>
+        <p>You send one payment in dollars, sign one US contract, and we take care of absolutely everything else. Your florist, your photographer, your celebrant, your paperwork. All vetted, all managed, all done.</p>
+        <p>You just have to show up and say "I do."</p>
+        <div class="fear-cta">
+          <a href="#contact" class="btn btn-gold">Get In Touch : It's Free</a>
+        </div>
+      </div>
+      <div class="fear-img reveal">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/63c38dd8-b407-4b47-b729-df5a890561c0/EE_110.webp?content-type=image%2Fwebp" alt="A real Ladybird elopement ceremony in Ireland">
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       7. WHATS INCLUDED
+       ============================================================= -->
+  <section class="included" id="whats-included">
+    <div class="included-inner">
+      <div class="included-head reveal">
+        <p class="ol-center">All-Inclusive Elopement</p>
+        <h2>Everything handled. <em>Nothing left to chance.</em></h2>
+        <p>Every Ladybird package is truly all-inclusive. From the legal paperwork that makes it official back home, to the venue that takes your breath away.</p>
+      </div>
+      <div class="included-grid">
+        <div class="inc-tile reveal">
+          <div class="inc-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="7" y="4" width="18" height="24" rx="1"/><line x1="11" y1="11" x2="21" y2="11"/><line x1="11" y1="16" x2="21" y2="16"/><line x1="11" y1="21" x2="17" y2="21"/></svg></div>
+          <h3>Legal Paperwork</h3>
+          <p>Full guidance on Irish marriage requirements: notice of intention, documents, certified celebrant. Your marriage is 100% legally recognized in the US.</p>
+        </div>
+        <div class="inc-tile reveal">
+          <div class="inc-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 4 C 10 4 6 8 6 14 C 6 21 16 28 16 28 C 16 28 26 21 26 14 C 26 8 22 4 16 4 Z"/><circle cx="16" cy="14" r="3.5"/></svg></div>
+          <h3>Venue Sourcing</h3>
+          <p>Castles, clifftops, country estates, hidden coastal gems. We find the perfect location for your vision and handle all permits and bookings.</p>
+        </div>
+        <div class="inc-tile reveal">
+          <div class="inc-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="9" width="24" height="17" rx="1"/><path d="M11 9 L13 6 H19 L21 9"/><circle cx="16" cy="17" r="4.5"/></svg></div>
+          <h3>Photographer</h3>
+          <p>Vetted, premium photographers who specialize in elopements. We match you to the right artist for your style.</p>
+        </div>
+        <div class="inc-tile reveal">
+          <div class="inc-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="7" width="22" height="20" rx="1"/><line x1="5" y1="13" x2="27" y2="13"/><line x1="11" y1="4" x2="11" y2="10"/><line x1="21" y1="4" x2="21" y2="10"/><circle cx="11" cy="19" r="1.2" fill="currentColor"/><circle cx="16" cy="19" r="1.2" fill="currentColor"/><circle cx="21" cy="19" r="1.2" fill="currentColor"/></svg></div>
+          <h3>Timeline Planning</h3>
+          <p>A detailed day-of timeline built around golden hour, weather, and the unique magic of your chosen location.</p>
+        </div>
+        <div class="inc-tile reveal">
+          <div class="inc-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="16" cy="11" r="4"/><path d="M8 28 C 8 22 12 19 16 19 C 20 19 24 22 24 28"/><circle cx="6" cy="14" r="2.5"/><circle cx="26" cy="14" r="2.5"/></svg></div>
+          <h3>Vendor Management</h3>
+          <p>Florists, hair and makeup, musicians, celebrants. All vetted, booked, and managed. We handle every vendor payment.</p>
+        </div>
+        <div class="inc-tile reveal">
+          <div class="inc-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="9" width="24" height="14" rx="1"/><circle cx="16" cy="16" r="3.5"/><circle cx="9" cy="16" r=".8" fill="currentColor"/><circle cx="23" cy="16" r=".8" fill="currentColor"/></svg></div>
+          <h3>Fixed USD Pricing</h3>
+          <p>Everything priced in US dollars. Flexible payment plans. No wire transfers, no hidden fees, no currency surprises. 0% interest financing available.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       8. HOW IT WORKS
+       ============================================================= -->
+  <section class="howit" id="how-it-works">
+    <div class="howit-inner">
+      <div class="howit-head reveal">
+        <p class="ol-center">Simple From Start to Finish</p>
+        <h2>Three steps to your <em>Irish elopement</em></h2>
+        <p class="sub">Planning a wedding from the US to Ireland sounds complicated. It's not. Not with us.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num">1</div>
+          <h3>Get In Touch</h3>
+          <p>Fill out the form or send us a message. We'll set up a free video call to hear your vision, answer every question, and walk you through exactly what's possible. No pressure. No sales pitch. Just two people who love doing this.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">2</div>
+          <h3>We Plan Everything</h3>
+          <p>Your dedicated planner handles every detail: venue, legal paperwork, vendors, timeline. You get a private client portal to watch it come together. If you want to be involved in every decision, great. If you want to show up surprised, also great.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num">3</div>
+          <h3>You Show Up and Say "I Do"</h3>
+          <p>You arrive in Ireland. Everything is arranged. You enjoy one of the most beautiful days of your lives. Stress-free, tears-only, with the rolling green hills as your backdrop.</p>
+        </div>
+      </div>
+      <div class="howit-cta reveal">
+        <a href="#contact" class="btn btn-green">Start With a Free Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       8b. QUIZ : Eloping or Wedding?
+       ============================================================= -->
+  <section class="quiz" id="quiz">
+    <div class="quiz-shell reveal" id="leaQuiz">
+
+      <!-- Intro screen -->
+      <div class="quiz-screen quiz-intro active" data-screen="intro">
+        <p class="ol-center">Take The Quiz</p>
+        <h2>Are you eloping, or having a <em>wedding?</em></h2>
+        <p>Most couples planning in Ireland aren't sure which one they're really planning. Six quick questions and we'll point you toward the experience that fits.</p>
+        <button class="quiz-start" type="button" data-action="start">
+          Start the quiz
+          <span class="quiz-start-meta">Takes about a minute</span>
+        </button>
+      </div>
+
+      <!-- Question screen -->
+      <div class="quiz-screen" data-screen="question">
+        <div class="quiz-progress">
+          <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="leaProgressFill"></div></div>
+          <div class="quiz-progress-text">Question <span id="leaCurrentQ">1</span> of <span id="leaTotalQ">6</span></div>
+        </div>
+        <h3 class="quiz-question" id="leaQuestionText"></h3>
+        <p class="quiz-help" id="leaQuestionHelp"></p>
+        <div class="quiz-options" id="leaOptions"></div>
+        <button class="quiz-back" type="button" data-action="back">← Back</button>
+      </div>
+
+      <!-- Result screen -->
+      <div class="quiz-screen" data-screen="result">
+        <p class="quiz-result-eyebrow" id="leaResultEyebrow">Your match</p>
+        <h2 class="quiz-result-title" id="leaResultTitle"></h2>
+        <p class="quiz-result-summary" id="leaResultSummary"></p>
+        <p class="quiz-result-list-head">What this looks like</p>
+        <ul class="quiz-result-list" id="leaResultList"></ul>
+
+        <div class="quiz-result-package">
+          <p class="quiz-result-package-label">Your ideal package</p>
+          <p class="quiz-result-package-name" id="leaResultPackage"></p>
+          <p class="quiz-result-timeline" id="leaResultTimeline"></p>
+        </div>
+
+        <div class="quiz-result-investment">
+          <p class="quiz-result-invest-label">Estimated total investment</p>
+          <p class="quiz-result-invest-range" id="leaResultInvest"></p>
+          <p class="quiz-result-invest-desc">Ladybird package + venue + key vendors. Actual costs vary by season and your selections.</p>
+        </div>
+
+        <div class="quiz-result-actions">
+          <a class="btn btn-gold" href="/packages">View Packages</a>
+          <a class="btn btn-green" href="#contact">Get In Touch</a>
+          <button class="quiz-restart" type="button" data-action="restart">Retake Quiz</button>
+        </div>
+        <p class="quiz-result-note">
+          Not sure this fits? <a href="#contact">Get in touch</a> and we'll talk it through with you.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================================================
+       9. LOCATION SHOWCASE (Interactive Map Preview)
+       ============================================================= -->
+  <section class="locs">
+    <div class="locs-inner">
+      <div class="locs-head reveal">
+        <p class="ol-center">Where Your Story Unfolds</p>
+        <h2>40+ <em>curated Irish wedding venues</em></h2>
+        <p>Every location we work with is hand-selected. From castle ruins to Atlantic cliffs, from country estates to coastal villages. Browse our complete directory to explore every option—or start with this interactive map preview.</p>
+      </div>
+      <a href="/venues" class="locs-image-link reveal">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/885f6f16-a548-4e66-a3a8-2e5d73cbdfaa/venuesmockup.png?content-type=image%2Fpng" alt="Interactive venues map mockup showcasing 40+ Irish wedding venues" class="locs-image">
+      </a>
+      <div class="locs-cta reveal">
+        <a href="/venues" class="btn btn-gold">Check Out The Venues</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       10. PHOTO GALLERY
+       ============================================================= -->
+  <section class="gallery">
+    <div class="gallery-inner">
+      <div class="gallery-head reveal">
+        <p class="ol-center">Real Couples, Real Moments</p>
+        <h2>This could be <em>your story</em></h2>
+        <p class="sub">Every image is a real couple we planned for. From California, New York, Texas, and beyond. This is what an Ireland elopement actually looks like.</p>
+      </div>
+      <div class="gal-grid">
+        <a class="gal-item tall" href="/real-love">
+          <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/64945ff0-69ca-4b28-abfe-a21e851366f1/Kalee%26Kristian-270.webp?content-type=image%2Fwebp" alt="Kalee and Kristian elopement at the Cliffs of Moher">
+          <div class="gal-cap"><div class="gal-cap-text"><strong>Kalee + Kristian</strong>Cliffs of Moher</div></div>
+        </a>
+        <a class="gal-item" href="/real-love">
+          <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/d830ded1-2648-4ddf-b567-2303869edcf3/Monica%26Mike-222.webp?content-type=image%2Fwebp" alt="Monica and Mike Ireland elopement">
+          <div class="gal-cap"><div class="gal-cap-text"><strong>Monica + Mike</strong>Co. Clare</div></div>
+        </a>
+        <a class="gal-item" href="/real-love">
+          <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/3993c1a1-0b47-4053-8b44-4c91f4f7a901/1Brad-Michelle-262.webp?content-type=image%2Fwebp" alt="Brad and Michelle Ireland elopement">
+          <div class="gal-cap"><div class="gal-cap-text"><strong>Brad + Michelle</strong>Dunluce Castle</div></div>
+        </a>
+        <a class="gal-item" href="/real-love">
+          <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/25acb88b-db49-4da2-bbc5-1d81a10e425f/Sebrina%26John-233.webp?content-type=image%2Fwebp" alt="Sebrina and John Ireland wedding">
+          <div class="gal-cap"><div class="gal-cap-text"><strong>Sebrina + John</strong>Cliffs of Moher</div></div>
+        </a>
+        <a class="gal-item" href="/real-love">
+          <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/65bc71f1-beed-4419-b0c9-6849660e917d/dunquin4.jpg?content-type=image%2Fjpeg" alt="Mollie and Ryan at Dunquin Pier">
+          <div class="gal-cap"><div class="gal-cap-text"><strong>Mollie + Ryan</strong>Dunquin Pier</div></div>
+        </a>
+        <a class="gal-item" href="/real-love">
+          <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/1771902474983-UNYS0H29F9P94ADX2Y9P/Charles+%2B+Roshini-99.jpg?content-type=image%2Fjpeg" alt="Charles and Roshini Ireland elopement">
+          <div class="gal-cap"><div class="gal-cap-text"><strong>Charles + Roshini</strong>Dunluce Castle</div></div>
+        </a>
+        <a class="gal-item tall" href="/real-love">
+          <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/ebeed895-7f76-43a1-ad78-bbba86b0bde3/EE_14.webp?content-type=image%2Fwebp" alt="Ethan and Elem Ireland elopement">
+          <div class="gal-cap"><div class="gal-cap-text"><strong>Ethan + Elem</strong>The North</div></div>
+        </a>
+        <a class="gal-item" href="/real-love">
+          <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/1771901942852-U0NJ58L24O4HH8H5YCJ9/Haley_26Dom-240.webp?content-type=image%2Fwebp" alt="Haley and Dom Ireland elopement">
+          <div class="gal-cap"><div class="gal-cap-text"><strong>Haley + Dom</strong>Co. Clare</div></div>
+        </a>
+        <a class="gal-item" href="/real-love">
+          <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/4165ccfd-24ac-4fe6-9e00-b8c14a61904a/adrienne+and+josh.jpg" alt="Adrienne and Josh Ireland elopement">
+          <div class="gal-cap"><div class="gal-cap-text"><strong>Adrienne + Josh</strong>Historic Estate House</div></div>
+        </a>
+        <a class="gal-item" href="/real-love">
+          <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/1617392c-37be-4df2-95c9-740416189f20/mb_dingleskellighotel00023.webp?content-type=image%2Fwebp" alt="Real Ladybird wedding">
+          <div class="gal-cap"><div class="gal-cap-text"><strong>Mikel + Brian</strong>Co. Kerry</div></div>
+        </a>
+      </div>
+      <div class="gal-link-wrap reveal">
+        <a href="/real-love" class="gal-link">See All Love Stories →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       11. FAQ
+       ============================================================= -->
+  <section class="faq">
+    <div class="faq-inner">
+      <div class="faq-head reveal">
+        <p class="ol-center">Your Questions Answered</p>
+        <h2>Everything you need to know about <em>eloping in Ireland</em></h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">What are the legal requirements for Americans?</button>
+          <div class="faq-a"><div class="faq-a-inner">You must give at least 3 months notice of intention to marry to a Civil Registrar in Ireland. You'll need valid passports and original birth certificates, plus divorce decrees if previously married. Your marriage is fully recognized in the US. We guide you through every step. It's included in every package.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">How far in advance should we book?</button>
+          <div class="faq-a"><div class="faq-a-inner">3 to 12 months. The 3-month legal notice is the minimum. For peak months (June through September) and popular locations like the Cliffs of Moher, 6 to 12 months is strongly advised. Popular dates genuinely do fill up.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">What time of year is best?</button>
+          <div class="faq-a"><div class="faq-a-inner">May through September for the best weather and light. Golden hour in June doesn't start until after 9pm. But off-season has its own magic: dramatic Atlantic storms, mist on the hills, fewer tourists, and lower prices.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Do we need to visit Ireland beforehand?</button>
+          <div class="faq-a"><div class="faq-a-inner">No. We handle everything remotely. Your first time arriving in Ireland can be your wedding day.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Can we bring guests?</button>
+          <div class="faq-a"><div class="faq-a-inner">Absolutely. "Elopement" just means intimate. Our packages range from just the two of you up to 50 guests.</div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">How does payment work?</button>
+          <div class="faq-a"><div class="faq-a-inner">Everything is in US dollars. One contract, one payment to us, and we manage all vendor payments in Ireland. No wire transfers, no currency conversion. Flexible payment plans and 0% interest financing available.</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       12. PARTNER LOGOS
+       ============================================================= -->
+  <section class="partners">
+    <div class="partners-inner">
+      <p class="partners-label">Proud Partners &amp; Featured In</p>
+      <div class="partners-row">
+        <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/4d3a57d0-a4d9-4db6-8659-60aa25421829/Tourism+Ireland.png?format=750w" alt="Tourism Ireland">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/1f0d7c9e-afe7-4b7f-bce2-aa718f1dd6e4/wild-atlantic-way-logo.png?content-type=image%2Fpng" alt="Wild Atlantic Way">
+        <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/deaf7810-453c-4650-834d-6801d2291e92/Cliffs+of+Moher.png?format=750w" alt="Cliffs of Moher">
+        <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/0ac808e3-8291-44ca-a687-963475583463/Tourism+Northern+Ireland.png?format=750w" alt="Tourism Northern Ireland">
+        <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/596a3b01-01e5-4752-ac13-daa11ea53342/irishinde-nobg.png?format=500w" alt="Irish Independent">
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       13. FINAL CTA + FORM
+       ============================================================= -->
+  <section class="finalcta" id="contact">
+    <div class="finalcta-bg" aria-hidden="true"></div>
+    <div class="finalcta-overlay" aria-hidden="true"></div>
+    <div class="finalcta-inner">
+      <div class="fc-left reveal">
+        <p class="ol">Ready to Make This Real?</p>
+        <h2>Your Ireland elopement <em>starts right here.</em></h2>
+        <p>Tell us a little about your dream and we'll be in touch within 24 hours. No commitment, no sales pitch. Just a conversation between people who love doing this and someone ready to start the adventure.</p>
+        <div class="fc-urgency">
+          <span class="fc-urgency-label">Popular months book 8+ months out</span>
+          <p class="fc-urgency-text">June through September fill quickly. The sooner you reach out, the more options you'll have for dates and locations.</p>
+        </div>
+        <ul class="fc-checks">
+          <li>Free, no-obligation consultation. We never hard sell.</li>
+          <li>Pay in USD. No wire transfers, ever.</li>
+          <li>One US contract, one dedicated planner, zero chaos.</li>
+          <li>Legal ceremony included in every package.</li>
+          <li>Flexible payment plans and 0% interest financing.</li>
+        </ul>
+      </div>
+      <div class="fc-card reveal">
+        <h3 class="fc-card-title">Get In Touch</h3>
+        <p class="fc-card-sub">Free &nbsp;·&nbsp; No obligation &nbsp;·&nbsp; We reply within 24 hours</p>
+        <div class="fc-form" id="lb-elop-hubspot-form"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================================
+       14. FLOATING CTA
+       ============================================================= -->
+  <div class="float-cta" id="floatCta">
+    <a href="#contact">Get In Touch</a>
+  </div>
+
+</div>
+<!-- End .lb-elop -->
+
+<!-- ================================================================
+     SCRIPTS
+     ================================================================ -->
+
+
+<!-- HubSpot embed -->
+<script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+<script>
+(function(){
+  function loadForm(){
+    if (window.hbspt && window.hbspt.forms) {
+      window.hbspt.forms.create({
+        portalId: "47524318",
+        formId: "d1f83a24-30cd-4fdd-a890-851ba0872c2f",
+        region: "na1",
+        target: "#lb-elop-hubspot-form"
+      });
+    } else {
+      setTimeout(loadForm, 250);
+    }
+  }
+  loadForm();
+})();
+</script>
+
+<!-- Page interactions -->
+<script>
+(function(){
+  var root = document.querySelector('.lb-elop');
+  if (!root) return;
+
+  /* -- Mobile menu burger -- */
+  var burger = root.querySelector('.nav-burger');
+  var navLinks = root.querySelector('.nav-links');
+  if (burger && navLinks) {
+    burger.addEventListener('click', function(){
+      navLinks.classList.toggle('open');
+      burger.classList.toggle('open');
+    });
+    navLinks.querySelectorAll('a').forEach(function(link){
+      link.addEventListener('click', function(){
+        navLinks.classList.remove('open');
+        burger.classList.remove('open');
+      });
+    });
+  }
+
+  /* -- FAQ accordion : single-open behavior -- */
+  var faqItems = root.querySelectorAll('.faq-item');
+  faqItems.forEach(function(item){
+    var btn = item.querySelector('.faq-q');
+    btn.addEventListener('click', function(){
+      var isOpen = item.classList.contains('open');
+      faqItems.forEach(function(other){
+        other.classList.remove('open');
+        var ob = other.querySelector('.faq-q');
+        if (ob) ob.setAttribute('aria-expanded', 'false');
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+
+  /* -- Scroll reveal -- */
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e, i){
+        if (e.isIntersecting) {
+          var el = e.target;
+          setTimeout(function(){ el.classList.add('in'); }, i * 60);
+          io.unobserve(el);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+    root.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    root.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
+  }
+
+  /* -- Floating CTA show/hide -- */
+  var floatCta = root.querySelector('#floatCta');
+  var hero = root.querySelector('.hero');
+  var contact = root.querySelector('#contact');
+  if (floatCta && hero && contact) {
+    var update = function(){
+      var heroBottom = hero.getBoundingClientRect().bottom;
+      var contactTop = contact.getBoundingClientRect().top;
+      var vh = window.innerHeight || document.documentElement.clientHeight;
+      var pastHero = heroBottom < 0;
+      var contactVisible = contactTop < vh - 100;
+      if (pastHero && !contactVisible) {
+        floatCta.classList.add('visible');
+      } else {
+        floatCta.classList.remove('visible');
+      }
+    };
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  }
+
+  /* -- Smooth scroll for in-page anchors -- */
+  root.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var id = a.getAttribute('href');
+      if (id && id.length > 1) {
+        var target = document.querySelector(id);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+})();
+</script>
+
+<!-- Quiz : Eloping or Wedding? -->
+<script>
+(function(){
+  'use strict';
+
+  var QUESTIONS = [
+    {
+      text: 'How many people do you imagine being there?',
+      help: "Be honest. Your real number, not the number you feel like you 'should' have.",
+      options: [
+        { value: 0, title: 'Just the two of us', desc: 'Maybe a couple of witnesses' },
+        { value: 1, title: 'Around 5 to 15 people', desc: 'Closest family and a few dear friends' },
+        { value: 2, title: 'Around 15 to 30 people', desc: 'Immediate family, close friends, key people' },
+        { value: 3, title: 'More than 30', desc: 'Extended family, friend groups, the full circle' }
+      ]
+    },
+    {
+      text: 'What does the celebration after the ceremony look like?',
+      help: 'Think about what feels right, not what tradition expects.',
+      options: [
+        { value: 0, title: 'A cliffside picnic or a quiet pub', desc: 'Just being present together' },
+        { value: 1, title: 'A long, lingering dinner', desc: 'A private room at a beautiful restaurant' },
+        { value: 2, title: 'A relaxed reception with toasts', desc: 'A meal, a few speeches, music' },
+        { value: 3, title: 'A full reception with dancing', desc: 'Speeches, first dance, late into the night' }
+      ]
+    },
+    {
+      text: 'How formal does the day feel in your head?',
+      help: 'There is no right answer here. Only what fits you.',
+      options: [
+        { value: 0, title: 'No agenda, no run-of-show', desc: 'Just the ceremony and the moment' },
+        { value: 1, title: 'A loose flow, not strict', desc: 'A few key moments, otherwise relaxed' },
+        { value: 2, title: 'A timeline, but a gentle one', desc: 'Things should happen at certain times' },
+        { value: 3, title: 'A proper run-of-show', desc: 'Coordinated handoffs, set timings, traditions' }
+      ]
+    },
+    {
+      text: 'Will you have a wedding party?',
+      help: 'Bridesmaids, groomsmen, ushers, flower kids. That whole world.',
+      options: [
+        { value: 0, title: 'No, just us', desc: 'No party, no formal roles' },
+        { value: 1, title: 'Maybe one or two witnesses', desc: 'A best friend, a sibling, low-key' },
+        { value: 2, title: 'A small wedding party', desc: 'A maid of honour and best man, perhaps' },
+        { value: 3, title: 'Yes, a full wedding party', desc: 'Bridesmaids, groomsmen, the works' }
+      ]
+    },
+    {
+      text: 'How are you telling people about the day?',
+      help: 'This question is sneaky. It tells us a lot about the scale you are imagining.',
+      options: [
+        { value: 0, title: 'We are not really telling anyone', desc: 'A surprise announcement after' },
+        { value: 1, title: 'A casual heads-up to close family', desc: 'A text, a phone call, no formal invite' },
+        { value: 2, title: 'A simple invitation', desc: 'A digital save-the-date, an RSVP list' },
+        { value: 3, title: 'Formal invitations and a wedding website', desc: 'Save-the-dates, RSVPs, the full thing' }
+      ]
+    },
+    {
+      text: 'When you imagine the day, what stands out most?',
+      help: 'The thing that makes you tear up a little when you picture it.',
+      options: [
+        { value: 0, title: 'The two of you, alone in a landscape', desc: 'Cliffs, a meadow, a stone circle, the sea' },
+        { value: 1, title: 'A perfect dinner with the people closest to you', desc: 'Candles, conversation, presence' },
+        { value: 2, title: 'A celebration that feels like you, not a template', desc: 'Personal, warm, a bit unconventional' },
+        { value: 3, title: 'A proper party with everyone you love', desc: 'A wedding, in the fullest sense of the word' }
+      ]
+    }
+  ];
+
+  var RESULTS = {
+    elopement: {
+      eyebrow: 'You are eloping',
+      title: 'A true <em>elopement</em>',
+      summary: "You aren't planning a wedding. You're planning a moment. Just the two of you, the landscape, and the vows. This is the purest form of what we do, and Ireland is one of the most extraordinary places in the world to do it.",
+      list: [
+        'Just the two of you, or you plus a small handful of witnesses',
+        'Ceremony at a protected site, cliff, beach, or stone circle',
+        'Legal paperwork and Irish solemniser fully managed',
+        'Around 4 hours of photography coverage',
+        'A celebratory meal at a chosen restaurant. No reception venue.'
+      ],
+      package: 'Fáilte or Grá Package',
+      timeline: 'Most couples book 7 months in advance for elopements.',
+      investment: '$6,000 - $10,000 USD'
+    },
+    weddingForTwo: {
+      eyebrow: 'You are eloping, beautifully',
+      title: 'A wedding <em>for two</em>',
+      summary: "You're still firmly in elopement territory. Small, intentional, deeply personal. But you want a proper celebratory dinner woven into the day. This is one of the most romantic ways to marry in Ireland.",
+      list: [
+        'Up to roughly 15 guests',
+        'Ceremony at a meaningful Irish location',
+        'A long, lingering private dinner. Toasts welcome.',
+        'No formal reception programme or wedding party',
+        'Around 4 to 6 hours of photography coverage'
+      ],
+      package: 'Grá Package',
+      timeline: 'Most couples book 7-9 months in advance for small elopements.',
+      investment: '$6,000 - $10,000 USD'
+    },
+    intimateWedding: {
+      eyebrow: 'You are having an intimate wedding',
+      title: 'An <em>intimate</em> Irish wedding',
+      summary: "You're planning a real wedding, but a beautifully restrained one. The kind where every guest matters, the toasts are personal, and nobody is reading from a script. This is where most of our couples land.",
+      list: [
+        'Around 15 to 30 guests',
+        'A proper ceremony at a venue you love',
+        'A relaxed reception with dinner, speeches, and music',
+        'Vendor coordination and timeline management',
+        'Around 7 to 8 hours of photography coverage'
+      ],
+      package: 'Sláinte Package',
+      timeline: 'Most couples book 12-15 months in advance for destination weddings.',
+      investment: '$9,000 - $25,000 USD'
+    },
+    destinationWedding: {
+      eyebrow: 'You are having a destination wedding',
+      title: 'A full Irish <em>destination wedding</em>',
+      summary: "You're planning the real thing. A proper wedding, in Ireland, with everyone you love. This is the most logistically complex and most magical thing we do.",
+      list: [
+        '30+ guests, often travelling internationally',
+        'Full ceremony, cocktail hour, and reception programme',
+        'Wedding party, formal invitations, run-of-show',
+        'Vendor sourcing, contracts, and day-of coordination',
+        '8+ hours of photography and full videography options'
+      ],
+      package: 'Ard Package',
+      timeline: 'Most couples book 12-15 months in advance for destination weddings.',
+      investment: '$9,000 - $25,000 USD'
+    }
+  };
+
+  var quiz = document.getElementById('leaQuiz');
+  if (!quiz) return;
+
+  var screens = quiz.querySelectorAll('.quiz-screen');
+  var optionsBox = document.getElementById('leaOptions');
+  var qText = document.getElementById('leaQuestionText');
+  var qHelp = document.getElementById('leaQuestionHelp');
+  var currentQEl = document.getElementById('leaCurrentQ');
+  var totalQEl = document.getElementById('leaTotalQ');
+  var fill = document.getElementById('leaProgressFill');
+
+  totalQEl.textContent = QUESTIONS.length;
+
+  var state = { answers: [], current: 0 };
+
+  function showScreen(name) {
+    screens.forEach(function(s){
+      s.classList.toggle('active', s.dataset.screen === name);
+    });
+    var top = quiz.getBoundingClientRect().top + window.pageYOffset - 80;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  }
+
+  function renderQuestion(idx) {
+    var q = QUESTIONS[idx];
+    if (!q) return;
+    state.current = idx;
+    qText.textContent = q.text;
+    qHelp.textContent = q.help;
+    currentQEl.textContent = idx + 1;
+    fill.style.width = ((idx) / QUESTIONS.length * 100) + '%';
+
+    optionsBox.innerHTML = '';
+    q.options.forEach(function(opt){
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'quiz-option';
+      btn.innerHTML =
+        '<span class="quiz-option-title">' + opt.title + '</span>' +
+        '<span class="quiz-option-desc">' + opt.desc + '</span>';
+      btn.addEventListener('click', function(){ handleAnswer(opt.value); });
+      optionsBox.appendChild(btn);
+    });
+  }
+
+  function handleAnswer(value) {
+    state.answers[state.current] = value;
+    if (state.current < QUESTIONS.length - 1) {
+      renderQuestion(state.current + 1);
+    } else {
+      fill.style.width = '100%';
+      computeResult();
+      showScreen('result');
+    }
+  }
+
+  function computeResult() {
+    var total = state.answers.reduce(function(a,b){ return a + b; }, 0);
+    var key;
+    if (total <= 3)       key = 'elopement';
+    else if (total <= 7)  key = 'weddingForTwo';
+    else if (total <= 13) key = 'intimateWedding';
+    else                  key = 'destinationWedding';
+
+    var r = RESULTS[key];
+    document.getElementById('leaResultEyebrow').textContent = r.eyebrow;
+    document.getElementById('leaResultTitle').innerHTML = r.title;
+    document.getElementById('leaResultSummary').textContent = r.summary;
+    document.getElementById('leaResultPackage').textContent = r.package;
+    document.getElementById('leaResultTimeline').textContent = r.timeline;
+    document.getElementById('leaResultInvest').textContent = r.investment;
+
+    var listEl = document.getElementById('leaResultList');
+    listEl.innerHTML = '';
+    r.list.forEach(function(item){
+      var li = document.createElement('li');
+      li.textContent = item;
+      listEl.appendChild(li);
+    });
+  }
+
+  quiz.addEventListener('click', function(e){
+    var target = e.target.closest('[data-action]');
+    if (!target) return;
+    var action = target.dataset.action;
+    if (action === 'start') {
+      renderQuestion(0);
+      showScreen('question');
+    } else if (action === 'back') {
+      if (state.current > 0) {
+        renderQuestion(state.current - 1);
+      } else {
+        showScreen('intro');
+      }
+    } else if (action === 'restart') {
+      state.answers = [];
+      state.current = 0;
+      fill.style.width = '0%';
+      showScreen('intro');
+    }
+  });
+})();
+</script>
+
+<!-- ================================================================
+     META & SEO (handled in Squarespace page settings, included for ref)
+     Title: All-Inclusive Ireland Elopement Packages | Ladybird Ever After
+     Description: All-inclusive Ireland elopement packages for US couples.
+       We handle the legal paperwork, venue, photographer and every detail.
+       From $4,900 USD. Book your free consultation.
+     ================================================================ -->
+
+<!-- FAQPage structured data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What are the legal requirements for Americans to elope in Ireland?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You must give at least 3 months notice of intention to marry to a Civil Registrar in Ireland. You'll need valid passports and original birth certificates, plus divorce decrees if previously married. Your marriage is fully recognized in the US. Ladybird Ever After guides you through every step, included in every package."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How far in advance should we book an Ireland elopement?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "3 to 12 months. The 3-month legal notice is the minimum. For peak months (June through September) and popular locations like the Cliffs of Moher, 6 to 12 months is strongly advised."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What time of year is best to elope in Ireland?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "May through September for the best weather and light. Golden hour in June doesn't start until after 9pm. Off-season has its own magic: dramatic Atlantic storms, mist on the hills, fewer tourists, and lower prices."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do we need to visit Ireland before our elopement?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. We handle everything remotely. Your first time arriving in Ireland can be your wedding day."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can we bring guests to our Ireland elopement?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Elopement just means intimate. Ladybird packages range from just the two of you up to 50 guests."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does payment work for an Ireland elopement?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Everything is in US dollars. One contract, one payment, and Ladybird manages all vendor payments in Ireland. No wire transfers, no currency conversion. Flexible payment plans and 0% interest financing available."
+      }
+    }
+  ]
+}
+</script>

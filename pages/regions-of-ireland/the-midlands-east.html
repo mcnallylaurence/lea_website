@@ -1,0 +1,676 @@
+<!-- ═══════════════════════════════════════
+     THE MIDLANDS & EAST, REGION PAGE
+     Ladybird Ever After · Root: .lb-me
+═══════════════════════════════════════ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Alice&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+
+<style>
+.lb-me {
+  --green:    #5B6239;
+  --green-dk: #3a3f25;
+  --green-hv: #4a5130;
+  --gold:     #B8964E;
+  --gold-lt:  #D4AF71;
+  --cream:    #F5F0E8;
+  --warm:     #FDFAF4;
+  --stone:    #8C8070;
+  --txt:      #1A1A18;
+  --txt-mid:  #4A4A42;
+  --pad-x: clamp(1.2rem, 5vw, 5rem);
+  --pad-y: clamp(3.5rem, 7vw, 6rem);
+  font-family: 'Alice', serif;
+  font-weight: 300;
+  color: var(--txt);
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+.lb-me *, .lb-me *::before, .lb-me *::after { margin: 0; padding: 0; box-sizing: border-box; }
+.lb-me img { display: block; }
+
+.lb-me .me-ol { display: flex; align-items: center; gap: .7rem; font-size: .6rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 1rem; }
+.lb-me .me-ol::after { content: ''; flex: 0 0 28px; height: 1px; background: var(--gold); opacity: .5; }
+.lb-me .me-ol.ctr { justify-content: center; }
+.lb-me .me-ol.ctr::before { content: ''; flex: 0 0 28px; height: 1px; background: var(--gold); opacity: .5; }
+
+.lb-me .me-breadcrumb { background: var(--cream); padding: .9rem var(--pad-x); border-bottom: 1px solid rgba(91,98,57,.1); }
+.lb-me .me-breadcrumb-in { max-width: 820px; margin: 0 auto; display: flex; align-items: center; gap: .5rem; font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; color: var(--stone); }
+.lb-me .me-breadcrumb a { color: var(--stone); text-decoration: none; transition: color .3s; }
+.lb-me .me-breadcrumb a:hover { color: var(--green); }
+.lb-me .me-breadcrumb .sep { opacity: .4; }
+.lb-me .me-breadcrumb .current { color: var(--green); }
+
+.lb-me .me-hero { background: var(--warm); padding: var(--pad-y) var(--pad-x) calc(var(--pad-y) * .75); text-align: center; }
+.lb-me .me-hero-in { max-width: 640px; margin: 0 auto; }
+.lb-me .me-hero h1 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(2.2rem, 4.5vw, 3.2rem); line-height: 1.18; color: var(--txt); margin-bottom: 1.2rem; }
+.lb-me .me-hero h1 em { font-style: italic; color: var(--gold-lt); }
+.lb-me .me-hero-sub { font-size: clamp(.88rem, 1.6vw, 1rem); line-height: 1.75; color: var(--txt-mid); margin-bottom: 1.6rem; }
+.lb-me .me-hero-meta { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--stone); }
+
+.lb-me .me-facts { background: var(--cream); border-top: 1px solid rgba(91,98,57,.1); border-bottom: 1px solid rgba(91,98,57,.1); padding: 1.6rem var(--pad-x); }
+.lb-me .me-facts-in { max-width: 820px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 2.5rem; flex-wrap: wrap; }
+.lb-me .me-fact { text-align: center; }
+.lb-me .me-fact-value { font-family: 'Playfair Display', serif; font-size: clamp(1.1rem, 2vw, 1.4rem); color: var(--green); line-height: 1.1; margin-bottom: .25rem; }
+.lb-me .me-fact-label { font-size: .58rem; letter-spacing: .18em; text-transform: uppercase; color: var(--stone); font-weight: 600; }
+.lb-me .me-fact-divider { width: 1px; height: 2rem; background: rgba(91,98,57,.15); flex-shrink: 0; }
+@media (max-width: 600px) { .lb-me .me-fact-divider { display: none; } .lb-me .me-facts-in { gap: 1.4rem; } }
+
+.lb-me .me-intro { background: var(--warm); padding: var(--pad-y) var(--pad-x); }
+.lb-me .me-intro-in { max-width: 820px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+.lb-me .me-intro h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; color: var(--txt); margin-bottom: 1.2rem; }
+.lb-me .me-intro h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-me .me-intro p { font-size: .88rem; line-height: 1.82; color: var(--txt-mid); margin-bottom: 1.1rem; }
+.lb-me .me-intro p:last-child { margin-bottom: 0; }
+.lb-me .me-highlights { list-style: none; display: flex; flex-direction: column; gap: .8rem; }
+.lb-me .me-highlights li { display: flex; align-items: flex-start; gap: .9rem; font-size: .85rem; line-height: 1.6; color: var(--txt-mid); }
+.lb-me .me-highlights li::before { content: ''; flex-shrink: 0; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin-top: .42em; }
+.lb-me .me-highlights-heading { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.1rem, 2vw, 1.35rem); line-height: 1.2; color: var(--txt); margin-bottom: 1rem; }
+
+.lb-me .me-places { background: var(--cream); padding: var(--pad-y) var(--pad-x); }
+.lb-me .me-places-in { max-width: 820px; margin: 0 auto; }
+.lb-me .me-places-header { text-align: center; margin-bottom: 3rem; }
+.lb-me .me-places-header h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; color: var(--txt); margin-bottom: .6rem; }
+.lb-me .me-places-header h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-me .me-places-header p { font-size: .88rem; color: var(--txt-mid); line-height: 1.7; max-width: 560px; margin: 0 auto; }
+.lb-me .me-place-list { display: flex; flex-direction: column; gap: 2.4rem; }
+.lb-me .me-place { border-left: 2px solid rgba(184,150,78,.3); padding-left: 1.8rem; }
+.lb-me .me-place h3 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(1rem, 1.8vw, 1.25rem); color: var(--txt); margin-bottom: .5rem; line-height: 1.2; }
+.lb-me .me-place h3 em { font-style: italic; color: var(--gold-lt); }
+.lb-me .me-place-county { font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: .7rem; }
+.lb-me .me-place p { font-size: .85rem; line-height: 1.82; color: var(--txt-mid); }
+
+.lb-me .me-best { background: var(--warm); padding: var(--pad-y) var(--pad-x); }
+.lb-me .me-best-in { max-width: 820px; margin: 0 auto; text-align: center; }
+.lb-me .me-best h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; color: var(--txt); margin-bottom: .7rem; }
+.lb-me .me-best h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-me .me-best-sub { font-size: .88rem; color: var(--txt-mid); line-height: 1.7; margin-bottom: 2.4rem; max-width: 540px; margin-left: auto; margin-right: auto; }
+.lb-me .me-best-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
+.lb-me .me-best-tile { background: var(--cream); border: 1px solid rgba(91,98,57,.1); padding: 1.6rem 1.4rem; text-align: left; }
+.lb-me .me-best-tile-icon { width: 32px; height: 32px; margin-bottom: 1rem; color: var(--gold); }
+.lb-me .me-best-tile-title { font-family: 'Playfair Display', serif; font-weight: 400; font-size: .92rem; color: var(--txt); margin-bottom: .5rem; line-height: 1.3; }
+.lb-me .me-best-tile-desc { font-size: .8rem; line-height: 1.7; color: var(--txt-mid); }
+@media (max-width: 720px) { .lb-me .me-best-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 480px) { .lb-me .me-best-grid { grid-template-columns: 1fr; } }
+
+.lb-me .me-venues { background: var(--cream); padding: var(--pad-y) var(--pad-x); }
+.lb-me .me-venues-in { max-width: 900px; margin: 0 auto; }
+.lb-me .me-venues-header { text-align: center; margin-bottom: 3rem; }
+.lb-me .me-venues-header h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; color: var(--txt); margin-bottom: .6rem; }
+.lb-me .me-venues-header h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-me .me-venues-header p { font-size: .88rem; color: var(--txt-mid); line-height: 1.7; }
+.lb-me .me-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.lb-me .me-card { background: var(--warm); border: 1px solid rgba(91,98,57,.08); border-radius: 2px; overflow: hidden; position: relative; transition: box-shadow .3s, transform .3s; display: flex; flex-direction: column; }
+.lb-me .me-card:hover { box-shadow: 0 6px 28px rgba(26,26,24,.1); transform: translateY(-3px); }
+.lb-me .me-card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+.lb-me .me-card-img-placeholder { width: 100%; aspect-ratio: 4/3; background: linear-gradient(135deg, var(--cream), rgba(184,150,78,.12)); display: flex; align-items: center; justify-content: center; }
+.lb-me .me-card-img-placeholder svg { width: 40px; height: 40px; opacity: .25; }
+.lb-me .me-card-body { padding: 1.4rem 1.4rem 1.6rem; flex: 1; display: flex; flex-direction: column; }
+.lb-me .me-card-county { font-size: .58rem; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: .5rem; }
+.lb-me .me-card h3 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(.95rem, 1.4vw, 1.15rem); line-height: 1.25; color: var(--txt); margin-bottom: .6rem; }
+.lb-me .me-card-rule { width: 28px; height: 1px; background: var(--gold); opacity: .5; margin-bottom: .75rem; }
+.lb-me .me-card-desc { font-size: .8rem; line-height: 1.72; color: var(--txt-mid); flex: 1; margin-bottom: 1.1rem; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.lb-me .me-card-link { font-size: .68rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--green); text-decoration: none; display: inline-flex; align-items: center; gap: .4rem; transition: color .3s; margin-top: auto; }
+.lb-me .me-card-link::after { content: '→'; transition: transform .3s; }
+.lb-me .me-card:hover .me-card-link { color: var(--gold); }
+.lb-me .me-card:hover .me-card-link::after { transform: translateX(4px); }
+.lb-me .me-card-link::before { content: ''; position: absolute; inset: 0; z-index: 1; }
+.lb-me .me-loading { grid-column: 1 / -1; text-align: center; padding: 3rem 0; color: var(--stone); font-size: .85rem; letter-spacing: .08em; }
+.lb-me .me-loading-spinner { display: inline-block; width: 28px; height: 28px; border: 2px solid rgba(91,98,57,.15); border-top-color: var(--green); border-radius: 50%; animation: me-spin .8s linear infinite; margin-bottom: .8rem; }
+@keyframes me-spin { to { transform: rotate(360deg); } }
+.lb-me .me-error { grid-column: 1 / -1; text-align: center; padding: 3rem 0; color: var(--txt-mid); font-size: .88rem; line-height: 1.7; }
+.lb-me .me-error a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+
+.lb-me .me-view-toggle { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 2.5rem; }
+.lb-me .me-toggle-btn { background: transparent; border: none; font-family: 'Alice', serif; font-size: .68rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--stone); cursor: pointer; padding-bottom: .4rem; border-bottom: 2px solid transparent; transition: all .3s; }
+.lb-me .me-toggle-btn.active { color: var(--green); border-bottom-color: var(--gold); }
+.lb-me .me-toggle-btn:hover:not(.active) { color: var(--gold-lt); }
+
+.lb-me .me-map-wrap { display: none; width: 100%; height: 560px; border: 1px solid rgba(91,98,57,.15); border-radius: 2px; overflow: hidden; }
+.lb-me .me-map-wrap.active { display: block; }
+.lb-me .me-grid.hidden { display: none; }
+#me-map { width: 100%; height: 100%; background: var(--cream); }
+#me-map .leaflet-tile-pane { filter: saturate(0.18) brightness(1.06) sepia(0.18) contrast(0.92); }
+.lb-me-popup-img { width: 100%; height: 120px; object-fit: cover; display: block; }
+.lb-me-popup-body { padding: 14px 16px 16px; text-align: center; font-family: 'Alice', serif; }
+.lb-me-popup-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 400; color: #1A1A18; margin: 0 0 8px; line-height: 1.2; }
+.lb-me-popup-rule { width: 24px; height: 1px; background: #B8964E; margin: 0 auto 10px; }
+.lb-me-popup-county { font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; color: #8C8070; margin-bottom: 10px; }
+.lb-me-popup-link { display: inline-block; font-size: .62rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: #F5F0E8 !important; background: #5B6239; text-decoration: none !important; padding: 7px 16px; border-radius: 2px; transition: background .2s; }
+.lb-me-popup-link:hover { background: #3a3f25; }
+@keyframes me-pulse { 0% { transform: scale(1); opacity: .6; } 70% { transform: scale(2.2); opacity: 0; } 100% { transform: scale(2.2); opacity: 0; } }
+.me-marker-wrap { position: relative; width: 14px; height: 14px; }
+.me-marker-dot { width: 14px; height: 14px; background: #B8964E; border: 2.5px solid #fff; border-radius: 50%; box-shadow: 0 2px 8px rgba(0,0,0,.35); position: relative; z-index: 1; }
+.me-marker-pulse { position: absolute; top: 0; left: 0; width: 14px; height: 14px; background: #B8964E; border-radius: 50%; animation: me-pulse 2s ease-out infinite; }
+
+.lb-me .me-planning { background: var(--warm); padding: var(--pad-y) var(--pad-x); }
+.lb-me .me-planning-in { max-width: 820px; margin: 0 auto; }
+.lb-me .me-planning h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; color: var(--txt); margin-bottom: .6rem; }
+.lb-me .me-planning h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-me .me-planning-intro { font-size: .88rem; color: var(--txt-mid); line-height: 1.8; margin-bottom: 2.4rem; max-width: 620px; }
+.lb-me .me-planning-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.lb-me .me-planning-item { background: var(--cream); border: 1px solid rgba(91,98,57,.08); padding: 1.6rem 1.5rem; }
+.lb-me .me-planning-item h3 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: .95rem; color: var(--txt); margin-bottom: .55rem; line-height: 1.3; }
+.lb-me .me-planning-item p { font-size: .8rem; line-height: 1.75; color: var(--txt-mid); }
+@media (max-width: 600px) { .lb-me .me-planning-grid { grid-template-columns: 1fr; } }
+
+.lb-me .me-faq { background: var(--cream); padding: var(--pad-y) var(--pad-x); }
+.lb-me .me-faq-in { max-width: 820px; margin: 0 auto; }
+.lb-me .me-faq h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; color: var(--txt); margin-bottom: .6rem; }
+.lb-me .me-faq h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-me .me-faq-intro { font-size: .88rem; color: var(--txt-mid); line-height: 1.8; margin-bottom: 2.4rem; max-width: 600px; }
+.lb-me .me-faq-list { display: flex; flex-direction: column; gap: 0; }
+.lb-me .me-faq-item { border-top: 1px solid rgba(91,98,57,.12); }
+.lb-me .me-faq-item:last-child { border-bottom: 1px solid rgba(91,98,57,.12); }
+.lb-me .me-faq-q { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.2rem 0; cursor: pointer; list-style: none; }
+.lb-me .me-faq-q::-webkit-details-marker { display: none; }
+.lb-me .me-faq-q-text { font-family: 'Playfair Display', serif; font-weight: 400; font-size: clamp(.88rem, 1.5vw, 1rem); color: var(--txt); line-height: 1.4; }
+.lb-me .me-faq-icon { flex-shrink: 0; width: 18px; height: 18px; color: var(--gold); transition: transform .3s; }
+.lb-me details[open] .me-faq-icon { transform: rotate(45deg); }
+.lb-me .me-faq-a { padding: 0 0 1.2rem; font-size: .85rem; line-height: 1.82; color: var(--txt-mid); }
+.lb-me .me-faq-a a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+
+.lb-me .me-related { background: var(--warm); padding: var(--pad-y) var(--pad-x); }
+.lb-me .me-related-in { max-width: 820px; margin: 0 auto; }
+.lb-me .me-related-header { margin-bottom: 2.4rem; }
+.lb-me .me-related h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.3rem, 2.2vw, 1.7rem); line-height: 1.2; color: var(--txt); margin-bottom: .5rem; }
+.lb-me .me-related h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-me .me-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.lb-me .me-related-col h3 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; color: var(--green); margin-bottom: 1rem; padding-bottom: .6rem; border-bottom: 1px solid rgba(91,98,57,.15); }
+.lb-me .me-related-col ul { list-style: none; display: flex; flex-direction: column; gap: .55rem; }
+.lb-me .me-related-col ul li a { font-size: .82rem; line-height: 1.5; color: var(--txt-mid); text-decoration: none; display: flex; align-items: baseline; gap: .4rem; transition: color .25s; }
+.lb-me .me-related-col ul li a::before { content: '›'; color: var(--gold); font-size: .9rem; flex-shrink: 0; }
+.lb-me .me-related-col ul li a:hover { color: var(--green); }
+@media (max-width: 700px) { .lb-me .me-related-grid { grid-template-columns: 1fr; gap: 1.8rem; } }
+
+.lb-me .me-cta { background: var(--green); padding: clamp(3rem, 6vw, 5rem) var(--pad-x); text-align: center; }
+.lb-me .me-cta-in { max-width: 560px; margin: 0 auto; }
+.lb-me .me-cta h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.4rem, 2.5vw, 2rem); line-height: 1.2; color: var(--warm); margin-bottom: .8rem; }
+.lb-me .me-cta h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-me .me-cta-sub { font-size: .88rem; line-height: 1.7; color: rgba(245,240,232,.55); font-style: italic; font-family: 'Playfair Display', serif; margin-bottom: 2rem; }
+.lb-me .btn-gold { display: inline-block; font-family: 'Alice', serif; font-size: .74rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; padding: .95rem 2.2rem; background: var(--gold); color: var(--green); border: 2px solid var(--gold); text-decoration: none; transition: all .3s; }
+.lb-me .btn-gold:hover { background: transparent; border-color: var(--gold-lt); color: var(--gold-lt); }
+.lb-me .btn-ghost { display: inline-block; font-family: 'Alice', serif; font-size: .74rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; padding: .95rem 2.2rem; background: transparent; color: var(--warm); border: 2px solid rgba(245,240,232,.45); text-decoration: none; transition: all .3s; }
+.lb-me .btn-ghost:hover { border-color: var(--warm); color: var(--warm); }
+.lb-me .me-cta-links { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+.lb-me .me-cta-tertiary { display: inline-block; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(245,240,232,.6); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(184,150,78,.4); transition: color .3s; }
+.lb-me .me-cta-tertiary:hover { color: var(--gold-lt); }
+
+.lb-me .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+.lb-me .reveal.in { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 820px) { .lb-me .me-intro-in { grid-template-columns: 1fr; gap: 2rem; } }
+@media (max-width: 720px) { .lb-me .me-grid { grid-template-columns: repeat(2, 1fr); gap: 1.2rem; } }
+@media (max-width: 600px) { .lb-me .me-map-wrap { height: 420px; } .lb-me .me-grid { grid-template-columns: 1fr; } .lb-me .btn-gold { display: block; text-align: center; } }
+</style>
+
+<div class="lb-me">
+
+  <nav class="me-breadcrumb" aria-label="Breadcrumb">
+    <div class="me-breadcrumb-in">
+      <a href="/">Home</a>
+      <span class="sep">›</span>
+      <a href="/regions-of-ireland">Regions of Ireland</a>
+      <span class="sep">›</span>
+      <span class="current">Midlands &amp; East</span>
+    </div>
+  </nav>
+
+  <section class="me-hero">
+    <div class="me-hero-in">
+      <div class="me-ol ctr reveal">Elopements &amp; Intimate Weddings in Ireland</div>
+      <h1 class="reveal">Elope in <em>the Midlands &amp; East of Ireland</em></h1>
+      <p class="me-hero-sub reveal">
+        Rolling green hills, historic country estates, and the ancient monastic city of
+        Glendalough. The midlands and east offer classic Irish elegance without the
+        crowds, and more often than not, a beautiful surprise around every corner.
+      </p>
+      <p class="me-hero-meta reveal">County Wicklow &middot; County Kildare &middot; County Meath &amp; surrounds</p>
+    </div>
+  </section>
+
+  <div class="me-facts">
+    <div class="me-facts-in">
+      <div class="me-fact">
+        <div class="me-fact-value">Glendalough</div>
+        <div class="me-fact-label">6th-Century Monastery</div>
+      </div>
+      <div class="me-fact-divider"></div>
+      <div class="me-fact">
+        <div class="me-fact-value">Newgrange</div>
+        <div class="me-fact-label">5,000-Year Heritage</div>
+      </div>
+      <div class="me-fact-divider"></div>
+      <div class="me-fact">
+        <div class="me-fact-value">90 Minutes</div>
+        <div class="me-fact-label">From Dublin Airport</div>
+      </div>
+      <div class="me-fact-divider"></div>
+      <div class="me-fact">
+        <div class="me-fact-value">Garden of Ireland</div>
+        <div class="me-fact-label">County Wicklow</div>
+      </div>
+    </div>
+  </div>
+
+  <section class="me-intro" id="about">
+    <div class="me-intro-in">
+      <div class="reveal">
+        <div class="me-ol">About this region</div>
+        <h2>The <em>garden of Ireland</em>, romantic, accessible, timeless</h2>
+        <p>
+          County Wicklow has long been called the garden of Ireland, and for good reason.
+          The Wicklow Mountains form a dramatic natural backdrop just an hour south of
+          Dublin, with deep glacial valleys, pine forests, and fast-flowing rivers creating
+          a landscape that rewards those who seek it out.
+        </p>
+        <p>
+          Glendalough, the sixth-century monastic city nestled in a wooded valley between
+          two lakes, is one of Ireland's most atmospheric and ancient sites. For couples
+          drawn to history and solitude, there are few places more quietly powerful.
+        </p>
+        <p>
+          The east and midlands also offer easy accessibility -- most venues here are within
+          ninety minutes of Dublin Airport, making travel straightforward for guests
+          arriving from abroad. The combination of beauty and practicality makes this
+          region a quietly excellent choice.
+        </p>
+      </div>
+      <div class="reveal">
+        <p class="me-highlights-heading">What makes the Midlands &amp; East special</p>
+        <ul class="me-highlights">
+          <li>The Wicklow Mountains, dramatic glacial valleys and ancient woodland</li>
+          <li>Glendalough, one of Ireland's most ancient and atmospheric monastic sites</li>
+          <li>Country estates and walled gardens across Wicklow and Kildare</li>
+          <li>Within 90 minutes of Dublin Airport for international guests</li>
+          <li>The quiet shores of the River Boyne and County Meath</li>
+          <li>Newgrange, 5,000-year-old passage tomb and World Heritage Site</li>
+          <li>Fewer visitors than the west, with just as much beauty</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="me-places" id="locations">
+    <div class="me-places-in">
+      <div class="me-places-header reveal">
+        <div class="me-ol ctr">The Landscapes</div>
+        <h2>Three counties, <em>one quietly beautiful region</em></h2>
+        <p>County Wicklow, County Kildare, and County Meath each bring something entirely distinct to a midlands and east elopement. Here is what to expect from each.</p>
+      </div>
+      <div class="me-place-list">
+
+        <div class="me-place reveal">
+          <div class="me-place-county">County Wicklow</div>
+          <h3>Glendalough, the Wicklow Mountains, <em>and the Garden of Ireland</em></h3>
+          <p>Wicklow is the heart of the midlands and east elopement experience. The county stretches south from Dublin's suburbs into a landscape of mountain, valley, and woodland that feels surprisingly remote despite its proximity to the capital. Glendalough is the jewel: a sixth-century monastic settlement set between two glacier-formed lakes in a wooded valley, with a round tower, stone churches, and a quality of stillness that is genuinely unusual in a site of such historical significance. It is one of Ireland's most beautiful ceremony settings. Beyond Glendalough, the Wicklow Mountains offer glacial valleys like Glenmalure and Glenmacnass, pine forests, and fast-flowing rivers that create a backdrop of quiet drama. Country estates like Powerscourt, with its formal terraced gardens overlooking the mountains, add a more polished dimension to what the county can offer.</p>
+        </div>
+
+        <div class="me-place reveal">
+          <div class="me-place-county">County Kildare</div>
+          <h3>Country estates, walled gardens, <em>and the Irish plains</em></h3>
+          <p>Kildare is horse country -- flat, green, and defined by the wide plains of the Curragh. The county has a concentrated wealth of country house estates that offer some of Ireland's most refined elopement settings: walled gardens, sweeping lawns, and interiors of genuine elegance. Castletown House, the largest country house in Ireland, sits near Celbridge and offers a scale of Georgian grandeur rarely found outside of England. The Japanese Gardens at the Irish National Stud provide a uniquely beautiful and intimate ceremony option, with manicured beauty quite unlike anything else in the country. For couples who want the country house experience with easy Dublin Airport access, Kildare is one of the most practical and beautiful choices in the east of Ireland.</p>
+        </div>
+
+        <div class="me-place reveal">
+          <div class="me-place-county">County Meath</div>
+          <h3>Newgrange, the Boyne Valley, <em>and ancient Ireland</em></h3>
+          <p>Meath is where Ireland's oldest history lives. The Boyne Valley contains some of the most significant prehistoric monuments in Europe, chief among them Newgrange -- a passage tomb older than Stonehenge, built five thousand years ago with such precision that the rising winter solstice sun illuminates its inner chamber. A ceremony near Newgrange, in the shadow of that extraordinary history, connects a wedding day to something very old indeed. The wider county offers the Hill of Tara, ancient seat of the High Kings of Ireland, and the quiet pastoral landscape of the River Boyne, both giving a sense of deep continuity that few places in Ireland can match. Meath's proximity to Dublin Airport -- many ceremony locations are under an hour away -- makes it one of the most accessible historically significant regions in Ireland.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="me-best" id="best-for">
+    <div class="me-best-in">
+      <div class="me-ol ctr reveal">Who It Suits</div>
+      <h2 class="reveal">Is the Midlands &amp; East right for <em>your elopement?</em></h2>
+      <p class="me-best-sub reveal">Every region in Ireland has its own character. Here is what the Midlands &amp; East does best.</p>
+      <div class="me-best-grid">
+        <div class="me-best-tile reveal">
+          <svg class="me-best-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          <div class="me-best-tile-title">Couples flying into Dublin</div>
+          <p class="me-best-tile-desc">Most venues in the midlands and east are within ninety minutes of Dublin Airport, making this the most practical region in Ireland for international couples and guests arriving on transatlantic flights.</p>
+        </div>
+        <div class="me-best-tile reveal">
+          <svg class="me-best-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+          <div class="me-best-tile-title">History and ancient atmosphere</div>
+          <p class="me-best-tile-desc">Glendalough, Newgrange, and the Hill of Tara offer a depth of history that is genuinely humbling. For couples who want their ceremony grounded in something ancient, the midlands and east is hard to surpass.</p>
+        </div>
+        <div class="me-best-tile reveal">
+          <svg class="me-best-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div class="me-best-tile-title">Mountain and valley landscapes</div>
+          <p class="me-best-tile-desc">The Wicklow Mountains provide dramatic mountain scenery within an hour of central Dublin. Glacial valleys, ancient woodland, and fast-flowing rivers create a backdrop that rivals anywhere in Ireland for natural beauty.</p>
+        </div>
+        <div class="me-best-tile reveal">
+          <svg class="me-best-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 17l10 5 10-5M2 12l10 5 10-5M12 2L2 7l10 5 10-5-10-5z"/></svg>
+          <div class="me-best-tile-title">Country house and garden settings</div>
+          <p class="me-best-tile-desc">Wicklow and Kildare have a concentration of country house estates with walled gardens, formal terraces, and interiors of genuine elegance. For couples who want the country house experience, the east of Ireland delivers it superbly.</p>
+        </div>
+        <div class="me-best-tile reveal">
+          <svg class="me-best-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <div class="me-best-tile-title">Combining with a Dublin visit</div>
+          <p class="me-best-tile-desc">The midlands and east pairs naturally with a few days in Dublin before or after your ceremony. Many couples combine a Wicklow or Meath elopement with city exploration, making the most of their time in Ireland.</p>
+        </div>
+        <div class="me-best-tile reveal">
+          <svg class="me-best-tile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          <div class="me-best-tile-title">Avoiding the tourist trail</div>
+          <p class="me-best-tile-desc">The midlands and east receive significantly fewer visitors than the west coast, yet they offer just as much beauty and far more historical depth. For couples who want Ireland without the crowd, this region is an outstanding choice.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="me-venues" id="venues">
+    <div class="me-venues-in">
+      <div class="me-venues-header reveal">
+        <div class="me-ol ctr">Our Venues</div>
+        <h2>Midlands &amp; East <em>Venues</em></h2>
+        <p>Hand-picked locations for elopements and intimate weddings across Wicklow, Kildare, and Meath.</p>
+      </div>
+
+      <div class="me-view-toggle">
+        <button class="me-toggle-btn active" data-view="grid">List View</button>
+        <button class="me-toggle-btn" data-view="map">Map View</button>
+      </div>
+
+      <div class="me-grid" id="me-venue-grid">
+        <div class="me-loading">
+          <div class="me-loading-spinner"></div>
+          <p>Loading venues&hellip;</p>
+        </div>
+      </div>
+
+      <div class="me-map-wrap" id="me-map-wrap">
+        <div id="me-map"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="me-planning" id="planning">
+    <div class="me-planning-in">
+      <div class="me-ol reveal">Practical Information</div>
+      <h2 class="reveal">Planning your <em>Midlands &amp; East elopement</em></h2>
+      <p class="me-planning-intro reveal">
+        The midlands and east is one of Ireland's most practical regions for an elopement -- well connected,
+        diverse in what it offers, and full of venues that welcome intimate celebrations. Here is what to know before you start.
+      </p>
+      <div class="me-planning-grid">
+        <div class="me-planning-item reveal">
+          <h3>Getting to the midlands and east</h3>
+          <p>Dublin Airport is the primary international hub for the region. County Wicklow venues are typically fifty minutes to an hour by road from the airport, Kildare around forty-five minutes, and Meath as little as thirty minutes for the Boyne Valley. This makes the midlands and east the most accessible region in Ireland for international arrivals, and particularly convenient for guests combining an Irish elopement with time in Dublin city.</p>
+        </div>
+        <div class="me-planning-item reveal">
+          <h3>Best time of year</h3>
+          <p>The midlands and east experience a broadly temperate climate similar to Dublin -- drier and less exposed than the Atlantic coasts. April through October offers the best conditions for outdoor ceremonies. Spring brings wildflowers to the Wicklow valleys. The long summer evenings suit photographs at Glendalough beautifully. Autumn in the Wicklow Mountains has an extraordinary quality of golden light through the ancient woodland, particularly in October and early November.</p>
+        </div>
+        <div class="me-planning-item reveal">
+          <h3>Legal ceremonies in the midlands and east</h3>
+          <p>Every package we offer includes a legally recognised ceremony performed by a licensed Irish celebrant, registered with the HSE. Your marriage certificate is issued by the General Register Office of Ireland and is fully valid across the United States. We handle all notification requirements, paperwork, and advance filings on your behalf, wherever in the midlands and east your ceremony takes place.</p>
+        </div>
+        <div class="me-planning-item reveal">
+          <h3>Heritage site permissions</h3>
+          <p>Glendalough is managed by the OPW and requires advance coordination for ceremonies within the monastic enclosure. Newgrange and the Boyne Valley monuments are managed by Brú na Bóinne Visitor Centre and have specific requirements around group size and access timing. We handle all permissions as part of your planning and know exactly what each site requires. Our experience means no detail is left to chance.</p>
+        </div>
+        <div class="me-planning-item reveal">
+          <h3>Combining locations in one day</h3>
+          <p>The midlands and east is compact enough to combine a Glendalough ceremony with an afternoon drive through the Wicklow Mountains and an evening dinner in Kilkenny or Wicklow town. Alternatively, a Meath ceremony at Newgrange can be paired seamlessly with a celebration dinner in Dublin city the same evening. We plan multi-location days regularly in this region and handle all routing and timing on your behalf.</p>
+        </div>
+        <div class="me-planning-item reveal">
+          <h3>Accommodation and post-ceremony plans</h3>
+          <p>The midlands and east have excellent accommodation options from boutique country houses in the Wicklow Hills to elegant hotels near the Boyne Valley. Dublin city is within easy reach for an upscale celebration dinner, and Wicklow, Bray, and Kilkenny all offer strong restaurant options for couples who prefer to stay close to their ceremony location. We can recommend and help coordinate accommodation as part of your planning.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="me-faq" id="faq">
+    <div class="me-faq-in">
+      <div class="me-ol reveal">Questions &amp; Answers</div>
+      <h2 class="reveal">Frequently asked questions about <em>eloping in the Midlands &amp; East</em></h2>
+      <p class="me-faq-intro reveal">Everything couples ask us before booking a midlands and east Ireland elopement.</p>
+      <div class="me-faq-list reveal">
+
+        <details class="me-faq-item">
+          <summary class="me-faq-q">
+            <span class="me-faq-q-text">Can we get married at Glendalough?</span>
+            <svg class="me-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </summary>
+          <p class="me-faq-a">Yes. Glendalough is an OPW-managed site and one of our most requested ceremony locations in the east of Ireland. Ceremonies within or near the monastic enclosure require advance coordination with the OPW, and we manage all of this on your behalf. The combination of the sixth-century round tower, stone churches, and the two glacial lakes makes Glendalough one of Ireland's most extraordinary elopement settings. <a href="/get-in-touch">Get in touch to discuss Glendalough availability.</a></p>
+        </details>
+
+        <details class="me-faq-item">
+          <summary class="me-faq-q">
+            <span class="me-faq-q-text">How far is the region from Dublin Airport?</span>
+            <svg class="me-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </summary>
+          <p class="me-faq-a">The midlands and east is the most convenient region in Ireland for international arrivals. The Boyne Valley in County Meath is under forty-five minutes from Dublin Airport; Kildare around forty-five minutes to an hour; Wicklow locations typically under ninety minutes. For guests combining an Irish elopement with time in Dublin, the region makes an excellent starting or ending point for any Irish itinerary -- close enough to be easy, beautiful enough to justify the journey.</p>
+        </details>
+
+        <details class="me-faq-item">
+          <summary class="me-faq-q">
+            <span class="me-faq-q-text">Can we visit Newgrange as part of our elopement?</span>
+            <svg class="me-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </summary>
+          <p class="me-faq-a">Yes. Newgrange is managed by the Brú na Bóinne Visitor Centre and public access is via guided tours. We can incorporate a visit to Newgrange into your elopement day and arrange for your ceremony to take place nearby, in the wider Boyne Valley landscape that surrounds this extraordinary five-thousand-year-old monument. The combination of an ancient ceremony setting and a legal elopement in the same valley is one of our most unique Meath offerings. <a href="/get-in-touch">Get in touch to discuss Boyne Valley options.</a></p>
+        </details>
+
+        <details class="me-faq-item">
+          <summary class="me-faq-q">
+            <span class="me-faq-q-text">Is a marriage in Ireland legally recognised in the United States?</span>
+            <svg class="me-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </summary>
+          <p class="me-faq-a">Yes. Ireland and the United States mutually recognise marriages performed in each country. Every ceremony we plan is conducted by a legally registered Irish celebrant, and your marriage is registered with the General Register Office of Ireland. We provide you with a certified Irish marriage certificate accepted across the US. <a href="/faqs">See all legal FAQs.</a></p>
+        </details>
+
+        <details class="me-faq-item">
+          <summary class="me-faq-q">
+            <span class="me-faq-q-text">Can we combine an elopement in Wicklow with time in Dublin?</span>
+            <svg class="me-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </summary>
+          <p class="me-faq-a">Yes, and it is one of the most popular itineraries we plan. A Glendalough ceremony can be followed by an evening celebration dinner in Dublin city, which is under an hour away. Equally, many couples spend their first night in Dublin after arriving, then travel to their Wicklow ceremony the following morning, combining the best of both worlds -- city sophistication and mountain beauty -- within a single short trip to Ireland. <a href="/get-in-touch">Get in touch to talk through your itinerary.</a></p>
+        </details>
+
+        <details class="me-faq-item">
+          <summary class="me-faq-q">
+            <span class="me-faq-q-text">How many guests can we bring to a midlands and east elopement?</span>
+            <svg class="me-faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </summary>
+          <p class="me-faq-a">Our packages cover everything from just the two of you up to intimate celebrations with immediate family and close friends. The midlands and east has strong options for small group ceremonies -- country house estates in Wicklow and Kildare can accommodate exclusive-use bookings for groups of up to thirty guests. We will advise on what works best for your numbers and chosen location. <a href="/packages">View our packages.</a></p>
+        </details>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="me-related">
+    <div class="me-related-in">
+      <div class="me-related-header reveal">
+        <div class="me-ol">Keep exploring</div>
+        <h2>More to <em>discover</em></h2>
+      </div>
+      <div class="me-related-grid reveal">
+        <div class="me-related-col">
+          <h3>Other Regions</h3>
+          <ul>
+            <li><a href="/regions-of-ireland/dublin">Dublin</a></li>
+            <li><a href="/regions-of-ireland/northern-ireland">Northern Ireland</a></li>
+            <li><a href="/regions-of-ireland/the-west">The West</a></li>
+            <li><a href="/regions-of-ireland/the-south-west">The South West</a></li>
+            <li><a href="/regions-of-ireland/the-north-west">The North West</a></li>
+            <li><a href="/regions-of-ireland/the-south-east">The South East</a></li>
+          </ul>
+        </div>
+        <div class="me-related-col">
+          <h3>Plan Your Day</h3>
+          <ul>
+            <li><a href="/packages">View Our Packages</a></li>
+            <li><a href="/venues">Browse All Venues</a></li>
+            <li><a href="/elopement-in-ireland">How It Works</a></li>
+            <li><a href="/faqs">Frequently Asked Questions</a></li>
+            <li><a href="/get-in-touch">Get in Touch</a></li>
+          </ul>
+        </div>
+        <div class="me-related-col">
+          <h3>Real Couples</h3>
+          <ul>
+            <li><a href="/happy-couples">All Couple Stories</a></li>
+            <li><a href="/about">About Ladybird</a></li>
+            <li><a href="/destination-weddings-ireland">Destination Weddings in Ireland</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="me-cta">
+    <div class="me-cta-in">
+      <div class="me-ol ctr reveal" style="color:var(--gold-lt);">Ready to begin?</div>
+      <h2 class="reveal">Let's plan your <em>Midlands &amp; East elopement</em></h2>
+      <p class="me-cta-sub reveal">Tell us your vision and we'll handle every detail, from venue to vows.</p>
+      <div class="me-cta-links reveal">
+        <a href="/get-in-touch" class="btn-gold">Get in Touch</a>
+        <a href="/packages" class="btn-ghost">View Our Packages</a>
+      </div>
+      <a href="/happy-couples" class="me-cta-tertiary reveal">See Real Couple Stories</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  const revealEls = document.querySelectorAll('.lb-me .reveal');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('in'), i * 60); obs.unobserve(e.target); } });
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+    revealEls.forEach(el => obs.observe(el));
+  } else { revealEls.forEach(el => el.classList.add('in')); }
+
+  const GRID     = document.getElementById('me-venue-grid');
+  const MAP_WRAP = document.getElementById('me-map-wrap');
+  const TAG      = 'Midlands East';
+  let currentView = 'grid';
+  let map = null;
+  let markerLayer = null;
+  let regionItems = [];
+  let goldIcon = null;
+
+  document.querySelectorAll('.lb-me .me-toggle-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      document.querySelectorAll('.lb-me .me-toggle-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      currentView = this.dataset.view;
+      if (currentView === 'grid') {
+        MAP_WRAP.classList.remove('active');
+        GRID.classList.remove('hidden');
+      } else {
+        GRID.classList.add('hidden');
+        MAP_WRAP.classList.add('active');
+        if (!map) initMap();
+        setTimeout(() => { if (map) map.invalidateSize(); renderMapPins(regionItems); }, 100);
+      }
+    });
+  });
+
+  function initMap() {
+    goldIcon = L.divIcon({
+      className: '',
+      html: '<div class="me-marker-wrap"><div class="me-marker-pulse"></div><div class="me-marker-dot"></div></div>',
+      iconSize: [14, 14], iconAnchor: [7, 7], popupAnchor: [0, -10]
+    });
+    map = L.map('me-map', { zoomControl: false }).setView([53.1, -6.5], 9);
+    L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+      maxZoom: 19,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>'
+    }).addTo(map);
+    L.control.zoom({ position: 'bottomright' }).addTo(map);
+    markerLayer = L.layerGroup().addTo(map);
+  }
+
+  function renderMapPins(items) {
+    if (!markerLayer) return;
+    markerLayer.clearLayers();
+    const bounds = [];
+    items.forEach(item => {
+      const html = item.body || item.excerpt || '';
+      const latM = html.match(/data-lat="([^"]+)"/);
+      const lngM = html.match(/data-long="([^"]+)"/);
+      const ctyM = html.match(/data-county="([^"]+)"/);
+      if (!latM || !lngM) return;
+      const lat = parseFloat(latM[1]);
+      const lng = parseFloat(lngM[1]);
+      if (isNaN(lat) || isNaN(lng)) return;
+      const imgSrc = item.assetUrl || item.thumbnailUrl || '';
+      const county = ctyM ? ctyM[1].replace(/,?\s*ireland$/i, '') : '';
+      const popupContent =
+        '<div>' +
+        (imgSrc ? '<img class="lb-me-popup-img" src="' + imgSrc + '" alt="' + item.title + '">' : '') +
+        '<div class="lb-me-popup-body">' +
+        '<h3 class="lb-me-popup-title">' + item.title + '</h3>' +
+        '<div class="lb-me-popup-rule"></div>' +
+        (county ? '<p class="lb-me-popup-county">Co. ' + county + ', Ireland</p>' : '') +
+        '<a href="' + item.fullUrl + '" class="lb-me-popup-link">View Venue</a>' +
+        '</div></div>';
+      L.marker([lat, lng], { icon: goldIcon }).bindPopup(popupContent, { maxWidth: 210 }).addTo(markerLayer);
+      bounds.push([lat, lng]);
+    });
+    if (bounds.length > 0) map.fitBounds(bounds, { padding: [40, 40], maxZoom: 12 });
+    else map.setView([53.1, -6.5], 9);
+  }
+
+  function escHtml(str) { return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+  function buildCard(item) {
+    const title  = item.title || 'Venue';
+    const href   = item.fullUrl || '/venues/p/' + (item.urlId || item.urlSlug || '');
+    const imgSrc = item.assetUrl || item.thumbnailUrl || null;
+    const county = (item.customContent && item.customContent.county) ? item.customContent.county : '';
+    const desc   = (item.excerpt || item.body || '').replace(/<[^>]*>/g, '').trim().slice(0, 180);
+    const imgHtml = imgSrc
+      ? `<img class="me-card-img" src="${escHtml(imgSrc)}" alt="${escHtml(title)}" loading="lazy">`
+      : `<div class="me-card-img-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg></div>`;
+    const card = document.createElement('div');
+    card.className = 'me-card reveal';
+    card.innerHTML = `${imgHtml}<div class="me-card-body">${county ? `<span class="me-card-county">${escHtml(county)}</span>` : ''}<h3>${escHtml(title)}</h3><div class="me-card-rule"></div>${desc ? `<p class="me-card-desc">${escHtml(desc)}</p>` : ''}<a href="${escHtml(href)}" class="me-card-link">View venue</a></div>`;
+    return card;
+  }
+
+  function renderCards(items) {
+    if (!items.length) {
+      GRID.innerHTML = `<div class="me-error"><p>No venues found for this region yet, check back soon.</p><p><a href="/venues">Browse all venues &rarr;</a></p></div>`;
+      return;
+    }
+    GRID.innerHTML = '';
+    items.forEach(item => GRID.appendChild(buildCard(item)));
+    if (items.length % 3 === 1 && GRID.lastElementChild) GRID.lastElementChild.style.gridColumn = '2';
+    const cards = GRID.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('in'), i * 60); io.unobserve(e.target); } });
+      }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+      cards.forEach(el => io.observe(el));
+    } else { cards.forEach(el => el.classList.add('in')); }
+  }
+
+  async function loadVenues() {
+    try {
+      const res = await fetch('/venue?format=json&count=300');
+      if (!res.ok) throw new Error();
+      const data = await res.json();
+      const all = data.items || data.products || [];
+      regionItems = all.filter(item => (item.tags || []).some(t => t.toLowerCase() === TAG.toLowerCase()));
+      renderCards(regionItems);
+    } catch (err) {
+      console.warn('Ladybird venue fetch failed:', err);
+      GRID.innerHTML = `<div class="me-error"><p>Couldn't load venues right now.</p><p><a href="/venues">Browse all venues &rarr;</a></p></div>`;
+    }
+  }
+
+  loadVenues();
+}());
+</script>

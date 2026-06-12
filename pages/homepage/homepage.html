@@ -1,0 +1,1289 @@
+<!-- ═══════════════════════════════════════════════
+     HOMEPAGE - / - Ladybird Ever After
+     Root class: .lb-home
+     Sections:
+       S1  Hero (Pattern 1 -Immersive)
+       S2  Trust bar (animated counters -matches about.html)
+       S3  Problem / Solution
+       S4  Package overview (4 cards -no individual prices)
+       S5  Venue spotlight (6 cards, scrollable)
+       S6  How it works (4 steps)
+       S7  Real couples (3 cards -real images)
+       S8  Our story
+       S9  Final CTA form (matches -elopement-in-ireland.html)
+       Floating CTA button
+═══════════════════════════════════════════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Alice&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,100,0,-25" rel="stylesheet">
+
+<style>
+/* -- ROOT & RESET -- */
+.lb-home {
+  --green:    #5B6239;
+  --green-dk: #3a3f25;
+  --green-hv: #4a5130;
+  --gold:     #B8964E;
+  --gold-lt:  #D4AF71;
+  --cream:    #F5F0E8;
+  --warm:     #FDFAF4;
+  --stone:    #8C8070;
+  --txt:      #1A1A18;
+  --txt-mid:  #4A4A42;
+  --pad-x: clamp(1.2rem, 5vw, 5rem);
+  --pad-y: clamp(3.5rem, 7vw, 6rem);
+  font-family: 'Alice', serif;
+  font-weight: 300;
+  color: var(--txt);
+  -webkit-text-size-adjust: 100%;
+  line-height: 1.5;
+}
+.lb-home *, .lb-home *::before, .lb-home *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+.lb-home img { display: block; }
+.lb-home h1, .lb-home h2, .lb-home h3, .lb-home h4 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 300;
+  line-height: 1.18;
+}
+.lb-home em { font-style: italic; color: var(--gold-lt); }
+.lb-home a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; transition: color .3s; }
+.lb-home a:hover { color: var(--green); }
+
+/* -- OVERLINE -- */
+.lb-home .overline {
+  display: flex; align-items: center; gap: .6rem;
+  font-size: .6rem; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--gold); font-weight: 600; margin-bottom: .9rem;
+}
+.lb-home .overline::after { content: ''; flex: 0 0 28px; height: 1px; background: var(--gold); opacity: .5; }
+.lb-home .overline.ctr { justify-content: center; }
+.lb-home .overline.ctr::before { content: ''; flex: 0 0 28px; height: 1px; background: var(--gold); opacity: .5; }
+.lb-home .overline.lt { color: rgba(212,175,113,.85); }
+.lb-home .overline.lt::after, .lb-home .overline.lt::before { background: rgba(184,150,78,.5); }
+
+/* -- BUTTONS -- */
+.lb-home .btn-green {
+  display: inline-block; font-family: 'Alice', serif; font-size: .8rem;
+  font-weight: 600; letter-spacing: .15em; text-transform: uppercase;
+  padding: .95rem 2.2rem; background: var(--green); color: var(--warm);
+  border: 2px solid var(--green); text-decoration: none; transition: background .3s, border-color .3s; cursor: pointer;
+}
+.lb-home .btn-green:hover { background: var(--green-hv); border-color: var(--green-hv); color: var(--warm); }
+.lb-home .btn-gold {
+  display: inline-block; font-family: 'Alice', serif; font-size: .8rem;
+  font-weight: 600; letter-spacing: .15em; text-transform: uppercase;
+  padding: .95rem 2.2rem; background: var(--gold); color: var(--green-dk);
+  border: 2px solid var(--gold); text-decoration: none; transition: all .3s; cursor: pointer;
+}
+.lb-home .btn-gold:hover { background: transparent; border-color: var(--gold-lt); color: var(--gold-lt); }
+.lb-home .btn-outline-light {
+  display: inline-block; font-family: 'Alice', serif; font-size: .8rem;
+  font-weight: 600; letter-spacing: .15em; text-transform: uppercase;
+  padding: .95rem 2.2rem; background: transparent; color: var(--warm);
+  border: 2px solid rgba(253,250,244,.6); text-decoration: none; transition: all .3s; cursor: pointer;
+}
+.lb-home .btn-outline-light:hover { border-color: var(--warm); color: var(--warm); }
+.lb-home .text-link {
+  font-size: .8rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--green); text-decoration: none; font-weight: 600; transition: color .3s;
+}
+.lb-home .text-link::after { content: ' \2192'; }
+.lb-home .text-link:hover { color: var(--gold); }
+
+/* -- REVEAL -- */
+.lb-home .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+.lb-home .reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ════════════════════════════════════════
+   S1 -HERO
+════════════════════════════════════════ */
+.lb-home .hero-home {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; overflow: hidden;
+}
+.lb-home .hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/25acb88b-db49-4da2-bbc5-1d81a10e425f/Sebrina%26John-233.webp?content-type=image%2Fwebp');
+  background-size: cover; background-position: center 30%;
+}
+@media (max-width: 600px) {
+  .lb-home .hero-home { min-height: 82vh; align-items: flex-start; padding-top: 8rem; }
+  .lb-home .hero-bg { background-image: url('https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/b7c945ba-b34b-47b6-b121-5b9ff43d96e8/Sebrina%26John-241.png?content-type=image%2Fpng'); background-position: center 15%; }
+}
+.lb-home .hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(20,22,18,.5) 0%, rgba(20,22,18,.35) 40%, rgba(20,22,18,.55) 100%);
+}
+.lb-home .hero-content {
+  position: relative; z-index: 2;
+  max-width: 960px; padding: 0 var(--pad-x);
+  animation: heroFadeUp .9s ease both;
+}
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.lb-home .hero-eyebrow {
+  display: flex; align-items: center; justify-content: center; gap: .8rem;
+  font-size: .6rem; letter-spacing: .35em; text-transform: uppercase;
+  color: rgba(212,175,113,.9); font-weight: 600; margin-bottom: 1.4rem;
+}
+.lb-home .hero-eyebrow-line { display: block; width: 36px; height: 1px; background: rgba(184,150,78,.6); }
+.lb-home .hero-home h1 {
+  font-size: clamp(2.8rem, 7vw, 5.2rem);
+  color: var(--warm); line-height: 1.06; letter-spacing: -.01em; margin-bottom: 1.2rem;
+}
+.lb-home .hero-home h1 em { color: var(--gold-lt); font-style: italic; }
+.lb-home .hero-sub {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: clamp(.95rem, 2vw, 1.25rem); color: rgba(253,250,244,.8);
+  line-height: 1.65; margin-bottom: 2.2rem;
+  max-width: 520px; margin-left: auto; margin-right: auto;
+}
+.lb-home .hero-ctas { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.lb-home .hero-scroll {
+  position: absolute; bottom: 2.2rem; left: 50%; transform: translateX(-50%);
+  z-index: 2; display: flex; flex-direction: column; align-items: center; gap: .5rem;
+}
+.lb-home .hero-scroll-line {
+  width: 1px; height: 40px; background: rgba(253,250,244,.4);
+  animation: scrollPulse 1.8s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%,100% { opacity: .4; transform: scaleY(1); }
+  50% { opacity: .8; transform: scaleY(.85); }
+}
+.lb-home .hero-scroll-label {
+  font-size: .58rem; letter-spacing: .25em; text-transform: uppercase; color: rgba(253,250,244,.45);
+}
+
+/* ════════════════════════════════════════
+   S3 - PROBLEM / SOLUTION
+════════════════════════════════════════ */
+.lb-home .problem-section {
+  background: var(--cream);
+  padding: var(--pad-y) var(--pad-x);
+  text-align: center;
+}
+.lb-home .problem-section h2 {
+  font-size: clamp(1.5rem, 2.6vw, 2rem); color: var(--txt);
+  max-width: 640px; margin: 0 auto 3rem; line-height: 1.3;
+}
+.lb-home .problem-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem; max-width: 920px; margin: 0 auto 2.4rem;
+}
+.lb-home .problem-card {
+  text-align: left;
+  background: var(--warm);
+  border: 1px solid rgba(91,98,57,.1);
+  border-left: 3px solid var(--gold);
+  padding: 1.8rem 1.6rem;
+  transition: box-shadow .3s, transform .3s;
+}
+.lb-home .problem-card:hover {
+  box-shadow: 0 8px 32px rgba(26,26,18,.09);
+  transform: translateY(-2px);
+}
+.lb-home .problem-icon-wrap {
+  width: 44px; height: 44px;
+  background: rgba(184,150,78,.08);
+  border: 1px solid rgba(184,150,78,.18);
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 0 1.2rem; color: var(--gold);
+}
+.lb-home .problem-icon-wrap .mat-icon {
+  font-family: 'Material Symbols Rounded';
+  font-weight: 100;
+  font-style: normal;
+  font-size: 22px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  white-space: nowrap;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  color: var(--gold);
+  font-variation-settings: 'FILL' 0, 'wght' 100, 'GRAD' -25, 'opsz' 24;
+}
+.lb-home .problem-card h3 {
+  font-size: .95rem; font-family: 'Playfair Display', serif; font-weight: 500;
+  color: var(--txt); margin-bottom: .6rem; line-height: 1.3;
+}
+.lb-home .problem-card p { font-size: .82rem; color: var(--txt-mid); line-height: 1.8; }
+.lb-home .problem-cta { margin-top: .5rem; }
+@media (max-width: 700px) {
+  .lb-home .problem-grid { grid-template-columns: 1fr; gap: 1rem; }
+}
+
+/* ════════════════════════════════════════
+   S3b -DIFFERENCE IMAGE
+════════════════════════════════════════ */
+.lb-home .difference-img-wrap {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  height: clamp(220px, 35vw, 480px);
+  overflow: hidden;
+  position: relative;
+}
+.lb-home .difference-img-wrap img {
+  width: 100%; height: 100%; object-fit: cover; object-position: center 25%;
+  display: block;
+}
+
+/* ════════════════════════════════════════
+   S4 -PACKAGES
+════════════════════════════════════════ */
+.lb-home .packages-section {
+  background: var(--warm);
+  padding: var(--pad-y) var(--pad-x);
+  text-align: center;
+}
+.lb-home .packages-section h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); color: var(--txt); margin-bottom: .6rem; }
+.lb-home .packages-section .section-sub {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: clamp(.9rem, 1.6vw, 1.1rem); color: var(--stone);
+  max-width: 560px; margin: 0 auto 2.8rem; line-height: 1.7;
+}
+.lb-home .pkg-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem; max-width: 1040px; margin: 0 auto 2.2rem;
+  align-items: stretch;
+}
+.lb-home .pkg-card {
+  background: var(--cream); padding: 1.8rem 1.4rem 1.6rem;
+  text-align: left; position: relative;
+  border: 1px solid rgba(91,98,57,.1);
+  transition: transform .25s, box-shadow .25s;
+  display: flex; flex-direction: column;
+}
+.lb-home .pkg-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(26,26,24,.08); }
+.lb-home .pkg-badge {
+  display: inline-block; font-size: .58rem; font-weight: 600;
+  letter-spacing: .15em; text-transform: uppercase; padding: .28rem .7rem; margin-bottom: 1rem;
+}
+.lb-home .pkg-badge.elopement { background: rgba(91,98,57,.08); color: var(--green); }
+.lb-home .pkg-badge.wedding { background: rgba(91,98,57,.12); color: var(--green-dk); }
+.lb-home .pkg-name {
+  font-family: 'Playfair Display', serif; font-size: 1.5rem;
+  font-weight: 400; color: var(--txt); margin-bottom: .25rem; line-height: 1.1;
+}
+.lb-home .pkg-english { font-size: .78rem; color: var(--stone); letter-spacing: .04em; margin-bottom: .3rem; }
+.lb-home .pkg-guests { font-size: .72rem; color: var(--stone); margin-bottom: 1.1rem; letter-spacing: .03em; }
+.lb-home .pkg-includes { list-style: none; margin-bottom: 1.6rem; flex: 1; }
+.lb-home .pkg-includes li {
+  font-size: .82rem; color: var(--txt-mid);
+  padding: .3rem 0 .3rem 1.1rem;
+  border-bottom: 1px solid rgba(91,98,57,.1);
+  line-height: 1.45; position: relative;
+}
+.lb-home .pkg-includes li::before {
+  content: ''; position: absolute; left: 0; top: .65rem;
+  width: 5px; height: 5px; border-radius: 50%;
+  background: var(--gold); opacity: .6;
+}
+.lb-home .pkg-includes li:last-child { border-bottom: none; }
+.lb-home .pkg-cta {
+  display: block; text-align: center;
+  font-family: 'Alice', serif; font-size: .72rem; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase;
+  padding: .75rem 1rem; background: var(--green); color: var(--warm);
+  text-decoration: none; transition: background .3s;
+}
+.lb-home .pkg-cta:hover { background: var(--green-hv); color: var(--warm); }
+.lb-home .pkg-starting {
+  font-size: .7rem; color: var(--stone); letter-spacing: .03em;
+  margin-bottom: 1.1rem; font-family: 'Alice', serif;
+}
+.lb-home .pkg-starting strong { color: var(--green); font-family: 'Playfair Display', serif; font-size: .95rem; font-weight: 500; }
+.lb-home .packages-footer-link { text-align: center; }
+
+/* ════════════════════════════════════════
+   S5 -VENUE SPOTLIGHT
+════════════════════════════════════════ */
+.lb-home .venues-section {
+  background: var(--cream);
+  padding: var(--pad-y) 0 var(--pad-y);
+  text-align: center; overflow: hidden;
+}
+.lb-home .venues-section-inner { padding: 0 var(--pad-x); }
+.lb-home .venues-section h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); color: var(--txt); margin-bottom: .6rem; }
+.lb-home .venues-section .section-sub {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: clamp(.9rem, 1.6vw, 1.1rem); color: var(--stone);
+  max-width: 540px; margin: 0 auto 2.4rem; line-height: 1.7;
+}
+.lb-home .venue-scroll-track {
+  display: flex; gap: 1.2rem; overflow-x: auto;
+  padding: 0 var(--pad-x) 1.2rem;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.lb-home .venue-scroll-track::-webkit-scrollbar { display: none; }
+.lb-home .venue-card {
+  flex: 0 0 300px; scroll-snap-align: start;
+  text-decoration: none; display: block;
+  position: relative; overflow: hidden; border-radius: 1px;
+}
+.lb-home .venue-card-img {
+  width: 100%; height: 360px; object-fit: cover;
+  transition: transform .6s ease; background: var(--stone);
+}
+.lb-home .venue-card:hover .venue-card-img { transform: scale(1.04); }
+.lb-home .venue-card-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(20,22,18,.72) 0%, rgba(20,22,18,.1) 55%);
+  transition: background .3s;
+}
+.lb-home .venue-card:hover .venue-card-overlay {
+  background: linear-gradient(to top, rgba(20,22,18,.8) 0%, rgba(20,22,18,.2) 55%);
+}
+.lb-home .venue-card-info {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 1.2rem 1.2rem 1.4rem; color: var(--warm);
+}
+.lb-home .venue-card-tag {
+  display: inline-block; font-size: .55rem; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--gold-lt); font-weight: 600; margin-bottom: .4rem;
+}
+.lb-home .venue-card-name {
+  font-family: 'Playfair Display', serif; font-size: 1.15rem;
+  font-weight: 400; color: var(--warm); line-height: 1.2; margin-bottom: .25rem;
+}
+.lb-home .venue-card-region { font-size: .68rem; color: rgba(253,250,244,.6); letter-spacing: .05em; }
+.lb-home .venues-footer { padding: 0 var(--pad-x); margin-top: 2rem; }
+
+/* ════════════════════════════════════════
+   S6 -HOW IT WORKS
+════════════════════════════════════════ */
+.lb-home .hiw-section {
+  background: var(--warm);
+  padding: var(--pad-y) var(--pad-x);
+  text-align: center;
+}
+.lb-home .hiw-section h2 {
+  font-size: clamp(1.5rem, 2.6vw, 2rem); color: var(--txt);
+  max-width: 540px; margin: 0 auto 2.8rem;
+}
+.lb-home .hiw-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1.8rem; max-width: 880px; margin: 0 auto 2.4rem;
+  position: relative;
+}
+.lb-home .hiw-steps::before {
+  content: ''; position: absolute;
+  top: 26px; left: calc(12.5% + 13px); right: calc(12.5% + 13px);
+  height: 1px; background: rgba(184,150,78,.25);
+}
+.lb-home .hiw-num {
+  width: 52px; height: 52px; border-radius: 50%;
+  border: 1px solid rgba(184,150,78,.4); background: var(--warm);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Playfair Display', serif; font-size: 1.1rem;
+  color: var(--gold); margin: 0 auto 1.2rem;
+  position: relative; z-index: 1;
+}
+.lb-home .hiw-step h3 {
+  font-size: .95rem; font-family: 'Playfair Display', serif;
+  font-weight: 600; color: var(--txt); margin-bottom: .5rem; line-height: 1.3;
+}
+.lb-home .hiw-step p { font-size: .83rem; color: var(--txt-mid); line-height: 1.75; }
+.lb-home .hiw-cta { margin-top: .5rem; }
+
+/* ════════════════════════════════════════
+   S7 -REAL COUPLES
+════════════════════════════════════════ */
+.lb-home .couples-section {
+  background: var(--cream);
+  padding: var(--pad-y) var(--pad-x);
+  text-align: center;
+}
+.lb-home .couples-section h2 { font-size: clamp(1.5rem, 2.6vw, 2rem); color: var(--txt); margin-bottom: 2.6rem; }
+.lb-home .couples-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1.6rem; max-width: 980px; margin: 0 auto 2.2rem;
+}
+.lb-home .couple-card {
+  background: var(--warm); border: 1px solid rgba(91,98,57,.1);
+  overflow: hidden; text-align: left;
+  transition: transform .25s, box-shadow .25s;
+}
+.lb-home .couple-card:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(26,26,24,.07); }
+.lb-home .couple-photo { width: 100%; height: 280px; object-fit: cover; background: var(--stone); }
+.lb-home .couple-body { padding: 1.4rem 1.4rem 1.6rem; }
+.lb-home .couple-tier {
+  display: inline-block; font-size: .58rem; letter-spacing: .15em;
+  text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: .6rem;
+}
+.lb-home .couple-names {
+  font-family: 'Playfair Display', serif; font-size: 1.15rem;
+  color: var(--txt); margin-bottom: .3rem; line-height: 1.2;
+}
+.lb-home .couple-venue { font-size: .75rem; color: var(--stone); margin-bottom: 1rem; letter-spacing: .03em; }
+.lb-home .couple-venue a { color: var(--stone); text-decoration: none; transition: color .3s; }
+.lb-home .couple-venue a:hover { color: var(--green); }
+.lb-home .couple-quote {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: .88rem; color: var(--txt-mid); line-height: 1.75;
+  margin-bottom: 1.1rem; position: relative; padding-left: 1rem;
+}
+.lb-home .couple-quote::before {
+  content: '\201C'; position: absolute; left: 0; top: -.2rem;
+  font-size: 1.6rem; color: var(--gold); opacity: .5; line-height: 1;
+}
+.lb-home .couple-link {
+  font-size: .7rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--green); font-weight: 600; text-decoration: none; transition: color .3s;
+}
+.lb-home .couple-link:hover { color: var(--gold); }
+.lb-home .couples-footer { text-align: center; }
+
+/* ════════════════════════════════════════
+   S8 -OUR STORY
+════════════════════════════════════════ */
+.lb-home .story-section { background: var(--warm); padding: var(--pad-y) var(--pad-x); }
+.lb-home .story-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 4rem; max-width: 920px; margin: 0 auto; align-items: center;
+}
+.lb-home .story-photo { width: 100%; aspect-ratio: 4/5; object-fit: cover; background: var(--stone); }
+.lb-home .story-body h2 {
+  font-size: clamp(1.4rem, 2.4vw, 1.9rem); color: var(--txt);
+  margin-bottom: 1.2rem; line-height: 1.25;
+}
+.lb-home .story-body p { font-size: .9rem; color: var(--txt-mid); line-height: 1.85; margin-bottom: 1.8rem; }
+
+/* ════════════════════════════════════════
+   S9 -FINAL CTA FORM
+════════════════════════════════════════ */
+.lb-home .form-section {
+  background: var(--warm);
+  padding: var(--pad-y) var(--pad-x);
+}
+.lb-home .form-inner {
+  max-width: 1080px; margin: 0 auto;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 6vw, 6rem); align-items: start;
+}
+.lb-home .form-col-header { margin-bottom: 2rem; }
+.lb-home .form-intro-label {
+  font-size: .58rem; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--gold); font-weight: 600; margin-bottom: .7rem;
+}
+.lb-home .form-col-header h2 {
+  font-size: clamp(1.5rem, 2.6vw, 2rem); color: var(--txt); margin-bottom: 1rem;
+}
+.lb-home .form-col-header p {
+  font-size: .88rem; line-height: 1.85; color: var(--txt-mid);
+}
+.lb-home .form-col-header p strong { color: var(--txt); font-weight: 600; }
+
+/* HubSpot overrides */
+.lb-home #hs-hp .hs-form fieldset { max-width: 100% !important; border: none !important; }
+.lb-home #hs-hp .hs-form .field { margin-bottom: 1.2rem; }
+.lb-home #hs-hp .hs-form label {
+  font-family: 'Alice', serif !important; font-size: .68rem !important;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--stone) !important; font-weight: 600; display: block; margin-bottom: .4rem;
+}
+.lb-home #hs-hp input[type="text"],
+.lb-home #hs-hp input[type="email"],
+.lb-home #hs-hp input[type="tel"],
+.lb-home #hs-hp select,
+.lb-home #hs-hp textarea {
+  width: 100% !important; padding: .9rem 1rem !important;
+  background: var(--cream) !important; border: 1px solid rgba(91,98,57,.18) !important;
+  border-radius: 0 !important; color: var(--txt) !important;
+  font-family: 'Alice', serif !important; font-size: .85rem !important;
+  font-weight: 300 !important; outline: none !important;
+  -webkit-appearance: none; appearance: none; transition: border-color .3s;
+}
+.lb-home #hs-hp input:focus, .lb-home #hs-hp select:focus, .lb-home #hs-hp textarea:focus { border-color: var(--gold) !important; }
+.lb-home #hs-hp textarea { min-height: 100px !important; resize: vertical; }
+.lb-home #hs-hp .hs-error-msgs { list-style: none; }
+.lb-home #hs-hp .hs-error-msgs li { font-size: .72rem !important; color: #c00 !important; margin-top: .3rem; }
+.lb-home #hs-hp .hs-submit { margin-top: .8rem; }
+.lb-home #hs-hp .hs-button {
+  background: var(--green-dk) !important; color: var(--cream) !important;
+  border: 2px solid var(--green-dk) !important; padding: 1.1rem 3rem !important;
+  font-family: 'Alice', serif !important; font-size: .75rem !important;
+  font-weight: 600 !important; letter-spacing: .18em !important;
+  text-transform: uppercase !important; cursor: pointer !important;
+  transition: all .3s !important; width: 100% !important; border-radius: 0 !important;
+}
+.lb-home #hs-hp .hs-button:hover { background: var(--gold) !important; border-color: var(--gold) !important; color: var(--green-dk) !important; }
+.lb-home #hs-hp .form-columns-2 { display: grid; grid-template-columns: 1fr 1fr; gap: .62rem; }
+.lb-home #hs-hp .form-columns-2 .hs-form-field { float: none !important; width: 100% !important; }
+.lb-home #hs-hp .legal-consent-container {
+  font-size: .61rem !important; color: var(--stone) !important;
+  font-family: 'Alice', serif !important; line-height: 1.5;
+}
+
+/* Testimonials column */
+.lb-home .form-testimonials-col { padding-top: .5rem; }
+.lb-home .form-testimonials-label {
+  font-size: .58rem; letter-spacing: .3em; text-transform: uppercase;
+  color: var(--gold); font-weight: 600; margin-bottom: 1.6rem;
+  display: flex; align-items: center; gap: .6rem;
+}
+.lb-home .form-testimonials-label::after {
+  content: ''; flex: 1; height: 1px; background: rgba(184,150,78,.3);
+}
+.lb-home .form-testimonial-item {
+  padding: 1.6rem 0; border-bottom: 1px solid rgba(91,98,57,.1);
+}
+.lb-home .form-testimonial-item:first-of-type { padding-top: 0; }
+.lb-home .form-testimonial-item:last-of-type { border-bottom: none; padding-bottom: 0; }
+.lb-home .form-testimonial-quote {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-size: clamp(.88rem, 1.4vw, 1rem); line-height: 1.72;
+  color: var(--txt); margin-bottom: .9rem;
+  position: relative; padding-left: 1.1rem;
+}
+.lb-home .form-testimonial-quote::before {
+  content: '\201C'; position: absolute; left: 0; top: -.1em;
+  font-size: 1.5em; line-height: 1; color: var(--gold-lt); opacity: .7;
+}
+.lb-home .form-testimonial-meta { display: flex; align-items: center; gap: .7rem; }
+.lb-home .form-testimonial-dash {
+  width: 18px; height: 1px; background: var(--gold); opacity: .6; flex-shrink: 0;
+}
+.lb-home .form-testimonial-name {
+  font-size: .7rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--green); font-weight: 600;
+}
+.lb-home .form-testimonial-location { font-size: .7rem; color: var(--stone); margin-left: .2rem; }
+
+/* ════════════════════════════════════════
+   FLOATING CTA
+════════════════════════════════════════ */
+.lb-home .float-cta {
+  position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 500;
+  background: var(--gold); color: var(--green);
+  padding: .8rem 1.4rem; font-family: 'Alice', serif; font-size: .64rem;
+  font-weight: 600; letter-spacing: .12em; text-transform: uppercase;
+  text-decoration: none; box-shadow: 0 6px 26px rgba(0,0,0,.2);
+  transition: all .4s cubic-bezier(.34,1.56,.64,1);
+  transform: translateY(110px); opacity: 0;
+}
+.lb-home .float-cta.show { transform: translateY(0); opacity: 1; }
+.lb-home .float-cta:hover { background: var(--gold-lt); color: var(--green); transform: translateY(-2px); }
+
+/* ════════════════════════════════════════
+   RESPONSIVE
+════════════════════════════════════════ */
+/* ════════════════════════════════════════
+   PACKAGE + COUPLE CAROUSELS (mobile)
+════════════════════════════════════════ */
+.lb-home .pkg-carousel-track,
+.lb-home .couples-carousel-track {
+  display: none;
+}
+@media (max-width: 700px) {
+  /* Packages: hide grid, show carousel */
+  .lb-home .pkg-grid { display: none; }
+  .lb-home .packages-section { padding-left: 0; padding-right: 0; }
+  .lb-home .packages-section .overline,
+  .lb-home .packages-section h2,
+  .lb-home .packages-section .section-sub { padding-left: 1.2rem; padding-right: 1.2rem; }
+  .lb-home .pkg-carousel-track {
+    display: flex; gap: 1rem; overflow-x: auto;
+    padding: 0 1.2rem 1.2rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .lb-home .pkg-carousel-track::-webkit-scrollbar { display: none; }
+  .lb-home .pkg-carousel-track .pkg-card {
+    flex: 0 0 78vw; max-width: 320px;
+    scroll-snap-align: start;
+  }
+  .lb-home .packages-footer-link { padding: 0 1.2rem; }
+
+  /* Couples: hide grid, show carousel */
+  .lb-home .couples-grid { display: none; }
+  .lb-home .couples-section { padding-left: 0; padding-right: 0; }
+  .lb-home .couples-section .overline,
+  .lb-home .couples-section h2 { padding-left: 1.2rem; padding-right: 1.2rem; }
+  .lb-home .couples-carousel-track {
+    display: flex; gap: 1rem; overflow-x: auto;
+    padding: 0 1.2rem 1.2rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .lb-home .couples-carousel-track::-webkit-scrollbar { display: none; }
+  .lb-home .couples-carousel-track .couple-card {
+    flex: 0 0 82vw; max-width: 340px;
+    scroll-snap-align: start;
+  }
+  .lb-home .couples-footer { padding: 0 1.2rem; }
+}
+
+@media (max-width: 900px) {
+  .lb-home .pkg-grid { grid-template-columns: repeat(2, 1fr); }
+  .lb-home .hiw-steps { grid-template-columns: repeat(2, 1fr); }
+  .lb-home .hiw-steps::before { display: none; }
+  .lb-home .couples-grid { grid-template-columns: repeat(2, 1fr); }
+  .lb-home .story-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .lb-home .story-photo { aspect-ratio: 16/9; }
+  .lb-home .form-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .lb-home .form-testimonials-col { border-top: 1px solid rgba(91,98,57,.1); padding-top: 2.5rem; }
+}
+@media (max-width: 600px) {
+  .lb-home .problem-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .lb-home .hiw-steps { grid-template-columns: 1fr; }
+  .lb-home .hero-ctas { flex-direction: column; align-items: center; }
+  .lb-home #hs-hp .form-columns-2 { grid-template-columns: 1fr; }
+  .lb-home .float-cta { bottom: 0; right: 0; left: 0; text-align: center; border-radius: 0; }
+}
+</style>
+
+<!-- ══════════════════════════════════════════════════════════════ -->
+<div class="lb-home" id="lb-homepage-root">
+
+  <!-- ═══ S1: HERO ═══ -->
+  <section class="hero-home">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">
+        <span class="hero-eyebrow-line"></span>
+        Ireland's All-Inclusive Wedding Planner for American Couples
+        <span class="hero-eyebrow-line"></span>
+      </p>
+      <h1>Your Ireland Wedding, <em>Completely Handled</em></h1>
+      <p class="hero-sub">Built by an Irish-American couple who did it themselves. We plan every detail from the US - you just arrive and get married.</p>
+      <div class="hero-ctas">
+        <a href="/packages" class="btn-green">See Our Packages</a>
+        <a href="#enquire" class="btn-outline-light">Book a Free Call</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="hero-scroll-line"></div>
+      <span class="hero-scroll-label">Scroll</span>
+    </div>
+  </section>
+
+  <!-- ═══ S2: TRUST / SOCIAL PROOF (animated counters -matches about.html) ═══ -->
+  <script>
+  (function () {
+    var link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Alice&display=swap';
+    document.head.appendChild(link);
+
+    var css = document.createElement('style');
+    css.textContent = [
+      '#lb-proof-root { font-family:Alice,serif; font-weight:300; color:#1A1A18; }',
+      '#lb-proof-root *,#lb-proof-root *::before,#lb-proof-root *::after { margin:0; padding:0; box-sizing:border-box; }',
+      '#lb-proof-root .proof { background:#FDFAF4; padding:clamp(1.5rem,3vw,2.5rem) clamp(1.2rem,5vw,5rem); }',
+      '#lb-proof-root .proof-inner { max-width:900px; margin:0 auto; }',
+      '#lb-proof-root .proof-label { text-align:center; margin-bottom:1.2rem; }',
+      '#lb-proof-root .proof-label span { font-size:.58rem; letter-spacing:.3em; text-transform:uppercase; color:#B8964E; font-weight:600; display:inline-flex; align-items:center; gap:.6rem; }',
+      '#lb-proof-root .proof-label span::before,#lb-proof-root .proof-label span::after { content:""; width:28px; height:1px; background:#B8964E; opacity:.45; }',
+      '#lb-proof-root .proof-stats { display:flex; justify-content:center; flex-wrap:nowrap; gap:clamp(.6rem,2.5vw,3.5rem); }',
+      '#lb-proof-root .proof-stat { text-align:center; min-width:0; flex:1; }',
+      '#lb-proof-root .proof-stat-num { font-family:Playfair Display,serif; font-size:clamp(1.3rem,3.5vw,2.8rem); font-weight:600; color:#5B6239; line-height:1; }',
+      '#lb-proof-root .proof-stat-label { font-size:clamp(.48rem,.9vw,.62rem); letter-spacing:.1em; text-transform:uppercase; color:#8C8070; margin-top:.45rem; line-height:1.4; }',
+      '#lb-proof-root .proof-divider { width:50px; height:1px; background:#B8964E; opacity:.3; margin:1rem auto 0; }',
+      '#lb-proof-root .proof-featured { display:flex; align-items:center; justify-content:center; gap:.8rem; margin-top:1rem; }',
+      '#lb-proof-root .proof-featured-label { font-size:.58rem; letter-spacing:.25em; text-transform:uppercase; color:#8C8070; white-space:nowrap; }',
+      '#lb-proof-root .proof-featured a { display:inline-flex; align-items:center; transition:opacity .4s; text-decoration:none; }',
+      '#lb-proof-root .proof-featured a:hover { opacity:.7; }',
+      '#lb-proof-root .proof-featured img { height:26px; width:auto; display:block; }',
+      '#lb-proof-root .reveal { opacity:0; transform:translateY(20px); transition:opacity .7s ease,transform .7s ease; }',
+      '#lb-proof-root .reveal.in { opacity:1; transform:translateY(0); }',
+      '@media(max-width:400px){#lb-proof-root .proof-stats{flex-wrap:nowrap;}}'
+    ].join('\n');
+    document.head.appendChild(css);
+
+    var stats = [
+      { target: 100, suffix: '+', label: 'Happy<br>Couples' },
+      { target: 100, suffix: '+', label: 'Vendors &amp; Venues<br>Personally Vetted' },
+      { target: 5,   suffix: '\u2605', label: 'Average Couple<br>Rating' },
+      { target: 29,  suffix: '', label: 'US States<br>&amp; Counting' }
+    ];
+    var statsHTML = stats.map(function (s) {
+      return '<div class="proof-stat">' +
+        '<div class="proof-stat-num" data-target="' + s.target + '" data-suffix="' + s.suffix + '">0</div>' +
+        '<div class="proof-stat-label">' + s.label + '</div>' +
+        '</div>';
+    }).join('');
+
+    var root = document.createElement('div');
+    root.id = 'lb-proof-root';
+    root.innerHTML =
+      '<div class="proof reveal">' +
+      '<div class="proof-inner">' +
+      '<div class="proof-label"><span>Trusted by Couples Across the US &amp; Canada</span></div>' +
+      '<div class="proof-stats">' + statsHTML + '</div>' +
+      '<div class="proof-divider"></div>' +
+      '<div class="proof-featured">' +
+      '<span class="proof-featured-label">As Featured In</span>' +
+      '<a href="https://www.independent.ie/business/money/i-bought-my-wedding-dress-for-20-on-depop-meet-the-irish-couples-walking-down-the-aisle-for-less/a1281301504.html" target="_blank" rel="noopener">' +
+      '<img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/596a3b01-01e5-4752-ac13-daa11ea53342/irishinde-nobg.png?format=500w" alt="Irish Independent">' +
+      '</a>' +
+      '</div>' +
+      '</div>' +
+      '</div>';
+
+    var scriptTag = document.currentScript;
+    scriptTag.parentNode.insertBefore(root, scriptTag);
+
+    var section = root.closest('[data-section-id]') || root.closest('.page-section');
+    if (section) {
+      var sid = section.getAttribute('data-section-id');
+      if (sid) {
+        var nuke = document.createElement('style');
+        nuke.textContent =
+          '[data-section-id="' + sid + '"],' +
+          '[data-section-id="' + sid + '"] .content-wrapper,' +
+          '[data-section-id="' + sid + '"] .section-border' +
+          '{ padding:0 !important; min-height:0 !important; height:auto !important; margin:0 !important; }';
+        document.head.appendChild(nuke);
+      }
+    }
+    var p = root.parentElement;
+    while (p && p !== document.body) {
+      p.style.setProperty('padding','0','important');
+      p.style.setProperty('min-height','0','important');
+      p.style.setProperty('margin','0','important');
+      p = p.parentElement;
+    }
+
+    var counted = false;
+    function animateCounters() {
+      if (counted) return; counted = true;
+      root.querySelectorAll('.proof-stat-num[data-target]').forEach(function (el) {
+        var target = parseInt(el.getAttribute('data-target'));
+        var suffix = el.getAttribute('data-suffix') || '';
+        var duration = 1600; var startTime = null;
+        function step(ts) {
+          if (!startTime) startTime = ts;
+          var progress = Math.min((ts - startTime) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          el.textContent = Math.round(eased * target) + suffix;
+          if (progress < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      });
+    }
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); animateCounters(); obs.unobserve(e.target); }
+      });
+    }, { threshold: 0.15 });
+    root.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+  })();
+  </script>
+
+  <!-- ═══ S3: PROBLEM / SOLUTION ═══ -->
+  <section class="problem-section" id="lb-how">
+    <div class="overline ctr reveal">The Ladybird Difference</div>
+    <h2 class="reveal">Planning a wedding 4,000 miles away is complicated. <em>We built a better way.</em></h2>
+    <div class="problem-grid">
+      <div class="problem-card reveal">
+        <div class="problem-icon-wrap">
+          <span class="mat-icon">partner_heart</span>
+        </div>
+        <h3>We did this. We built this for you.</h3>
+        <p>Yasmeen and Laurence got married in Ireland from America before they ever started Ladybird. Every part of this company - the legal guidance, the USD contracts, the vendor relationships - was built to solve problems they lived through themselves.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-icon-wrap">
+          <span class="mat-icon">globe_uk</span>
+        </div>
+        <h3>Ireland. Only ever Ireland.</h3>
+        <p>We turned down every other destination to know this one completely. Our vendor network isn&rsquo;t a directory - it&rsquo;s a curated group of premium photographers, celebrants, and florists we&rsquo;ve worked with, vetted, and trust with our couples. That depth is something a generalist can never replicate.</p>
+      </div>
+      <div class="problem-card reveal">
+        <div class="problem-icon-wrap">
+          <span class="mat-icon">volunteer_activism</span>
+        </div>
+        <h3>You show up. We handle everything else.</h3>
+        <p>Vendor management, legal paperwork, timeline coordination, day-of logistics - all of it. One USD payment to a US-based company. We pay your Irish vendors directly. No wire transfers, no 6am calls chasing overseas voicemails, no spreadsheets handed back to you. Just your wedding, handled.</p>
+      </div>
+    </div>
+    <div class="problem-cta reveal">
+      <a href="#lb-hiw" class="text-link">See how it works</a>
+    </div>
+  </section>
+
+  <!-- ═══ S3b: DIFFERENCE IMAGE ═══ -->
+  <div class="difference-img-wrap">
+    <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/63c38dd8-b407-4b47-b729-df5a890561c0/EE_110.webp?content-type=image%2Fwebp" alt="Couple celebrating their Ireland elopement" loading="lazy">
+  </div>
+
+  <!-- ═══ S4: PACKAGES ═══ -->
+  <section class="packages-section" id="lb-packages">
+    <div class="overline ctr reveal">All-Inclusive Packages</div>
+    <h2 class="reveal">Four packages. One team. <em>Zero stress.</em></h2>
+    <p class="section-sub reveal">From a pure two-person elopement to an intimate wedding with your closest people - all planned from the US, all priced in dollars.</p>
+    <div class="pkg-grid">
+
+      <!-- Failte -->
+      <div class="pkg-card reveal">
+        <div class="pkg-name">F&aacute;ilte</div>
+        <div class="pkg-english">The Pure Elopement</div>
+        <div class="pkg-guests"> ideal for 0&ndash;4 guests</div>
+        <ul class="pkg-includes">
+          <li>Celebrant &amp; full legal guidance</li>
+          <li>Elopement photography</li>
+          <li>Dedicated elopement planner</li>
+          <li>Venue sourcing &amp; booking</li>
+        </ul>
+        <div class="pkg-starting">Packages starting from <strong>$4,900</strong></div>
+        <a href="/packages#failte" class="pkg-cta">View Package</a>
+      </div>
+
+      <!-- Gra -->
+      <div class="pkg-card reveal">
+        <div class="pkg-name">Gr&aacute;</div>
+        <div class="pkg-english">The Small-Group Elopement</div>
+        <div class="pkg-guests">ideal for up to 8 guests</div>
+        <ul class="pkg-includes">
+          <li>Celebrant &amp; full legal guidance</li>
+          <li>Elopement photography</li>
+          <li>Flowers, hair &amp; makeup</li>
+          <li>Venue sourcing &amp; booking</li>
+        </ul>
+        <div class="pkg-starting">&nbsp;</div>
+        <a href="/packages#gra" class="pkg-cta">View Package</a>
+      </div>
+
+      <!-- Slainte -->
+      <div class="pkg-card reveal">
+        <div class="pkg-name">Sl&aacute;inte</div>
+        <div class="pkg-english">The Intimate Wedding</div>
+        <div class="pkg-guests">ideal for up to 16 guests</div>
+        <ul class="pkg-includes">
+          <li>Celebrant &amp; full legal guidance</li>
+          <li>Wedding photography</li>
+          <li>Dedicated planner + reception planning</li>
+          <li>Venue sourcing &amp; booking</li>
+        </ul>
+        <div class="pkg-starting">&nbsp;</div>
+        <a href="/packages#slainte" class="pkg-cta">View Package</a>
+      </div>
+
+      <!-- Ard -->
+      <div class="pkg-card reveal">
+        <div class="pkg-name">Ard</div>
+        <div class="pkg-english">The Full Wedding</div>
+        <div class="pkg-guests">ideal for up to 50 guests</div>
+        <ul class="pkg-includes">
+          <li>Celebrant &amp; full legal guidance</li>
+          <li>Wedding photography</li>
+          <li>On-the-day coordinator + guest hotline</li>
+          <li>Venue sourcing &amp; booking</li>
+        </ul>
+        <div class="pkg-starting">&nbsp;</div>
+        <a href="/packages#ard" class="pkg-cta">View Package</a>
+      </div>
+
+    </div>
+
+    <!-- Mobile carousel (shown at ≤700px, grid hidden) -->
+    <div class="pkg-carousel-track">
+      <div class="pkg-card">
+        <span class="pkg-badge elopement">Elopement</span>
+        <div class="pkg-name">F&aacute;ilte</div>
+        <div class="pkg-english">The Pure Elopement</div>
+        <div class="pkg-guests">2&ndash;4 guests</div>
+        <ul class="pkg-includes">
+          <li>Celebrant &amp; full legal guidance</li>
+          <li>Elopement photography</li>
+          <li>Dedicated elopement planner</li>
+          <li>Venue sourcing &amp; booking</li>
+        </ul>
+        <div class="pkg-starting">Packages starting from <strong>$4,900</strong></div>
+        <a href="/packages#failte" class="pkg-cta">View Package</a>
+      </div>
+      <div class="pkg-card">
+        <span class="pkg-badge elopement">Elopement</span>
+        <div class="pkg-name">Gr&aacute;</div>
+        <div class="pkg-english">The Small-Group Elopement</div>
+        <div class="pkg-guests">up to 8 guests</div>
+        <ul class="pkg-includes">
+          <li>Celebrant &amp; full legal guidance</li>
+          <li>Elopement photography</li>
+          <li>Flowers, hair &amp; makeup</li>
+          <li>Venue sourcing &amp; booking</li>
+        </ul>
+        <div class="pkg-starting">&nbsp;</div>
+        <a href="/packages#gra" class="pkg-cta">View Package</a>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-name">Sl&aacute;inte</div>
+        <div class="pkg-english">The Intimate Wedding</div>
+        <div class="pkg-guests">up to 16 guests</div>
+        <ul class="pkg-includes">
+          <li>Celebrant &amp; full legal guidance</li>
+          <li>Wedding photography</li>
+          <li>Dedicated planner + reception planning</li>
+          <li>Venue sourcing &amp; booking</li>
+        </ul>
+        <div class="pkg-starting">&nbsp;</div>
+        <a href="/packages#slainte" class="pkg-cta">View Package</a>
+      </div>
+      <div class="pkg-card">
+        <span class="pkg-badge wedding">Wedding</span>
+        <div class="pkg-name">Ard</div>
+        <div class="pkg-english">The Full Wedding</div>
+        <div class="pkg-guests">up to 50 guests</div>
+        <ul class="pkg-includes">
+          <li>Celebrant &amp; full legal guidance</li>
+          <li>Wedding photography</li>
+          <li>On-the-day coordinator + guest hotline</li>
+          <li>Venue sourcing &amp; booking</li>
+        </ul>
+        <div class="pkg-starting">&nbsp;</div>
+        <a href="/packages#ard" class="pkg-cta">View Package</a>
+      </div>
+    </div>
+
+    <div class="packages-footer-link reveal">
+      <a href="/packages" class="text-link">Compare all packages and inclusions</a>
+    </div>
+  </section>
+
+  <!-- ═══ S5: VENUE SPOTLIGHT ═══ -->
+  <section class="venues-section" id="lb-venues">
+    <div class="venues-section-inner">
+      <div class="overline ctr reveal">40+ Venues Across Ireland</div>
+      <h2 class="reveal">Ireland was made for <em>this moment.</em></h2>
+      <p class="section-sub reveal">Windswept cliffs. Castle ruins. Ancient abbeys. We find the perfect backdrop for your love story.</p>
+    </div>
+    <div class="venue-scroll-track">
+
+      <a href="/venues/p/cliffsofmoher" class="venue-card reveal">
+        <img class="venue-card-img" src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/56e3a576-08d2-4d62-b5b3-c58a6c4b7f61/KJCliffsofMoher6.webp" alt="Cliffs of Moher ceremony, Wild Atlantic Way" loading="lazy">
+        <div class="venue-card-overlay"></div>
+        <div class="venue-card-info">
+          <span class="venue-card-tag">Coastal</span>
+          <div class="venue-card-name">Cliffs of Moher</div>
+          <div class="venue-card-region">Wild Atlantic Way</div>
+        </div>
+      </a>
+
+      <a href="/venues/p/dunlucecastle" class="venue-card reveal">
+        <img class="venue-card-img" src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/1772243201355-0EX98ZGYYFRZ5DORUPKM/Brad-Michelle.webp" alt="Michelle and Bradley at Dunluce Castle, Northern Ireland" loading="lazy">
+        <div class="venue-card-overlay"></div>
+        <div class="venue-card-info">
+          <span class="venue-card-tag">Castle</span>
+          <div class="venue-card-name">Dunluce Castle</div>
+          <div class="venue-card-region">Northern Ireland</div>
+        </div>
+      </a>
+
+      <a href="/venues/p/killarneynationalpark" class="venue-card reveal">
+        <img class="venue-card-img" src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/1772242750929-32OKC31NFH6BB3X4MWFB/KandE.webp" alt="Kelli and Ethan at Killarney National Park, Kerry" loading="lazy">
+        <div class="venue-card-overlay"></div>
+        <div class="venue-card-info">
+          <span class="venue-card-tag">Parkland</span>
+          <div class="venue-card-name">Killarney National Park</div>
+          <div class="venue-card-region">Kerry</div>
+        </div>
+      </a>
+
+      <a href="/venues/p/rahinnanecastle" class="venue-card reveal">
+        <img class="venue-card-img" src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/1772236020481-WPAR3341BXPZB9AD98K1/MandT.webp" alt="Maya and Tony at Rahinnane Castle, Kerry" loading="lazy">
+        <div class="venue-card-overlay"></div>
+        <div class="venue-card-info">
+          <span class="venue-card-tag">Castle</span>
+          <div class="venue-card-name">Rahinnane Castle</div>
+          <div class="venue-card-region">Kerry</div>
+        </div>
+      </a>
+
+      <a href="/venues/p/rosscastle" class="venue-card reveal">
+        <img class="venue-card-img" src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/c2dd5d0b-ac75-4d70-9ad2-806ded58c24a/DC1_7709.jpg" alt="Jessica and Kyle at Ross Castle, Killarney" loading="lazy">
+        <div class="venue-card-overlay"></div>
+        <div class="venue-card-info">
+          <span class="venue-card-tag">Castle</span>
+          <div class="venue-card-name">Ross Castle</div>
+          <div class="venue-card-region">Killarney, Kerry</div>
+        </div>
+      </a>
+
+      <a href="/venues/p/dunquinpier" class="venue-card reveal">
+        <img class="venue-card-img" src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/17b5b859-8120-4ea3-b17d-f8dbc0e5fafb/mr_dunquinpier_00002.webp" alt="Mollie and Ryan at Dunquin Pier, Kerry" loading="lazy">
+        <div class="venue-card-overlay"></div>
+        <div class="venue-card-info">
+          <span class="venue-card-tag">Coastal</span>
+          <div class="venue-card-name">Dunquin Pier</div>
+          <div class="venue-card-region">Dingle, Kerry</div>
+        </div>
+      </a>
+
+    </div>
+    <div class="venues-footer reveal">
+      <a href="/venues" class="text-link">Explore 40+ venues across Ireland</a>
+    </div>
+  </section>
+
+  <!-- ═══ S6: HOW IT WORKS ═══ -->
+  <section class="hiw-section" id="lb-hiw">
+    <div class="overline ctr reveal">Our Process</div>
+    <h2 class="reveal">Getting married in Ireland is <em>easier than you think.</em></h2>
+    <div class="hiw-steps">
+      <div class="hiw-step reveal">
+        <div class="hiw-num">1</div>
+        <h3>Tell us what you're dreaming of</h3>
+        <p>A free discovery call with your planner. We listen to your vision, answer every question, and match you to the right package, venue, and team.</p>
+      </div>
+      <div class="hiw-step reveal">
+        <div class="hiw-num">2</div>
+        <h3>We build your wedding from the ground up</h3>
+        <p>Venue secured, vendors booked, legal paperwork filed, timeline built - all coordinated by us, all priced in USD, all managed from the US side of the Atlantic.</p>
+      </div>
+      <div class="hiw-step reveal">
+        <div class="hiw-num">3</div>
+        <h3>You land in Ireland with nothing left to do</h3>
+        <p>Every detail is in place before you board your flight. Your planner is on the ground, your vendors are briefed, and your day is ready.</p>
+      </div>
+      <div class="hiw-step reveal">
+        <div class="hiw-num">4</div>
+        <h3>Get married in one of the most beautiful places on earth</h3>
+        <p>Stand where you always pictured it - castle, cliff, countryside, or coast - and say the words that matter. We&rsquo;ll take care of everything else.</p>
+      </div>
+    </div>
+    <div class="hiw-cta reveal">
+      <a href="#enquire" class="btn-green">Book a free call - we'll help you plan the rest</a>
+    </div>
+  </section>
+
+  <!-- ═══ S7: REAL COUPLES ═══ -->
+  <section class="couples-section" id="lb-couples">
+    <div class="overline ctr reveal">Real Love Stories</div>
+    <h2 class="reveal">They said yes. <em>Here's what happened next.</em></h2>
+    <div class="couples-grid">
+
+      <div class="couple-card reveal">
+        <img class="couple-photo"
+          src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/23c6c102-8c5c-4909-9bd5-1e0cf266744d/Kalee%26Kristian-9.jpg"
+          alt="Kalee and Kristian at the Cliffs of Moher" loading="lazy">
+        <div class="couple-body">
+          <span class="couple-tier">Gr&aacute; - Small-Group Elopement</span>
+          <div class="couple-names">Kalee &amp; Kristian</div>
+          <div class="couple-venue"><a href="/venues/p/cliffsofmoher">Cliffs of Moher, Clare</a></div>
+          <p class="couple-quote">We were able to enjoy our day without any stress at all. It was everything we dreamed of and more.</p>
+          <a href="/happy-couples/kalee-kristian-cliffs-of-moher" class="couple-link">Read their story</a>
+        </div>
+      </div>
+
+      <div class="couple-card reveal">
+        <img class="couple-photo"
+          src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/c2dd5d0b-ac75-4d70-9ad2-806ded58c24a/DC1_7709.jpg"
+          alt="Jessica and Kyle at Ross Castle, Killarney" loading="lazy">
+        <div class="couple-body">
+          <span class="couple-tier">F&aacute;ilte - Pure Elopement</span>
+          <div class="couple-names">Jessica &amp; Kyle</div>
+          <div class="couple-venue"><a href="/venues/p/rosscastle">Ross Castle, Killarney</a></div>
+          <p class="couple-quote">Ladybird Ever After did a phenomenal job&hellip; they go above and beyond for their couples.</p>
+          <a href="/happy-couples/jessica-kyle-ross-castle" class="couple-link">Read their story</a>
+        </div>
+      </div>
+
+      <div class="couple-card reveal">
+        <img class="couple-photo"
+          src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/1772236020481-WPAR3341BXPZB9AD98K1/MandT.webp"
+          alt="Maya and Tony at Rahinnane Castle, Kerry" loading="lazy">
+        <div class="couple-body">
+          <span class="couple-tier">Ard - The Destination Wedding</span>
+          <div class="couple-names">Maya &amp; Tony</div>
+          <div class="couple-venue"><a href="/venues/p/rahinnanecastle">Rahinnane Castle, Kerry</a></div>
+          <p class="couple-quote">Our day was so easy, SO fun, and so magical. I cannot recommend Ladybird enough.</p>
+          <a href="/happy-couples/maya-tony-rahinnane-castle" class="couple-link">Read their story</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Mobile carousel (shown at ≤700px, grid hidden) -->
+    <div class="couples-carousel-track">
+      <div class="couple-card">
+        <img class="couple-photo"
+          src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/23c6c102-8c5c-4909-9bd5-1e0cf266744d/Kalee%26Kristian-9.jpg"
+          alt="Kalee and Kristian at the Cliffs of Moher" loading="lazy">
+        <div class="couple-body">
+          <span class="couple-tier">Gr&aacute; - Small-Group Elopement</span>
+          <div class="couple-names">Kalee &amp; Kristian</div>
+          <div class="couple-venue"><a href="/venues/p/cliffsofmoher">Cliffs of Moher, Clare</a></div>
+          <p class="couple-quote">We were able to enjoy our day without any stress at all. It was everything we dreamed of and more.</p>
+          <a href="/happy-couples/kalee-kristian-cliffs-of-moher" class="couple-link">Read their story</a>
+        </div>
+      </div>
+      <div class="couple-card">
+        <img class="couple-photo"
+          src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/c2dd5d0b-ac75-4d70-9ad2-806ded58c24a/DC1_7709.jpg"
+          alt="Jessica and Kyle at Ross Castle, Killarney" loading="lazy">
+        <div class="couple-body">
+          <span class="couple-tier">F&aacute;ilte - Pure Elopement</span>
+          <div class="couple-names">Jessica &amp; Kyle</div>
+          <div class="couple-venue"><a href="/venues/p/rosscastle">Ross Castle, Killarney</a></div>
+          <p class="couple-quote">Ladybird Ever After did a phenomenal job&hellip; they go above and beyond for their couples.</p>
+          <a href="/happy-couples/jessica-kyle-ross-castle" class="couple-link">Read their story</a>
+        </div>
+      </div>
+      <div class="couple-card">
+        <img class="couple-photo"
+          src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/1772236020481-WPAR3341BXPZB9AD98K1/MandT.webp"
+          alt="Maya and Tony at Rahinnane Castle, Kerry" loading="lazy">
+        <div class="couple-body">
+          <span class="couple-tier">Ard - The Destination Wedding</span>
+          <div class="couple-names">Maya &amp; Tony</div>
+          <div class="couple-venue"><a href="/venues/p/rahinnanecastle">Rahinnane Castle, Kerry</a></div>
+          <p class="couple-quote">Our day was so easy, SO fun, and so magical. I cannot recommend Ladybird enough.</p>
+          <a href="/happy-couples/maya-tony-rahinnane-castle" class="couple-link">Read their story</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="couples-footer reveal">
+      <a href="/real-love" class="text-link">See all real weddings</a>
+    </div>
+  </section>
+
+  <!-- ═══ S8: OUR STORY ═══ -->
+  <section class="story-section" id="lb-story">
+    <div class="story-inner">
+      <div class="reveal">
+        <img class="story-photo"
+          src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/6d89b1e6-2ba0-4231-a7c2-04b80767b432/YasmeenandLaurenceCliffs+%281%29.jpeg?format=2500w"
+          alt="Yasmeen and Laurence, founders of Ladybird Ever After" loading="lazy">
+      </div>
+      <div class="story-body reveal">
+        <div class="overline">Our Story</div>
+        <h2>We lived it. We loved it. <em>Now we help you do the same.</em></h2>
+        <p>Laurence is from Ireland. Yasmeen is from Atlanta. We planned our own wedding 4,000 miles away on the wild west coast of Ireland - and then we built a better way for every American couple who comes after us.</p>
+        <a href="/about" class="text-link">Our full story</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ S9: FINAL CTA FORM ═══ -->
+  <section class="form-section" id="enquire">
+    <div class="form-inner">
+
+      <!-- Form column -->
+      <div class="reveal">
+        <div class="form-col-header">
+          <div class="form-intro-label">Book your free call</div>
+          <h2>Tell us about your day</h2>
+          <p>Fill out this form and we&rsquo;ll reply within <strong>12 hours</strong>, any day of the week - or reach us directly by text or call at <a href="tel:+17708266446" style="color:var(--green);font-weight:600;text-decoration:none;">(770) 826-6446</a>.</p>
+        </div>
+        <div id="hs-hp">
+          <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+          <script>
+            hbspt.forms.create({ portalId: "47524318", formId: "d1f83a24-30cd-4fdd-a890-851ba0872c2f", region: "na1" });
+          </script>
+        </div>
+      </div>
+
+      <!-- Testimonials column -->
+      <div class="form-testimonials-col reveal">
+        <div class="form-testimonials-label">What our couples say</div>
+
+        <div class="form-testimonial-item">
+          <p class="form-testimonial-quote">Our wedding day was absolute perfection, and we have Ladybird Ever After to thank for that. Hiring them was the best decision we made.</p>
+          <div class="form-testimonial-meta">
+            <span class="form-testimonial-dash"></span>
+            <span class="form-testimonial-name">Mikel &amp; Brian</span>
+            <span class="form-testimonial-location">- Dingle, Kerry</span>
+          </div>
+        </div>
+
+        <div class="form-testimonial-item">
+          <p class="form-testimonial-quote">We were able to enjoy our day without any stress at all. It was everything we dreamed of and more.</p>
+          <div class="form-testimonial-meta">
+            <span class="form-testimonial-dash"></span>
+            <span class="form-testimonial-name">Kalee &amp; Kristian</span>
+            <span class="form-testimonial-location">- Cliffs of Moher, Clare</span>
+          </div>
+        </div>
+
+        <div class="form-testimonial-item">
+          <p class="form-testimonial-quote">Our day was so easy, SO fun, and so magical. I cannot recommend Ladybird enough.</p>
+          <div class="form-testimonial-meta">
+            <span class="form-testimonial-dash"></span>
+            <span class="form-testimonial-name">Maya &amp; Tony</span>
+            <span class="form-testimonial-location">- Rahinnane Castle, Kerry</span>
+          </div>
+        </div>
+
+        <div class="form-testimonial-item">
+          <p class="form-testimonial-quote">We stumbled into finding Yasmeen and Laurence but it was the absolute best decision we could have made. They felt like old friends.</p>
+          <div class="form-testimonial-meta">
+            <span class="form-testimonial-dash"></span>
+            <span class="form-testimonial-name">Hannah &amp; John</span>
+            <span class="form-testimonial-location">- Cloughjordan House, Tipperary</span>
+          </div>
+        </div>
+
+        <div class="form-testimonial-item">
+          <p class="form-testimonial-quote">Ladybird Ever After did a phenomenal job - they go above and beyond for their couples.</p>
+          <div class="form-testimonial-meta">
+            <span class="form-testimonial-dash"></span>
+            <span class="form-testimonial-name">Jessica &amp; Kyle</span>
+            <span class="form-testimonial-location">- Ross Castle, Killarney</span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FLOATING CTA -->
+  <a href="#enquire" class="float-cta" id="homeFloatCta">Book My Free Consultation</a>
+
+</div><!-- /.lb-home -->
+
+<script>
+/* -- SCROLL REVEAL -- */
+(function () {
+  var els = document.querySelectorAll('.lb-home .reveal');
+  if (!('IntersectionObserver' in window)) {
+    els.forEach(function (el) { el.classList.add('in'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry, i) {
+      if (entry.isIntersecting) {
+        setTimeout(function () { entry.target.classList.add('in'); }, i * 60);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+  els.forEach(function (el) { obs.observe(el); });
+})();
+
+/* -- SMOOTH SCROLL -- */
+document.querySelectorAll('.lb-home a[href^="#"]').forEach(function (link) {
+  link.addEventListener('click', function (e) {
+    var target = document.querySelector(this.getAttribute('href'));
+    if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+
+/* -- FLOATING CTA -- */
+(function () {
+  var fc = document.getElementById('homeFloatCta');
+  var formEl = document.getElementById('enquire');
+  window.addEventListener('scroll', function () {
+    var past = window.scrollY > 500;
+    var atForm = formEl.getBoundingClientRect().top < window.innerHeight - 80;
+    fc.classList.toggle('show', past && !atForm);
+  });
+})();
+</script>

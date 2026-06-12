@@ -1,0 +1,1626 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Alice&display=swap" rel="stylesheet">
+
+<style>
+
+/* -- ROOT & RESET -- */
+.lb-cliffs {
+  --green:    #5B6239;
+  --green-dk: #3a3f25;
+  --green-hv: #4a5130;
+  --gold:     #B8964E;
+  --gold-lt:  #D4AF71;
+  --cream:    #F5F0E8;
+  --warm:     #FDFAF4;
+  --stone:    #8C8070;
+  --txt:      #1A1A18;
+  --txt-mid:  #4A4A42;
+  --pad-x:    clamp(1.2rem, 5vw, 5rem);
+  --pad-y:    clamp(3.5rem, 7vw, 6rem);
+  font-family: 'Alice', serif;
+  font-weight: 300;
+  color: var(--txt);
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+
+.lb-cliffs *, .lb-cliffs *::before, .lb-cliffs *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+
+.lb-cliffs img { display: block; }
+
+/* -- TYPE -- */
+.lb-cliffs h1, .lb-cliffs h2, .lb-cliffs h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 300;
+  line-height: 1.18;
+}
+
+.lb-cliffs h2 {
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+}
+
+.lb-cliffs em {
+  font-style: italic;
+  color: var(--gold-lt);
+}
+
+/* -- OVERLINE LABEL -- */
+.lb-cliffs .label {
+  font-size: .65rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin-bottom: .75rem;
+}
+.lb-cliffs .label::after {
+  content: '';
+  flex: 0 0 28px;
+  height: 1px;
+  background: var(--gold);
+  opacity: .5;
+}
+.lb-cliffs .label-lt { color: var(--gold-lt); }
+.lb-cliffs .label-lt::after { background: var(--gold-lt); }
+
+/* -- BUTTONS -- */
+.lb-cliffs .btn-green {
+  display: inline-block;
+  font-family: 'Alice', serif;
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: .95rem 2.2rem;
+  border: 2px solid var(--green);
+  background: var(--green);
+  color: var(--cream);
+  cursor: pointer;
+  transition: all .3s;
+  line-height: 1;
+}
+.lb-cliffs .btn-green:hover {
+  background: var(--green-hv);
+  border-color: var(--green-hv);
+}
+.lb-cliffs .btn-gold {
+  display: inline-block;
+  font-family: 'Alice', serif;
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: .95rem 2.2rem;
+  border: 2px solid var(--gold);
+  background: var(--gold);
+  color: var(--green-dk);
+  cursor: pointer;
+  transition: all .3s;
+  line-height: 1;
+}
+.lb-cliffs .btn-gold:hover {
+  background: transparent;
+  color: var(--gold-lt);
+  border-color: var(--gold-lt);
+}
+
+/* -- REVEAL -- */
+.lb-cliffs .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+.lb-cliffs .reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===================================================
+   NAV
+=================================================== */
+.lb-cliffs .lbc-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: .7rem var(--pad-x);
+  background: var(--warm);
+  border-bottom: 1px solid rgba(91,98,57,.12);
+  position: relative;
+  z-index: 10;
+}
+.lb-cliffs .lbc-nav-logo img {
+  height: 30px;
+  width: auto;
+  max-width: 130px;
+  object-fit: contain;
+}
+
+/* ===================================================
+   TICKER / TOP BAR
+=================================================== */
+.lb-cliffs .lbc-ticker {
+  background: var(--green);
+  padding: .48rem 0;
+  overflow: hidden;
+}
+.lb-cliffs .lbc-ticker-track {
+  display: flex;
+  gap: 2.5rem;
+  white-space: nowrap;
+  animation: lbcScroll 22s linear infinite;
+}
+@keyframes lbcScroll { to { transform: translateX(-50%); } }
+.lb-cliffs .lbc-ti {
+  font-size: .6rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,.78);
+  flex-shrink: 0;
+}
+.lb-cliffs .lbc-ti strong { color: var(--gold-lt); }
+.lb-cliffs .lbc-tdot {
+  color: var(--gold-lt);
+  opacity: .3;
+  font-size: .36rem;
+  flex-shrink: 0;
+}
+
+/* ===================================================
+   HERO - PATTERN 2 (Interior Hero)
+=================================================== */
+.lb-cliffs .hero-interior {
+  position: relative;
+  width: 100%;
+  padding: clamp(6.5rem, 14vw, 10rem) var(--pad-x) clamp(5rem, 10vw, 8rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+.lb-cliffs .hero-interior .hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/b6f9a216-ed33-4db7-ae46-ad7ec41abeac/KJCliffsofMoher7.webp');
+  background-size: cover;
+  background-position: center 40%;
+}
+.lb-cliffs .hero-interior .hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom,
+    rgba(28,28,26,.52) 0%,
+    rgba(28,28,26,.72) 100%);
+}
+.lb-cliffs .lbc-hero-content {
+  position: relative; z-index: 2;
+  max-width: 680px;
+  margin: 0 auto;
+  animation: lbcHeroUp .9s ease both;
+}
+@keyframes lbcHeroUp {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.lb-cliffs .lbc-hero-eyebrow {
+  font-size: .6rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gold-lt);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .65rem;
+  margin-bottom: 1.1rem;
+}
+.lb-cliffs .lbc-hero-eyebrow-line {
+  flex: 0 0 28px;
+  height: 1px;
+  background: var(--gold-lt);
+  opacity: .5;
+}
+.lb-cliffs .hero-interior h1 {
+  font-size: clamp(2.2rem, 5.5vw, 4rem);
+  color: var(--warm);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+.lb-cliffs .hero-interior .hero-sub {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(.9rem, 1.8vw, 1.2rem);
+  color: rgba(253,250,244,.82);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+}
+.lb-cliffs .lbc-hero-trust {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: .55rem;
+  margin-bottom: 1.8rem;
+}
+.lb-cliffs .lbc-trust-pill {
+  background: rgba(245,240,232,.1);
+  border: 1px solid rgba(212,175,113,.3);
+  color: rgba(245,240,232,.9);
+  padding: .35rem .85rem;
+  font-size: .62rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.lb-cliffs .lbc-trust-pill strong { color: var(--gold-lt); }
+.lb-cliffs .lbc-hero-cta { display: flex; justify-content: center; }
+
+/* ===================================================
+   QUOTE TICKER (below hero)
+=================================================== */
+.lb-cliffs .lbc-quote-ticker {
+  background: var(--green-hv);
+  padding: 1rem 0;
+  overflow: hidden;
+}
+.lb-cliffs .lbc-qt-track {
+  display: flex;
+  gap: 3.5rem;
+  white-space: nowrap;
+  animation: lbcTick 38s linear infinite;
+}
+.lb-cliffs .lbc-qt-track:hover { animation-play-state: paused; }
+@keyframes lbcTick { to { transform: translateX(-50%); } }
+.lb-cliffs .lbc-tq {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: .88rem;
+  color: rgba(245,240,232,.62);
+  flex-shrink: 0;
+}
+.lb-cliffs .lbc-tq strong {
+  font-style: normal;
+  font-size: .55rem;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  color: var(--gold-lt);
+  margin-left: .4rem;
+  vertical-align: middle;
+}
+
+/* ===================================================
+   SPLIT SECTIONS (text + image)
+=================================================== */
+.lb-cliffs .lbc-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+.lb-cliffs .lbc-split-cream { background: var(--cream); }
+.lb-cliffs .lbc-split-warm  { background: var(--warm); }
+.lb-cliffs .lbc-split.flip .lbc-split-img  { order: 2; }
+.lb-cliffs .lbc-split.flip .lbc-split-text { order: 1; }
+
+.lb-cliffs .lbc-split-img {
+  position: relative;
+  min-height: 420px;
+}
+.lb-cliffs .lbc-split-img img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: saturate(.88);
+}
+.lb-cliffs .lbc-split-text {
+  padding: var(--pad-y) clamp(1.5rem, 5vw, 4.5rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.lb-cliffs .lbc-split-text h2 { margin-bottom: 1.1rem; }
+.lb-cliffs .lbc-split-text p {
+  font-size: .87rem;
+  line-height: 1.85;
+  color: var(--txt-mid);
+  margin-bottom: .85rem;
+}
+.lb-cliffs .lbc-split-text p:last-of-type { margin-bottom: 0; }
+.lb-cliffs .lbc-split-text p strong { color: var(--green); font-weight: 600; }
+.lb-cliffs .lbc-split-chips {
+  display: flex;
+  gap: 1.2rem;
+  flex-wrap: wrap;
+  margin-top: 1.4rem;
+}
+.lb-cliffs .lbc-split-chip {
+  font-size: .8rem;
+  color: var(--txt-mid);
+  display: flex;
+  align-items: center;
+  gap: .38rem;
+}
+
+/* ===================================================
+   PHOTO GRIDS
+=================================================== */
+.lb-cliffs .lbc-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: var(--green-dk);
+}
+.lb-cliffs .lbc-photo-item {
+  position: relative;
+  padding-bottom: 70%;
+  overflow: hidden;
+}
+.lb-cliffs .lbc-photo-item img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: saturate(.84);
+  transition: transform .7s ease, filter .5s ease;
+}
+.lb-cliffs .lbc-photo-item:hover img {
+  transform: scale(1.05);
+  filter: saturate(1);
+}
+/* Stat block inside photo grid */
+.lb-cliffs .lbc-photo-stat {
+  position: absolute; inset: 0;
+  background: var(--green);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  text-align: center;
+}
+.lb-cliffs .lbc-ps-num {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.8rem, 5vw, 4.2rem);
+  font-weight: 300;
+  color: var(--gold-lt);
+  line-height: 1;
+  margin-bottom: .4rem;
+}
+.lb-cliffs .lbc-ps-label {
+  font-size: clamp(.6rem, 1.1vw, .7rem);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(245,240,232,.55);
+  line-height: 1.7;
+}
+.lb-cliffs .lbc-ps-serif {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  font-weight: 300;
+  color: var(--warm);
+  line-height: 1.2;
+  margin-bottom: .7rem;
+}
+.lb-cliffs .lbc-ps-serif em { color: var(--gold-lt); }
+
+/* ===================================================
+   WHAT'S INCLUDED (icon grid)
+=================================================== */
+.lb-cliffs .lbc-includes {
+  background: var(--green-dk);
+  padding: var(--pad-y) var(--pad-x);
+}
+.lb-cliffs .lbc-includes-inner { max-width: 1060px; margin: 0 auto; }
+.lb-cliffs .lbc-inc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-top: 2rem;
+  border: 1px solid rgba(212,175,113,.15);
+}
+.lb-cliffs .lbc-inc-item {
+  padding: 1.8rem 1.6rem;
+  border-right: 1px solid rgba(212,175,113,.12);
+  border-bottom: 1px solid rgba(212,175,113,.12);
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+}
+.lb-cliffs .lbc-inc-item:nth-child(3n) { border-right: none; }
+.lb-cliffs .lbc-inc-item:nth-last-child(-n+3) { border-bottom: none; }
+.lb-cliffs .lbc-inc-em {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  margin-top: .1rem;
+}
+.lb-cliffs .lbc-inc-h {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--warm);
+  margin-bottom: .35rem;
+}
+.lb-cliffs .lbc-inc-p {
+  font-size: .8rem;
+  line-height: 1.75;
+  color: rgba(245,240,232,.55);
+}
+
+/* ===================================================
+   HOW IT WORKS
+=================================================== */
+.lb-cliffs .lbc-how {
+  background: var(--green);
+  padding: var(--pad-y) var(--pad-x);
+  text-align: center;
+}
+.lb-cliffs .lbc-how-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.lb-cliffs .lbc-how h2 {
+  color: var(--warm);
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  margin-bottom: .7rem;
+}
+.lb-cliffs .lbc-how-sub {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(.88rem, 1.6vw, 1.05rem);
+  color: rgba(245,240,232,.6);
+  margin-bottom: 3rem;
+  line-height: 1.6;
+}
+.lb-cliffs .lbc-how-overline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  font-size: .6rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gold-lt);
+  font-weight: 600;
+  margin-bottom: .9rem;
+}
+.lb-cliffs .lbc-how-overline::before,
+.lb-cliffs .lbc-how-overline::after {
+  content: '';
+  flex: 0 0 28px;
+  height: 1px;
+  background: var(--gold-lt);
+  opacity: .5;
+}
+.lb-cliffs .lbc-how-steps {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr;
+  align-items: start;
+  gap: 0;
+}
+.lb-cliffs .lbc-how-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .9rem;
+  padding: 0 1rem;
+}
+.lb-cliffs .lbc-step-num {
+  width: 52px;
+  height: 52px;
+  border: 1px solid rgba(212,175,113,.4);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--gold-lt);
+  flex-shrink: 0;
+}
+.lb-cliffs .lbc-step-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--warm);
+  line-height: 1.25;
+}
+.lb-cliffs .lbc-step-desc {
+  font-size: .78rem;
+  color: rgba(245,240,232,.58);
+  line-height: 1.7;
+}
+.lb-cliffs .lbc-how-arrow {
+  color: rgba(212,175,113,.3);
+  font-size: 1.4rem;
+  padding-top: 1rem;
+  flex-shrink: 0;
+}
+@media (max-width: 900px) {
+  .lb-cliffs .lbc-how-steps {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .lb-cliffs .lbc-how-arrow { display: none; }
+}
+
+/* ===================================================
+   PACKAGES
+=================================================== */
+.lb-cliffs .lbc-packages {
+  background: var(--warm);
+  padding: var(--pad-y) var(--pad-x);
+}
+.lb-cliffs .lbc-packages-inner { max-width: 1060px; margin: 0 auto; }
+.lb-cliffs .lbc-pkg-intro {
+  font-size: .87rem;
+  color: var(--txt-mid);
+  line-height: 1.8;
+  max-width: 560px;
+  margin: .6rem 0 2.5rem;
+}
+.lb-cliffs .lbc-pkg-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid rgba(91,98,57,.12);
+}
+.lb-cliffs .lbc-pkg-card {
+  padding: 1.8rem 1.4rem 2rem;
+  border-right: 1px solid rgba(91,98,57,.12);
+  cursor: pointer;
+  transition: all .3s;
+  position: relative;
+}
+.lb-cliffs .lbc-pkg-card:last-child { border-right: none; }
+.lb-cliffs .lbc-pkg-card:hover,
+.lb-cliffs .lbc-pkg-card.on {
+  background: var(--green);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0,0,0,.1);
+  z-index: 2;
+}
+.lb-cliffs .lbc-pkg-card:hover .lbc-pkg-irish,
+.lb-cliffs .lbc-pkg-card.on .lbc-pkg-irish { color: var(--gold-lt); }
+.lb-cliffs .lbc-pkg-card:hover .lbc-pkg-name,
+.lb-cliffs .lbc-pkg-card.on .lbc-pkg-name { color: var(--warm); }
+.lb-cliffs .lbc-pkg-card:hover .lbc-pkg-guests,
+.lb-cliffs .lbc-pkg-card.on .lbc-pkg-guests { color: rgba(245,240,232,.55); }
+.lb-cliffs .lbc-pkg-card:hover .lbc-pkg-feat,
+.lb-cliffs .lbc-pkg-card.on .lbc-pkg-feat { color: rgba(245,240,232,.7); }
+.lb-cliffs .lbc-pkg-card:hover .lbc-pkg-feat::before,
+.lb-cliffs .lbc-pkg-card.on .lbc-pkg-feat::before { color: var(--gold-lt); }
+.lb-cliffs .lbc-pkg-card:hover .lbc-pkg-from,
+.lb-cliffs .lbc-pkg-card.on .lbc-pkg-from { color: rgba(245,240,232,.45); }
+.lb-cliffs .lbc-pkg-card:hover .lbc-pkg-amount,
+.lb-cliffs .lbc-pkg-card.on .lbc-pkg-amount { color: var(--gold-lt); }
+.lb-cliffs .lbc-pkg-card:hover .lbc-pkg-usd,
+.lb-cliffs .lbc-pkg-card.on .lbc-pkg-usd { color: rgba(245,240,232,.45); }
+.lb-cliffs .lbc-pkg-badge {
+  position: absolute;
+  top: -1px; right: 1rem;
+  background: var(--gold);
+  color: var(--green-dk);
+  font-size: .55rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: .28rem .7rem;
+}
+.lb-cliffs .lbc-pkg-irish {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--gold);
+  margin-bottom: .15rem;
+  transition: color .3s;
+}
+.lb-cliffs .lbc-pkg-name {
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--txt);
+  margin-bottom: .25rem;
+  transition: color .3s;
+}
+.lb-cliffs .lbc-pkg-guests {
+  font-size: .72rem;
+  color: var(--stone);
+  margin-bottom: 1.2rem;
+  padding-bottom: .9rem;
+  border-bottom: 1px solid rgba(91,98,57,.1);
+  transition: color .3s;
+}
+.lb-cliffs .lbc-pkg-features {
+  list-style: none;
+  margin-bottom: 1.4rem;
+  flex: 1;
+}
+.lb-cliffs .lbc-pkg-feat {
+  font-size: .78rem;
+  color: var(--txt-mid);
+  padding: .3rem 0;
+  border-bottom: 1px solid rgba(91,98,57,.07);
+  transition: color .3s;
+  display: flex;
+  align-items: flex-start;
+  gap: .45rem;
+}
+.lb-cliffs .lbc-pkg-feat::before {
+  content: '✓';
+  color: var(--green);
+  font-size: .7rem;
+  flex-shrink: 0;
+  margin-top: .08rem;
+  transition: color .3s;
+}
+.lb-cliffs .lbc-pkg-price-block { margin-top: .8rem; }
+.lb-cliffs .lbc-pkg-from {
+  display: block;
+  font-size: .6rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-bottom: .15rem;
+  transition: color .3s;
+}
+.lb-cliffs .lbc-pkg-amount {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--green);
+  transition: color .3s;
+}
+.lb-cliffs .lbc-pkg-usd {
+  font-size: .65rem;
+  color: var(--stone);
+  letter-spacing: .08em;
+  margin-left: .2rem;
+  transition: color .3s;
+}
+
+/* ===================================================
+   TESTIMONIALS
+=================================================== */
+.lb-cliffs .lbc-testi {
+  background: var(--cream);
+  padding: var(--pad-y) var(--pad-x);
+}
+.lb-cliffs .lbc-testi-inner { max-width: 1060px; margin: 0 auto; }
+.lb-cliffs .lbc-testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+.lb-cliffs .lbc-testi-card {
+  background: var(--warm);
+  padding: 2rem 1.8rem;
+  position: relative;
+  border-top: 2px solid var(--gold);
+}
+.lb-cliffs .lbc-tq-mark {
+  font-family: 'Playfair Display', serif;
+  font-size: 4rem;
+  font-weight: 300;
+  color: var(--gold);
+  opacity: .3;
+  line-height: 1;
+  margin-bottom: -.5rem;
+}
+.lb-cliffs .lbc-testi-stars {
+  color: var(--gold);
+  font-size: .85rem;
+  margin-bottom: .8rem;
+}
+.lb-cliffs .lbc-testi-text {
+  font-size: .85rem;
+  line-height: 1.8;
+  color: var(--txt-mid);
+  margin-bottom: 1rem;
+}
+.lb-cliffs .lbc-testi-by {
+  font-size: .68rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+/* ===================================================
+   FAQ
+=================================================== */
+.lb-cliffs .lbc-faq {
+  background: var(--warm);
+  padding: var(--pad-y) var(--pad-x);
+}
+.lb-cliffs .lbc-faq-inner { max-width: 820px; margin: 0 auto; }
+.lb-cliffs .lbc-faq-list { margin-top: 2rem; }
+.lb-cliffs .lbc-faq-item {
+  border-bottom: 1px solid rgba(91,98,57,.1);
+}
+.lb-cliffs .lbc-faq-item:first-child { border-top: 1px solid rgba(91,98,57,.1); }
+.lb-cliffs .lbc-faq-btn {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 1.15rem 3rem 1.15rem 0;
+  font-family: 'Alice', serif;
+  font-size: 1rem;
+  color: var(--txt);
+  position: relative;
+  line-height: 1.4;
+}
+.lb-cliffs .lbc-faq-btn::after {
+  content: '+';
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: var(--gold);
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: transform .3s;
+}
+.lb-cliffs .lbc-faq-btn.open::after {
+  content: '\2212';
+  transform: translateY(-50%);
+}
+.lb-cliffs .lbc-faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .45s ease;
+}
+.lb-cliffs .lbc-faq-answer-inner {
+  padding: 0 0 1.2rem;
+  font-size: .9rem;
+  line-height: 1.8;
+  color: var(--txt-mid);
+}
+
+/* ===================================================
+   FINAL FORM / CTA SECTION
+=================================================== */
+.lb-cliffs .lbc-form-section {
+  position: relative;
+  overflow: hidden;
+  padding: var(--pad-y) var(--pad-x);
+}
+.lb-cliffs .lbc-form-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/947d7338-0b78-428c-9950-681924ca70d5/KJCliffsofMoher5.webp');
+  background-size: cover;
+  background-position: center;
+}
+.lb-cliffs .lbc-form-overlay {
+  position: absolute; inset: 0;
+  background: rgba(20,22,18,.86);
+}
+.lb-cliffs .lbc-form-inner {
+  position: relative; z-index: 2;
+  max-width: 1060px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 4rem;
+  align-items: start;
+}
+.lb-cliffs .lbc-form-left h2 {
+  color: var(--warm);
+  margin-bottom: 1rem;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+}
+.lb-cliffs .lbc-form-left h2 em { color: var(--gold-lt); }
+.lb-cliffs .lbc-form-left p {
+  font-size: .88rem;
+  color: rgba(245,240,232,.65);
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+.lb-cliffs .lbc-form-gs { display: flex; flex-direction: column; gap: .6rem; }
+.lb-cliffs .lbc-form-g {
+  font-size: .78rem;
+  color: rgba(245,240,232,.7);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.lb-cliffs .lbc-form-g::before {
+  content: '✓';
+  color: var(--gold-lt);
+  flex-shrink: 0;
+}
+.lb-cliffs .lbc-urgency {
+  margin-top: 1.5rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(212,175,113,.25);
+  background: rgba(212,175,113,.07);
+}
+.lb-cliffs .lbc-urgency h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: .9rem;
+  color: var(--gold-lt);
+  font-weight: 500;
+  margin-bottom: .3rem;
+}
+.lb-cliffs .lbc-urgency p {
+  font-size: .78rem;
+  color: rgba(245,240,232,.55);
+  line-height: 1.6;
+  margin-bottom: 0 !important;
+}
+
+/* Form card */
+.lb-cliffs .lbc-form-card {
+  background: var(--warm);
+  padding: 2rem;
+  position: relative;
+}
+.lb-cliffs .lbc-form-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-lt), var(--gold));
+}
+.lb-cliffs .lbc-form-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: var(--green);
+  margin-bottom: .2rem;
+  line-height: 1.2;
+}
+.lb-cliffs .lbc-form-card-title em { color: var(--gold); }
+.lb-cliffs .lbc-form-card-sub {
+  font-size: .68rem;
+  color: var(--stone);
+  margin-bottom: 1.2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(91,98,57,.12);
+}
+/* Inline form fields */
+.lb-cliffs .lbc-form { display: flex; flex-direction: column; gap: .8rem; }
+.lb-cliffs .lbc-field { display: flex; flex-direction: column; gap: .3rem; }
+.lb-cliffs .lbc-field label {
+  font-size: .57rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--stone);
+  font-weight: 600;
+}
+.lb-cliffs .lbc-field input,
+.lb-cliffs .lbc-field select,
+.lb-cliffs .lbc-field textarea {
+  background: var(--cream);
+  border: 1px solid rgba(91,98,57,.18);
+  color: var(--txt);
+  padding: .75rem .88rem;
+  font-family: 'Alice', serif;
+  font-size: .82rem;
+  outline: none;
+  width: 100%;
+  -webkit-appearance: none;
+  transition: border-color .25s;
+  border-radius: 0;
+}
+.lb-cliffs .lbc-field input:focus,
+.lb-cliffs .lbc-field select:focus,
+.lb-cliffs .lbc-field textarea:focus {
+  border-color: var(--gold);
+}
+.lb-cliffs .lbc-field textarea { height: 80px; resize: none; line-height: 1.6; }
+.lb-cliffs .lbc-form-submit {
+  margin-top: .3rem;
+  width: 100%;
+  text-align: center;
+}
+
+
+
+/* ===================================================
+   FLOAT CTA BUTTON (mobile sticky)
+=================================================== */
+.lb-cliffs .lbc-float-cta {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 500;
+  background: var(--gold);
+  color: var(--green-dk);
+  padding: .82rem 1.4rem;
+  font-family: 'Alice', serif;
+  font-size: .64rem;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  box-shadow: 0 6px 26px rgba(0,0,0,.2);
+  transition: all .4s cubic-bezier(.34,1.56,.64,1);
+  transform: translateY(110px);
+  opacity: 0;
+}
+.lb-cliffs .lbc-float-cta.show { transform: translateY(0); opacity: 1; }
+.lb-cliffs .lbc-float-cta:hover { background: var(--gold-lt); transform: translateY(-2px); }
+
+/* ===================================================
+   RESPONSIVE
+=================================================== */
+@media (max-width: 900px) {
+  .lb-cliffs .lbc-split { grid-template-columns: 1fr; }
+  .lb-cliffs .lbc-split.flip .lbc-split-img  { order: -1; }
+  .lb-cliffs .lbc-split.flip .lbc-split-text { order: 0;  }
+  .lb-cliffs .lbc-split-img { min-height: 280px; }
+  .lb-cliffs .lbc-split-text { padding: 2.5rem 1.5rem; }
+  .lb-cliffs .lbc-pkg-grid { grid-template-columns: 1fr 1fr; }
+  .lb-cliffs .lbc-pkg-card:nth-child(2n) { border-right: none; }
+  .lb-cliffs .lbc-pkg-card:nth-child(n+3) { border-top: 1px solid rgba(91,98,57,.12); }
+  .lb-cliffs .lbc-testi-grid { grid-template-columns: 1fr; }
+  .lb-cliffs .lbc-form-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .lb-cliffs .lbc-inc-grid { grid-template-columns: 1fr 1fr; }
+  .lb-cliffs .lbc-inc-item:nth-child(2n) { border-right: none; }
+  .lb-cliffs .lbc-inc-item:nth-last-child(-n+2) { border-bottom: none; }
+  .lb-cliffs .lbc-inc-item:nth-last-child(1):nth-child(odd) { border-bottom: none; }
+}
+
+@media (max-width: 600px) {
+  .lb-cliffs .lbc-photo-grid { grid-template-columns: 1fr 1fr; }
+  .lb-cliffs .lbc-pkg-grid { grid-template-columns: 1fr; }
+  .lb-cliffs .lbc-pkg-card { border-right: none !important; border-bottom: 1px solid rgba(91,98,57,.12); }
+  .lb-cliffs .lbc-pkg-card:last-child { border-bottom: none; }
+  .lb-cliffs .lbc-inc-grid { grid-template-columns: 1fr; }
+  .lb-cliffs .lbc-inc-item { border-right: none !important; }
+  .lb-cliffs .lbc-inc-item:nth-last-child(-n+3) { border-bottom: 1px solid rgba(212,175,113,.12); }
+  .lb-cliffs .lbc-inc-item:last-child { border-bottom: none; }
+  .lb-cliffs .hero-interior { padding: 5rem var(--pad-x) 4rem; }
+}
+
+</style>
+
+<!-- ====================================================
+     LADYBIRD EVER AFTER - CLIFFS OF MOHER LANDING PAGE
+     /cliffsofmoherlp
+==================================================== -->
+<div class="lb-cliffs" id="top">
+
+  <!-- NAV -->
+  <nav class="lbc-nav">
+    <a href="#top" class="lbc-nav-logo">
+      <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/447b68ef-be3d-4843-ad3c-bdcf8acfab9f/Primary+Logo+Green+Font+No+Background.png?format=300w" alt="Ladybird Ever After">
+    </a>
+    <a href="#inquire" class="btn-green">Book Your Cliffs Consultation</a>
+  </nav>
+
+  <!-- TICKER -->
+  <div class="lbc-ticker">
+    <div class="lbc-ticker-track">
+      <span class="lbc-ti"><strong>Cliffs of Moher Elopement Specialists</strong></span>
+      <span class="lbc-tdot">&#9679;</span>
+      <span class="lbc-ti">Permits Secured &amp; Fully Managed</span>
+      <span class="lbc-tdot">&#9679;</span>
+      <span class="lbc-ti"><strong>100+ US Couples</strong></span>
+      <span class="lbc-tdot">&#9679;</span>
+      <span class="lbc-ti">Legal Ceremony Included</span>
+      <span class="lbc-tdot">&#9679;</span>
+      <span class="lbc-ti"><strong>Pay in USD</strong></span>
+      <span class="lbc-tdot">&#9679;</span>
+      <span class="lbc-ti">Serving Couples from California to New York</span>
+      <span class="lbc-tdot">&#9679;</span>
+      <span class="lbc-ti"><strong>Cliffs of Moher Elopement Specialists</strong></span>
+      <span class="lbc-tdot">&#9679;</span>
+      <span class="lbc-ti">Permits Secured &amp; Fully Managed</span>
+      <span class="lbc-tdot">&#9679;</span>
+      <span class="lbc-ti"><strong>100+ US Couples</strong></span>
+      <span class="lbc-tdot">&#9679;</span>
+      <span class="lbc-ti">Legal Ceremony Included</span>
+      <span class="lbc-tdot">&#9679;</span>
+      <span class="lbc-ti"><strong>Pay in USD</strong></span>
+      <span class="lbc-tdot">&#9679;</span>
+      <span class="lbc-ti">Serving Couples from California to New York</span>
+    </div>
+  </div>
+
+  <!-- ======= HERO - INTERIOR PATTERN 2 ======= -->
+  <section class="hero-interior" id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="lbc-hero-content">
+      <p class="lbc-hero-eyebrow">
+        <span class="lbc-hero-eyebrow-line"></span>
+        Cliffs of Moher Elopement Specialists
+        <span class="lbc-hero-eyebrow-line"></span>
+      </p>
+      <h1>Say <em>"I Do"</em><br>at the Cliffs of Moher</h1>
+      <p class="hero-sub">We secure the permits, coordinate every detail, and make your cliffside ceremony completely effortless - from across the Atlantic.</p>
+      <div class="lbc-hero-trust">
+        <div class="lbc-trust-pill"><strong>✓</strong> Cliffs permits fully handled</div>
+        <div class="lbc-trust-pill"><strong>✓</strong> Legal ceremony included</div>
+        <div class="lbc-trust-pill"><strong>✓</strong> Pay in USD - packages from $4,900</div>
+      </div>
+      <div class="lbc-hero-cta">
+        <a href="#inquire" class="btn-gold">Book My Cliffs Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUOTE TICKER -->
+  <div class="lbc-quote-ticker">
+    <div class="lbc-qt-track">
+      <span class="lbc-tq">"We were able to enjoy our day without any stress at all." <strong>- Kalee, Birmingham AL</strong></span>
+      <span class="lbc-tq">"They go above and beyond - absolutely choose Ladybird." <strong>- Jessica, Pittsburgh PA</strong></span>
+      <span class="lbc-tq">"We wish we could live the day over and over again." <strong>- Mollie &amp; Ryan, Boston MA</strong></span>
+      <span class="lbc-tq">"Our day was so magical - I can't stop smiling." <strong>- Maya, New York NY</strong></span>
+      <span class="lbc-tq">"From the very first consultation they understood our vision." <strong>- Kalee, Birmingham AL</strong></span>
+      <span class="lbc-tq">"We were able to enjoy our day without any stress at all." <strong>- Kalee, Birmingham AL</strong></span>
+      <span class="lbc-tq">"They go above and beyond - absolutely choose Ladybird." <strong>- Jessica, Pittsburgh PA</strong></span>
+      <span class="lbc-tq">"We wish we could live the day over and over again." <strong>- Mollie &amp; Ryan, Boston MA</strong></span>
+      <span class="lbc-tq">"Our day was so magical - I can't stop smiling." <strong>- Maya, New York NY</strong></span>
+      <span class="lbc-tq">"From the very first consultation they understood our vision." <strong>- Kalee, Birmingham AL</strong></span>
+    </div>
+  </div>
+
+  <!-- TRUST PROOF (animated counters) -->
+  <script>
+    (function () {
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Alice&display=swap';
+      document.head.appendChild(link);
+
+      var css = document.createElement('style');
+      css.textContent = [
+        '#lb-proof-root { font-family:Alice,serif; font-weight:300; color:#1A1A18; }',
+        '#lb-proof-root *,#lb-proof-root *::before,#lb-proof-root *::after { margin:0; padding:0; box-sizing:border-box; }',
+        '#lb-proof-root .proof { background:#FDFAF4; padding:clamp(1.5rem,3vw,2.5rem) clamp(1.2rem,5vw,5rem); border-top:1px solid rgba(91,98,57,.08); border-bottom:1px solid rgba(91,98,57,.08); }',
+        '#lb-proof-root .proof-inner { max-width:900px; margin:0 auto; }',
+        '#lb-proof-root .proof-label { text-align:center; margin-bottom:1.2rem; }',
+        '#lb-proof-root .proof-label span { font-size:.58rem; letter-spacing:.3em; text-transform:uppercase; color:#B8964E; font-weight:600; display:inline-flex; align-items:center; gap:.6rem; }',
+        '#lb-proof-root .proof-label span::before,#lb-proof-root .proof-label span::after { content:""; width:28px; height:1px; background:#B8964E; opacity:.45; }',
+        '#lb-proof-root .proof-stats { display:flex; justify-content:center; flex-wrap:wrap; gap:clamp(1.5rem,4vw,3.5rem); }',
+        '#lb-proof-root .proof-stat { text-align:center; min-width:100px; }',
+        '#lb-proof-root .proof-stat-num { font-family:Playfair Display,serif; font-size:clamp(2rem,3.5vw,2.8rem); font-weight:600; color:#5B6239; line-height:1; }',
+        '#lb-proof-root .proof-stat-label { font-size:.62rem; letter-spacing:.15em; text-transform:uppercase; color:#8C8070; margin-top:.45rem; line-height:1.4; }',
+        '#lb-proof-root .proof-divider { width:50px; height:1px; background:#B8964E; opacity:.3; margin:1rem auto 0; }',
+        '#lb-proof-root .proof-featured { display:flex; align-items:center; justify-content:center; gap:.8rem; margin-top:1rem; }',
+        '#lb-proof-root .proof-featured-label { font-size:.58rem; letter-spacing:.25em; text-transform:uppercase; color:#8C8070; white-space:nowrap; }',
+        '#lb-proof-root .proof-featured a { display:inline-flex; align-items:center; transition:opacity .4s; text-decoration:none; }',
+        '#lb-proof-root .proof-featured a:hover { opacity:.7; }',
+        '#lb-proof-root .proof-featured img { height:26px; width:auto; display:block; }',
+        '#lb-proof-root .reveal { opacity:0; transform:translateY(20px); transition:opacity .7s ease,transform .7s ease; }',
+        '#lb-proof-root .reveal.in { opacity:1; transform:translateY(0); }',
+        '@media(max-width:400px){#lb-proof-root .proof-stats{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 1rem;}}'
+      ].join('\n');
+      document.head.appendChild(css);
+
+      var stats = [
+        { target: 100, suffix: '+', label: 'Happy<br>Couples' },
+        { target: 100, suffix: '+', label: 'Vendors &amp; Venues<br>Personally Vetted' },
+        { target: 5,   suffix: '&#9733;', label: 'Average Couple<br>Rating' },
+        { target: 29,  suffix: '',  label: 'US States<br>&amp; Counting' }
+      ];
+
+      var statsHTML = stats.map(function (s) {
+        return '<div class="proof-stat">' +
+          '<div class="proof-stat-num" data-target="' + s.target + '" data-suffix="' + s.suffix + '">0</div>' +
+          '<div class="proof-stat-label">' + s.label + '</div>' +
+          '</div>';
+      }).join('');
+
+      var root = document.createElement('div');
+      root.id = 'lb-proof-root';
+      root.innerHTML =
+        '<div class="proof reveal">' +
+        '<div class="proof-inner">' +
+        '<div class="proof-label"><span>Trusted by Couples Across the US &amp; Canada</span></div>' +
+        '<div class="proof-stats">' + statsHTML + '</div>' +
+        '<div class="proof-divider"></div>' +
+        '<div class="proof-featured">' +
+        '<span class="proof-featured-label">As Featured In</span>' +
+        '<a href="https://www.independent.ie/business/money/i-bought-my-wedding-dress-for-20-on-depop-meet-the-irish-couples-walking-down-the-aisle-for-less/a1281301504.html" target="_blank" rel="noopener">' +
+        '<img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/596a3b01-01e5-4752-ac13-daa11ea53342/irishinde-nobg.png?format=500w" alt="Irish Independent">' +
+        '</a>' +
+        '</div>' +
+        '</div>' +
+        '</div>';
+
+      var scriptTag = document.currentScript;
+      scriptTag.parentNode.insertBefore(root, scriptTag);
+
+      /* Kill Squarespace section padding if present */
+      var section = root.closest('[data-section-id]') || root.closest('.page-section');
+      if (section) {
+        var sid = section.getAttribute('data-section-id');
+        if (sid) {
+          var nuke = document.createElement('style');
+          nuke.textContent =
+            '[data-section-id="' + sid + '"],' +
+            '[data-section-id="' + sid + '"] .content-wrapper,' +
+            '[data-section-id="' + sid + '"] .section-border' +
+            '{ padding:0 !important; min-height:0 !important; height:auto !important; margin:0 !important; }';
+          document.head.appendChild(nuke);
+        }
+      }
+      var p = root.parentElement;
+      while (p && p !== document.body) {
+        p.style.setProperty('padding', '0', 'important');
+        p.style.setProperty('min-height', '0', 'important');
+        p.style.setProperty('margin', '0', 'important');
+        p = p.parentElement;
+      }
+
+      var counted = false;
+      function animateCounters() {
+        if (counted) return;
+        counted = true;
+        root.querySelectorAll('.proof-stat-num[data-target]').forEach(function (el) {
+          var target = parseInt(el.getAttribute('data-target'));
+          var suffix = el.getAttribute('data-suffix') || '';
+          var duration = 1600;
+          var startTime = null;
+          function step(ts) {
+            if (!startTime) startTime = ts;
+            var progress = Math.min((ts - startTime) / duration, 1);
+            var eased = 1 - Math.pow(1 - progress, 3);
+            el.innerHTML = Math.round(eased * target) + suffix;
+            if (progress < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        });
+      }
+
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            animateCounters();
+            obs.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      root.querySelectorAll('.reveal').forEach(function (el) { obs.observe(el); });
+    })();
+  </script>
+
+  <!-- SPLIT 1 - The Cliffs Experience -->
+  <div class="lbc-split lbc-split-cream" id="experience">
+    <div class="lbc-split-img">
+      <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/839f2b42-249b-4439-ac2b-d07cc9a4dbf9/Sebrina%26John-247.jpg" alt="Couple at the Cliffs of Moher ceremony">
+    </div>
+    <div class="lbc-split-text reveal">
+      <p class="label">The Experience</p>
+      <h2>700 feet above<br><em>the Atlantic.</em></h2>
+      <p>The Cliffs of Moher stretch five miles along the Wild Atlantic Way - one of the most breathtaking natural landscapes on earth. At sunrise or golden hour, with the Atlantic crashing below, there is nowhere else like it for a ceremony.</p>
+      <p>We secure your permits, time your ceremony around the best light and fewest tourists, and ensure your celebrant, photographer, and florals are perfectly in place. You just breathe it in.</p>
+      <div class="lbc-split-chips">
+        <span class="lbc-split-chip">🌊 Wild Atlantic Way</span>
+        <span class="lbc-split-chip">📋 Permits secured by us</span>
+        <span class="lbc-split-chip">⛅ Weather backup included</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHOTO GRID 1 -->
+  <div class="lbc-photo-grid">
+    <div class="lbc-photo-item">
+      <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/947d7338-0b78-428c-9950-681924ca70d5/KJCliffsofMoher5.webp" alt="Cliffs of Moher ceremony">
+    </div>
+    <div class="lbc-photo-item">
+      <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/56e3a576-08d2-4d62-b5b3-c58a6c4b7f61/KJCliffsofMoher6.webp" alt="Cliffs of Moher elopement">
+    </div>
+    <div class="lbc-photo-item">
+      <div class="lbc-photo-stat">
+        <div class="lbc-ps-serif">Dozens of ceremonies<br><em>at the Cliffs.</em></div>
+        <div class="lbc-ps-label">We know every permit,<br>every vantage point,<br>every perfect moment.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SPLIT 2 - Permits & Logistics -->
+  <div class="lbc-split lbc-split-warm flip" id="permits">
+    <div class="lbc-split-text reveal">
+      <p class="label">Permits Handled</p>
+      <h2>We handle the<br><em>permits and paperwork.</em></h2>
+      <p>The Cliffs of Moher are a protected heritage site. Getting permission for a ceremony involves specific permits, timing restrictions, and direct coordination with site management. <strong>We've done this dozens of times.</strong></p>
+      <p>Your marriage is also 100% legally recognized in the United States. Every package includes full legal ceremony coordination - you just show up and say "I do."</p>
+      <div class="lbc-split-chips">
+        <span class="lbc-split-chip">📄 Site permits coordinated</span>
+        <span class="lbc-split-chip">🇺🇸 US-recognized marriage</span>
+      </div>
+    </div>
+    <div class="lbc-split-img">
+      <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/65ce1e16-90c7-4512-ab8f-608981a55e6b/LY9815.jpg" alt="Ceremony at the Cliffs of Moher">
+    </div>
+  </div>
+
+  <!-- WHAT'S INCLUDED -->
+  <div class="lbc-includes" id="includes">
+    <div class="lbc-includes-inner">
+      <div class="reveal">
+        <p class="label label-lt">All-Inclusive Cliffs Package</p>
+        <h2 style="color:var(--warm)">Everything handled.<br><em>Nothing overlooked.</em></h2>
+      </div>
+      <div class="lbc-inc-grid">
+        <div class="lbc-inc-item reveal">
+          <span class="lbc-inc-em">📋</span>
+          <div>
+            <div class="lbc-inc-h">Cliffs Permits Secured</div>
+            <p class="lbc-inc-p">Full permit coordination with the Cliffs of Moher management team - timing, access, and all restrictions handled for you.</p>
+          </div>
+        </div>
+        <div class="lbc-inc-item reveal">
+          <span class="lbc-inc-em">⚖️</span>
+          <div>
+            <div class="lbc-inc-h">Legal Ceremony &amp; Officiant</div>
+            <p class="lbc-inc-p">A certified Irish celebrant conducts your legal ceremony. Your marriage is fully recognized in the US with no extra steps.</p>
+          </div>
+        </div>
+        <div class="lbc-inc-item reveal">
+          <span class="lbc-inc-em">📸</span>
+          <div>
+            <div class="lbc-inc-h">Photographer Coordination</div>
+            <p class="lbc-inc-p">We work with Ireland's best elopement photographers who know exactly where and when to capture the magic at the Cliffs.</p>
+          </div>
+        </div>
+        <div class="lbc-inc-item reveal">
+          <span class="lbc-inc-em">⛅</span>
+          <div>
+            <div class="lbc-inc-h">Weather Backup Plan</div>
+            <p class="lbc-inc-p">Ireland's weather is unpredictable. Every booking includes a pre-arranged backup location so your day stays perfect regardless.</p>
+          </div>
+        </div>
+        <div class="lbc-inc-item reveal">
+          <span class="lbc-inc-em">🙋‍♀️</span>
+          <div>
+            <div class="lbc-inc-h">Dedicated US-Based Planner</div>
+            <p class="lbc-inc-p">Your personal planner manages everything from your first consultation through your wedding day. One contact, zero confusion.</p>
+          </div>
+        </div>
+        <div class="lbc-inc-item reveal">
+          <span class="lbc-inc-em">💵</span>
+          <div>
+            <div class="lbc-inc-h">One USD Contract</div>
+            <p class="lbc-inc-p">Fixed pricing in US dollars, flexible payment plans, and one contract for everything. No wire transfers, no hidden fees.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div class="lbc-how" id="process">
+    <div class="lbc-how-inner">
+      <div class="reveal">
+        <p class="lbc-how-overline">Simple From Start to Finish</p>
+        <h2>Three steps to your<br><em>Cliffs of Moher ceremony</em></h2>
+        <p class="lbc-how-sub">Planning a wedding from the US to Ireland sounds complicated. We make it simple.</p>
+      </div>
+      <div class="lbc-how-steps reveal">
+        <div class="lbc-how-step">
+          <div class="lbc-step-num">1</div>
+          <div class="lbc-step-title">Book Your Free Consultation</div>
+          <p class="lbc-step-desc">Tell us your vision, date ideas, and guest count. We walk you through everything - permits, packages, timing - in a no-pressure video call. You'll leave with a clear picture of exactly what's possible at the Cliffs.</p>
+        </div>
+        <div class="lbc-how-arrow">&#8594;</div>
+        <div class="lbc-how-step">
+          <div class="lbc-step-num">2</div>
+          <div class="lbc-step-title">We Plan Everything</div>
+          <p class="lbc-step-desc">Your dedicated US-based planner secures the Cliffs permit, coordinates your celebrant, photographer, florals, and legal paperwork. You have a private client portal to watch it all come together. No chasing. No chaos.</p>
+        </div>
+        <div class="lbc-how-arrow">&#8594;</div>
+        <div class="lbc-how-step">
+          <div class="lbc-step-num">3</div>
+          <div class="lbc-step-title">You Show Up and Say "I Do"</div>
+          <p class="lbc-step-desc">You arrive in Ireland. Everything is arranged. You simply enjoy one of the most beautiful days of your lives - 700 feet above the Atlantic, with the Wild Atlantic Way stretching out before you.</p>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:2.8rem;" class="reveal">
+        <a href="#inquire" class="btn-gold">Start Planning - Free Consultation</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHOTO GRID 2 -->
+  <div class="lbc-photo-grid">
+    <div class="lbc-photo-item">
+      <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/80e2b0cc-58b1-4a04-a846-3e6d3d38a276/LY9821.jpg" alt="Couple at the Cliffs">
+    </div>
+    <div class="lbc-photo-item">
+      <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/1765974531551-59QH6TAJI61V96LY42FN/Sea.jpg" alt="Wild Atlantic coastline">
+    </div>
+    <div class="lbc-photo-item">
+      <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/4002f81b-52fd-4e72-9708-d739a067fffb/MandR_Cliffs_CD90.jpg" alt="Couple at Cliffs of Moher">
+    </div>
+  </div>
+
+  <!-- SPLIT 3 - Just the Two of You -->
+  <div class="lbc-split lbc-split-warm" id="intimate">
+    <div class="lbc-split-img">
+      <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/e49b64c7-15d3-4825-9234-7f02a748bf31/Kalee%26Kristian-270.jpg" alt="Intimate elopement at the Cliffs of Moher">
+    </div>
+    <div class="lbc-split-text reveal">
+      <p class="label">Just the Two of You</p>
+      <h2>Intimate by design.<br><em>Unforgettable forever.</em></h2>
+      <p>Most couples who come to the Cliffs want exactly this: the most dramatic landscape in Ireland, a real legal ceremony, and nothing between them and the moment. No crowds, no fuss - just the two of you and 700 feet of Atlantic cliff.</p>
+      <p>Our packages begin with pure elopements for just the two of you, and scale up to intimate gatherings of up to 28 guests for those who want to share the magic. Either way, the Cliffs are all yours.</p>
+      <div class="lbc-split-chips">
+        <span class="lbc-split-chip">👫 Just the two of you</span>
+        <span class="lbc-split-chip">👨‍👩‍👧 Up to 28 guests</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PACKAGES -->
+  <div class="lbc-packages" id="packages">
+    <div class="lbc-packages-inner">
+      <div class="reveal">
+        <p class="label">Cliffs of Moher Packages</p>
+        <h2>Choose your<br><em>Cliffs experience.</em></h2>
+        <p class="lbc-pkg-intro">Four collections designed around your guest count, each built for a Cliffs of Moher ceremony. Every package includes permits, full legal guidance, your US-based planner, and end-to-end coordination. All prices in USD - no hidden fees, ever.</p>
+      </div>
+      <div class="lbc-pkg-grid">
+
+        <div class="lbc-pkg-card reveal" onclick="lbcActivatePkg(this)">
+          <div class="lbc-pkg-irish">Failte</div>
+          <div class="lbc-pkg-name">Pure Elopement</div>
+          <div class="lbc-pkg-guests">Just the two of you</div>
+          <ul class="lbc-pkg-features">
+            <li class="lbc-pkg-feat">Cliffs Permit Secured</li>
+            <li class="lbc-pkg-feat">Irish Celebrant &amp; Legal Guidance</li>
+            <li class="lbc-pkg-feat">Photography (2 hrs)</li>
+            <li class="lbc-pkg-feat">Dedicated US Planner</li>
+          </ul>
+          <div class="lbc-pkg-price-block">
+            <span class="lbc-pkg-from">Starting from</span>
+            <span class="lbc-pkg-amount">$4,900</span><span class="lbc-pkg-usd">USD</span>
+          </div>
+        </div>
+
+        <div class="lbc-pkg-card reveal" onclick="lbcActivatePkg(this)">
+          <div class="lbc-pkg-irish">Gra</div>
+          <div class="lbc-pkg-name">Enhanced Elopement</div>
+          <div class="lbc-pkg-guests">Up to 8 guests</div>
+          <ul class="lbc-pkg-features">
+            <li class="lbc-pkg-feat">Cliffs Permit Secured</li>
+            <li class="lbc-pkg-feat">Celebrant &amp; Legal Guidance</li>
+            <li class="lbc-pkg-feat">Photography (4 hrs)</li>
+            <li class="lbc-pkg-feat">Bouquet &amp; Buttonhole</li>
+            <li class="lbc-pkg-feat">Hair &amp; Makeup</li>
+          </ul>
+          <div class="lbc-pkg-price-block">
+            <span class="lbc-pkg-from">Starting from</span>
+            <span class="lbc-pkg-amount">$7,300</span><span class="lbc-pkg-usd">USD</span>
+          </div>
+        </div>
+
+        <div class="lbc-pkg-card reveal on" onclick="lbcActivatePkg(this)">
+          <div class="lbc-pkg-badge">Most Popular</div>
+          <div class="lbc-pkg-irish">Slainte</div>
+          <div class="lbc-pkg-name">Intimate Wedding</div>
+          <div class="lbc-pkg-guests">Up to 12 guests</div>
+          <ul class="lbc-pkg-features">
+            <li class="lbc-pkg-feat">Cliffs Permit Secured</li>
+            <li class="lbc-pkg-feat">Celebrant &amp; Legal Guidance</li>
+            <li class="lbc-pkg-feat">Photography (4 hrs)</li>
+            <li class="lbc-pkg-feat">Bouquet &amp; Buttonhole</li>
+            <li class="lbc-pkg-feat">Hair &amp; Makeup</li>
+            <li class="lbc-pkg-feat">Reception Coordination</li>
+          </ul>
+          <div class="lbc-pkg-price-block">
+            <span class="lbc-pkg-from">Starting from</span>
+            <span class="lbc-pkg-amount">$8,900</span><span class="lbc-pkg-usd">USD</span>
+          </div>
+        </div>
+
+        <div class="lbc-pkg-card reveal" onclick="lbcActivatePkg(this)">
+          <div class="lbc-pkg-irish">Ard</div>
+          <div class="lbc-pkg-name">Bespoke Wedding</div>
+          <div class="lbc-pkg-guests">Up to 28 guests</div>
+          <ul class="lbc-pkg-features">
+            <li class="lbc-pkg-feat">Cliffs Permit Secured</li>
+            <li class="lbc-pkg-feat">Celebrant &amp; Legal Guidance</li>
+            <li class="lbc-pkg-feat">Photography (6 hrs)</li>
+            <li class="lbc-pkg-feat">Full Florals</li>
+            <li class="lbc-pkg-feat">Hair &amp; Makeup</li>
+            <li class="lbc-pkg-feat">Reception + Coordinator</li>
+          </ul>
+          <div class="lbc-pkg-price-block">
+            <span class="lbc-pkg-from">Starting from</span>
+            <span class="lbc-pkg-amount">$12,200</span><span class="lbc-pkg-usd">USD</span>
+          </div>
+        </div>
+
+      </div>
+      <div style="text-align:center;margin-top:2rem;" class="reveal">
+        <a href="#inquire" class="btn-green">Talk to Us About Packages</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="lbc-testi" id="reviews">
+    <div class="lbc-testi-inner">
+      <div class="reveal">
+        <p class="label">Real Couples, Real Cliffs</p>
+        <h2>Don't take our word.<br><em>Take theirs.</em></h2>
+      </div>
+      <div class="lbc-testi-grid">
+        <div class="lbc-testi-card reveal">
+          <div class="lbc-tq-mark">"</div>
+          <div class="lbc-testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="lbc-testi-text">We had the most incredible experience! From the very first consultation, they made us feel so at ease and completely understood our vision. Standing at the Cliffs with my husband was the most powerful moment of my life.</p>
+          <p class="lbc-testi-by">Kalee &amp; Kristian · Birmingham, AL</p>
+        </div>
+        <div class="lbc-testi-card reveal">
+          <div class="lbc-tq-mark">"</div>
+          <div class="lbc-testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="lbc-testi-text">Ladybird did a phenomenal job. They handled absolutely everything - permits, the celebrant, our photographer. We simply enjoyed our day together without a single worry. I can't recommend them enough.</p>
+          <p class="lbc-testi-by">Jessica · Pittsburgh, PA</p>
+        </div>
+        <div class="lbc-testi-card reveal">
+          <div class="lbc-tq-mark">"</div>
+          <div class="lbc-testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <p class="lbc-testi-text">We are forever grateful. We wish we could live the day over and over again. If you're thinking about eloping at the Cliffs of Moher - just do it. Absolutely no regrets whatsoever.</p>
+          <p class="lbc-testi-by">Mollie &amp; Ryan · Boston, MA</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="lbc-faq" id="faq">
+    <div class="lbc-faq-inner">
+      <div class="reveal">
+        <p class="label">Common Questions</p>
+        <h2>Everything you need<br><em>to know.</em></h2>
+      </div>
+      <div class="lbc-faq-list reveal">
+
+        <div class="lbc-faq-item">
+          <button class="lbc-faq-btn" aria-expanded="false">Do you actually secure the Cliffs of Moher permit for us?</button>
+          <div class="lbc-faq-answer" style="max-height:0">
+            <div class="lbc-faq-answer-inner">Yes - permit coordination is included in every package. The Cliffs of Moher are a protected heritage site managed by Clare County Council, and ceremonies require advance notice, specific timing, and logistical coordination with site staff. We've secured permits for dozens of couples and handle the entire process on your behalf.</div>
+          </div>
+        </div>
+
+        <div class="lbc-faq-item">
+          <button class="lbc-faq-btn" aria-expanded="false">What happens if the weather is bad on our wedding day?</button>
+          <div class="lbc-faq-answer" style="max-height:0">
+            <div class="lbc-faq-answer-inner">Every booking includes a pre-arranged weather backup plan. Ireland's Atlantic coast is beautiful but unpredictable. We identify a backup ceremony location nearby before your day, and we monitor conditions in real time. If the Cliffs aren't accessible that morning, we activate the backup seamlessly - your timeline, your team, and your ceremony stay intact. Most couples are surprised by how stunning the backup options are.</div>
+          </div>
+        </div>
+
+        <div class="lbc-faq-item">
+          <button class="lbc-faq-btn" aria-expanded="false">Is our marriage legally recognized in the United States?</button>
+          <div class="lbc-faq-answer" style="max-height:0">
+            <div class="lbc-faq-answer-inner">Yes, 100%. A legal ceremony in Ireland is fully recognized in all 50 US states. We handle the Irish legal requirements - including the mandatory 3-month advance notification to the civil registrar, required documentation, and certified celebrant - so your marriage certificate is valid the moment you say "I do." You don't need to do anything extra when you return home.</div>
+          </div>
+        </div>
+
+        <div class="lbc-faq-item">
+          <button class="lbc-faq-btn" aria-expanded="false">How far in advance do we need to book?</button>
+          <div class="lbc-faq-answer" style="max-height:0">
+            <div class="lbc-faq-answer-inner">We recommend booking at least 6-9 months in advance for popular dates (May through September). The legal requirement for a civil ceremony in Ireland is a minimum of 3 months' advance notice to the registrar, so that sets your absolute minimum. Peak summer and golden-hour sunset slots at the Cliffs book out fastest - if you have a specific date in mind, get in touch as soon as possible to check availability.</div>
+          </div>
+        </div>
+
+        <div class="lbc-faq-item">
+          <button class="lbc-faq-btn" aria-expanded="false">What is the best time of year to elope at the Cliffs of Moher?</button>
+          <div class="lbc-faq-answer" style="max-height:0">
+            <div class="lbc-faq-answer-inner">May through September offers the best combination of weather, daylight, and accessibility. June and July give you the longest golden hours - the light on the Cliffs at 9pm in summer is extraordinary. April and October are beautiful and less crowded, with dramatic Atlantic skies. We advise against December through February for ceremony bookings due to wind and access restrictions, though every couple's circumstances are different - we're happy to discuss any time of year.</div>
+          </div>
+        </div>
+
+        <div class="lbc-faq-item">
+          <button class="lbc-faq-btn" aria-expanded="false">How do we get to the Cliffs of Moher from the US?</button>
+          <div class="lbc-faq-answer" style="max-height:0">
+            <div class="lbc-faq-answer-inner">The nearest airports are Shannon (SNN), about 45 minutes from the Cliffs, and Dublin (DUB), about 3 hours. Shannon has direct transatlantic flights from New York, Boston, Chicago, and Philadelphia. We include full logistics guidance in your planning package - nearest accommodations, recommended hire car routes, and timing for the day. The nearby village of Doolin and Lahinch town are popular basing points for couples.</div>
+          </div>
+        </div>
+
+        <div class="lbc-faq-item">
+          <button class="lbc-faq-btn" aria-expanded="false">Can we bring guests to our Cliffs of Moher ceremony?</button>
+          <div class="lbc-faq-answer" style="max-height:0">
+            <div class="lbc-faq-answer-inner">Yes - our packages accommodate from just the two of you up to 28 guests at the Cliffs. Guest limits at the site itself are determined by permit conditions, and we factor this into your booking from the start. If you're planning a larger celebration after the ceremony (dinner at a nearby venue, for example), we coordinate that as part of your package too.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- FINAL FORM SECTION -->
+  <div class="lbc-form-section" id="inquire">
+    <div class="lbc-form-bg"></div>
+    <div class="lbc-form-overlay"></div>
+    <div class="lbc-form-inner">
+
+      <div class="lbc-form-left reveal">
+        <p class="label label-lt">Let's Get Started</p>
+        <h2>Secure your Cliffs date.<br><em>Let's make it happen.</em></h2>
+        <p>Book a free, no-obligation consultation and we'll check your date, walk you through permit timing, and give you real pricing for your vision - all within 24 hours.</p>
+        <div class="lbc-form-gs">
+          <div class="lbc-form-g">Free, no-obligation consultation</div>
+          <div class="lbc-form-g">Pay in USD - no wire transfers</div>
+          <div class="lbc-form-g">One US contract, one team, zero chaos</div>
+          <div class="lbc-form-g">Legal ceremony included in every package</div>
+          <div class="lbc-form-g">We reply within 24 hours</div>
+        </div>
+        <div class="lbc-urgency">
+          <h4>Cliffs Dates Book Fast</h4>
+          <p>Peak summer and golden-hour sunset slots sell out months in advance. Check your date now before it's gone.</p>
+        </div>
+      </div>
+
+      <div class="lbc-form-card reveal">
+        <div class="lbc-form-card-title">Your Cliffs of Moher<br><em>ceremony starts here.</em></div>
+        <p class="lbc-form-card-sub">Free · No obligation · We reply within 24 hours</p>
+        <div class="lbc-form" id="hs-bottom">
+          <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+          <script>
+            hbspt.forms.create({ portalId: "47524318", formId: "d1f83a24-30cd-4fdd-a890-851ba0872c2f", region: "na1" });
+          </script>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FLOATING CTA -->
+  <a href="#inquire" class="lbc-float-cta" id="lbcFloatCta">Secure My Cliffs Date</a>
+
+</div><!-- /.lb-cliffs -->
+
+<script>
+(function() {
+  // -- REVEAL --
+  var revEls = document.querySelectorAll('.lb-cliffs .reveal');
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e, i) {
+      if (e.isIntersecting) {
+        setTimeout(function() { e.target.classList.add('in'); }, i * 60);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+  revEls.forEach(function(el) { obs.observe(el); });
+
+  // -- FLOAT CTA --
+  var fc = document.getElementById('lbcFloatCta');
+  var formEl = document.getElementById('inquire');
+  window.addEventListener('scroll', function() {
+    var past = window.scrollY > 500;
+    var atForm = formEl.getBoundingClientRect().top < window.innerHeight - 80;
+    fc.classList.toggle('show', past && !atForm);
+  });
+
+  // -- PACKAGE SELECT --
+  window.lbcActivatePkg = function(card) {
+    document.querySelectorAll('.lb-cliffs .lbc-pkg-card').forEach(function(c) { c.classList.remove('on'); });
+    card.classList.add('on');
+    document.getElementById('inquire').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  // -- FAQ ACCORDION --
+  document.querySelectorAll('.lb-cliffs .lbc-faq-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var answer = this.nextElementSibling;
+      var isOpen = this.classList.contains('open');
+      // close all
+      document.querySelectorAll('.lb-cliffs .lbc-faq-btn').forEach(function(b) {
+        b.classList.remove('open');
+        b.setAttribute('aria-expanded', 'false');
+        b.nextElementSibling.style.maxHeight = '0';
+      });
+      if (!isOpen) {
+        this.classList.add('open');
+        this.setAttribute('aria-expanded', 'true');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+})();
+</script>

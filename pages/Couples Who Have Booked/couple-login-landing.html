@@ -1,0 +1,443 @@
+<!-- Ladybird Couple Login Landing – Squarespace Code Block -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Alice&display=swap" rel="stylesheet">
+
+<style>
+/* ══ ALL STYLES SCOPED TO .lb-couple-login ══ */
+
+/* ── VARIABLES ── */
+.lb-couple-login {
+  --green:    #5B6239;
+  --green-dk: #3a3f25;
+  --green-hv: #4a5130;
+  --gold:     #B8964E;
+  --gold-lt:  #D4AF71;
+  --cream:    #F5F0E8;
+  --warm:     #FDFAF4;
+  --stone:    #8C8070;
+  --txt:      #1A1A18;
+  --txt-mid:  #4A4A42;
+  --pad-x: clamp(1.2rem, 5vw, 5rem);
+  --pad-y: clamp(3.5rem, 7vw, 6rem);
+
+  font-family: 'Alice', serif;
+  font-weight: 300;
+  color: var(--txt);
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ── SCOPED RESET ── */
+.lb-couple-login *,
+.lb-couple-login *::before,
+.lb-couple-login *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.lb-couple-login img { display: block; }
+
+/* ── TYPOGRAPHY ── */
+.lb-couple-login h1,
+.lb-couple-login h2,
+.lb-couple-login h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 300;
+}
+.lb-couple-login h1 em,
+.lb-couple-login h2 em,
+.lb-couple-login h3 em {
+  font-style: italic;
+  color: var(--gold-lt);
+}
+
+.lb-couple-login .label {
+  font-size: 0.6rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin-bottom: .75rem;
+}
+.lb-couple-login .label::after {
+  content: '';
+  flex: 0 0 28px;
+  height: 1px;
+  background: var(--gold);
+  opacity: .5;
+}
+
+/* ── BUTTONS ── */
+.lb-couple-login .btn {
+  display: inline-block;
+  font-family: 'Alice', serif;
+  font-size: .74rem;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: .95rem 2.2rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all .3s;
+}
+.lb-couple-login .btn-green {
+  background: var(--green);
+  color: var(--cream);
+  border-color: var(--green);
+}
+.lb-couple-login .btn-green:hover {
+  background: var(--green-hv);
+  border-color: var(--green-hv);
+}
+.lb-couple-login .btn-gold {
+  background: var(--gold);
+  color: var(--green);
+  border-color: var(--gold);
+}
+.lb-couple-login .btn-gold:hover {
+  background: transparent;
+  color: var(--gold-lt);
+  border-color: var(--gold-lt);
+}
+
+/* ── HERO ── */
+.lb-couple-login .hero {
+  position: relative;
+  background: var(--green);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(4rem, 10vw, 7rem) var(--pad-x);
+  min-height: 48vh;
+}
+.lb-couple-login .hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/6b7347ef-5773-40fe-988f-218e64614cc9/DarkHedges3.webp?format=2500w');
+  background-size: cover;
+  background-position: center 30%;
+  opacity: .18;
+}
+.lb-couple-login .hero-grad {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(28,28,26,.55) 0%, rgba(28,28,26,.85) 100%);
+}
+.lb-couple-login .hero-content {
+  position: relative; z-index: 2;
+  max-width: 660px;
+  animation: lbFadeUp .9s ease both;
+}
+.lb-couple-login .hero-eyebrow {
+  font-size: .58rem;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  color: var(--gold-lt);
+  font-weight: 500;
+  margin-bottom: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem;
+}
+.lb-couple-login .hero-eyebrow-line {
+  flex: 0 0 24px;
+  height: 1px;
+  background: var(--gold-lt);
+  opacity: .45;
+}
+.lb-couple-login .hero h1 {
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  color: var(--warm);
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+}
+.lb-couple-login .hero-sub {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  color: rgba(253,250,244,.65);
+  line-height: 1.65;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.lb-couple-login .hero-divider {
+  width: 50px;
+  height: 1px;
+  background: var(--gold-lt);
+  opacity: .4;
+  margin: 1.6rem auto;
+}
+
+/* ── CTA SECTION ── */
+.lb-couple-login .cta-section {
+  background: var(--warm);
+  padding: clamp(3rem, 6vw, 5rem) var(--pad-x);
+  text-align: center;
+}
+.lb-couple-login .cta-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.lb-couple-login .cta-section h2 {
+  font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+  color: var(--txt);
+  line-height: 1.15;
+  margin-bottom: 1.4rem;
+}
+.lb-couple-login .cta-section p {
+  font-size: .9rem;
+  line-height: 1.85;
+  color: var(--txt-mid);
+  margin-bottom: 2rem;
+}
+.lb-couple-login .cta-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+.lb-couple-login .btn-large {
+  padding: 1.1rem 2.8rem;
+  font-size: .78rem;
+}
+
+/* ── PREVIEW SECTION ── */
+.lb-couple-login .preview {
+  background: var(--cream);
+  padding: var(--pad-y) var(--pad-x);
+}
+.lb-couple-login .preview-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.lb-couple-login .preview-header {
+  text-align: center;
+  margin-bottom: clamp(2.5rem, 4vw, 3.5rem);
+}
+.lb-couple-login .preview-header h2 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  color: var(--txt);
+  line-height: 1.15;
+  margin-bottom: .8rem;
+}
+.lb-couple-login .preview-header p {
+  font-size: .85rem;
+  color: var(--txt-mid);
+  line-height: 1.75;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ── PREVIEW CARDS ── */
+.lb-couple-login .preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+.lb-couple-login .preview-card {
+  background: var(--warm);
+  padding: 2rem;
+  border: 1px solid rgba(91,98,57,.1);
+  position: relative;
+  overflow: hidden;
+}
+.lb-couple-login .preview-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-lt), var(--gold));
+}
+.lb-couple-login .preview-card-icon {
+  font-size: 1.8rem;
+  margin-bottom: 0.8rem;
+}
+.lb-couple-login .preview-card h3 {
+  font-size: 1.25rem;
+  color: var(--green);
+  margin-bottom: 0.8rem;
+  line-height: 1.2;
+}
+.lb-couple-login .preview-card p {
+  font-size: .85rem;
+  line-height: 1.7;
+  color: var(--txt-mid);
+  margin-bottom: 1.2rem;
+}
+.lb-couple-login .preview-lock {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .7rem;
+  color: var(--stone);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-weight: 500;
+}
+.lb-couple-login .preview-lock::before {
+  content: '🔒';
+  font-size: .8rem;
+}
+
+/* ── CLOSED SECTION ── */
+.lb-couple-login .closed-section {
+  background: var(--warm);
+  padding: 2rem;
+  border: 2px dashed rgba(91,98,57,.2);
+  text-align: center;
+  border-radius: 4px;
+}
+.lb-couple-login .closed-section p {
+  font-size: .85rem;
+  color: var(--txt-mid);
+  margin-bottom: 1rem;
+}
+
+/* ── DIVIDER STRIP ── */
+.lb-couple-login .strip {
+  background: var(--green);
+  padding: clamp(2rem, 3.5vw, 3rem) var(--pad-x);
+  text-align: center;
+}
+.lb-couple-login .strip-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.lb-couple-login .strip-text {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+  font-weight: 300;
+  color: var(--warm);
+  line-height: 1.4;
+}
+.lb-couple-login .strip-text em { font-style: italic; color: var(--gold-lt); }
+.lb-couple-login .strip-sub {
+  font-size: .72rem;
+  color: rgba(245,240,232,.48);
+  margin-top: .7rem;
+  letter-spacing: .08em;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes lbFadeUp {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .lb-couple-login .hero { padding: 3rem 1.2rem; min-height: 38vh; }
+  .lb-couple-login .hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
+  .lb-couple-login .cta-section { padding: 2.5rem 1.2rem; }
+  .lb-couple-login .preview { padding: 2.5rem 1.2rem; }
+  .lb-couple-login .cta-buttons { gap: .8rem; }
+}
+</style>
+
+<div class="lb-couple-login">
+
+<!-- ═══════════════════════════════════
+     HERO
+═══════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grad"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">
+      <span class="hero-eyebrow-line"></span>
+      Your Journey Starts Here
+      <span class="hero-eyebrow-line"></span>
+    </p>
+    <h1>Your Roadmap to a<br>Happily Ever <em>After</em></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">Everything you need to plan, prepare, and celebrate your wedding in Ireland.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     CTA SECTION
+═══════════════════════════════════ -->
+<div class="cta-section">
+  <div class="cta-inner">
+    <h2>Ready to dive <em>in?</em></h2>
+    <p>Couples who have booked with Ladybird Ever After get access to The Ever After Roadmap - your complete guide to planning, preparing, and making the most of your wedding journey.</p>
+
+    <div class="cta-buttons">
+      <a href="/the-ever-after-roadmap" class="btn btn-green btn-large">Access Your Roadmap</a>
+      <p style="font-size: 0.75rem; color: var(--stone); margin: 0.5rem 0 0 0;">Password required for booked couples</p>
+    </div>
+
+    <div style="border-top: 1px solid rgba(91,98,57,.12); padding-top: 2rem; margin-top: 2rem;">
+      <p style="font-size: 0.9rem; color: var(--txt-mid); margin-bottom: 1.2rem;"><strong>Not booked yet?</strong> See what's waiting for you once you say yes to Ladybird.</p>
+      <a href="/get-in-touch" class="btn btn-gold btn-large">Let's Talk About Your Wedding</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     PREVIEW SECTION
+═══════════════════════════════════ -->
+<div class="preview">
+  <div class="preview-inner">
+
+    <div class="preview-header">
+      <p class="label" style="justify-content:center;">What's Inside</p>
+      <h2>Your Complete <em>Ireland</em> Guide</h2>
+      <p>Here's a peek at what booked couples get access to. These resources cover everything from flights to final touches.</p>
+    </div>
+
+    <div class="preview-grid">
+
+      <!-- CARD 1 -->
+      <div class="preview-card">
+        <div class="preview-card-icon">✈️</div>
+        <h3>Preparing Before<br>You Go</h3>
+        <p>Travel documents, flight tips, packing guides, what to expect when you land in Ireland, and practical advice for the journey.</p>
+        <div class="preview-lock">Booked Couples Only</div>
+      </div>
+
+      <!-- CARD 2 -->
+      <div class="preview-card">
+        <div class="preview-card-icon">☘️</div>
+        <h3>Our Recommendations</h3>
+        <p>Insider recommendations for restaurants, pubs, hidden gems, and experiences across Ireland. Places we'd send our own friends and family.</p>
+        <div class="preview-lock">Booked Couples Only</div>
+      </div>
+
+      <!-- CARD 3 -->
+      <div class="preview-card">
+        <div class="preview-card-icon">📋</div>
+        <h3>Planning Tools & Timeline</h3>
+        <p>Checklists, timelines, vendor coordination guides, and everything you need to stay organized leading up to your wedding day.</p>
+        <div class="preview-lock">Booked Couples Only</div>
+      </div>
+
+    </div>
+
+    <div class="closed-section">
+      <p style="font-weight: 600; color: var(--txt); margin-bottom: 0.5rem;">Full access unlocked when you book.</p>
+      <p>Complete guides, step-by-step resources, contact information for all vendors, detailed timelines, and personalized recommendations are available exclusively to couples who have booked with Ladybird Ever After.</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     DIVIDER STRIP
+═══════════════════════════════════ -->
+<div class="strip">
+  <div class="strip-inner">
+    <p class="strip-text">Your dream day in Ireland<br>starts with <em>one conversation.</em></p>
+    <p class="strip-sub">Let's talk about making it happen.</p>
+  </div>
+</div>
+
+</div><!-- /.lb-couple-login -->

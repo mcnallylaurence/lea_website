@@ -1,0 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ladybird Ever After — Master Website Spec v3</title>
+<style>
+  :root {
+    --sage: #4A7C6B;
+    --sage-lt: #E8F0ED;
+    --gold: #C9A84C;
+    --gold-lt: #FBF6EC;
+    --rose: #9B4060;
+    --rose-lt: #F5EBF0;
+    --navy: #1E3A5F;
+    --navy-lt: #EBF0F5;
+    --charcoal: #2C3830;
+    --grey-lt: #F5F5F5;
+    --grey-md: #DDDDDD;
+    --white: #FFFFFF;
+  }
+  body { font-family: Georgia, serif; max-width: 980px; margin: 40px auto; padding: 0 24px; line-height: 1.7; color: #111; font-size: 16px; }
+  h1 { font-size: 26px; border-bottom: 3px solid var(--sage); padding-bottom: 10px; margin-top: 0; color: var(--charcoal); }
+  h2 { font-size: 20px; border-bottom: 2px solid #333; padding-bottom: 6px; margin-top: 56px; background: var(--grey-lt); padding: 10px 12px; }
+  h3 { font-size: 17px; border-bottom: 1px solid #ddd; padding-bottom: 4px; margin-top: 36px; }
+  h4 { font-size: 15px; margin-top: 24px; margin-bottom: 4px; font-weight: bold; font-style: italic; }
+  #toc { background: #f5f5f5; border: 1px solid #bbb; padding: 20px 24px; margin: 28px 0 48px; }
+  #toc h2 { background: none; border: none; margin: 0 0 10px; padding: 0; font-size: 16px; }
+  #toc ol { margin: 0; padding-left: 20px; }
+  #toc li { margin: 5px 0; font-size: 14px; }
+  #toc a { color: #111; text-decoration: none; }
+  #toc a:hover { text-decoration: underline; }
+  #toc ol ol { margin-top: 4px; }
+  table { border-collapse: collapse; width: 100%; margin: 16px 0 24px; font-size: 14px; }
+  th { background: #ebebeb; text-align: left; padding: 8px 10px; border: 1px solid #bbb; font-weight: bold; }
+  td { padding: 7px 10px; border: 1px solid #ccc; vertical-align: top; }
+  tr:nth-child(even) td { background: #fafafa; }
+  .todo { background: #fffbe6; border-left: 4px solid #d4a000; padding: 10px 14px; margin: 14px 0; font-size: 14px; }
+  .todo strong { display: block; margin-bottom: 3px; font-size: 15px; }
+  .warn { background: #fff0f0; border-left: 4px solid #c00; padding: 10px 14px; margin: 14px 0; font-size: 14px; }
+  .note { background: #eef6ff; border-left: 4px solid #336; padding: 10px 14px; margin: 14px 0; font-size: 14px; }
+  .decision-closed { background: #edfaf3; border-left: 4px solid var(--sage); padding: 10px 14px; margin: 14px 0; font-size: 14px; }
+  .decision-closed strong { color: var(--sage); }
+  code { font-family: monospace; background: #efefef; padding: 2px 6px; font-size: 13px; border-radius: 3px; }
+  pre { font-family: monospace; background: #f4f4f4; border: 1px solid #ddd; padding: 14px 16px; font-size: 13px; line-height: 1.6; overflow-x: auto; white-space: pre; }
+  ul, ol { margin: 8px 0 12px; padding-left: 22px; }
+  li { margin: 5px 0; }
+  hr { border: none; border-top: 2px solid #ccc; margin: 52px 0; }
+  .slug { font-family: monospace; background: #e8e8e8; padding: 2px 7px; font-size: 13px; }
+  .tag { display: inline-block; font-size: 11px; font-weight: bold; padding: 2px 7px; border: 1px solid; margin-left: 6px; vertical-align: middle; }
+  .p1 { border-color: #080; color: #080; }
+  .p2 { border-color: #00b; color: #00b; }
+  .links-from { font-size: 13px; background: #f0f4f0; border: 1px solid #bcd; padding: 8px 12px; margin: 10px 0; }
+  .links-to { font-size: 13px; background: #f4f0f0; border: 1px solid #dcb; padding: 8px 12px; margin: 10px 0; }
+  .section-block { border: 1px solid #ccc; margin: 20px 0; padding: 14px 16px; }
+  .section-block h4 { margin-top: 0; }
+  .copy { font-style: italic; color: #333; }
+  .wireframe { font-family: monospace; font-size: 13px; background: #fafafa; border: 1px dashed #aaa; padding: 14px 16px; line-height: 1.9; white-space: pre; overflow-x: auto; }
+  .pkg-elopement { border-left: 4px solid var(--rose); background: var(--rose-lt); padding: 3px 8px; font-size: 12px; font-weight: bold; color: var(--rose); display: inline-block; margin-bottom: 4px; }
+  .pkg-wedding { border-left: 4px solid var(--navy); background: var(--navy-lt); padding: 3px 8px; font-size: 12px; font-weight: bold; color: var(--navy); display: inline-block; margin-bottom: 4px; }
+  .pkg-best { border-left: 4px solid var(--sage); background: var(--sage-lt); padding: 3px 8px; font-size: 12px; font-weight: bold; color: var(--sage); display: inline-block; margin-bottom: 4px; }
+  .removed { background: #fff0f0; text-decoration: line-through; color: #999; }
+  .changed { background: #fffbe6; }
+  .new { background: #edfaf3; }
+  .price { font-weight: bold; color: var(--sage); font-size: 15px; }
+  .addon-price { font-weight: bold; color: var(--charcoal); }
+</style>
+</head>
+<body>
+
+<h1>Ladybird Ever After — Master Website Spec v3</h1>
+<p style="font-size:13px;color:#555;">Internal working document. Owner: Yasmeen &amp; Laurence · Updated: April 2026 · Platform: Squarespace<br>
+Live site: <a href="https://www.ladybirdeverafter.com" target="_blank">www.ladybirdeverafter.com</a><br>
+<strong style="color:var(--sage);">v3 changes from v2:</strong> RíRá package removed. Four packages only. All prices confirmed. Fáilte flowers/hair/makeup are add-ons. "Reception coordination" renamed to "reception planning". Photography tiers updated. Add-on pricing confirmed. Open decisions 1 &amp; 2 closed.</p>
+
+<div id="toc">
+  <h2>Table of Contents</h2>
+  <ol>
+    <li><a href="#dir">Site Directory Tree</a></li>
+    <li><a href="#header">Header (Global)</a>
+      <ol>
+        <li><a href="#header-desktop">Desktop nav — exact items &amp; links</a></li>
+        <li><a href="#header-mobile">Mobile nav</a></li>
+        <li><a href="#header-rules">Header rules &amp; behaviour</a></li>
+      </ol>
+    </li>
+    <li><a href="#footer">Footer (Global)</a>
+      <ol>
+        <li><a href="#footer-cols">Column layout &amp; all links</a></li>
+        <li><a href="#footer-bottom">Bottom bar</a></li>
+      </ol>
+    </li>
+    <li><a href="#homepage">Homepage — <code>/</code></a>
+      <ol>
+        <li><a href="#hp-wireframe">Wireframe overview</a></li>
+        <li><a href="#hp-s1">S1: Hero</a></li>
+        <li><a href="#hp-s2">S2: Trust bar</a></li>
+        <li><a href="#hp-s3">S3: Problem you solve</a></li>
+        <li><a href="#hp-s4">S4: Package overview</a></li>
+        <li><a href="#hp-s5">S5: Venue spotlight</a></li>
+        <li><a href="#hp-s6">S6: How it works</a></li>
+        <li><a href="#hp-s7">S7: Real couples</a></li>
+        <li><a href="#hp-s8">S8: Our story</a></li>
+        <li><a href="#hp-s9">S9: DIY teaser / waitlist</a></li>
+        <li><a href="#hp-s10">S10: Final CTA</a></li>
+        <li><a href="#hp-links">All links out of homepage</a></li>
+      </ol>
+    </li>
+    <li><a href="#packages">Packages Page — <code>/packages</code></a>
+      <ol>
+        <li><a href="#pkg-wireframe">Wireframe overview</a></li>
+        <li><a href="#pkg-s1">S1: Page hero</a></li>
+        <li><a href="#pkg-s2">S2: Four package cards</a></li>
+        <li><a href="#pkg-s3">S3: Comparison table</a></li>
+        <li><a href="#pkg-s4">S4: Add-ons</a></li>
+        <li><a href="#pkg-s5">S5: FAQ block</a></li>
+        <li><a href="#pkg-s6">S6: Final CTA</a></li>
+        <li><a href="#pkg-links">All links on packages page</a></li>
+      </ol>
+    </li>
+    <li><a href="#venues">Venues Page — <code>/venues</code></a>
+      <ol>
+        <li><a href="#ven-wireframe">Wireframe overview</a></li>
+        <li><a href="#ven-s1">S1: Page hero</a></li>
+        <li><a href="#ven-s2">S2: Filter bar</a></li>
+        <li><a href="#ven-s3">S3: Venue card grid</a></li>
+        <li><a href="#ven-s4">S4: Individual venue page spec</a></li>
+        <li><a href="#ven-s5">S5: Bottom CTA</a></li>
+        <li><a href="#ven-links">All links on venues page</a></li>
+      </ol>
+    </li>
+    <li><a href="#linking">Master Link Map</a></li>
+    <li><a href="#decisions">Open Decisions</a></li>
+    <li><a href="#done">Done / Shipped Log</a></li>
+  </ol>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="dir">1. Site Directory Tree</h2>
+
+<p>Every URL on the site. RíRá has been removed — the site now has four packages only.</p>
+
+<pre>
+ladybirdeverafter.com/
+│
+├── /                           ← Homepage
+├── /packages                   ← Packages page
+│     └── #failte               ← Anchor: Fáilte  · $4,900 · Elopement 2–4 guests
+│     └── #gra                  ← Anchor: Grá     · $6,800 · Elopement 5–12 guests
+│     └── #slainte              ← Anchor: Sláinte · $8,700 · Wedding 13–25 guests ★ Most Popular
+│     └── #ard                  ← Anchor: Ard     · $9,800 · Wedding 26–50 guests
+│
+├── /venues                     ← Venues gallery
+│     └── /venues/p/[slug]     ← Individual venue pages
+│           e.g. /venues/p/dunlucecastle
+│           e.g. /venues/p/cliffsofmoher
+│           e.g. /venues/p/killarneynationalpark
+│           e.g. /venues/p/muckrossabbey
+│           e.g. /venues/p/rahinnanecastle
+│           e.g. /venues/p/dunseverickcastle
+│
+├── /real-love                  ← Real Weddings / Testimonials
+│
+├── /diy                        ← Plan It Yourself waitlist page (Phase 1)
+│
+├── /blog                       ← Blog index
+│     └── /blog/[post-slug]    ← Individual blog posts
+│
+├── /about                      ← Our Story page
+│
+├── /faqs                       ← FAQs page
+│
+├── /get-in-touch               ← Book a free call / contact
+│
+├── /the-ever-after-roadmap     ← Couple login / My Wedding hub (rename to /my-wedding Phase 2)
+│
+├── /vendors                    ← Supplier/vendor sign-up
+│
+└── /elopement-in-ireland       ← SEO landing page (keep — important for search)
+</pre>
+
+<div class="note"><strong>RíRá removed:</strong> The fifth package (RíRá) has been retired. All references to five packages throughout the site should be updated to four. The anchor <code>#rira</code> should be removed and any existing links to it redirected to <code>/packages</code>.</div>
+
+<div class="note"><strong>Note on Squarespace slugs:</strong> Keep existing slugs wherever possible to protect inbound links and SEO. Exception: consider redirecting <code>/real-love</code> to preserve the URL but rename the nav label to "Real Weddings".</div>
+
+<div class="todo">
+  <strong>Action: Audit existing venue pages</strong>
+  Check which <code>/venues/p/[slug]</code> pages exist and which are stubs. Every venue featured in the main gallery must have a fully built individual page before launch.
+</div>
+
+<hr>
+
+<!-- ============================================================ -->
+<h2 id="header">2. Header (Global — appears on every page)</h2>
+
+<h3 id="header-desktop">Desktop header — exact items, order, and links</h3>
+
+<div class="wireframe">
+┌──────────────────────────────────────────────────────────────────────────────────┐
+│  [LOGO]                                                   [My Wedding]  [Book a Free Call →] │
+│  ────────────────────────────────────────────────────────────────────────────────│
+│  Packages    Venues    Real Weddings    Plan It Yourself    Blog                  │
+└──────────────────────────────────────────────────────────────────────────────────┘
+</div>
+
+<table>
+  <tr><th>Element</th><th>Label</th><th>Links to</th><th>Notes</th></tr>
+  <tr><td>Logo (left)</td><td>Ladybird Ever After logo image</td><td><code>/</code></td><td>Always links home.</td></tr>
+  <tr><td>Nav item 1</td><td>Packages</td><td><code>/packages</code></td><td>Hover: dropdown showing 4 tier names with confirmed prices. Each tier name links to its anchor on /packages.</td></tr>
+  <tr><td>Nav item 2</td><td>Venues</td><td><code>/venues</code></td><td>No dropdown needed.</td></tr>
+  <tr><td>Nav item 3</td><td>Real Weddings</td><td><code>/real-love</code></td><td>Renamed from "Testimonials".</td></tr>
+  <tr><td>Nav item 4</td><td>Plan It Yourself</td><td><code>/diy</code></td><td>Phase 1: waitlist only.</td></tr>
+  <tr><td>Nav item 5</td><td>Blog</td><td><code>/blog</code></td><td>Move to primary nav — drives SEO traffic.</td></tr>
+  <tr><td>Top-right utility 1</td><td>My Wedding</td><td><code>/the-ever-after-roadmap</code></td><td>Smaller text, not a nav item. For existing couples.</td></tr>
+  <tr><td>Top-right CTA button</td><td>Book a Free Call →</td><td><code>/get-in-touch</code></td><td>Persistent sticky button. Primary conversion action on the entire site.</td></tr>
+</table>
+
+<h4>Packages hover dropdown (desktop only) — 4 tiers, prices confirmed</h4>
+<table>
+  <tr><th>Dropdown item</th><th>Sub-label</th><th>Type badge</th><th>Links to</th></tr>
+  <tr><td>Fáilte</td><td>The Pure Elopement · from $4,900</td><td><span class="pkg-elopement">ELOPEMENT</span></td><td><code>/packages#failte</code></td></tr>
+  <tr><td>Grá</td><td>The Small-Group Elopement · from $6,800</td><td><span class="pkg-elopement">ELOPEMENT</span></td><td><code>/packages#gra</code></td></tr>
+  <tr><td>Sláinte ★ Most Popular</td><td>The Intimate Wedding · from $8,700</td><td><span class="pkg-best">★ MOST POPULAR</span></td><td><code>/packages#slainte</code></td></tr>
+  <tr><td>Ard</td><td>The Full Wedding · from $9,800</td><td><span class="pkg-wedding">WEDDING</span></td><td><code>/packages#ard</code></td></tr>
+  <tr><td colspan="3">→ Compare all packages</td><td><code>/packages</code></td></tr>
+</table>
+
+<div class="decision-closed"><strong>✓ Decision closed (was Open Decision #1 &amp; #2 in v2):</strong> Prices are confirmed from real deal data. Sláinte is confirmed Most Popular — 75% close rate, highest expected profit per proposal in the portfolio.</div>
+
+<h3 id="header-mobile">Mobile header</h3>
+<div class="wireframe">
+┌──────────────────────────────┐
+│  [LOGO]              [☰ Menu]│
+└──────────────────────────────┘
+
+When hamburger opens:
+┌──────────────────────────────┐
+│  Packages                    │
+│    └ Fáilte · from $4,900    │
+│    └ Grá · from $6,800       │
+│    └ Sláinte · from $8,700 ★ │
+│    └ Ard · from $9,800       │
+│  Venues                      │
+│  Real Weddings               │
+│  Plan It Yourself            │
+│  Blog                        │
+│  ─────────────────────────── │
+│  My Wedding (login)          │
+│  [Book a Free Call →]        │
+└──────────────────────────────┘
+</div>
+
+<h3 id="header-rules">Header rules &amp; behaviour</h3>
+<ul>
+  <li><strong>Sticky on scroll:</strong> Header stays fixed at the top. The "Book a Free Call →" button must always be visible.</li>
+  <li><strong>Background:</strong> Transparent on the homepage hero, shifts to white/opaque once the user scrolls past the hero. All other pages: always white/opaque.</li>
+  <li><strong>Active state:</strong> Current page's nav item has an underline or slightly heavier weight.</li>
+  <li><strong>What to remove vs current:</strong> Remove "Our Story" from nav (it lives as a homepage section). Remove "Testimonials" from overflow (renamed "Real Weddings" in primary nav). Remove "FAQs" from nav (move to footer). Remove "Elopement in Ireland" from nav (SEO page — footer only). <strong>Remove all references to RíRá.</strong></li>
+</ul>
+
+<hr>
+
+<!-- ============================================================ -->
+<h2 id="footer">3. Footer (Global — appears on every page)</h2>
+
+<div class="wireframe">
+┌──────────────────────────────────────────────────────────────────────────────────┐
+│                                                                                    │
+│  [LOGO]                                                                            │
+│  Ireland's all-inclusive elopement & wedding planner for American couples.         │
+│  info@ladybirdeverafter.com  ·  +1 (770) 826-6446                                 │
+│                                                                                    │
+│  PLAN              EXPLORE           LEARN              CONNECT                   │
+│  Packages          Venues            Blog               Instagram                 │
+│  Fáilte            Cliffs of Moher   FAQs               Facebook                  │
+│  Grá               Dunluce Castle    Elopement Guide    Pinterest                 │
+│  Sláinte ★         Killarney         Our Story          TikTok (if active)        │
+│  Ard               Muckross Abbey    Getting married     ─────────────────        │
+│                    Wild Atlantic Way   in Ireland (SEO)  Work with us             │
+│                    [Explore all →]   Real Weddings      (vendor sign-up)          │
+│                                                                                    │
+│  [Tourism Ireland] [Wild Atlantic Way] [Cliffs of Moher] [Tourism NI] [Eire IAE] │
+│                                                                                    │
+│  © 2026 L&Y Ventures LLC dba Ladybird Ever After  ·  Terms  ·  Privacy Policy    │
+│  Photography: Aidan Fitzgerald, Carrie Duggan, Dylan Clifford, Olga Hogan +more  │
+└──────────────────────────────────────────────────────────────────────────────────┘
+</div>
+
+<h3 id="footer-cols">Footer columns — exact links</h3>
+
+<table>
+  <tr><th>Column: PLAN</th><th>Links to</th></tr>
+  <tr><td>Packages</td><td><code>/packages</code></td></tr>
+  <tr><td>Fáilte — Pure Elopement · $4,900</td><td><code>/packages#failte</code></td></tr>
+  <tr><td>Grá — Small-Group Elopement · $6,800</td><td><code>/packages#gra</code></td></tr>
+  <tr><td>Sláinte ★ — Intimate Wedding · $8,700</td><td><code>/packages#slainte</code></td></tr>
+  <tr><td>Ard — Full Wedding · $9,800</td><td><code>/packages#ard</code></td></tr>
+  <tr><td>Book a Free Call</td><td><code>/get-in-touch</code></td></tr>
+  <tr><td>Plan It Yourself</td><td><code>/diy</code></td></tr>
+</table>
+
+<table>
+  <tr><th>Column: EXPLORE</th><th>Links to</th></tr>
+  <tr><td>All Venues</td><td><code>/venues</code></td></tr>
+  <tr><td>Cliffs of Moher</td><td><code>/venues/p/cliffsofmoher</code></td></tr>
+  <tr><td>Dunluce Castle</td><td><code>/venues/p/dunlucecastle</code></td></tr>
+  <tr><td>Killarney National Park</td><td><code>/venues/p/killarneynationalpark</code></td></tr>
+  <tr><td>Muckross Abbey</td><td><code>/venues/p/muckrossabbey</code></td></tr>
+  <tr><td>Rahinnane Castle</td><td><code>/venues/p/rahinnanecastle</code></td></tr>
+  <tr><td>Wild Atlantic Way weddings</td><td><code>/blog/[wild-atlantic-way-post]</code></td></tr>
+</table>
+
+<table>
+  <tr><th>Column: LEARN</th><th>Links to</th></tr>
+  <tr><td>Blog</td><td><code>/blog</code></td></tr>
+  <tr><td>FAQs</td><td><code>/faqs</code></td></tr>
+  <tr><td>Elopement in Ireland guide</td><td><code>/elopement-in-ireland</code></td></tr>
+  <tr><td>Getting married in Ireland</td><td><code>/blog/how-to-get-married-in-ireland</code></td></tr>
+  <tr><td>Real Weddings</td><td><code>/real-love</code></td></tr>
+  <tr><td>Our Story</td><td><code>/about</code></td></tr>
+</table>
+
+<table>
+  <tr><th>Column: CONNECT</th><th>Links to</th></tr>
+  <tr><td>Instagram</td><td>Instagram profile URL (external, new tab)</td></tr>
+  <tr><td>Facebook</td><td>Facebook page URL (external, new tab)</td></tr>
+  <tr><td>Pinterest</td><td>Pinterest profile URL (external, new tab)</td></tr>
+  <tr><td>Work with us (suppliers)</td><td><code>/vendors</code></td></tr>
+  <tr><td>My Wedding (login)</td><td><code>/the-ever-after-roadmap</code></td></tr>
+</table>
+
+<h3 id="footer-bottom">Footer bottom bar</h3>
+<ul>
+  <li>© 2026 L&amp;Y Ventures LLC doing business as Ladybird Ever After</li>
+  <li><a href="/terms">Terms &amp; Conditions</a></li>
+  <li><a href="/privacy">Privacy Policy</a></li>
+  <li>Photography credits line (as currently shown)</li>
+</ul>
+
+<div class="note"><strong>Partner logos in footer:</strong> Tourism Ireland, Wild Atlantic Way, Cliffs of Moher, Tourism Northern Ireland, Ireland's Ancient East. Keep all — major trust signals for American couples unfamiliar with Irish tourism bodies.</div>
+
+<hr>
+
+<!-- ============================================================ -->
+<h2 id="homepage">4. Homepage — <code>/</code></h2>
+
+<h3 id="hp-wireframe">Wireframe overview</h3>
+<div class="wireframe">
+┌──────────────── HEADER (sticky) ─────────────────┐
+│ Logo · Packages · Venues · Real Weddings · Blog   │
+│                             [My Wedding] [Book →] │
+└──────────────────────────────────────────────────┘
+
+S1  ████████████████████████████████  HERO (full screen)
+    ████  Say "I Do" in Ireland  ████
+    ████  [See Packages]  [DIY?] ████
+    ████████████████████████████████
+
+S2  | Irish Independent | ★★★★★ Google | 250+ Venues | Legal Experts |  TRUST BAR
+
+S3  [Pain 1]          [Pain 2]          [Pain 3]       PROBLEM / SOLUTION
+    Time zones        Legality          Trust
+    → See how it works ↓
+
+S4  [Fáilte $4,900] [Grá $6,800] [Sláinte $8,700 ★] [Ard $9,800]  PACKAGES (4)
+    → Compare all packages
+
+S5  ← scroll → [ venue ] [ venue ] [ venue ] [ venue ] [ venue ] [ venue ]  VENUES
+    → Explore 250+ venues
+
+S6  (1)→(2)→(3)→(4)  HOW IT WORKS
+    Pick · Plan · Fly · Say I Do
+    → Book a free call
+
+S7  [ Couple photo + quote ]  [ Couple photo + quote ]  [ Couple photo + quote ]  REAL COUPLES
+    → See all real weddings
+
+S8  [Yasmeen & Laurence photo]  OUR STORY (brief)
+    → Our full story
+
+S9  ░░░░░░░  WANT TO PLAN IT YOURSELF?  ░░░░░░░  DIY TEASER
+    [email____________________] [Join waitlist]
+
+S10 YOUR DATE WON'T WAIT  FINAL CTA
+    [Name] [Email] [Month] [Package interest]
+    [Book my free call]
+
+└──────────────── FOOTER ──────────────────────────┘
+</div>
+
+<!-- S1 -->
+<h3 id="hp-s1">Section 1 — Hero</h3>
+<div class="section-block">
+  <h4>Purpose</h4>
+  <p>Stop the scroll. Establish Ireland + romance + credibility within 3 seconds. One clear primary action.</p>
+
+  <h4>Layout</h4>
+  <ul>
+    <li>Full-screen: 100vw × 100vh</li>
+    <li>Background: video (ceremony moment, Cliffs of Moher, Wild Atlantic Way) OR cinematic single photo. No carousel.</li>
+    <li>Dark overlay so text is readable. All text centred.</li>
+  </ul>
+
+  <h4>Copy</h4>
+  <ul>
+    <li><strong>Pre-headline (small, spaced caps):</strong> <span class="copy">Ireland's All-Inclusive Wedding Planner for American Couples</span></li>
+    <li><strong>Headline (large):</strong> <span class="copy">Say "I Do" in Ireland</span></li>
+    <li><strong>Subheadline:</strong> <span class="copy">We handle everything — you just show up and say yes.</span></li>
+  </ul>
+
+  <h4>CTAs</h4>
+  <ul>
+    <li><strong>Primary button:</strong> "See Packages" → <code>/packages</code></li>
+    <li><strong>Secondary micro-link:</strong> "Planning it yourself? Join the waitlist ↓" — smooth scroll to Section 9</li>
+  </ul>
+
+  <h4>Scroll indicator</h4>
+  <p>Animated down arrow at the very bottom of the hero. Links to Section 2.</p>
+</div>
+
+<!-- S2 -->
+<h3 id="hp-s2">Section 2 — Trust bar</h3>
+<div class="section-block">
+  <h4>Purpose</h4>
+  <p>Fast credibility before the couple reads a word.</p>
+
+  <h4>Layout</h4>
+  <p>Single horizontal row. 4 items separated by a thin vertical divider. Full width, centred. Light background.</p>
+
+  <table>
+    <tr><th>Item</th><th>Icon / Logo</th><th>Copy</th><th>Links to</th></tr>
+    <tr><td>1</td><td>Irish Independent masthead logo</td><td>Featured in Irish Independent</td><td>/blog/feature-irish-independent</td></tr>
+    <tr><td>2</td><td>Google "G" icon</td><td>★★★★★ Google Reviews</td><td>Google Maps listing (external, new tab)</td></tr>
+    <tr><td>3</td><td>Map pin icon</td><td>250+ Venues Across Ireland</td><td><code>/venues</code></td></tr>
+    <tr><td>4</td><td>Checkmark or shamrock icon</td><td>Irish Legal Ceremony Experts</td><td><code>/elopement-in-ireland</code></td></tr>
+  </table>
+
+  <p><strong>Below the trust bar:</strong> Partner logo row — Tourism Ireland, Wild Atlantic Way, Cliffs of Moher, Tourism NI. Small greyscale logos. No links needed here (linked in footer).</p>
+</div>
+
+<!-- S3 -->
+<h3 id="hp-s3">Section 3 — The problem you solve</h3>
+<div class="section-block">
+  <h4>Layout</h4>
+  <p>Headline centred above. Three columns below — each: icon, pain point headline, one-line resolution.</p>
+
+  <h4>Copy</h4>
+  <p><strong>Section headline:</strong> <span class="copy">Planning a wedding 4,000 miles away is complicated. We built a better way.</span></p>
+
+  <table>
+    <tr><th>Column</th><th>Icon</th><th>Pain headline</th><th>Resolution</th></tr>
+    <tr><td>1</td><td>Clock / globe</td><td>Chasing Irish vendors from Atlanta at midnight</td><td>We manage every supplier on your behalf, in your time zone.</td></tr>
+    <tr><td>2</td><td>Document / scale</td><td>Irish marriage law is confusing for Americans</td><td>We walk you through every legal step from notification to "I do."</td></tr>
+    <tr><td>3</td><td>Shield / lock</td><td>Sending a deposit overseas to someone you've never met</td><td>One US-based payment. We handle the rest. No wire transfers.</td></tr>
+  </table>
+
+  <h4>CTA</h4>
+  <p>"See how it works →" — smooth scroll to Section 6</p>
+</div>
+
+<!-- S4 -->
+<h3 id="hp-s4">Section 4 — Package overview</h3>
+<div class="section-block">
+  <h4>Purpose</h4>
+  <p>Let couples self-sort by vision and budget. Prices are now confirmed — show them prominently. This is the single biggest conversion fix vs. the current site.</p>
+
+  <h4>Layout</h4>
+  <p>Section headline centred. <strong>Four cards</strong> in a row (horizontal scroll on mobile). Below the cards: one centred CTA.</p>
+
+  <h4>Copy</h4>
+  <p><strong>Section headline:</strong> <span class="copy">Four packages. One team. Zero stress.</span></p>
+  <p><strong>Section sub-headline:</strong> <span class="copy">From a pure two-person elopement to an intimate wedding with your closest people — all planned from the US, all priced in dollars.</span></p>
+
+  <h4>Each package card contains</h4>
+  <ul>
+    <li>Package category badge (ELOPEMENT or WEDDING)</li>
+    <li>Irish name (Fáilte, Grá, Sláinte, Ard)</li>
+    <li>English description (see table below)</li>
+    <li>Guest guidance (e.g. "2–4 guests")</li>
+    <li>3 key inclusions (bullet list, concise)</li>
+    <li><strong>Price: "From $[X]"</strong> — bold, prominent</li>
+    <li>CTA button: "View package" → <code>/packages#[tier-anchor]</code></li>
+  </ul>
+
+  <h4>Package card data — confirmed</h4>
+  <table>
+    <tr><th>Package</th><th>Badge</th><th>English name</th><th>Guests</th><th>Price</th><th>3 key inclusions for card</th></tr>
+    <tr>
+      <td><strong>Fáilte</strong></td>
+      <td><span class="pkg-elopement">ELOPEMENT</span></td>
+      <td>The Pure Elopement</td>
+      <td>2–4 guests</td>
+      <td class="price">From $4,900</td>
+      <td>Celebrant &amp; legal guidance · 2-hr elopement photography · Dedicated elopement planner</td>
+    </tr>
+    <tr>
+      <td><strong>Grá</strong></td>
+      <td><span class="pkg-elopement">ELOPEMENT</span></td>
+      <td>The Small-Group Elopement</td>
+      <td>5–12 guests</td>
+      <td class="price">From $6,800</td>
+      <td>Celebrant &amp; legal guidance · 3-hr elopement photography · Flowers, hair &amp; makeup</td>
+    </tr>
+    <tr>
+      <td><strong>Sláinte ★</strong></td>
+      <td><span class="pkg-best">★ MOST POPULAR</span></td>
+      <td>The Intimate Wedding</td>
+      <td>13–25 guests</td>
+      <td class="price">From $8,700</td>
+      <td>Celebrant &amp; legal guidance · 4-hr wedding photography · Dedicated wedding planner + reception planning</td>
+    </tr>
+    <tr>
+      <td><strong>Ard</strong></td>
+      <td><span class="pkg-wedding">WEDDING</span></td>
+      <td>The Full Wedding</td>
+      <td>26–50 guests</td>
+      <td class="price">From $9,800</td>
+      <td>Celebrant &amp; legal guidance · 4-hr wedding photography · On-the-day coordinator + guest hotline</td>
+    </tr>
+  </table>
+
+  <h4>Sláinte card — Most Popular treatment</h4>
+  <p><strong>Homepage:</strong> The "Most Popular" badge has been <strong>removed from the homepage S4 cards</strong>. All four cards now sit as visual equals. The badge created visual distraction and an unequal hierarchy in what should be a self-sorting overview section. Sláinte's popularity is noted in the comparison table on <code>/packages</code> instead.</p>
+  <p><strong>Packages page comparison table:</strong> Sláinte column retains the "Most Popular" label in the table header — this is informational context, not a visual upsell.</p>
+
+  <h4>Below all four cards</h4>
+  <p>Centred link: "Compare all packages and inclusions →" → <code>/packages</code></p>
+</div>
+
+<!-- S5 -->
+<h3 id="hp-s5">Section 5 — Venue spotlight</h3>
+<div class="section-block">
+  <h4>Layout</h4>
+  <p>Section headline. Horizontally scrollable row of 6 venue cards. On desktop, show 3–4 at once with peek of the next.</p>
+
+  <h4>Copy</h4>
+  <p><strong>Section headline:</strong> <span class="copy">Ireland was made for this moment.</span></p>
+  <p><strong>Sub-headline:</strong> <span class="copy">Windswept cliffs. Castle ruins. Ancient abbeys. We find the perfect backdrop for your love story.</span></p>
+
+  <h4>Featured venues (6)</h4>
+  <table>
+    <tr><th>Venue name</th><th>Region label</th><th>Style tag</th><th>Card links to</th></tr>
+    <tr><td>Cliffs of Moher</td><td>Wild Atlantic Way</td><td>Coastal</td><td><code>/venues/p/cliffsofmoher</code></td></tr>
+    <tr><td>Dunluce Castle</td><td>Northern Ireland</td><td>Castle</td><td><code>/venues/p/dunlucecastle</code></td></tr>
+    <tr><td>Killarney National Park</td><td>Kerry</td><td>Parkland</td><td><code>/venues/p/killarneynationalpark</code></td></tr>
+    <tr><td>Muckross Abbey</td><td>Kerry</td><td>Historic</td><td><code>/venues/p/muckrossabbey</code></td></tr>
+    <tr><td>Rahinnane Castle</td><td>Kerry</td><td>Castle</td><td><code>/venues/p/rahinnanecastle</code></td></tr>
+    <tr><td>Dunseverick Castle</td><td>Northern Ireland</td><td>Coastal Castle</td><td><code>/venues/p/dunseverickcastle</code></td></tr>
+  </table>
+
+  <h4>Below the gallery</h4>
+  <p>Centred CTA: "Explore 250+ venues across Ireland →" → <code>/venues</code></p>
+</div>
+
+<!-- S6 -->
+<h3 id="hp-s6">Section 6 — How it works</h3>
+<div class="section-block">
+  <h4>Layout</h4>
+  <p>4 numbered steps in a horizontal row, connected by a line or arrow. Each step: number circle, title, one sentence.</p>
+
+  <h4>Copy</h4>
+  <p><strong>Section headline:</strong> <span class="copy">Getting married in Ireland is easier than you think.</span></p>
+
+  <table>
+    <tr><th>Step</th><th>Title</th><th>Description</th></tr>
+    <tr><td>1</td><td>Pick your package</td><td>Choose the level that fits your vision, guest count, and budget. Four packages — from pure elopement to full wedding.</td></tr>
+    <tr><td>2</td><td>We plan everything</td><td>Your dedicated planner handles venues, vendors, legalities, and every detail — all from the US, all in USD.</td></tr>
+    <tr><td>3</td><td>You fly to Ireland</td><td>Arrive relaxed. Your day is fully organised and waiting for you.</td></tr>
+    <tr><td>4</td><td>Say "I do"</td><td>In one of the most beautiful places on earth, surrounded by the people you love.</td></tr>
+  </table>
+
+  <h4>CTA below</h4>
+  <p>"Book a free call — we'll help you plan the rest →" → <code>/get-in-touch</code></p>
+</div>
+
+<!-- S7 -->
+<h3 id="hp-s7">Section 7 — Real couples</h3>
+<div class="section-block">
+  <h4>Layout</h4>
+  <p>3 featured couple cards in a grid. Each card: photo + overlay or below-photo info block.</p>
+
+  <h4>Copy</h4>
+  <p><strong>Section headline:</strong> <span class="copy">They said yes. Here's what happened next.</span></p>
+
+  <h4>Each couple card contains</h4>
+  <ul>
+    <li>Full-width ceremony or portrait photo</li>
+    <li>Couple names + wedding year</li>
+    <li>Venue name (links to that venue page)</li>
+    <li>Package tier used (with confirmed name, e.g. "Sláinte — The Intimate Wedding")</li>
+    <li>Pull-quote: 1–2 sentences from their review</li>
+    <li>Link: "Read their story →" → <code>/real-love</code></li>
+  </ul>
+
+  <h4>Suggested couples to feature</h4>
+  <table>
+    <tr><th>Couple</th><th>Quote to use</th><th>Venue</th></tr>
+    <tr><td>Jessica, 2025</td><td>"Ladybird Ever After did a phenomenal job… they go above and beyond for their couples."</td><td>[pull from her story]</td></tr>
+    <tr><td>Kalee, 2025</td><td>"We were able to enjoy our day without any stress."</td><td>[pull from her story]</td></tr>
+    <tr><td>Maya, 2025</td><td>"Our day was so easy, SO fun, and so magical."</td><td>[pull from her story]</td></tr>
+  </table>
+
+  <h4>Below the cards</h4>
+  <p>Centred link: "See all real weddings →" → <code>/real-love</code></p>
+</div>
+
+<!-- S8 -->
+<h3 id="hp-s8">Section 8 — Our story (brief)</h3>
+<div class="section-block">
+  <h4>Layout</h4>
+  <p>Two columns: photo of Yasmeen and Laurence on one side, copy on the other.</p>
+
+  <h4>Copy</h4>
+  <p><strong>Section headline:</strong> <span class="copy">We lived it. We loved it. Now we help you do the same.</span></p>
+  <p><strong>Body (3 sentences max):</strong> <span class="copy">Laurence is from Ireland. Yasmeen is from Atlanta. We planned our own wedding 4,000 miles away on the wild west coast of Ireland — and then we built a better way for every American couple who comes after us.</span></p>
+
+  <h4>CTA</h4>
+  <p>"Our full story →" → <code>/about</code></p>
+</div>
+
+<!-- S9 -->
+<h3 id="hp-s9">Section 9 — Inquiry form with testimonials <span class="tag p1">Phase 1</span></h3>
+<div class="section-block">
+  <h4>Purpose</h4>
+  <p>Capture full-service inquiries from couples who have read through the homepage. Provides a second conversion opportunity before the final CTA section.</p>
+
+  <h4>Layout — IMPLEMENTED</h4>
+  <p>Background: <code>var(--warm)</code>. Two-column grid: HubSpot inquiry form on the left, testimonial stack on the right. Matches the same pattern used on <code>/get-in-touch</code>. At 900px, collapses to single column with a border-top above the testimonials.</p>
+  <p><strong>This replaced the earlier DIY teaser / waitlist concept.</strong> The form section now captures full-service inquiries rather than DIY waitlist emails.</p>
+
+  <h4>Copy</h4>
+  <p><strong>Overline:</strong> Let's start planning</p>
+  <p><strong>Headline:</strong> <span class="copy">Ready to start your Ireland wedding story?</span></p>
+  <p><strong>Intro:</strong> <span class="copy">Tell us a little about your vision and we'll reach out to schedule your free 15-minute discovery call.</span></p>
+
+  <h4>Form</h4>
+  <p>HubSpot embedded form (ID: <code>hs-hp</code>). Button styles match the <code>/get-in-touch</code> page: dark green background, cream text, gold hover state.</p>
+
+  <h4>Testimonials (right column)</h4>
+  <p>5 rotating quotes from real couples. Styled with gold left-border accent, Playfair italic quote text, green uppercase attribution.</p>
+
+  <div class="note"><strong>Design rule:</strong> This section must use <code>var(--warm)</code> background — never a dark overlay or opaque image background. The form section should feel welcoming and light, matching the rest of the page's color rhythm.</div>
+</div>
+
+<!-- S10 -->
+<h3 id="hp-s10">Section 10 — Final CTA</h3>
+<div class="section-block">
+  <h4>Layout</h4>
+  <p>Full-width. Beautiful venue photo background with overlay OR plain light background. Centred headline. Short embedded form OR Calendly embed.</p>
+
+  <h4>Copy</h4>
+  <p><strong>Headline:</strong> <span class="copy">Your date won't wait.</span></p>
+  <p><strong>Sub-headline:</strong> <span class="copy">Ireland's most sought-after venues and dates book fast. Tell us your vision and we'll take it from there.</span></p>
+  <p><strong>Reassurance line below button:</strong> <span class="copy">No commitment. No payment. Just a conversation.</span></p>
+
+  <h4>Form fields</h4>
+  <table>
+    <tr><th>Field</th><th>Type</th><th>Required</th></tr>
+    <tr><td>First names (both partners)</td><td>Text</td><td>Yes</td></tr>
+    <tr><td>Email address</td><td>Email</td><td>Yes</td></tr>
+    <tr><td>Approximate wedding month &amp; year</td><td>Dropdown or text</td><td>Yes</td></tr>
+    <tr><td>Package interest</td><td>Dropdown: Fáilte ($4,900) · Grá ($6,800) · Sláinte ($8,700) · Ard ($9,800) · Not sure yet</td><td>No — but useful for routing</td></tr>
+    <tr><td>How did you hear about us?</td><td>Dropdown</td><td>No — but useful for tracking</td></tr>
+  </table>
+  <p><strong>Submit button label:</strong> "Book my free call →"</p>
+
+  <div class="note"><strong>Calendly vs embedded form:</strong> Use Calendly on <code>/get-in-touch</code>. Use the short form here on the homepage to capture "package interest" and "how did you hear" data before they book.</div>
+</div>
+
+<h3 id="hp-links">All links out of the homepage</h3>
+<div class="links-to">
+  <table>
+    <tr><th>Element</th><th>Destination</th></tr>
+    <tr><td>Logo (header)</td><td><code>/</code> (self)</td></tr>
+    <tr><td>Hero: See Packages button</td><td><code>/packages</code></td></tr>
+    <tr><td>Hero: DIY micro-link</td><td>Scroll to S9 on this page</td></tr>
+    <tr><td>Trust bar: Irish Independent</td><td><code>/blog/feature-irish-independent</code></td></tr>
+    <tr><td>Trust bar: Google Reviews</td><td>Google Maps listing (external)</td></tr>
+    <tr><td>Trust bar: 250+ Venues</td><td><code>/venues</code></td></tr>
+    <tr><td>Trust bar: Legal Experts</td><td><code>/elopement-in-ireland</code></td></tr>
+    <tr><td>S3: See how it works</td><td>Scroll to S6 on this page</td></tr>
+    <tr><td>S4: Each package card CTA (×4)</td><td><code>/packages#[tier]</code></td></tr>
+    <tr><td>S4: Compare all packages</td><td><code>/packages</code></td></tr>
+    <tr><td>S5: Each venue card (×6)</td><td><code>/venues/p/[venue-slug]</code></td></tr>
+    <tr><td>S5: Explore 250+ venues</td><td><code>/venues</code></td></tr>
+    <tr><td>S6: Book a free call</td><td><code>/get-in-touch</code></td></tr>
+    <tr><td>S7: Each couple story link</td><td><code>/real-love</code></td></tr>
+    <tr><td>S7: Each venue name in card</td><td><code>/venues/p/[venue-slug]</code></td></tr>
+    <tr><td>S7: See all real weddings</td><td><code>/real-love</code></td></tr>
+    <tr><td>S8: Our full story</td><td><code>/about</code></td></tr>
+    <tr><td>S9: DIY waitlist form</td><td>Mailchimp (form submit — no redirect)</td></tr>
+    <tr><td>S9: See full-service packages</td><td><code>/packages</code></td></tr>
+    <tr><td>S10: Final form submit</td><td>Confirmation message or <code>/get-in-touch</code></td></tr>
+    <tr><td>Footer: all items</td><td>See Footer section above</td></tr>
+  </table>
+</div>
+
+<hr>
+
+<!-- ============================================================ -->
+<h2 id="packages">5. Packages Page — <code>/packages</code></h2>
+
+<p>This page has one job: get a couple to book a free call after understanding which package fits them. Four packages. All prices confirmed. Sláinte marked as Most Popular.</p>
+
+<h3 id="pkg-wireframe">Wireframe overview</h3>
+<div class="wireframe">
+┌──────────────── HEADER ──────────────────────────┐
+
+S1  PAGE HERO
+    "Find your perfect package."
+    [Fáilte] [Grá] [Sláinte ★] [Ard]  ← anchor jump nav (4 pills)
+
+S2  FOUR PACKAGE CARDS  (full detail versions)
+    ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐
+    │ Fáilte   │ │   Grá    │ │ Sláinte  │ │   Ard    │
+    │ELOPEMENT │ │ELOPEMENT │ │★ POPULAR │ │ WEDDING  │
+    │ $4,900   │ │ $6,800   │ │ $8,700   │ │ $9,800   │
+    │ [Book]   │ │ [Book]   │ │ [Book]   │ │ [Book]   │
+    └──────────┘ └──────────┘ └──────────┘ └──────────┘
+
+S3  COMPARISON TABLE
+    Inclusions vs tiers — tick / cross grid (4 columns)
+
+S4  ADD-ONS
+    Photography upgrades · Vintage car · Coordinator · Music + more
+
+S5  FAQ BLOCK
+
+S6  FINAL CTA
+
+└──────────────── FOOTER ──────────────────────────┘
+</div>
+
+<h3 id="pkg-s1">Section 1 — Page hero</h3>
+<div class="section-block">
+  <h4>Copy</h4>
+  <p><strong>Headline:</strong> <span class="copy">Find your perfect package.</span></p>
+  <p><strong>Sub-headline:</strong> <span class="copy">From a pure two-person elopement to an intimate wedding with your closest people. Four packages, two tracks — elopement or wedding — all planned from the US.</span></p>
+
+  <h4>Anchor jump navigation — 4 pills</h4>
+  <ul>
+    <li>Fáilte → <code>#failte</code></li>
+    <li>Grá → <code>#gra</code></li>
+    <li>Sláinte ★ → <code>#slainte</code></li>
+    <li>Ard → <code>#ard</code></li>
+  </ul>
+
+  <h4>Elopement vs. Wedding framing</h4>
+  <p>Add a brief orientation sentence above or below the anchor pills to help couples self-route before they scroll:</p>
+  <p><span class="copy"><strong>Eloping?</strong> Fáilte and Grá are built for intimate ceremonies — just the two of you or a small circle of people who matter most. <strong>Having a wedding?</strong> Sláinte and Ard give you the full walk-down-the-aisle experience in one of the most beautiful places on earth.</span></p>
+</div>
+
+<h3 id="pkg-s2">Section 2 — Four package cards (full detail)</h3>
+<div class="section-block">
+  <h4>Layout</h4>
+  <p>One card per tier, stacked vertically. Each card is wide with package icon and name on the left, inclusions list on the right. On mobile: single column, stacked.</p>
+
+  <h4>Each card contains</h4>
+  <ul>
+    <li>Anchor ID (e.g. <code>id="slainte"</code>)</li>
+    <li>Category badge (ELOPEMENT or WEDDING or ★ MOST POPULAR)</li>
+    <li>Irish name + English description</li>
+    <li>Guest guidance (e.g. "13–25 guests")</li>
+    <li><strong>"From $[X]" price — must be visible and prominent</strong></li>
+    <li>Full inclusions list (not truncated)</li>
+    <li>What is NOT included (brief, honest — prevents surprise, builds trust)</li>
+    <li>Available add-ons listed with prices (see S4 for full list)</li>
+    <li>CTA button: "Book a free call about this package" → <code>/get-in-touch?package=[tier]</code></li>
+    <li>Secondary link: "Not sure? Compare all packages ↓" → smooth scroll to S3</li>
+  </ul>
+
+  <h4>Full inclusions per tier — confirmed from 2026 pricing data</h4>
+  <table>
+    <tr><th>Inclusion</th><th>Fáilte<br>$4,900</th><th>Grá<br>$6,800</th><th>Sláinte ★<br>$8,700</th><th>Ard<br>$9,800</th></tr>
+    <tr><td>Guest guidance</td><td>2–4 guests</td><td>5–12 guests</td><td>13–25 guests</td><td>26–50 guests</td></tr>
+    <tr><td>Expert Irish celebrant</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    <tr><td>Legal marriage guidance</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    <tr><td>Venue curation &amp; booking</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    <tr><td>US-based contract in USD</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    <tr><td>Unlimited planning calls</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    <tr><td>Travel guidance — all of Ireland</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    <tr><td>Dinner reservation coordination</td><td>✓</td><td>✓</td><td>—</td><td>—</td></tr>
+    <tr><td>Photography</td><td>2 hrs elopement</td><td>3 hrs elopement</td><td>4 hrs wedding</td><td>4 hrs wedding</td></tr>
+    <tr><td>Flowers (bouquet &amp; buttonhole)</td><td>add-on +$500</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    <tr><td>Hair stylist (1 person)</td><td>add-on +$500</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    <tr><td>Makeup artist (1 person)</td><td>add-on +$500</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    <tr><td>Dedicated elopement planner</td><td>✓</td><td>✓</td><td>—</td><td>—</td></tr>
+    <tr><td>Dedicated wedding planner</td><td>—</td><td>—</td><td>✓</td><td>✓</td></tr>
+    <tr><td>Welcome dinner planning</td><td>—</td><td>—</td><td>✓</td><td>✓</td></tr>
+    <tr><td>Day-after dinner planning</td><td>—</td><td>✓</td><td>✓</td><td>✓</td></tr>
+    <tr><td>Reception planning</td><td>—</td><td>—</td><td>✓</td><td>✓</td></tr>
+    <tr><td>Hotel room block coordination</td><td>add-on +$400</td><td>add-on +$400</td><td>✓</td><td>✓</td></tr>
+    <tr><td>Day 2 planning</td><td>add-on +$700</td><td>add-on +$700</td><td>add-on +$700</td><td>✓</td></tr>
+    <tr><td>On-the-day coordinator</td><td>add-on +$1,800</td><td>add-on +$1,800</td><td>add-on +$1,800</td><td>✓</td></tr>
+    <tr><td>Guest hotline</td><td>add-on +$700</td><td>add-on +$700</td><td>add-on +$700</td><td>✓</td></tr>
+    <tr><td>Gross margin</td><td>55.3%</td><td>51.7%</td><td>56.5%</td><td>51.7%</td></tr>
+  </table>
+
+  <div class="note"><strong>Gross margin row is for internal reference only</strong> — do not display on the website. Included here so the spec document carries the full picture.</div>
+
+  <h4>What is NOT included in any package</h4>
+  <p>State clearly on each card (or in a shared callout above the cards):</p>
+  <ul>
+    <li>Flights and accommodation</li>
+    <li>Meals and drinks (unless specifically noted — dinner reservation is included in Fáilte and Grá but does not cover the cost of the meal)</li>
+    <li>Venue permit fees (disclosed upfront when applicable)</li>
+  </ul>
+
+  <h4>Sláinte card — Most Popular treatment (packages page)</h4>
+  <ul>
+    <li>Subtle gold border accent on the card (<code>border-color: rgba(184,150,78,.35)</code>) — acceptable here as informational context</li>
+    <li>Listed third — the natural anchor position when scanning four cards</li>
+    <li>"Most Popular" label lives in the <strong>comparison table header only</strong>, not as a separate badge on the individual package card</li>
+  </ul>
+
+  <h4>Package card design — IMPLEMENTED</h4>
+  <ul>
+    <li><strong>Background:</strong> <code>var(--warm)</code> — not white (<code>#fff</code>). Cards sit within the page's color rhythm.</li>
+    <li><strong>No min-height</strong> — content determines height naturally. Removed to eliminate excessively tall cards.</li>
+    <li><strong>Guest count format:</strong> Numeric range — "Ideal for 0–4 guests", "Ideal for 5–12 guests", "Ideal for 10–20 guests", "Ideal for 20–50 guests". Consistent with homepage S4 cards.</li>
+    <li><strong>Body padding:</strong> <code>clamp(1.8rem, 3.5vw, 2.8rem)</code> — tighter than before to reduce card height.</li>
+  </ul>
+</div>
+
+<h3 id="pkg-s3">Section 3 — Comparison table</h3>
+<div class="section-block">
+  <h4>Purpose</h4>
+  <p>Quick-scan reference for couples comparing tiers. Rows = inclusions. Columns = 4 tiers. Sláinte column highlighted. Sticky header so tier names stay visible when scrolling.</p>
+
+  <h4>Headline above table</h4>
+  <p><span class="copy">Compare packages at a glance.</span></p>
+
+  <h4>Table structure</h4>
+  <p>Use the inclusions table from S2. Add a "Price" row at the top and a "Book this" CTA row at the bottom. Only 4 columns (RíRá removed).</p>
+
+  <h4>Table design — IMPLEMENTED</h4>
+  <ul>
+    <li>Section background: <code>var(--cream)</code> (alternates from packages section which uses <code>var(--warm)</code>).</li>
+    <li>Table wrapper: <code>var(--warm)</code> background — not <code>#fff</code>. No border-radius. Flat rectangular design.</li>
+    <li>Sticky cells (first column header and body): <code>var(--warm)</code> to match wrapper on scroll.</li>
+    <li>"Most Popular" badge in Sláinte header cell: <code>var(--green)</code> background, <code>var(--cream)</code> text, no border-radius — flat badge, not a pill shape.</li>
+  </ul>
+</div>
+
+<h3 id="pkg-s4">Section 4 — Add-ons</h3>
+<div class="section-block">
+  <h4>Purpose</h4>
+  <p>Let couples customise their package. All add-on prices are now confirmed — show them, not "ask us."</p>
+
+  <h4>Copy</h4>
+  <p><strong>Section headline:</strong> <span class="copy">Make it yours — add-ons available for any package.</span></p>
+
+  <h4>Add-on price list — confirmed</h4>
+  <table>
+    <tr><th>Add-on</th><th>Price</th><th>Available on</th></tr>
+    <tr><td>Photography: upgrade to 3-hr elopement</td><td class="addon-price">+$400</td><td>Fáilte only</td></tr>
+    <tr><td>Photography: upgrade to 4-hr elopement</td><td class="addon-price">+$800</td><td>Fáilte · +$400 from Grá</td></tr>
+    <tr><td>Photography: upgrade to half-day wedding</td><td class="addon-price">+$1,500</td><td>Sláinte · Ard</td></tr>
+    <tr><td>Photography: upgrade to full-day wedding</td><td class="addon-price">+$2,500</td><td>Sláinte · Ard</td></tr>
+    <tr><td>Photography: downgrade to 2-hr wedding</td><td class="addon-price">−$800</td><td>Sláinte only</td></tr>
+    <tr><td>Flowers / bouquet &amp; buttonhole</td><td class="addon-price">+$500</td><td>Fáilte only (included in Grá+)</td></tr>
+    <tr><td>Hair stylist</td><td class="addon-price">+$500</td><td>Fáilte only (included in Grá+)</td></tr>
+    <tr><td>Makeup artist</td><td class="addon-price">+$500</td><td>Fáilte only (included in Grá+)</td></tr>
+    <tr><td>Additional hair or makeup (per person)</td><td class="addon-price">+$150</td><td>All packages</td></tr>
+    <tr><td>Vintage car</td><td class="addon-price">+$1,000</td><td>All packages</td></tr>
+    <tr><td>On-the-day coordinator</td><td class="addon-price">+$1,800</td><td>Fáilte · Grá · Sláinte (included in Ard)</td></tr>
+    <tr><td>Ceremony music</td><td class="addon-price">+$980</td><td>All packages</td></tr>
+    <tr><td>Wedding venue scouting</td><td class="addon-price">+$800</td><td>Fáilte · Grá (included in Sláinte+)</td></tr>
+    <tr><td>Welcome dinner planning</td><td class="addon-price">+$700</td><td>Fáilte · Grá (included in Sláinte+)</td></tr>
+    <tr><td>Day 2 planning</td><td class="addon-price">+$700</td><td>Fáilte · Grá · Sláinte (included in Ard)</td></tr>
+    <tr><td>Guest hotline</td><td class="addon-price">+$700</td><td>Fáilte · Grá · Sláinte (included in Ard)</td></tr>
+    <tr><td>Hotel room block coordination</td><td class="addon-price">+$400</td><td>Fáilte · Grá (included in Sláinte+)</td></tr>
+    <tr><td>Church wedding supplement</td><td class="addon-price">+$300</td><td>All packages</td></tr>
+  </table>
+
+  <p>Below the add-ons: "Something else in mind? We can customise every package — just ask." → <code>/get-in-touch</code></p>
+</div>
+
+<h3 id="pkg-s5">Section 5 — FAQ block</h3>
+<div class="section-block">
+  <h4>Questions to include (accordion style)</h4>
+  <ol>
+    <li><strong>Can I customise my package?</strong> Yes — through add-ons listed above, or by working with your planner on anything not listed.</li>
+    <li><strong>What does "guest guidance" mean — is it a hard limit?</strong> No. Guest counts are how we route you to the right package on your intro call. They are not contractual caps. If you have 15 guests and enquire about Fáilte, your planner will naturally guide you to Sláinte — the right fit for your group size.</li>
+    <li><strong>Are prices fixed or do they vary by venue?</strong> Packages are all-in at the stated prices. Some venues have permit fees — these are disclosed upfront and are never hidden in the package price.</li>
+    <li><strong>What is NOT included in any package?</strong> Flights, accommodation, and meals (unless explicitly stated). Your planner will provide recommendations and, for applicable packages, help with restaurant reservations and hotel room blocks.</li>
+    <li><strong>Do you offer payment plans?</strong> Yes. Ask us on your free call.</li>
+    <li><strong>What if I need to postpone or cancel?</strong> We have flexible postponement policies. Details are in your contract — ask on your call.</li>
+    <li><strong>How far in advance should I book?</strong> We recommend 6+ months for the best venue availability. We have planned weddings in 30 days — ask us about what's possible for your date.</li>
+  </ol>
+
+  <p>Below FAQs: "More questions? See our full FAQ page →" → <code>/faqs</code></p>
+</div>
+
+<h3 id="pkg-s6">Section 6 — Final CTA</h3>
+<div class="section-block">
+  <h4>Copy</h4>
+  <p><strong>Headline:</strong> <span class="copy">Not sure which package is right for you?</span></p>
+  <p><strong>Sub-headline:</strong> <span class="copy">Book a free 30-minute call. We'll listen to your vision and recommend the perfect package — no pressure, no commitment.</span></p>
+  <p><strong>CTA button:</strong> "Book my free call →" → <code>/get-in-touch</code></p>
+  <p><strong>Below button:</strong> <span class="copy">Or email us at info@ladybirdeverafter.com — we reply within 24 hours.</span></p>
+</div>
+
+<h3 id="pkg-links">All links on the packages page</h3>
+<div class="links-to">
+  <table>
+    <tr><th>Element</th><th>Destination</th></tr>
+    <tr><td>Page hero anchor pills (×4)</td><td>Scroll to each package anchor on this page</td></tr>
+    <tr><td>Each package card CTA (×4)</td><td><code>/get-in-touch?package=[tier]</code></td></tr>
+    <tr><td>Each "Compare packages" link in cards</td><td>Scroll to comparison table S3</td></tr>
+    <tr><td>Comparison table "Book this" buttons (×4)</td><td><code>/get-in-touch?package=[tier]</code></td></tr>
+    <tr><td>Add-ons: "ask" link</td><td><code>/get-in-touch</code></td></tr>
+    <tr><td>FAQ: "Full FAQ page"</td><td><code>/faqs</code></td></tr>
+    <tr><td>S6 Final CTA button</td><td><code>/get-in-touch</code></td></tr>
+    <tr><td>S6 Email link</td><td><code>mailto:info@ladybirdeverafter.com</code></td></tr>
+  </table>
+</div>
+
+<div class="links-from">
+  <strong>Pages that link INTO <code>/packages</code>:</strong><br>
+  Homepage hero CTA · Homepage S4 package cards (×4) · Homepage S4 "Compare all" · Header nav "Packages" · Header nav dropdown (each tier) · Footer "PLAN" column · DIY page "See full-service packages" · Blog posts (contextual links)
+</div>
+
+<hr>
+
+<!-- ============================================================ -->
+<h2 id="venues">6. Venues Page — <code>/venues</code></h2>
+
+<p>The venues page sells the dream — where couples fall in love with a location before speaking to a planner. The filtering is what makes it functional.</p>
+
+<h3 id="ven-wireframe">Wireframe overview</h3>
+<div class="wireframe">
+┌──────────────── HEADER ──────────────────────────┐
+
+S1  PAGE HERO
+    "Find your 'I do' moment."
+    Short sub-headline
+
+S2  FILTER BAR (sticky)
+    [All Regions ▾]  [All Styles ▾]  [Guest Count ▾]  [Reset]
+
+S3  VENUE CARD GRID  (3 columns desktop, 1 mobile)
+    ┌──────────┐ ┌──────────┐ ┌──────────┐
+    │  photo   │ │  photo   │ │  photo   │
+    │ Name     │ │ Name     │ │ Name     │
+    │ Region · │ │ Region · │ │ Region · │
+    │ Style    │ │ Style    │ │ Style    │
+    │ [View →] │ │ [View →] │ │ [View →] │
+    └──────────┘ └──────────┘ └──────────┘
+    [ load more / show all ]
+
+S4  INDIVIDUAL VENUE PAGES  (spec below)
+    /venues/p/[slug]
+
+S5  BOTTOM CTA
+    "Found your venue? Let's plan your day."
+    [Book a free call →]
+
+└──────────────── FOOTER ──────────────────────────┘
+</div>
+
+<h3 id="ven-s1">Section 1 — Page hero</h3>
+<div class="section-block">
+  <h4>Copy</h4>
+  <p><strong>Headline:</strong> <span class="copy">Find your "I do" moment.</span></p>
+  <p><strong>Sub-headline:</strong> <span class="copy">Over 250 venues across Ireland — from windswept cliffs to ancient castle ruins. Filter by region, style, or guest count.</span></p>
+</div>
+
+<h3 id="ven-s2">Section 2 — Filter bar</h3>
+<div class="section-block">
+  <h4>Filter options</h4>
+  <table>
+    <tr><th>Filter</th><th>Options</th></tr>
+    <tr><td>Region</td><td>All Regions · Wild Atlantic Way · Northern Ireland · Kerry &amp; Killarney · Dublin &amp; East · Midlands &amp; West · Other</td></tr>
+    <tr><td>Style</td><td>All Styles · Castle · Coastal / Cliff · Abbey &amp; Historic · Parkland &amp; Garden · Mountain &amp; Lake · Modern</td></tr>
+    <tr><td>Guest count</td><td>Any size · Just the two of us (2–4) · Small group (5–12) · Intimate wedding (13–25) · Full wedding (26–50)</td></tr>
+  </table>
+
+  <div class="note">Guest count filter labels now mirror the four package tiers — this makes it easier for couples to cross-reference the packages page when browsing venues. "Just the two of us" = Fáilte territory; "Small group" = Grá; "Intimate wedding" = Sláinte; "Full wedding" = Ard.</div>
+
+  <div class="todo">
+    <strong>Action: Tag all venues before launch.</strong>
+    Every venue page needs: Region tag, Style tag, Guest count range tag. Assign one person to audit and tag all existing venue pages consistently.
+  </div>
+</div>
+
+<h3 id="ven-s3">Section 3 — Venue card grid</h3>
+<div class="section-block">
+  <h4>Layout</h4>
+  <p>3-column grid desktop, 2-column tablet, 1-column mobile. Each card: square or 4:3 ratio photo + venue info below.</p>
+
+  <h4>Each venue card contains</h4>
+  <ul>
+    <li>Full-width venue photo</li>
+    <li>Venue name (bold)</li>
+    <li>Region badge</li>
+    <li>Style tag</li>
+    <li>One-line description (max 10 words — teaser only)</li>
+    <li>Entire card is clickable → <code>/venues/p/[slug]</code></li>
+  </ul>
+
+  <h4>Featured venues — show first</h4>
+  <p>The 6 venues from the homepage gallery appear first regardless of other sorting.</p>
+
+  <h4>Show all / load more</h4>
+  <p>Show 12 venues initially. "Load more" reveals additional venues. Do not paginate.</p>
+</div>
+
+<h3 id="ven-s4">Individual venue page spec — <code>/venues/p/[slug]</code></h3>
+<div class="section-block">
+  <h4>Every individual venue page must contain</h4>
+  <ol>
+    <li><strong>Photo gallery:</strong> Minimum 3 photos — the venue itself, a ceremony setup if available, and a couple portrait at the venue.</li>
+    <li><strong>Venue name &amp; region</strong></li>
+    <li><strong>Style and guest count tags</strong></li>
+    <li><strong>Description:</strong> 2–3 paragraphs. What makes this venue special. Written in second person ("you'll stand…").</li>
+    <li><strong>Practical info block:</strong> Location / nearest town · Guest capacity (min/max) · Ceremony style (legal / symbolic / both) · Indoor / outdoor / both · Permit required? · Best season</li>
+    <li><strong>Which packages work here:</strong> List which of the 4 tiers are compatible. Link each tier name to <code>/packages#[tier]</code>. Use the correct guest-count framing — e.g. "This venue suits intimate groups of up to 25 — ideal for Grá or Sláinte."</li>
+    <li><strong>Real couple story at this venue</strong> (if available): 1 featured photo + couple name + short quote → links to <code>/real-love</code></li>
+    <li><strong>CTA block:</strong> "Love this venue? Let's check availability." → <code>/get-in-touch?venue=[venue-name]</code> · Secondary: "← Back to all venues" → <code>/venues</code></li>
+    <li><strong>Related venues:</strong> "You might also like…" — 3 venue cards from the same region.</li>
+  </ol>
+
+  <div class="todo">
+    <strong>Action: Audit all existing venue pages.</strong>
+    For each /venues/p/[slug]: does it have 3+ photos? A description? Practical info? Package compatibility listed? A venue card linking to a stub page loses trust and breaks the conversion flow.
+  </div>
+</div>
+
+<h3 id="ven-s5">Section 5 — Bottom CTA</h3>
+<div class="section-block">
+  <h4>Copy</h4>
+  <p><strong>Headline:</strong> <span class="copy">Found your venue? Let's start planning your day.</span></p>
+  <p><strong>Sub-headline:</strong> <span class="copy">Tell us which venue caught your eye and we'll check availability, suggest a package, and answer all your questions.</span></p>
+  <p><strong>CTA button:</strong> "Book a free call →" → <code>/get-in-touch</code></p>
+  <p><strong>Secondary link:</strong> "Not sure yet? Browse more venues ↑" — scroll back to filter bar</p>
+</div>
+
+<h3 id="ven-links">All links on the venues page</h3>
+<div class="links-to">
+  <table>
+    <tr><th>Element</th><th>Destination</th></tr>
+    <tr><td>Each venue card</td><td><code>/venues/p/[venue-slug]</code></td></tr>
+    <tr><td>Load more button</td><td>Reveals more cards on same page</td></tr>
+    <tr><td>S5 CTA button</td><td><code>/get-in-touch</code></td></tr>
+    <tr><td>S5 secondary scroll link</td><td>Scroll to filter bar on this page</td></tr>
+    <tr><td><em>On individual venue pages:</em></td><td></td></tr>
+    <tr><td>Package links in "which packages work here" (×4)</td><td><code>/packages#[tier]</code></td></tr>
+    <tr><td>Real couple story link</td><td><code>/real-love</code></td></tr>
+    <tr><td>CTA: "Love this venue?"</td><td><code>/get-in-touch?venue=[venue-name]</code></td></tr>
+    <tr><td>Back to all venues</td><td><code>/venues</code></td></tr>
+    <tr><td>Related venue cards (×3)</td><td><code>/venues/p/[related-slug]</code></td></tr>
+  </table>
+</div>
+
+<div class="links-from">
+  <strong>Pages that link INTO <code>/venues</code>:</strong><br>
+  Homepage S5 venue gallery cards · Homepage S5 "Explore 250+ venues" · Homepage trust bar (250+ Venues) · Header nav "Venues" · Footer "EXPLORE" column · Individual venue pages "Back to all venues" · Blog posts (contextual links)
+</div>
+
+<hr>
+
+<!-- ============================================================ -->
+<h2 id="linking">7. Master Link Map — Every Internal Link on the Site</h2>
+
+<table>
+  <tr><th>From page</th><th>Element / CTA</th><th>Links to</th><th>Opens in</th></tr>
+  <tr><td>Any page</td><td>Header logo</td><td><code>/</code></td><td>Same tab</td></tr>
+  <tr><td>Any page</td><td>Header: Packages</td><td><code>/packages</code></td><td>Same tab</td></tr>
+  <tr><td>Any page</td><td>Header: Venues</td><td><code>/venues</code></td><td>Same tab</td></tr>
+  <tr><td>Any page</td><td>Header: Real Weddings</td><td><code>/real-love</code></td><td>Same tab</td></tr>
+  <tr><td>Any page</td><td>Header: Plan It Yourself</td><td><code>/diy</code></td><td>Same tab</td></tr>
+  <tr><td>Any page</td><td>Header: Blog</td><td><code>/blog</code></td><td>Same tab</td></tr>
+  <tr><td>Any page</td><td>Header: My Wedding</td><td><code>/the-ever-after-roadmap</code></td><td>Same tab</td></tr>
+  <tr><td>Any page</td><td>Header: Book a Free Call →</td><td><code>/get-in-touch</code></td><td>Same tab</td></tr>
+  <tr><td>Any page</td><td>Footer: all PLAN column links</td><td>See footer section</td><td>Same tab</td></tr>
+  <tr><td>Any page</td><td>Footer: all EXPLORE column links</td><td>See footer section</td><td>Same tab</td></tr>
+  <tr><td>Any page</td><td>Footer: all LEARN column links</td><td>See footer section</td><td>Same tab</td></tr>
+  <tr><td>Any page</td><td>Footer: social media icons</td><td>Social profiles</td><td>New tab</td></tr>
+  <tr><td>Any page</td><td>Footer: partner logos</td><td>Tourism sites</td><td>New tab</td></tr>
+  <tr><td><code>/</code></td><td>Hero: See Packages</td><td><code>/packages</code></td><td>Same tab</td></tr>
+  <tr><td><code>/</code></td><td>Hero: DIY waitlist link</td><td>Scroll to S9 on <code>/</code></td><td>Same tab</td></tr>
+  <tr><td><code>/</code></td><td>S3: See how it works</td><td>Scroll to S6 on <code>/</code></td><td>Same tab</td></tr>
+  <tr><td><code>/</code></td><td>S4: Package card CTAs (×4)</td><td><code>/packages#[tier]</code></td><td>Same tab</td></tr>
+  <tr><td><code>/</code></td><td>S4: Compare all packages</td><td><code>/packages</code></td><td>Same tab</td></tr>
+  <tr><td><code>/</code></td><td>S5: Venue cards (×6)</td><td><code>/venues/p/[slug]</code></td><td>Same tab</td></tr>
+  <tr><td><code>/</code></td><td>S5: Explore 250+ venues</td><td><code>/venues</code></td><td>Same tab</td></tr>
+  <tr><td><code>/</code></td><td>S6: Book a free call</td><td><code>/get-in-touch</code></td><td>Same tab</td></tr>
+  <tr><td><code>/</code></td><td>S7: Venue names in couple cards</td><td><code>/venues/p/[slug]</code></td><td>Same tab</td></tr>
+  <tr><td><code>/</code></td><td>S7: Read their story links</td><td><code>/real-love</code></td><td>Same tab</td></tr>
+  <tr><td><code>/</code></td><td>S7: See all real weddings</td><td><code>/real-love</code></td><td>Same tab</td></tr>
+  <tr><td><code>/</code></td><td>S8: Our full story</td><td><code>/about</code></td><td>Same tab</td></tr>
+  <tr><td><code>/</code></td><td>S9: See packages (below form)</td><td><code>/packages</code></td><td>Same tab</td></tr>
+  <tr><td><code>/packages</code></td><td>Anchor jump pills (×4)</td><td>Anchors on same page</td><td>Same tab</td></tr>
+  <tr><td><code>/packages</code></td><td>Package card CTAs (×4)</td><td><code>/get-in-touch?package=[tier]</code></td><td>Same tab</td></tr>
+  <tr><td><code>/packages</code></td><td>Compare packages link (in cards)</td><td>Scroll to comparison table</td><td>Same tab</td></tr>
+  <tr><td><code>/packages</code></td><td>Comparison table "Book this" (×4)</td><td><code>/get-in-touch?package=[tier]</code></td><td>Same tab</td></tr>
+  <tr><td><code>/packages</code></td><td>Add-ons: ask us</td><td><code>/get-in-touch</code></td><td>Same tab</td></tr>
+  <tr><td><code>/packages</code></td><td>FAQ: Full FAQ page</td><td><code>/faqs</code></td><td>Same tab</td></tr>
+  <tr><td><code>/packages</code></td><td>S6 CTA: Book my free call</td><td><code>/get-in-touch</code></td><td>Same tab</td></tr>
+  <tr><td><code>/packages</code></td><td>S6 email link</td><td><code>mailto:info@ladybirdeverafter.com</code></td><td>Mail client</td></tr>
+  <tr><td><code>/venues</code></td><td>Each venue card</td><td><code>/venues/p/[slug]</code></td><td>Same tab</td></tr>
+  <tr><td><code>/venues</code></td><td>S5 CTA: Book a free call</td><td><code>/get-in-touch</code></td><td>Same tab</td></tr>
+  <tr><td><code>/venues/p/[slug]</code></td><td>Package links in "works here" (×4)</td><td><code>/packages#[tier]</code></td><td>Same tab</td></tr>
+  <tr><td><code>/venues/p/[slug]</code></td><td>Couple story link</td><td><code>/real-love</code></td><td>Same tab</td></tr>
+  <tr><td><code>/venues/p/[slug]</code></td><td>CTA: Love this venue?</td><td><code>/get-in-touch?venue=[name]</code></td><td>Same tab</td></tr>
+  <tr><td><code>/venues/p/[slug]</code></td><td>Back to all venues</td><td><code>/venues</code></td><td>Same tab</td></tr>
+  <tr><td><code>/venues/p/[slug]</code></td><td>Related venue cards (×3)</td><td><code>/venues/p/[slug]</code></td><td>Same tab</td></tr>
+  <tr><td><code>/blog/[post]</code></td><td>Contextual package links</td><td><code>/packages</code></td><td>Same tab</td></tr>
+  <tr><td><code>/blog/[post]</code></td><td>Contextual venue links</td><td><code>/venues/p/[slug]</code></td><td>Same tab</td></tr>
+  <tr><td><code>/blog/[post]</code></td><td>End-of-post CTA</td><td><code>/get-in-touch</code></td><td>Same tab</td></tr>
+  <tr><td><code>/real-love</code></td><td>Venue names in stories</td><td><code>/venues/p/[slug]</code></td><td>Same tab</td></tr>
+  <tr><td><code>/real-love</code></td><td>Package names in stories</td><td><code>/packages#[tier]</code></td><td>Same tab</td></tr>
+  <tr><td><code>/real-love</code></td><td>Bottom CTA</td><td><code>/get-in-touch</code></td><td>Same tab</td></tr>
+  <tr><td><code>/diy</code></td><td>See full-service packages</td><td><code>/packages</code></td><td>Same tab</td></tr>
+  <tr><td><code>/about</code></td><td>View packages</td><td><code>/packages</code></td><td>Same tab</td></tr>
+  <tr><td><code>/about</code></td><td>Book a call</td><td><code>/get-in-touch</code></td><td>Same tab</td></tr>
+</table>
+
+<hr>
+
+<!-- ============================================================ -->
+<h2 id="decisions">8. Open Decisions</h2>
+
+<div class="decision-closed">
+  <strong>✓ Closed — Decision 1: Starting prices for all tiers</strong><br>
+  Prices confirmed from 198-deal dataset. Fáilte $4,900 · Grá $6,800 · Sláinte $8,700 · Ard $9,800. All margins ≥ 51.7%. Use "From $[X]" framing throughout the site.
+</div>
+
+<div class="decision-closed">
+  <strong>✓ Closed — Decision 2: Which tier is "Most Popular"?</strong><br>
+  Sláinte confirmed. 75% close rate — highest in the portfolio. Expected profit per proposal ($3,686) is more than double any other tier. Badge, highlight, and featured treatment confirmed for Sláinte across all pages.
+</div>
+
+<table>
+  <tr><th>#</th><th>Decision needed</th><th>Options</th><th>Blocker for</th><th>Status</th></tr>
+  <tr><td>3</td><td>Email platform for DIY waitlist</td><td>Mailchimp / Klaviyo / ConvertKit</td><td>Homepage S9 form</td><td style="background:#fffbe6;">Open</td></tr>
+  <tr><td>4</td><td>Contact form vs Calendly on homepage S10</td><td>Embedded form (more data) vs Calendly (faster booking)</td><td>Homepage S10, /get-in-touch page</td><td style="background:#fffbe6;">Open</td></tr>
+  <tr><td>5</td><td>Venue filtering approach for Phase 1</td><td>Single filter by Region (Squarespace native) vs custom JS multi-filter</td><td>/venues filter bar</td><td style="background:#fffbe6;">Open</td></tr>
+  <tr><td>6</td><td>Platform: stay on Squarespace or rebuild?</td><td>Squarespace (faster Phase 1) vs Webflow/Framer (more control for DIY product)</td><td>Phase 2 DIY hub build</td><td style="background:#eef6ff;">Defer to Phase 2</td></tr>
+</table>
+
+<hr>
+
+<!-- ============================================================ -->
+<h2 id="done">9. Done / Shipped Log</h2>
+
+<table>
+  <tr><th>Date</th><th>Item</th><th>Notes</th></tr>
+  <tr><td>April 2026</td><td>Spec updated to v3</td><td>RíRá removed. Four packages confirmed. All prices locked. Inclusions updated from 2026 Q3 pricing data. Fáilte hair/makeup/flowers are add-ons. Reception coordination renamed reception planning. Add-on prices confirmed throughout.</td></tr>
+</table>
+
+</body>
+</html>

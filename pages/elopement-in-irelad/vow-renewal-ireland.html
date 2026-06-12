@@ -1,0 +1,505 @@
+<!-- ═══════════════════════════════════════
+     VOW RENEWAL IRELAND, SERVICE PAGE
+     Ladybird Ever After · Root: .lb-vow
+═══════════════════════════════════════ -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Alice&display=swap" rel="stylesheet">
+
+<style>
+.lb-vow {
+  --green:    #5B6239;
+  --green-dk: #3a3f25;
+  --green-hv: #4a5130;
+  --gold:     #B8964E;
+  --gold-lt:  #D4AF71;
+  --cream:    #F5F0E8;
+  --warm:     #FDFAF4;
+  --stone:    #8C8070;
+  --txt:      #1A1A18;
+  --txt-mid:  #4A4A42;
+  --pad-x: clamp(1.2rem, 5vw, 5rem);
+  --pad-y: clamp(3.5rem, 7vw, 6rem);
+  font-family: 'Alice', serif;
+  font-weight: 300;
+  color: var(--txt);
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+.lb-vow *, .lb-vow *::before, .lb-vow *::after { margin: 0; padding: 0; box-sizing: border-box; }
+.lb-vow img { display: block; }
+
+.lb-vow .vr-ol { display: flex; align-items: center; gap: .7rem; font-size: .6rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: 1rem; }
+.lb-vow .vr-ol::after { content: ''; flex: 0 0 28px; height: 1px; background: var(--gold); opacity: .5; }
+.lb-vow .vr-ol.ctr { justify-content: center; }
+.lb-vow .vr-ol.ctr::before { content: ''; flex: 0 0 28px; height: 1px; background: var(--gold); opacity: .5; }
+
+/* ── Breadcrumb ── */
+.lb-vow .vr-breadcrumb { background: var(--cream); padding: .9rem var(--pad-x); border-bottom: 1px solid rgba(91,98,57,.1); }
+.lb-vow .vr-breadcrumb-in { max-width: 820px; margin: 0 auto; display: flex; align-items: center; gap: .5rem; font-size: .62rem; letter-spacing: .08em; text-transform: uppercase; color: var(--stone); }
+.lb-vow .vr-breadcrumb a { color: var(--stone); text-decoration: none; transition: color .3s; }
+.lb-vow .vr-breadcrumb a:hover { color: var(--green); }
+.lb-vow .vr-breadcrumb .sep { opacity: .4; }
+.lb-vow .vr-breadcrumb .current { color: var(--green); }
+
+/* ── Hero ── */
+.lb-vow .vr-hero { background: var(--warm); padding: var(--pad-y) var(--pad-x) calc(var(--pad-y) * .75); text-align: center; }
+.lb-vow .vr-hero-in { max-width: 680px; margin: 0 auto; }
+.lb-vow .vr-hero h1 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(2.2rem, 4.5vw, 3.2rem); line-height: 1.18; color: var(--txt); margin-bottom: 1.2rem; }
+.lb-vow .vr-hero h1 em { font-style: italic; color: var(--gold-lt); }
+.lb-vow .vr-hero-sub { font-size: clamp(.88rem, 1.6vw, 1rem); line-height: 1.75; color: var(--txt-mid); margin-bottom: 1.8rem; }
+.lb-vow .vr-hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+/* ── Intro ── */
+.lb-vow .vr-intro { background: var(--cream); padding: var(--pad-y) var(--pad-x); }
+.lb-vow .vr-intro-in { max-width: 820px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+.lb-vow .vr-intro h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; color: var(--txt); margin-bottom: 1.2rem; }
+.lb-vow .vr-intro h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-vow .vr-intro p { font-size: .88rem; line-height: 1.82; color: var(--txt-mid); margin-bottom: 1.1rem; }
+.lb-vow .vr-intro p:last-child { margin-bottom: 0; }
+
+/* ── Includes list ── */
+.lb-vow .vr-includes { list-style: none; display: flex; flex-direction: column; gap: .8rem; }
+.lb-vow .vr-includes li { display: flex; align-items: flex-start; gap: .9rem; font-size: .85rem; line-height: 1.6; color: var(--txt-mid); }
+.lb-vow .vr-includes li::before { content: ''; flex-shrink: 0; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin-top: .42em; }
+.lb-vow .vr-includes-heading { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.1rem, 2vw, 1.35rem); line-height: 1.2; color: var(--txt); margin-bottom: 1rem; }
+
+/* ── Styles of renewal ── */
+.lb-vow .vr-styles { background: var(--warm); padding: var(--pad-y) var(--pad-x); }
+.lb-vow .vr-styles-in { max-width: 820px; margin: 0 auto; }
+.lb-vow .vr-styles-header { text-align: center; margin-bottom: 3rem; }
+.lb-vow .vr-styles-header h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.5rem, 2.6vw, 2rem); line-height: 1.2; color: var(--txt); margin-bottom: .6rem; }
+.lb-vow .vr-styles-header h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-vow .vr-styles-header p { font-size: .88rem; color: var(--txt-mid); line-height: 1.7; }
+.lb-vow .vr-styles-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.lb-vow .vr-style-item { background: var(--cream); padding: 2rem 1.6rem; border: 1px solid rgba(91,98,57,.08); }
+.lb-vow .vr-style-item h3 { font-family: 'Playfair Display', serif; font-weight: 400; font-size: 1rem; line-height: 1.3; color: var(--txt); margin-bottom: .7rem; }
+.lb-vow .vr-style-item p { font-size: .82rem; line-height: 1.75; color: var(--txt-mid); }
+.lb-vow .vr-style-label { font-size: .58rem; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: .6rem; }
+
+/* ── Region sections ── */
+.lb-vow .vr-region { padding: var(--pad-y) var(--pad-x); }
+.lb-vow .vr-region:nth-child(odd) { background: var(--cream); }
+.lb-vow .vr-region:nth-child(even) { background: var(--warm); }
+.lb-vow .vr-region-in { max-width: 820px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+.lb-vow .vr-region h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.4rem, 2.4vw, 1.85rem); line-height: 1.2; color: var(--txt); margin-bottom: 1rem; }
+.lb-vow .vr-region h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-vow .vr-region p { font-size: .88rem; line-height: 1.82; color: var(--txt-mid); margin-bottom: 1rem; }
+.lb-vow .vr-region p:last-of-type { margin-bottom: 1.4rem; }
+.lb-vow .vr-region-meta { font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; color: var(--stone); font-weight: 600; margin-bottom: 1.2rem; }
+.lb-vow .vr-region-link { display: inline-flex; align-items: center; gap: .4rem; font-size: .68rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; color: var(--green); text-decoration: none; border-bottom: 1px solid rgba(184,150,78,.35); padding-bottom: .15rem; transition: color .3s, border-color .3s; }
+.lb-vow .vr-region-link::after { content: '→'; transition: transform .3s; }
+.lb-vow .vr-region-link:hover { color: var(--gold); border-color: var(--gold); }
+.lb-vow .vr-region-link:hover::after { transform: translateX(3px); }
+.lb-vow .vr-region-aside { display: flex; flex-direction: column; gap: .7rem; }
+.lb-vow .vr-region-tag { font-size: .58rem; letter-spacing: .25em; text-transform: uppercase; color: var(--gold); font-weight: 600; margin-bottom: .3rem; }
+.lb-vow .vr-region-highlights { list-style: none; display: flex; flex-direction: column; gap: .7rem; }
+.lb-vow .vr-region-highlights li { display: flex; align-items: flex-start; gap: .8rem; font-size: .82rem; line-height: 1.6; color: var(--txt-mid); }
+.lb-vow .vr-region-highlights li::before { content: ''; flex-shrink: 0; width: 5px; height: 5px; border-radius: 50%; background: var(--gold); margin-top: .44em; }
+
+/* ── CTA ── */
+.lb-vow .vr-cta { background: var(--green-dk); padding: clamp(3rem, 6vw, 5rem) var(--pad-x); text-align: center; }
+.lb-vow .vr-cta-in { max-width: 560px; margin: 0 auto; }
+.lb-vow .vr-cta h2 { font-family: 'Playfair Display', serif; font-weight: 300; font-size: clamp(1.4rem, 2.5vw, 2rem); line-height: 1.2; color: var(--warm); margin-bottom: .8rem; }
+.lb-vow .vr-cta h2 em { font-style: italic; color: var(--gold-lt); }
+.lb-vow .vr-cta-sub { font-size: .88rem; line-height: 1.7; color: rgba(245,240,232,.55); font-style: italic; font-family: 'Playfair Display', serif; margin-bottom: 2rem; }
+.lb-vow .vr-cta-links { display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.4rem; }
+.lb-vow .vr-cta-tertiary { display: inline-block; font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(245,240,232,.6); text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(184,150,78,.4); transition: color .3s; }
+.lb-vow .vr-cta-tertiary:hover { color: var(--gold-lt); }
+
+/* ── Buttons ── */
+.lb-vow .btn-gold { display: inline-block; font-family: 'Alice', serif; font-size: .74rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; padding: .95rem 2.2rem; background: var(--gold); color: var(--green); border: 2px solid var(--gold); text-decoration: none; transition: all .3s; }
+.lb-vow .btn-gold:hover { background: transparent; border-color: var(--gold-lt); color: var(--gold-lt); }
+.lb-vow .btn-ghost { display: inline-block; font-family: 'Alice', serif; font-size: .74rem; font-weight: 600; letter-spacing: .15em; text-transform: uppercase; padding: .95rem 2.2rem; background: transparent; color: var(--warm); border: 2px solid rgba(245,240,232,.45); text-decoration: none; transition: all .3s; }
+.lb-vow .btn-ghost:hover { border-color: var(--warm); color: var(--warm); }
+
+/* ── Reveal ── */
+.lb-vow .reveal { opacity: 0; transform: translateY(18px); transition: opacity .65s ease, transform .65s ease; }
+.lb-vow .reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ── Responsive ── */
+@media (max-width: 820px) {
+  .lb-vow .vr-intro-in,
+  .lb-vow .vr-region-in { grid-template-columns: 1fr; gap: 2rem; }
+}
+@media (max-width: 680px) {
+  .lb-vow .vr-styles-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+}
+@media (max-width: 520px) {
+  .lb-vow .btn-gold { display: block; text-align: center; }
+  .lb-vow .vr-hero-btns { flex-direction: column; align-items: stretch; }
+}
+</style>
+
+<div class="lb-vow">
+
+  <nav class="vr-breadcrumb" aria-label="Breadcrumb">
+    <div class="vr-breadcrumb-in">
+      <a href="/">Home</a>
+      <span class="sep">›</span>
+      <span class="current">Vow Renewal Ireland</span>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="vr-hero">
+    <div class="vr-hero-in">
+      <div class="vr-ol ctr reveal">Vow Renewals in Ireland</div>
+      <h1 class="reveal">Renew your vows <em>in Ireland</em></h1>
+      <p class="vr-hero-sub reveal">
+        Some love stories deserve to be celebrated twice. Whether it's a landmark
+        anniversary, a new chapter after a difficult season, or simply a desire to
+        say those words again — in a place that moves you — we'll create a ceremony
+        as meaningful as your first.
+      </p>
+      <div class="vr-hero-btns reveal">
+        <a href="/get-in-touch" class="btn-gold">Get in Touch</a>
+        <a href="/packages" class="btn-ghost">View Our Packages</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── What we offer ── -->
+  <section class="vr-intro">
+    <div class="vr-intro-in">
+      <div class="reveal">
+        <div class="vr-ol">What we offer</div>
+        <h2>A ceremony that honours <em>your story</em></h2>
+        <p>
+          A vow renewal is one of the most personal things you can do — and the most
+          flexible. Unlike a legal wedding, there are no forms to file and no legal
+          requirements to navigate. This is purely about meaning, intention, and
+          the two of you choosing each other again.
+        </p>
+        <p>
+          We design every vow renewal ceremony from scratch, shaped entirely around
+          your story. The setting you've always dreamed of, the words that reflect
+          where you are now, the small details that make the whole day feel like it
+          was made only for you.
+        </p>
+        <p>
+          Vow renewals can be entirely private — just the two of you and a
+          photographer — or a full celebration with family and close friends, a
+          reception dinner, and an evening that spills naturally into the Irish
+          night.
+        </p>
+      </div>
+      <div class="reveal">
+        <p class="vr-includes-heading">What's typically included</p>
+        <ul class="vr-includes">
+          <li>Personal planning consultation and ceremony design</li>
+          <li>Venue sourcing and booking</li>
+          <li>Custom ceremony script written around your story</li>
+          <li>Officiant or celebrant coordination</li>
+          <li>Photographer and videographer recommendations</li>
+          <li>Floral styling and bouquet options</li>
+          <li>Hair and make-up artist referrals</li>
+          <li>Music — ceremony and reception options</li>
+          <li>Reception dinner planning if required</li>
+          <li>Full on-the-day coordination</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Styles of renewal ── -->
+  <section class="vr-styles">
+    <div class="vr-styles-in">
+      <div class="vr-styles-header reveal">
+        <div class="vr-ol ctr">How it can look</div>
+        <h2>Every renewal is <em>different</em></h2>
+        <p>There's no template. We shape the day around what matters to you.</p>
+      </div>
+      <div class="vr-styles-grid">
+        <div class="vr-style-item reveal">
+          <p class="vr-style-label">Just the two of you</p>
+          <h3>An intimate renewal</h3>
+          <p>A private ceremony in a beautiful setting, witnessed only by a photographer and the landscape. Quiet, personal, and entirely focused on the moment between you.</p>
+        </div>
+        <div class="vr-style-item reveal">
+          <p class="vr-style-label">Close family &amp; friends</p>
+          <h3>A small celebration</h3>
+          <p>Your nearest people gathered around you in a special place. A ceremony, a meal together, an evening that feels genuinely celebratory without the scale of a full wedding.</p>
+        </div>
+        <div class="vr-style-item reveal">
+          <p class="vr-style-label">A landmark anniversary</p>
+          <h3>A milestone event</h3>
+          <p>For a 10th, 25th, or 50th anniversary, a vow renewal in Ireland can become a full destination event — a celebration that brings loved ones together from around the world.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Region: The South West ── -->
+  <section class="vr-region" id="the-south-west">
+    <div class="vr-region-in">
+      <div class="reveal">
+        <p class="vr-region-meta">Kerry · Cork</p>
+        <div class="vr-ol">Vow renewals in</div>
+        <h2>The <em>South West</em></h2>
+        <p>
+          For a vow renewal that feels cinematic and deeply romantic, the south west
+          is hard to surpass. Lakeside castles, ancient woodland, mountain reflections
+          on glassy water — Kerry and Cork offer an Ireland that feels like it was
+          designed for love stories.
+        </p>
+        <p>
+          The Gulf Stream keeps the south west lush and temperate year-round, making
+          it a beautiful choice even outside summer. A garden ceremony in November,
+          a woodland walk in February — the south west holds its beauty in every season.
+        </p>
+        <a href="/regions-of-ireland/the-south-west" class="vr-region-link">Explore the South West</a>
+      </div>
+      <div class="reveal">
+        <div class="vr-region-tag">Popular for vow renewals</div>
+        <ul class="vr-region-highlights">
+          <li>Lakeside castle settings for intimate or celebratory ceremonies</li>
+          <li>Killarney National Park's ancient woodland and glassy lakes</li>
+          <li>Year-round lush greenery from the Gulf Stream climate</li>
+          <li>Private gardens and walled courtyards</li>
+          <li>The Ring of Kerry for a romantic itinerary around the ceremony</li>
+          <li>Exceptional restaurants in Killarney and Kenmare for the celebration</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Region: The West ── -->
+  <section class="vr-region" id="the-west">
+    <div class="vr-region-in">
+      <div class="reveal">
+        <p class="vr-region-meta">Galway · Mayo · Clare</p>
+        <div class="vr-ol">Vow renewals in</div>
+        <h2>The <em>West of Ireland</em></h2>
+        <p>
+          Standing together at the Cliffs of Moher or on a wild Connemara hillside —
+          there are few places in the world where a moment of renewed commitment
+          can feel more powerful. The west strips everything back to what matters:
+          the landscape, the sky, and the two of you.
+        </p>
+        <p>
+          For couples who want something raw, beautiful, and unlike any ceremony space
+          they've ever seen, the west of Ireland offers locations that will define
+          your photographs — and your memory — for the rest of your lives.
+        </p>
+        <a href="/regions-of-ireland/the-west" class="vr-region-link">Explore the West</a>
+      </div>
+      <div class="reveal">
+        <div class="vr-region-tag">Popular for vow renewals</div>
+        <ul class="vr-region-highlights">
+          <li>The Cliffs of Moher for a ceremony of genuine scale and drama</li>
+          <li>Connemara's wild bog and lake landscape</li>
+          <li>Remote coastal headlands in Mayo and Clare</li>
+          <li>Galway city for a celebratory dinner or evening after</li>
+          <li>Atlantic light that makes every photograph feel extraordinary</li>
+          <li>Boutique hotels and country houses for a stay to remember</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Region: Northern Ireland ── -->
+  <section class="vr-region" id="northern-ireland">
+    <div class="vr-region-in">
+      <div class="reveal">
+        <p class="vr-region-meta">Antrim · Down · Derry · Fermanagh</p>
+        <div class="vr-ol">Vow renewals in</div>
+        <h2><em>Northern Ireland</em></h2>
+        <p>
+          For couples who want drama and uniqueness above all else, Northern Ireland
+          delivers a backdrop found nowhere else on earth. The basalt columns of the
+          Giant's Causeway, the clifftop ruin of Dunluce Castle, the quiet island
+          beauty of Lough Erne.
+        </p>
+        <p>
+          A vow renewal ceremony on the Causeway Coast, followed by a private dinner
+          overlooking the sea — it's the kind of day that becomes part of your story
+          in the most indelible way.
+        </p>
+        <a href="/regions-of-ireland/northern-ireland" class="vr-region-link">Explore Northern Ireland</a>
+      </div>
+      <div class="reveal">
+        <div class="vr-region-tag">Popular for vow renewals</div>
+        <ul class="vr-region-highlights">
+          <li>The Causeway Coastal Route — one of the world's great scenic drives</li>
+          <li>Dunluce Castle ruins on a dramatic sea stack</li>
+          <li>Lough Erne's island settings in County Fermanagh</li>
+          <li>Luxury coastal hotels and intimate country properties</li>
+          <li>A landscape that photographs unlike anywhere else</li>
+          <li>Easy access from Belfast's two international airports</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Region: Dublin ── -->
+  <section class="vr-region" id="dublin">
+    <div class="vr-region-in">
+      <div class="reveal">
+        <p class="vr-region-meta">Dublin · Wicklow · Kildare</p>
+        <div class="vr-ol">Vow renewals in</div>
+        <h2><em>Dublin</em> &amp; surrounds</h2>
+        <p>
+          Dublin's proximity to beautiful natural settings — cliff paths above the
+          sea, walled castle gardens, wooded Wicklow glens — makes it a wonderfully
+          convenient base for a vow renewal that doesn't compromise on beauty.
+        </p>
+        <p>
+          After a ceremony in a setting that takes your breath away, the city is right
+          there: dinner at one of Dublin's extraordinary restaurants, a night in a
+          beautiful hotel, and the full energy of a capital city to celebrate in.
+        </p>
+        <a href="/regions-of-ireland/dublin" class="vr-region-link">Explore Dublin</a>
+      </div>
+      <div class="reveal">
+        <div class="vr-region-tag">Popular for vow renewals</div>
+        <ul class="vr-region-highlights">
+          <li>Cliff-top settings with sweeping views of Dublin Bay</li>
+          <li>Walled garden ceremonies at historic estates</li>
+          <li>Wicklow Mountains — a stunning backdrop just 45 minutes away</li>
+          <li>World-class restaurants for a celebration dinner</li>
+          <li>Dublin Airport — the easiest place in Ireland to fly into</li>
+          <li>A seamless blend of wildness and urban comfort</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Region: The North West ── -->
+  <section class="vr-region" id="the-north-west">
+    <div class="vr-region-in">
+      <div class="reveal">
+        <p class="vr-region-meta">Donegal · Sligo · Leitrim</p>
+        <div class="vr-ol">Vow renewals in</div>
+        <h2>The <em>North West</em></h2>
+        <p>
+          Donegal and Sligo offer a solitude and wildness that is genuinely rare in
+          the modern world. For couples seeking a vow renewal that feels removed from
+          everything ordinary, the north west provides settings of almost mythological
+          beauty — Slieve League's towering cliffs, Malin Head's raw Atlantic edge,
+          Sligo's Benbulben in early light.
+        </p>
+        <p>
+          This is a region for couples who want to feel the world fall away. A ceremony
+          here says something specific and powerful about who you are together.
+        </p>
+        <a href="/regions-of-ireland/the-north-west" class="vr-region-link">Explore the North West</a>
+      </div>
+      <div class="reveal">
+        <div class="vr-region-tag">Popular for vow renewals</div>
+        <ul class="vr-region-highlights">
+          <li>Slieve League — the highest sea cliffs in Ireland, deeply dramatic</li>
+          <li>Malin Head's raw Atlantic isolation</li>
+          <li>Benbulben mountain in Sligo for iconic backdrops</li>
+          <li>Hidden country houses for a private, exclusive stay</li>
+          <li>Empty beaches with nothing but sea and sky around you</li>
+          <li>A place that feels genuinely far from the ordinary world</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Region: The Midlands & East ── -->
+  <section class="vr-region" id="the-midlands-east">
+    <div class="vr-region-in">
+      <div class="reveal">
+        <p class="vr-region-meta">Wicklow · Kildare · Meath · Westmeath</p>
+        <div class="vr-ol">Vow renewals in</div>
+        <h2>The <em>Midlands &amp; East</em></h2>
+        <p>
+          There is something quietly powerful about renewing your vows in Glendalough's
+          glacial valley, among ruins that have stood for over a thousand years, or
+          beside the passage tomb at Newgrange, older than the pyramids. The midlands
+          and east offer a sense of continuity — of love set against deep time — that
+          is unlike anywhere else.
+        </p>
+        <p>
+          Historic estate houses and walled gardens offer a more intimate backdrop,
+          perfect for couples who want beauty and privacy without dramatic coastal scenery.
+        </p>
+        <a href="/regions-of-ireland/the-midlands-east" class="vr-region-link">Explore the Midlands &amp; East</a>
+      </div>
+      <div class="reveal">
+        <div class="vr-region-tag">Popular for vow renewals</div>
+        <ul class="vr-region-highlights">
+          <li>Glendalough — ancient monastic ruins in a glacial valley</li>
+          <li>Newgrange and the Hill of Tara for a profound sense of history</li>
+          <li>Private estate houses and walled gardens</li>
+          <li>Peaceful countryside with easy Dublin Airport access</li>
+          <li>Wicklow's wooded glens for a private, natural setting</li>
+          <li>A quieter, more reflective atmosphere than the famous western regions</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Region: The South East ── -->
+  <section class="vr-region" id="the-south-east">
+    <div class="vr-region-in">
+      <div class="reveal">
+        <p class="vr-region-meta">Wexford · Waterford · Kilkenny</p>
+        <div class="vr-ol">Vow renewals in</div>
+        <h2>The <em>South East</em></h2>
+        <p>
+          The warmth and gentleness of the south east — both its climate and its
+          character — makes it a beautiful choice for a vow renewal. Kilkenny's
+          medieval streets, the stillness of Tintern Abbey's woodland estuary, and
+          the sweep of Wexford's coastline offer very different but equally moving
+          settings.
+        </p>
+        <p>
+          Ireland's sunniest region, the south east is a wonderful choice for couples
+          who want warmth and light on their day — particularly for late spring,
+          summer, or early autumn ceremonies.
+        </p>
+        <a href="/regions-of-ireland/the-south-east" class="vr-region-link">Explore the South East</a>
+      </div>
+      <div class="reveal">
+        <div class="vr-region-tag">Popular for vow renewals</div>
+        <ul class="vr-region-highlights">
+          <li>Tintern Abbey ruins in a quiet estuary woodland</li>
+          <li>Kilkenny's medieval atmosphere and excellent restaurants</li>
+          <li>Hook Lighthouse — one of the world's oldest, and strikingly beautiful</li>
+          <li>Ireland's highest sunshine hours for light-filled outdoor ceremonies</li>
+          <li>The Copper Coast for dramatic clifftop moments</li>
+          <li>A warmth and ease that puts everyone at their best</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="vr-cta">
+    <div class="vr-cta-in">
+      <div class="vr-ol ctr reveal" style="color:var(--gold-lt);">Ready to begin?</div>
+      <h2 class="reveal">Let's plan your <em>Irish vow renewal</em></h2>
+      <p class="vr-cta-sub reveal">Tell us your story and we'll create a ceremony that honours every chapter of it.</p>
+      <div class="vr-cta-links reveal">
+        <a href="/get-in-touch" class="btn-gold">Get in Touch</a>
+        <a href="/packages" class="btn-ghost">View Our Packages</a>
+      </div>
+      <a href="/happy-couples" class="vr-cta-tertiary reveal">See Real Couple Stories</a>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function () {
+  const revealEls = document.querySelectorAll('.lb-vow .reveal');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('in'), i * 60);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+    revealEls.forEach(el => obs.observe(el));
+  } else {
+    revealEls.forEach(el => el.classList.add('in'));
+  }
+}());
+</script>

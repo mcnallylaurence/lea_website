@@ -1,0 +1,531 @@
+<!-- ═══════════════════════════════════════════════
+     GET IN TOUCH - /get-in-touch - Ladybird Ever After
+     HubSpot form embed + testimonials
+     Root class: .lb-contact
+═══════════════════════════════════════════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link
+  href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Alice&display=swap"
+  rel="stylesheet">
+
+<style>
+  /* ════════════════════════════════════════
+   ROOT & RESET
+════════════════════════════════════════ */
+  .lb-contact {
+    --green: #5B6239;
+    --green-dk: #3a3f25;
+    --green-hv: #4a5130;
+    --gold: #B8964E;
+    --gold-lt: #D4AF71;
+    --cream: #F5F0E8;
+    --warm: #FDFAF4;
+    --stone: #8C8070;
+    --txt: #1A1A18;
+    --txt-mid: #4A4A42;
+    --pad-x: clamp(1.2rem, 5vw, 5rem);
+    --pad-y: clamp(3.5rem, 7vw, 6rem);
+    font-family: 'Alice', serif;
+    font-weight: 300;
+    color: var(--txt);
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .lb-contact *,
+  .lb-contact *::before,
+  .lb-contact *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .lb-contact img {
+    display: block;
+  }
+
+  .lb-contact h1,
+  .lb-contact h2,
+  .lb-contact h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 400;
+    line-height: 1.18;
+  }
+
+  .lb-contact em {
+    font-style: italic;
+    color: var(--gold-lt);
+  }
+
+  .lb-contact a {
+    color: var(--gold);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color .3s;
+  }
+
+  .lb-contact a:hover {
+    color: var(--green);
+  }
+
+  /* ════════════════════════════════════════
+   HERO
+════════════════════════════════════════ */
+  .lb-contact .hero {
+    background: var(--green-dk);
+    padding: clamp(4.5rem, 10vw, 7rem) var(--pad-x) clamp(3.5rem, 7vw, 5.5rem);
+    text-align: center;
+  }
+
+  .lb-contact .hero-content {
+    max-width: 620px;
+    margin: 0 auto;
+    animation: lbContactFadeUp .9s ease both;
+  }
+
+  .lb-contact .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: .8rem;
+    font-size: .58rem;
+    letter-spacing: .35em;
+    text-transform: uppercase;
+    color: rgba(212, 175, 113, .8);
+    font-weight: 500;
+    margin-bottom: 1.4rem;
+  }
+
+  .lb-contact .hero-eyebrow-line {
+    flex: 0 0 20px;
+    height: 1px;
+    background: rgba(212, 175, 113, .45);
+  }
+
+  .lb-contact .hero h1 {
+    font-size: clamp(2rem, 5vw, 3.6rem);
+    color: var(--warm);
+    margin-bottom: 1rem;
+  }
+
+  .lb-contact .hero-sub {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(.88rem, 1.8vw, 1.1rem);
+    color: rgba(253, 250, 244, .55);
+    line-height: 1.65;
+  }
+
+  @keyframes lbContactFadeUp {
+    from { opacity: 0; transform: translateY(22px) }
+    to   { opacity: 1; transform: translateY(0) }
+  }
+
+  /* ════════════════════════════════════════
+   MAIN SECTION - form + testimonials
+════════════════════════════════════════ */
+  .lb-contact .main {
+    background: var(--warm);
+    padding: var(--pad-y) var(--pad-x);
+  }
+
+  .lb-contact .main-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(2.5rem, 6vw, 6rem);
+    align-items: start;
+  }
+
+  /* ════════════════════════════════════════
+   FORM COLUMN
+════════════════════════════════════════ */
+  .lb-contact .form-col-header {
+    margin-bottom: 2rem;
+  }
+
+  .lb-contact .form-intro-label {
+    font-size: .58rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: .7rem;
+  }
+
+  .lb-contact .form-col-header h2 {
+    font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+    color: var(--txt);
+    margin-bottom: 1rem;
+  }
+
+  .lb-contact .form-col-header p {
+    font-size: .88rem;
+    line-height: 1.85;
+    color: var(--txt-mid);
+  }
+
+  .lb-contact .form-col-header p strong {
+    color: var(--txt);
+    font-weight: 600;
+  }
+
+  .lb-contact .form-col-header .direct-contact {
+    margin-top: .5rem;
+    font-size: .82rem;
+    color: var(--stone);
+  }
+
+  .lb-contact .form-col-header .direct-contact a {
+    color: var(--green);
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .lb-contact .form-col-header .direct-contact a:hover {
+    color: var(--gold);
+  }
+
+  /* HubSpot form overrides - scoped to our wrapper */
+  .lb-contact .hs-form-wrapper .hs-form fieldset {
+    max-width: 100% !important;
+  }
+
+  .lb-contact .hs-form-wrapper .hs-form .field {
+    margin-bottom: 1.2rem;
+  }
+
+  .lb-contact .hs-form-wrapper .hs-form label {
+    font-family: 'Alice', serif;
+    font-size: .68rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--stone);
+    font-weight: 600;
+    display: block;
+    margin-bottom: .4rem;
+  }
+
+  .lb-contact .hs-form-wrapper .hs-form input[type="text"],
+  .lb-contact .hs-form-wrapper .hs-form input[type="email"],
+  .lb-contact .hs-form-wrapper .hs-form input[type="tel"],
+  .lb-contact .hs-form-wrapper .hs-form select,
+  .lb-contact .hs-form-wrapper .hs-form textarea {
+    width: 100%;
+    padding: .9rem 1rem;
+    background: var(--cream);
+    border: 1px solid rgba(91, 98, 57, .18);
+    font-family: 'Alice', serif;
+    font-size: .85rem;
+    color: var(--txt);
+    outline: none;
+    transition: border-color .3s;
+    border-radius: 0;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .lb-contact .hs-form-wrapper .hs-form input:focus,
+  .lb-contact .hs-form-wrapper .hs-form select:focus,
+  .lb-contact .hs-form-wrapper .hs-form textarea:focus {
+    border-color: var(--gold);
+  }
+
+  .lb-contact .hs-form-wrapper .hs-form textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  .lb-contact .hs-form-wrapper .hs-form .hs-button {
+    background: var(--green-dk);
+    color: var(--cream);
+    border: 2px solid var(--green-dk);
+    font-family: 'Alice', serif;
+    font-size: .75rem;
+    font-weight: 600;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    padding: 1.1rem 3rem;
+    cursor: pointer;
+    transition: all .3s;
+    width: 100%;
+    margin-top: .8rem;
+  }
+
+  .lb-contact .hs-form-wrapper .hs-form .hs-button:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--green-dk);
+  }
+
+  .lb-contact .hs-form-wrapper .hs-form .hs-error-msgs {
+    list-style: none;
+  }
+
+  .lb-contact .hs-form-wrapper .hs-form .hs-error-msgs li {
+    font-size: .72rem;
+    color: #c00;
+    margin-top: .3rem;
+  }
+
+  /* ════════════════════════════════════════
+   TESTIMONIALS COLUMN
+════════════════════════════════════════ */
+  .lb-contact .testimonials-col {
+    padding-top: .5rem;
+  }
+
+  .lb-contact .testimonials-label {
+    font-size: .58rem;
+    letter-spacing: .3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 1.6rem;
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+  }
+
+  .lb-contact .testimonials-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: rgba(184, 150, 78, .3);
+  }
+
+  .lb-contact .testimonial-item {
+    padding: 1.6rem 0;
+    border-bottom: 1px solid rgba(91, 98, 57, .1);
+  }
+
+  .lb-contact .testimonial-item:first-of-type {
+    padding-top: 0;
+  }
+
+  .lb-contact .testimonial-item:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .lb-contact .testimonial-quote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(.88rem, 1.4vw, 1rem);
+    line-height: 1.72;
+    color: var(--txt);
+    margin-bottom: .9rem;
+    position: relative;
+    padding-left: 1.1rem;
+  }
+
+  .lb-contact .testimonial-quote::before {
+    content: '\201C';
+    position: absolute;
+    left: 0;
+    top: -.1em;
+    font-size: 1.5em;
+    line-height: 1;
+    color: var(--gold-lt);
+    opacity: .7;
+  }
+
+  .lb-contact .testimonial-meta {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+  }
+
+  .lb-contact .testimonial-dash {
+    width: 18px;
+    height: 1px;
+    background: var(--gold);
+    opacity: .6;
+    flex-shrink: 0;
+  }
+
+  .lb-contact .testimonial-name {
+    font-size: .7rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 600;
+  }
+
+  .lb-contact .testimonial-location {
+    font-size: .7rem;
+    color: var(--stone);
+    margin-left: .2rem;
+  }
+
+  /* ════════════════════════════════════════
+   REVEAL & RESPONSIVE
+════════════════════════════════════════ */
+  .lb-contact .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity .65s ease, transform .65s ease;
+  }
+
+  .lb-contact .reveal.in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (max-width: 860px) {
+    .lb-contact .main-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .lb-contact .testimonials-col {
+      padding-top: 0;
+      border-top: 1px solid rgba(91, 98, 57, .1);
+      padding-top: 2.5rem;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .lb-contact .testimonial-quote {
+      padding-left: .8rem;
+    }
+  }
+</style>
+
+<div class="lb-contact">
+
+  <!-- ══════════════════════════════════════
+     HERO
+══════════════════════════════════════ -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">
+        <span class="hero-eyebrow-line"></span>
+        Get in Touch
+        <span class="hero-eyebrow-line"></span>
+      </p>
+      <h1>Let&rsquo;s Start Planning<br>Your <em>Irish Wedding.</em></h1>
+      <p class="hero-sub">No commitment. No payment. Just a conversation about your vision.</p>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+     MAIN - FORM + TESTIMONIALS
+══════════════════════════════════════ -->
+  <section class="main">
+    <div class="main-inner">
+
+      <!-- Form column -->
+      <div class="form-col reveal">
+        <div class="form-col-header">
+          <div class="form-intro-label">Book your free call</div>
+          <h2>Tell us about your day</h2>
+          <p>Fill out this form and we&rsquo;ll reply within <strong>12 hours</strong>, any day of the week - or feel free to reach out directly by text message or calling <a href="tel:+17708266446" style="color:var(--green);font-weight:600;text-decoration:none;">(770) 826-6446</a>.</p>
+        </div>
+
+        <!-- HubSpot Form Embed -->
+        <div class="hs-form-wrapper">
+          <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/embed/v2.js"></script>
+          <script>
+            hbspt.forms.create({
+              portalId: "47524318",
+              formId: "d1f83a24-30cd-4fdd-a890-851ba0872c2f",
+              region: "na1"
+            });
+          </script>
+        </div>
+      </div>
+
+      <!-- Testimonials column -->
+      <div class="testimonials-col reveal">
+        <div class="testimonials-label">What our couples say</div>
+
+        <div class="testimonial-item">
+          <p class="testimonial-quote">Our wedding day was absolute perfection, and we have Ladybird Ever After to thank for that. Hiring them was the best decision we made.</p>
+          <div class="testimonial-meta">
+            <span class="testimonial-dash"></span>
+            <span class="testimonial-name">Mikel &amp; Brian</span>
+            <span class="testimonial-location">- Dingle, Kerry</span>
+          </div>
+        </div>
+
+        <div class="testimonial-item">
+          <p class="testimonial-quote">We were able to enjoy our day without any stress at all. It was everything we dreamed of and more.</p>
+          <div class="testimonial-meta">
+            <span class="testimonial-dash"></span>
+            <span class="testimonial-name">Kalee &amp; Kristian</span>
+            <span class="testimonial-location">- Cliffs of Moher, Clare</span>
+          </div>
+        </div>
+
+        <div class="testimonial-item">
+          <p class="testimonial-quote">Our day was so easy, SO fun, and so magical. I cannot recommend Ladybird enough.</p>
+          <div class="testimonial-meta">
+            <span class="testimonial-dash"></span>
+            <span class="testimonial-name">Maya &amp; Tony</span>
+            <span class="testimonial-location">- Rahinnane Castle, Kerry</span>
+          </div>
+        </div>
+
+        <div class="testimonial-item">
+          <p class="testimonial-quote">We stumbled into finding Yasmeen and Laurence but it was the absolute best decision we could have made. They felt like old friends.</p>
+          <div class="testimonial-meta">
+            <span class="testimonial-dash"></span>
+            <span class="testimonial-name">Hannah &amp; John</span>
+            <span class="testimonial-location">- Cloughjordan House, Tipperary</span>
+          </div>
+        </div>
+
+        <div class="testimonial-item">
+          <p class="testimonial-quote">Ladybird Ever After did a phenomenal job - they go above and beyond for their couples.</p>
+          <div class="testimonial-meta">
+            <span class="testimonial-dash"></span>
+            <span class="testimonial-name">Jessica &amp; Kyle</span>
+            <span class="testimonial-location">- Ross Castle, Killarney</span>
+          </div>
+        </div>
+
+      </div><!-- /testimonials-col -->
+
+    </div>
+  </section>
+
+</div><!-- /lb-contact -->
+
+<script>
+  (function () {
+    var els = document.querySelectorAll('.lb-contact .reveal');
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e, i) {
+          if (e.isIntersecting) {
+            setTimeout(function () { e.target.classList.add('in'); }, i * 80);
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+      els.forEach(function (el) { io.observe(el); });
+    } else {
+      els.forEach(function (el) { el.classList.add('in'); });
+    }
+
+    // Pre-fill package from URL param
+    window.addEventListener('load', function () {
+      var params = new URLSearchParams(window.location.search);
+      var pkg = params.get('package');
+      if (pkg) {
+        var tries = 0;
+        var interval = setInterval(function () {
+          var sel = document.querySelector('.lb-contact select[name*="package"], .lb-contact select[name*="Package"]');
+          if (sel) {
+            for (var i = 0; i < sel.options.length; i++) {
+              if (sel.options[i].value.toLowerCase().indexOf(pkg.toLowerCase()) !== -1) {
+                sel.selectedIndex = i; break;
+              }
+            }
+            clearInterval(interval);
+          }
+          if (++tries > 30) clearInterval(interval);
+        }, 300);
+      }
+    });
+  })();
+</script>

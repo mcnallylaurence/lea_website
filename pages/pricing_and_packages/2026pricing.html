@@ -1,0 +1,4003 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Investment Guide - Ladybird Ever After</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Cinzel:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ══════════════ NEW ADDITIONS ══════════════ */
+
+        /* 1. Header Year Badge Style */
+        .year-pill {
+            display: inline-block;
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: #fff;
+            border: 1px solid var(--gold);
+            padding: 0.6rem 1.8rem;
+            margin-bottom: 2rem;
+            /* Space between badge and logo/text */
+            background: rgba(20, 32, 22, 0.6);
+            /* Matches your dark green theme */
+            border-radius: 50px;
+            /* Makes it a pill shape */
+            backdrop-filter: blur(4px);
+            animation: fadeUp 1s ease both;
+        }
+
+        /* 2. HubSpot Mobile Width Fix */
+        /* This ensures the calendar goes edge-to-edge on mobile */
+        @media (max-width: 600px) {
+            #book-call {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+
+            /* Keep the text inside the section padded so it doesn't touch the edge */
+            .book-wrap h2,
+            .book-wrap p,
+            .book-wrap .eyebrow {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+
+            /* Remove white box padding on mobile so calendar is max width */
+            .hubspot-frame {
+                padding: 0.5rem 0 !important;
+                border-radius: 0 !important;
+                box-shadow: none !important;
+            }
+        }
+
+
+        /* Make the input look editable on focus */
+        .guest-input:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 4px;
+        }
+
+        /* Remove default arrows/spinners from number input */
+        .guest-input::-webkit-outer-spin-button,
+        .guest-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .guest-input {
+            -moz-appearance: textfield;
+        }
+
+        /* New reassurance text style */
+        .fluctuation-note {
+            text-align: center;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.85rem;
+            color: var(--muted);
+            font-style: italic;
+            margin-top: 1.5rem;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.5;
+        }
+
+        /* ══════════════ VARIABLES ══════════════ */
+        :root {
+            --forest: #3d5a3e;
+            --forest-dk: #2e4530;
+            --forest-lt: #6a8c6b;
+            --gold: #b89a6a;
+            --gold-lt: #cdb080;
+            --gold-dim: rgba(184, 154, 106, 0.3);
+            --cream: #f5f0e8;
+            --parchment: #ede8da;
+            --warm-white: #faf7f2;
+            --dark: #1e2820;
+            --mid: #4a5c4b;
+            --fog: #d8d0bc;
+            --text: #2c2c2c;
+            --muted: #666;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Jost', sans-serif;
+            background: var(--cream);
+            color: var(--text);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            padding-bottom: 60px;
+        }
+
+        @media(min-width: 768px) {
+            body {
+                padding-bottom: 0;
+            }
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 9000;
+            opacity: 1;
+        }
+
+        /* ══════════════ TYPOGRAPHY ══════════════ */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+        }
+
+        .eyebrow {
+            font-family: 'Cinzel', serif;
+            font-size: 0.62rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .cover-eyebrow {
+            font-family: 'Cinzel', serif;
+            font-size: 0.68rem;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.92);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.2rem, 4.5vw, 3.8rem);
+            font-weight: 400;
+            color: var(--dark);
+            line-height: 1.1;
+            margin-bottom: 1.8rem;
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--forest);
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: var(--gold);
+            margin: 1.6rem 0;
+        }
+
+        /* ══════════════ COVER ══════════════ */
+        .cover {
+            position: relative;
+            min-height: 100svh;
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding: 2rem 1rem;
+        }
+
+        .cover-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/7d5bd610-6bca-4a8e-bfef-fa6db751c95d/Sea+%281%29.jpg') center/cover no-repeat;
+        }
+
+        .cover-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(20, 32, 22, 0.4) 0%, rgba(20, 32, 22, 0.3) 45%, rgba(20, 32, 22, 0.6) 100%);
+        }
+
+
+        .cover-content {
+            position: relative;
+            text-align: center;
+            padding: 3rem 2rem 2rem;
+            /* Reduced bottom padding from 4rem to 2rem */
+            z-index: 2;
+            animation: fadeUp 1.2s ease both;
+            width: 100%;
+            max-width: 700px;
+            margin-bottom: 2rem;
+            /* Adds space between content and the scroll arrow */
+        }
+
+        .cover-logo {
+            max-width: 160px;
+            margin: 0 auto 2rem;
+            filter: brightness(0) invert(1);
+            opacity: 0.97;
+            display: block;
+        }
+
+        .cover-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            font-weight: 300;
+            color: #fff;
+            line-height: 1.05;
+            margin-bottom: 0.6rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .cover-title em {
+            font-style: italic;
+            color: #f0e6d2;
+        }
+
+        .cover-sub {
+            font-family: 'Cinzel', serif;
+            font-size: 0.68rem;
+            letter-spacing: 0.3em;
+            color: rgba(255, 255, 255, 0.85);
+            text-transform: uppercase;
+            margin-bottom: 2.8rem;
+        }
+
+        .cover-cta {
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            color: #fff;
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            padding: 0.9rem 2.4rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            background: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(2px);
+            margin-top: 1rem;
+        }
+
+        .cover-cta:hover {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: #fff;
+        }
+
+        .cover-scroll {
+            position: absolute;
+            bottom: 1.5rem;
+            /* Pinned closer to bottom to ensure gap */
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.5);
+            font-family: 'Cinzel', serif;
+            font-size: 0.58rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            animation: bounce 2s ease infinite;
+            z-index: 10;
+        }
+
+        /* ══════════════ SECTIONS ══════════════ */
+        section {
+            padding: 6rem 2rem;
+        }
+
+        .section-inner {
+            max-width: 1080px;
+            margin: 0 auto;
+        }
+
+        .section-body {
+            font-size: 1rem;
+            line-height: 1.85;
+            color: #4a4a4a;
+            max-width: 640px;
+        }
+
+        /* ══════════════ WELCOME / FOUNDERS ══════════════ */
+        .welcome-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .welcome-photos {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .welcome-photo img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            display: block;
+            border-radius: 2px;
+        }
+
+        .photo-caption {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 0.85rem;
+            color: var(--mid);
+            text-align: center;
+            padding: 0.5rem 0 0;
+        }
+
+        .blockquote {
+            border-left: 3px solid var(--gold);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.35rem;
+            color: var(--forest);
+            line-height: 1.5;
+        }
+
+        /* ══════════════ WHY ABROAD ══════════════ */
+        .why-abroad {
+            background: var(--dark);
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .why-abroad::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/b92c040a-cbae-443f-9310-3512ffa2cb9f/MuckrossAbbey1.webp?content-type=image%2Fwebp') center/cover no-repeat;
+            opacity: 0.25;
+        }
+
+        .why-abroad .section-body {
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 680px;
+            font-size: 1.05rem;
+            line-height: 1.9;
+        }
+
+        .why-abroad .section-inner {
+            position: relative;
+        }
+
+        .why-abroad .section-title {
+            color: #fff;
+        }
+
+        .why-abroad .section-title em {
+            color: #fff;
+            font-style: italic;
+        }
+
+        .why-abroad .eyebrow {
+            color: var(--gold);
+        }
+
+        .why-abroad .divider {
+            background: var(--gold);
+        }
+
+        .italic-tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.6rem;
+            color: var(--gold);
+            margin-top: 2.5rem;
+        }
+
+        /* ══════════════ DIFFERENCE ══════════════ */
+        .difference-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3.5rem;
+        }
+
+        .difference-card {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            background: var(--parchment);
+            border-top: 2px solid var(--gold);
+        }
+
+        .difference-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 1.2rem;
+            opacity: 0.7;
+        }
+
+        .difference-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.8rem;
+        }
+
+        .difference-card p {
+            font-size: 0.9rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        /* ══════════════ JOURNEY ══════════════ */
+        .journey {
+            background: #1a1a1a;
+            color: #fff;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .journey::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/1d24441e-cdf7-47cd-a990-4a6b44475373/T%26R_599.webp?format=2500w') center/cover no-repeat;
+            opacity: 0.28;
+            filter: grayscale(20%);
+        }
+
+        .journey::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(160deg, rgba(18, 18, 18, 0.78) 0%, rgba(22, 22, 22, 0.65) 100%);
+            pointer-events: none;
+        }
+
+        .journey .section-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .journey .section-title {
+            color: #fff;
+        }
+
+        .journey .section-title em {
+            color: var(--gold-lt);
+        }
+
+        .journey .eyebrow {
+            color: var(--gold);
+        }
+
+        .journey .divider {
+            background: var(--gold);
+        }
+
+        .journey-steps {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 640px;
+        }
+
+        .journey-step {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .step-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+            min-width: 2rem;
+            padding-top: 0.1rem;
+        }
+
+        .step-content h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 0.3rem;
+        }
+
+        .step-content p {
+            font-size: 0.9rem;
+            line-height: 1.75;
+            color: rgba(255, 255, 255, 0.75);
+        }
+
+        /* ══════════════ PACKAGES - TAB DETAIL ══════════════ */
+        .package-section {
+            background: var(--parchment);
+        }
+
+        .package-tabs {
+            display: flex;
+            gap: 0;
+            margin-bottom: 2.5rem;
+            border-bottom: 2px solid var(--fog);
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        .package-tabs::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-btn {
+            font-family: 'Cinzel', serif;
+            font-size: 0.68rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 1rem 1.8rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #999;
+            border-bottom: 3px solid transparent;
+            margin-bottom: -3px;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+
+        .tab-btn.active {
+            color: var(--forest);
+            border-bottom-color: var(--forest);
+            font-weight: 600;
+            background: rgba(61, 90, 62, 0.03);
+        }
+
+        .tab-btn:hover {
+            color: var(--forest);
+        }
+
+        .tab-panel {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .tab-panel.active {
+            display: block;
+        }
+
+        .pkg-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .pkg-image img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            display: block;
+            border-radius: 2px;
+        }
+
+        .pkg-info h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.15em;
+            color: var(--gold);
+            margin-bottom: 0.3rem;
+        }
+
+        .pkg-info h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.4rem;
+            font-weight: 400;
+            color: var(--dark);
+            margin-bottom: 1.2rem;
+        }
+
+        .pkg-price-row {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+            padding: 1.5rem;
+            background: var(--cream);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .price-block {
+            text-align: center;
+            flex: 1;
+        }
+
+        .price-block .price-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #888;
+            display: block;
+            margin-bottom: 0.4rem;
+        }
+
+        .price-block .price-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--forest);
+            font-weight: 500;
+        }
+
+        .guest-badge {
+            display: inline-block;
+            background: var(--forest);
+            color: #fff;
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            padding: 0.4rem 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .includes-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.65rem;
+        }
+
+        .includes-list li {
+            font-size: 0.95rem;
+            color: #444;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .includes-list li::before {
+            content: '✓';
+            color: var(--forest);
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+
+        .includes-list li.no::before {
+            content: '×';
+            color: #ccc;
+        }
+
+        .includes-list li.no {
+            color: #aaa;
+            text-decoration: line-through;
+            text-decoration-color: #e0e0e0;
+        }
+
+        /* ══════════════ COMPARISON TABLE STYLING ══════════════ */
+        .comparison-section {
+            background: var(--warm-white);
+        }
+
+        .comp-table-wrap {
+            overflow-x: auto;
+            margin-top: 3rem;
+            padding-bottom: 1rem;
+        }
+
+        .comp-table {
+            width: 100%;
+            min-width: 800px;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            background: #fff;
+        }
+
+        .comp-table thead th {
+            font-family: 'Cinzel', serif;
+            font-size: 0.65rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #fff;
+            padding: 1.4rem 1rem;
+            text-align: center;
+            font-weight: 500;
+            background: var(--dark);
+            border-right: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .comp-table thead th:last-child {
+            border-right: none;
+        }
+
+        .comp-table thead th.sticky-col {
+            text-align: left;
+            padding-left: 1.5rem;
+            position: sticky;
+            left: 0;
+            z-index: 11;
+            background: var(--dark);
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .comp-table tbody tr {
+            transition: background 0.15s;
+        }
+
+        .comp-table tbody tr:nth-child(even):not(.grp) {
+            background: #fdfcf8;
+        }
+
+        .comp-table tbody tr:hover:not(.grp) {
+            background: rgba(61, 90, 62, 0.05);
+        }
+
+        .comp-table tbody td {
+            padding: 1rem 0.8rem;
+            text-align: center;
+            color: #555;
+            vertical-align: middle;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            font-size: 0.88rem;
+        }
+
+        .comp-table tbody td.sticky-col {
+            text-align: left;
+            padding-left: 1.5rem;
+            color: var(--text);
+            font-size: 0.875rem;
+            font-weight: 500;
+            background: #fff;
+            position: sticky;
+            left: 0;
+            z-index: 10;
+            border-right: 1px solid rgba(0, 0, 0, 0.05);
+            max-width: 240px;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .comp-table tbody tr:nth-child(even):not(.grp) td.sticky-col {
+            background: #fdfcf8;
+        }
+
+        .comp-table tbody tr:hover:not(.grp) td.sticky-col {
+            background: #f5f8f5;
+        }
+
+        .comp-table tr.grp td {
+            background: var(--parchment);
+            color: var(--forest-dk);
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            padding: 1rem 1.5rem;
+            text-align: left;
+            border: none;
+            font-weight: 600;
+        }
+
+        .comp-table tr.grp td.sticky-col {
+            background: var(--parchment);
+            color: var(--forest-dk);
+            box-shadow: none;
+            z-index: 10;
+        }
+
+        .ck {
+            color: var(--forest);
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .cx {
+            color: #dcdcdc;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        .price-cell-t {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        /* ══════════════ MOBILE CARDS CSS ══════════════ */
+        .comp-cards-mobile {
+            display: none;
+            margin-top: 2rem;
+        }
+
+        .comp-card-pkg {
+            background: #fff;
+            border-radius: 6px;
+            box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+            margin-bottom: 1.2rem;
+            overflow: hidden;
+        }
+
+        .comp-card-header {
+            background: var(--dark);
+            padding: 1rem 1.2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .comp-card-header-left {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .comp-card-pkg-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.5rem;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .comp-card-pkg-guests {
+            font-family: 'Cinzel', serif;
+            font-size: 0.55rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .comp-card-prices {
+            text-align: right;
+        }
+
+        .comp-card-price-val {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            color: #fff;
+            display: block;
+            line-height: 1.2;
+        }
+
+        .comp-card-price-region {
+            font-family: 'Cinzel', serif;
+            font-size: 0.48rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.45);
+            display: block;
+        }
+
+        .comp-card-toggle {
+            color: var(--gold);
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+            margin-left: 0.8rem;
+            font-family: sans-serif;
+        }
+
+        .comp-card-pkg.open .comp-card-toggle {
+            transform: rotate(45deg);
+        }
+
+        .comp-card-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .comp-card-pkg.open .comp-card-body {
+            max-height: 1200px;
+        }
+
+        .comp-card-section-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.55rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--forest-dk);
+            background: var(--parchment);
+            padding: 0.65rem 1.2rem;
+            display: block;
+        }
+
+        .comp-card-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.7rem 1.2rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            gap: 0.5rem;
+        }
+
+        .comp-card-row:last-child {
+            border-bottom: none;
+        }
+
+        .comp-card-row-label {
+            font-size: 0.85rem;
+            color: #444;
+            flex: 1;
+        }
+
+        .comp-card-row-label .info-toggle {
+            display: inline-flex;
+            vertical-align: middle;
+            margin-left: 6px;
+            transform: translateY(-2px);
+            /* Slight lift to align with text */
+        }
+
+        .comp-card-row-val {
+            font-size: 0.9rem;
+            color: #555;
+            text-align: right;
+            flex-shrink: 0;
+        }
+
+        .comp-card-row-val .ck {
+            color: var(--forest);
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .comp-card-row-val .cx {
+            color: #dcdcdc;
+            font-size: 1rem;
+        }
+
+        /* ══ RESPONSIVE SWITCH ══ */
+        @media (max-width: 900px) {
+            .comp-table-wrap {
+                display: none;
+            }
+
+            .comp-cards-mobile {
+                display: block;
+            }
+        }
+
+        /* ══════════════ INFO TOGGLE BUTTON ══════════════ */
+        .service-name-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            position: static;
+            /* CHANGED: was relative - caused clipping */
+            width: 100%;
+        }
+
+        .info-toggle {
+            cursor: pointer;
+            color: var(--gold);
+            opacity: 0.8;
+            transition: all 0.2s;
+            font-size: 1.25em;
+            background: none;
+            border: none;
+            padding: 0 5px;
+            line-height: 1;
+            font-family: sans-serif;
+            font-weight: 400;
+            min-width: 30px;
+            min-height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-tap-highlight-color: transparent;
+            /* Remove tap highlight on iOS */
+            touch-action: manipulation;
+        }
+
+        .info-toggle:hover {
+            opacity: 1;
+            color: var(--forest);
+        }
+
+        /* ══════════════ FLOATING TOOLTIP (body-level) ══════════════ */
+        /* The old .tooltip-box inside each row is now hidden and unused.
+   All tooltip display is handled by #floatingTooltip via JS. */
+        .tooltip-box {
+            display: none !important;
+        }
+
+        #floatingTooltip {
+            display: none;
+            position: fixed;
+            /* fixed so it's never clipped by any parent */
+            z-index: 99999;
+            width: 220px;
+            background-color: var(--dark);
+            color: #fff;
+            text-align: left;
+            border-radius: 4px;
+            padding: 12px 14px;
+            font-family: 'Jost', sans-serif;
+            font-size: 0.78rem;
+            line-height: 1.55;
+            font-weight: 400;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+            pointer-events: none;
+            /* won't intercept taps */
+            transition: opacity 0.15s ease;
+            opacity: 0;
+        }
+
+        #floatingTooltip.visible {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Arrow - direction set dynamically via JS class */
+        #floatingTooltip::after {
+            content: "";
+            position: absolute;
+            border-width: 6px;
+            border-style: solid;
+        }
+
+        #floatingTooltip.arrow-left::after {
+            top: 50%;
+            right: 100%;
+            transform: translateY(-50%);
+            border-color: transparent var(--dark) transparent transparent;
+        }
+
+        #floatingTooltip.arrow-right::after {
+            top: 50%;
+            left: 100%;
+            transform: translateY(-50%);
+            border-color: transparent transparent transparent var(--dark);
+        }
+
+        #floatingTooltip.arrow-top::after {
+            top: -12px;
+            left: 18px;
+            border-color: transparent transparent var(--dark) transparent;
+        }
+
+        #floatingTooltip.arrow-bottom::after {
+            bottom: -12px;
+            left: 18px;
+            border-color: var(--dark) transparent transparent transparent;
+        }
+
+        /* ══════════════ VENUES ══════════════ */
+        .venue-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .venue-card {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .venue-card img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.6s ease;
+        }
+
+        .venue-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .venue-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(20, 32, 22, 0.9) 0%, transparent 100%);
+            padding: 3rem 1.2rem 1.2rem;
+            color: #fff;
+        }
+
+        .venue-overlay h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            color: #fff;
+        }
+
+        /* ══════════════ ADD-ONS ══════════════ */
+        .addons-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .addon-card {
+            padding: 1.8rem 1.2rem;
+            background: var(--parchment);
+            text-align: center;
+            border-bottom: 2px solid var(--gold);
+            transition: transform 0.3s;
+        }
+
+        .addon-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .addon-icon {
+            font-size: 1.8rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .addon-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .addon-card p {
+            font-size: 0.82rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* ══════════════ CALCULATOR ══════════════ */
+        .calculator {
+            background: var(--parchment);
+            padding: 7rem 2rem;
+            color: var(--dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .calculator::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0.6;
+        }
+
+        .calc-container {
+            max-width: 820px;
+            margin: 0 auto;
+        }
+
+        .calc-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .calc-header h2 {
+            font-size: clamp(2.4rem, 4vw, 3.4rem);
+            margin-bottom: 0.6rem;
+            color: var(--dark);
+        }
+
+        .calc-header h2 em {
+            color: var(--forest);
+        }
+
+        .calc-header p {
+            font-size: 0.9rem;
+            color: var(--muted);
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .calc-input-group {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 3rem;
+            gap: 0.8rem;
+        }
+
+        .calc-label {
+            display: block;
+            font-family: 'Cinzel', serif;
+            font-size: 0.62rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--forest);
+            margin-bottom: 0;
+            text-align: center;
+        }
+
+        .guest-stepper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--fog);
+            background: #fff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+        }
+
+        .stepper-btn {
+            width: 52px;
+            height: 64px;
+            background: transparent;
+            border: none;
+            color: var(--muted);
+            font-size: 1.6rem;
+            line-height: 1;
+            cursor: pointer;
+            transition: 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .stepper-btn:hover {
+            background: var(--cream);
+            color: var(--gold);
+        }
+
+        .stepper-divider {
+            width: 1px;
+            height: 40px;
+            background: var(--fog);
+        }
+
+        .guest-input {
+            background: transparent;
+            border: none;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            color: var(--dark);
+            width: 140px;
+            text-align: center;
+            outline: none;
+            padding: 0.5rem 0;
+        }
+
+        .guest-input::-webkit-outer-spin-button,
+        .guest-input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .guest-input {
+            -moz-appearance: textfield;
+        }
+
+        .guest-stepper-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .not-sure-btn {
+            background: transparent;
+            border: 1px solid var(--fog);
+            color: var(--muted);
+            font-family: 'Cinzel', serif;
+            font-size: 0.58rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 0.7rem 1.2rem;
+            cursor: pointer;
+            transition: all 0.25s;
+            white-space: nowrap;
+        }
+
+        .not-sure-btn:hover,
+        .not-sure-btn.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            color: #fff;
+        }
+
+        .pkg-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+            margin-bottom: 2.5rem;
+        }
+
+        .pkg-card {
+            background: #fff;
+            border: 1px solid var(--fog);
+            border-top: 3px solid transparent;
+            padding: 1.4rem 0.5rem;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.28s;
+            position: relative;
+        }
+
+        .pkg-card:hover {
+            border-top-color: var(--gold-lt);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+        }
+
+        .pkg-card.selected {
+            border-top-color: var(--forest);
+            background: #fff;
+            box-shadow: 0 8px 25px rgba(61, 90, 62, 0.15);
+            transform: translateY(-4px);
+            z-index: 2;
+        }
+
+        .pkg-card .best-fit {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gold);
+            color: #fff;
+            font-size: 0.5rem;
+            font-family: 'Cinzel', serif;
+            text-transform: uppercase;
+            padding: 2px 8px;
+            letter-spacing: 0.1em;
+            opacity: 0;
+            transition: opacity 0.3s;
+            white-space: nowrap;
+        }
+
+        .pkg-card.selected .best-fit {
+            opacity: 1;
+        }
+
+        .pc-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.5rem;
+            color: var(--forest);
+            display: block;
+            line-height: 1;
+            margin-bottom: 0.25rem;
+        }
+
+        .pkg-card.selected .pc-name {
+            color: var(--forest-dk);
+            font-weight: 600;
+        }
+
+        .pc-sub {
+            font-family: 'Cinzel', serif;
+            font-size: 0.42rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+            display: block;
+        }
+
+        .pc-limit {
+            font-size: 0.62rem;
+            color: var(--light-muted);
+            margin-top: 0.45rem;
+            display: block;
+        }
+
+        .region-toggle {
+            display: flex;
+            justify-content: center;
+            gap: 0;
+            border: 1px solid var(--fog);
+            width: fit-content;
+            margin: 0 auto 3rem;
+            overflow: hidden;
+            border-radius: 4px;
+        }
+
+        .r-btn {
+            background: transparent;
+            border: none;
+            color: var(--muted);
+            padding: 0.75rem 1.6rem;
+            font-family: 'Cinzel', serif;
+            font-size: 0.58rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .r-btn:first-child {
+            border-right: 1px solid var(--fog);
+        }
+
+        .r-btn:hover {
+            color: var(--forest);
+        }
+
+        .r-btn.active {
+            background: var(--forest);
+            color: #fff;
+        }
+
+        .calc-result {
+            background: var(--dark);
+            padding: 3rem 2.5rem;
+            border-radius: 2px;
+        }
+
+        .cr-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 0.55rem 0;
+        }
+
+        .cr-row-label {
+            font-size: 0.82rem;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .cr-row-val {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .cr-extra .cr-row-label {
+            color: var(--gold-lt);
+            font-style: italic;
+        }
+
+        .cr-extra .cr-row-val {
+            color: var(--gold-lt);
+        }
+
+        .cr-divider {
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 0.8rem 0;
+        }
+
+        .cr-label {
+            font-family: 'Cinzel', serif;
+            font-size: 0.55rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.4);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .cr-amount {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3.5rem, 7vw, 5rem);
+            color: #fff;
+            line-height: 1;
+            display: block;
+            transition: all 0.3s;
+        }
+
+        .cr-note {
+            font-size: 0.8rem;
+            color: var(--gold-lt);
+            font-style: italic;
+            min-height: 1em;
+            margin-top: 0.4rem;
+        }
+
+        .cr-disclaimer {
+            font-size: 0.72rem;
+            color: rgba(255, 255, 255, 0.22);
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        .cr-cta {
+            display: inline-block;
+            white-space: nowrap;
+            margin-top: 1.4rem;
+            background: transparent;
+            color: var(--gold);
+            border: 1px solid var(--gold-dim);
+            font-family: 'Cinzel', serif;
+            font-size: 0.58rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 0.9rem 2rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .cr-cta:hover {
+            background: var(--gold);
+            color: #fff;
+            border-color: var(--gold);
+        }
+
+        .calc-result.unsure .cr-amount {
+            color: rgba(255, 255, 255, 0.35);
+            font-size: 1.8rem;
+            font-style: italic;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .calc-result.unsure .cr-row {
+            opacity: 0.3;
+        }
+
+        .calc-unsure-msg {
+            display: none;
+            text-align: center;
+            padding: 1.5rem 0 0.5rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.65);
+        }
+
+        .calc-result.unsure .calc-unsure-msg {
+            display: block;
+        }
+
+        .calc-result.unsure .cr-breakdown {
+            display: none;
+        }
+
+        /* ══════════════ TESTIMONIALS ══════════════ */
+        .testimonials {
+            background: var(--dark);
+            color: #fff;
+        }
+
+        .testimonials .section-title {
+            color: #fff;
+        }
+
+        .testimonials .eyebrow {
+            color: var(--gold);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3.5rem;
+        }
+
+        .testimonial-card {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .testimonial-img img {
+            width: 100%;
+            aspect-ratio: 3/4;
+            object-fit: cover;
+            display: block;
+            border-radius: 2px;
+        }
+
+        .open-quote {
+            font-size: 4rem;
+            color: var(--gold);
+            line-height: 0.5;
+            display: block;
+            margin-bottom: 0.8rem;
+        }
+
+        .testimonial-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.15rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.88);
+            margin-bottom: 1.2rem;
+        }
+
+        .testimonial-by {
+            font-family: 'Cinzel', serif;
+            font-size: 0.62rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        /* ══════════════ FAQ ══════════════ */
+        .faq-list {
+            max-width: 760px;
+            margin: 3rem auto 0;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--fog);
+        }
+
+        .faq-question {
+            width: 100%;
+            text-align: left;
+            padding: 1.4rem 0;
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--dark);
+            gap: 1rem;
+        }
+
+        .faq-arrow {
+            color: var(--gold);
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+            flex-shrink: 0;
+        }
+
+        .faq-item.open .faq-arrow {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s;
+            font-size: 0.93rem;
+            line-height: 1.85;
+            color: #555;
+            padding: 0;
+        }
+
+        .faq-item.open .faq-answer {
+            max-height: 400px;
+            padding-bottom: 1.4rem;
+        }
+
+        /* ══════════════ GALLERY ══════════════ */
+        .gallery {
+            background: var(--cream);
+            padding: 5rem 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 6px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.3s;
+            aspect-ratio: 1/1;
+        }
+
+        .gallery-item:hover img {
+            opacity: 0.85;
+        }
+
+        .gallery-item.tall {
+            grid-row: span 2;
+        }
+
+        .gallery-item.tall img {
+            aspect-ratio: unset;
+            height: 100%;
+            min-height: 300px;
+        }
+
+        .gallery-item.wide {
+            grid-column: span 2;
+        }
+
+        .gallery-item.wide img {
+            aspect-ratio: 2/1;
+        }
+
+        /* ══════════════ BOOK CALL ══════════════ */
+        #book-call {
+            background: var(--dark);
+            padding: 6rem 2rem 8rem;
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .book-wrap {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .book-wrap h2 {
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 1rem;
+        }
+
+        .book-wrap p {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 3rem;
+        }
+
+        .hubspot-frame {
+            background: #fff;
+            padding: 1rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            min-height: 600px;
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .hubspot-frame::before {
+            content: 'Loading Calendar...';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #999;
+            font-family: 'Cinzel', serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.2em;
+            z-index: 0;
+        }
+
+        .meetings-iframe-container {
+            position: relative;
+            z-index: 1;
+            background: #fff;
+        }
+
+        /* ══════════════ CTA ══════════════ */
+        .cta-section {
+            position: relative;
+            min-height: 520px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .cta-bg {
+            position: absolute;
+            inset: 0;
+            background: url('https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/1771902474983-UNYS0H29F9P94ADX2Y9P/Charles+%2B+Roshini-99.jpg') center/cover no-repeat;
+        }
+
+        .cta-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(20, 32, 22, 0.6), rgba(20, 32, 22, 0.78));
+        }
+
+        .cta-content {
+            position: relative;
+            padding: 2rem;
+        }
+
+        .cta-content .eyebrow {
+            color: var(--gold);
+        }
+
+        .cta-content .section-title {
+            color: #fff;
+            margin: 0 auto 1.5rem;
+            max-width: 700px;
+        }
+
+        .cta-content p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            max-width: 540px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background: var(--gold);
+            color: #fff;
+            font-family: 'Cinzel', serif;
+            font-size: 0.68rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            padding: 1.1rem 2.8rem;
+            text-decoration: none;
+            margin: 0 0.5rem;
+            transition: background 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: var(--forest);
+        }
+
+        .btn-outline {
+            display: inline-block;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            color: #fff;
+            font-family: 'Cinzel', serif;
+            font-size: 0.68rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            padding: 1.1rem 2.8rem;
+            text-decoration: none;
+            margin: 0 0.5rem;
+            transition: background 0.3s, border-color 0.3s;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: #fff;
+        }
+
+        /* ══════════════ FOOTER ══════════════ */
+        footer {
+            background: var(--dark);
+            color: rgba(255, 255, 255, 0.45);
+            text-align: center;
+            padding: 3rem 2rem;
+            font-family: 'Cinzel', serif;
+            font-size: 0.62rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            line-height: 2;
+        }
+
+        footer .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.6rem;
+            color: var(--gold);
+            letter-spacing: 0;
+            text-transform: none;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        /* ══════════════ MOBILE STICKY CTA ══════════════ */
+        .mobile-sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--dark);
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            border-top: 1px solid var(--gold);
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+        }
+
+        .mobile-sticky-cta.visible {
+            transform: translateY(0);
+        }
+
+        .m-cta-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: #fff;
+            font-size: 1.1rem;
+        }
+
+        .m-cta-btn {
+            background: var(--gold);
+            color: #fff;
+            font-family: 'Cinzel', serif;
+            font-size: 0.6rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 0.7rem 1.2rem;
+            text-decoration: none;
+        }
+
+        @media(min-width: 768px) {
+            .mobile-sticky-cta {
+                display: none;
+            }
+        }
+
+        /* ══════════════ ANIMATIONS ══════════════ */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            50% {
+                transform: translateX(-50%) translateY(6px);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ══════════════ RESPONSIVE ══════════════ */
+        @media (max-width: 900px) {
+            .welcome-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .difference-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .pkg-detail-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .venue-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .addons-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .testimonial-card {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-img img {
+                max-height: 250px;
+                width: 100%;
+                object-fit: cover;
+                object-position: top;
+            }
+
+            .pkg-cards {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .cover-title {
+                font-size: 3.5rem;
+            }
+
+            .pkg-image img {
+                max-height: 250px;
+                object-position: center top;
+            }
+
+            .welcome-photo img {
+                max-height: 250px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            section {
+                padding: 4rem 1.2rem;
+            }
+
+            .cover-title {
+                font-size: 2.6rem;
+            }
+
+            .cover-content {
+                padding: 1.2rem;
+            }
+
+            .cover-cta {
+                padding: 0.8rem 1.8rem;
+                font-size: 0.6rem;
+            }
+
+            .welcome-photo img {
+                max-height: 200px;
+            }
+
+            .pkg-image img {
+                max-height: 220px;
+                object-position: center top;
+            }
+
+            .tab-btn {
+                padding: 0.7rem 1rem;
+                font-size: 0.62rem;
+            }
+
+            .pkg-price-row {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .pkg-cards {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 6px;
+            }
+
+            .calc-result {
+                padding: 1.5rem;
+            }
+
+            .venue-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .venue-card img {
+                max-height: 220px;
+            }
+
+            .addons-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .testimonial-img img {
+                max-height: 200px;
+                width: 100%;
+                object-fit: cover;
+                object-position: top;
+            }
+
+            .comp-table-wrap {
+                display: none;
+            }
+
+            .comp-cards-mobile {
+                display: block;
+            }
+
+            .cta-content div {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .btn-primary,
+            .btn-outline {
+                margin: 0;
+                width: 100%;
+                max-width: 260px;
+                text-align: center;
+            }
+
+            .cr-cta {
+                display: block;
+                text-align: center;
+            }
+
+            .region-toggle {
+                width: 100%;
+            }
+
+            .r-btn {
+                flex: 1;
+            }
+        }
+
+        /* ══════════════ PACKAGE QUIZ ══════════════ */
+        .pkg-quiz {
+            max-width: 680px;
+            margin: 0 auto;
+        }
+
+        .pq-screen {
+            display: none;
+            animation: fadeUp 0.4s ease;
+        }
+
+        .pq-screen.active {
+            display: block;
+        }
+
+        .pq-intro {
+            text-align: center;
+        }
+
+        .pq-start {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--forest);
+            color: #fff;
+            font-family: 'Cinzel', serif;
+            font-size: 0.68rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            padding: 1.1rem 2.8rem;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .pq-start:hover {
+            background: var(--dark);
+        }
+
+        .pq-start-meta {
+            font-size: 0.6rem;
+            opacity: 0.6;
+            letter-spacing: 0.1em;
+            font-style: italic;
+            text-transform: none;
+        }
+
+        .pq-progress {
+            margin-bottom: 2rem;
+        }
+
+        .pq-progress-bar {
+            background: var(--fog);
+            height: 3px;
+            border-radius: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .pq-progress-fill {
+            height: 100%;
+            background: var(--gold);
+            border-radius: 2px;
+            transition: width 0.4s;
+            width: 0;
+        }
+
+        .pq-progress-text {
+            font-family: 'Cinzel', serif;
+            font-size: 0.58rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .pq-question {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .pq-help {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 1.8rem;
+            font-style: italic;
+        }
+
+        .pq-options {
+            display: flex;
+            flex-direction: column;
+            gap: 0.7rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pq-option {
+            background: #fff;
+            border: 1px solid var(--fog);
+            border-left: 3px solid transparent;
+            padding: 1rem 1.2rem;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.22s;
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .pq-option:hover {
+            border-left-color: var(--gold);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .06);
+        }
+
+        .pq-option-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .pq-option-desc {
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .pq-back {
+            background: none;
+            border: none;
+            font-family: 'Cinzel', serif;
+            font-size: 0.58rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--muted);
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .pq-back:hover {
+            color: var(--forest);
+        }
+
+        .pq-result-eyebrow {
+            font-family: 'Cinzel', serif;
+            font-size: 0.62rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .pq-result-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 400;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .pq-result-title em {
+            color: var(--forest);
+            font-style: italic;
+        }
+
+        .pq-result-summary {
+            font-size: 0.92rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 1.8rem;
+        }
+
+        .pq-result-package-box {
+            background: var(--dark);
+            color: #fff;
+            padding: 1.8rem 2rem;
+            margin-bottom: 1.8rem;
+            border-left: 4px solid var(--gold);
+        }
+
+        .pq-result-pkg-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .pq-result-prices {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.6rem;
+        }
+
+        .pq-result-price-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .pq-result-price-val {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: #fff;
+        }
+
+        .pq-result-price-region {
+            font-size: 0.68rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.5);
+            font-family: 'Cinzel', serif;
+        }
+
+        .pq-result-note {
+            font-size: 0.75rem;
+            color: rgba(255, 255, 255, 0.45);
+            font-style: italic;
+            margin-top: 0.4rem;
+        }
+
+        .pq-result-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .pq-result-list li {
+            font-size: 0.9rem;
+            color: #444;
+            padding-left: 1.2rem;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .pq-result-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-size: 0.75rem;
+        }
+
+        .pq-result-actions {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- FLOATING TOOLTIP (single instance, appended to body to avoid clipping) -->
+    <div id="floatingTooltip"></div>
+
+    <div class="mobile-sticky-cta" id="mobileCTA">
+        <span class="m-cta-text">Start your journey</span>
+        <a href="#book-call" class="m-cta-btn">Book Call</a>
+    </div>
+
+    <div class="cover">
+        <div class="cover-bg"></div>
+        <div class="cover-overlay"></div>
+        <div class="cover-content">
+            <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/cf0fbeec-50e2-41e9-9498-34dc4022f7bd/Primary+Logo+White+No+Background.png?content-type=image%2Fpng"
+                alt="Ladybird Ever After" class="cover-logo">
+
+            <div class="year-pill">2026 Pricing & Packages</div>
+
+            <p class="cover-eyebrow">Your Journey Begins Here</p>
+            <h1 class="cover-title">Thank You For<br><em>Your Interest</em></h1>
+            <p class="cover-sub"
+                style="text-transform:none; letter-spacing:0.05em; font-size:1rem; max-width:500px; margin:0 auto 2.8rem; line-height:1.6;">
+                We handle every detail-from vendors to venues-so you can enjoy a completely stress-free experience.
+                Let's start planning.</p>
+            <div style="display:flex; justify-content:center; gap:1rem; flex-wrap:wrap;">
+                <a href="#book-call" class="cover-cta"
+                    style="background:var(--gold); border-color:var(--gold); margin-top:0;">Book a Free Call</a>
+                <a href="#packages" class="cover-cta" style="margin-top:0;">View Pricing</a>
+            </div>
+        </div>
+        <div class="cover-scroll">↓ &nbsp; Scroll</div>
+    </div>
+
+
+    <section class="comparison-section" id="packages">
+        <div class="section-inner">
+            <p class="eyebrow reveal" style="text-align:center;">At a Glance</p>
+            <h2 class="section-title reveal" style="text-align:center;">Everything <em>Compared</em></h2>
+            <p style="text-align:center;color:#666;max-width:580px;margin:0 auto;font-size:0.92rem;line-height:1.85;"
+                class="reveal">
+                All packages are priced in USD with a single US-based contract. Tap the info icon (<span
+                    style="color:var(--gold); font-family:sans-serif; font-weight:bold;">ⓘ</span>) to learn more.
+            </p>
+
+            <div class="comp-table-wrap reveal">
+                <table class="comp-table">
+                    <thead>
+                        <tr>
+                            <th class="sticky-col">What's Included</th>
+                            <th>Fáilte</th>
+                            <th>Grá</th>
+                            <th>Sláinte</th>
+                            <th>Ard</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="grp">
+                            <td class="sticky-col" colspan="5">Photography</td>
+                        </tr>
+                        <tr>
+                            <td class="sticky-col">
+                                <div class="service-name-wrap">
+                                    Photography Hours
+                                    <button class="info-toggle" type="button" aria-label="Info"
+                                        data-tip="Premium photography coverage to capture your most important moments.">ⓘ</button>
+                                    <div class="tooltip-box">Premium photography coverage to capture your most important
+                                        moments.</div>
+                                </div>
+                            </td>
+                            <td>2 hrs</td>
+                            <td>3 hrs</td>
+                            <td>4 hrs</td>
+                            <td>5 hrs</td>
+                        </tr>
+
+                        <tr class="grp">
+                            <td class="sticky-col" colspan="5">Core Services</td>
+                        </tr>
+                        <tr>
+                            <td class="sticky-col">
+                                <div class="service-name-wrap">
+                                    Expert Irish Celebrant
+                                    <button class="info-toggle" type="button" aria-label="Info"
+                                        data-tip="A vetted, experienced celebrant to craft and officiate your personal ceremony.">ⓘ</button>
+                                    <div class="tooltip-box">A vetted, experienced celebrant to craft and officiate your
+                                        personal ceremony.</div>
+                                </div>
+                            </td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sticky-col">
+                                <div class="service-name-wrap">
+                                    Legal Guidance
+                                    <button class="info-toggle" type="button" aria-label="Info"
+                                        data-tip="Complete assistance with the paperwork required to legally marry in Ireland.">ⓘ</button>
+                                    <div class="tooltip-box">Complete assistance with the paperwork required to legally
+                                        marry in Ireland.</div>
+                                </div>
+                            </td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sticky-col">
+                                <div class="service-name-wrap">
+                                    US-Based Planning & Payments
+                                    <button class="info-toggle" type="button" aria-label="Info"
+                                        data-tip="One simple contract in USD. We handle all currency conversion and vendor payments.">ⓘ</button>
+                                    <div class="tooltip-box">One simple contract in USD. We handle all currency
+                                        conversion and vendor payments.</div>
+                                </div>
+                            </td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sticky-col">
+                                <div class="service-name-wrap">
+                                    Venue Curation & Booking
+                                    <button class="info-toggle" type="button" aria-label="Info"
+                                        data-tip="We research, vet, and secure the perfect location that matches your vision.">ⓘ</button>
+                                    <div class="tooltip-box">We research, vet, and secure the perfect location that
+                                        matches your vision.</div>
+                                </div>
+                            </td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sticky-col">
+                                <div class="service-name-wrap">
+                                    Travel Guidance
+                                    <button class="info-toggle" type="button" aria-label="Info"
+                                        data-tip="Tips, tricks, and guides for every region of your vacation-not just your wedding location, but anywhere else you plan to visit in Ireland.">ⓘ</button>
+                                    <div class="tooltip-box">Tips, tricks, and guides for every region of your
+                                        vacation-not just your wedding location, but anywhere else you plan to visit in
+                                        Ireland.</div>
+                                </div>
+                            </td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sticky-col">
+                                <div class="service-name-wrap">
+                                    Ladybird Ever After Roadmap
+                                    <button class="info-toggle" type="button" aria-label="Info"
+                                        data-tip="Proprietary course material covering everything you need to know about getting married in Ireland - plus insider guides on where to eat, stay, and explore to plan your whole trip.">ⓘ</button>
+                                    <div class="tooltip-box">Proprietary course material covering everything you need to
+                                        know about getting married in Ireland - plus insider guides on where to eat,
+                                        stay, and explore to plan your whole trip.</div>
+                                </div>
+                            </td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                        </tr>
+
+                        <tr class="grp">
+                            <td class="sticky-col" colspan="5">Styling & Florals</td>
+                        </tr>
+                        <tr>
+                            <td class="sticky-col">
+                                <div class="service-name-wrap">
+                                    Bridal Bouquet & Buttonhole
+                                    <button class="info-toggle" type="button" aria-label="Info"
+                                        data-tip="Fresh, seasonal floral arrangements designed to match your style.">ⓘ</button>
+                                    <div class="tooltip-box">Fresh, seasonal floral arrangements designed to match your
+                                        style.</div>
+                                </div>
+                            </td>
+                            <td><span class="cx">–</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sticky-col">
+                                <div class="service-name-wrap">
+                                    Hair & Makeup (×1)
+                                    <button class="info-toggle" type="button" aria-label="Info"
+                                        data-tip="Professional styling for one person on the morning of the wedding.">ⓘ</button>
+                                    <div class="tooltip-box">Professional styling for one person on the morning of the
+                                        wedding.</div>
+                                </div>
+                            </td>
+                            <td><span class="cx">–</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sticky-col">
+                                <div class="service-name-wrap">
+                                    Additional Hair & Makeup (×2)
+                                    <button class="info-toggle" type="button" aria-label="Info"
+                                        data-tip="Styling for two additional party members (e.g., bridesmaids or mothers).">ⓘ</button>
+                                    <div class="tooltip-box">Styling for two additional party members (e.g., bridesmaids
+                                        or mothers).</div>
+                                </div>
+                            </td>
+                            <td><span class="cx">–</span></td>
+                            <td><span class="cx">–</span></td>
+                            <td><span class="cx">–</span></td>
+                            <td><span class="cx">–</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sticky-col">
+                                <div class="service-name-wrap">
+                                    Additional Florals
+                                    <button class="info-toggle" type="button" aria-label="Info"
+                                        data-tip="Includes 2 wrist corsages and 2 buttonholes for your wedding party.">ⓘ</button>
+                                    <div class="tooltip-box">Includes 2 wrist corsages and 2 buttonholes for your
+                                        wedding party.</div>
+                                </div>
+                            </td>
+                            <td><span class="cx">–</span></td>
+                            <td><span class="cx">–</span></td>
+                            <td><span class="cx">–</span></td>
+                            <td><span class="cx">–</span></td>
+                        </tr>
+
+                        <tr class="grp">
+                            <td class="sticky-col" colspan="5">Coordination</td>
+                        </tr>
+                        <tr>
+                            <td class="sticky-col">
+                                <div class="service-name-wrap">
+                                    Reception Dinner Reservation
+                                    <button class="info-toggle" type="button" aria-label="Info"
+                                        data-tip="We secure a reservation at a wonderful restaurant to ensure you have a confirmed place to celebrate your day (for smaller groups).">ⓘ</button>
+                                    <div class="tooltip-box">We secure a reservation at a wonderful restaurant to ensure
+                                        you have a confirmed place to celebrate your day (for smaller groups).</div>
+                                </div>
+                            </td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="cx">–</span></td>
+                            <td><span class="cx">–</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sticky-col">
+                                <div class="service-name-wrap">
+                                    Reception Coordination
+                                    <button class="info-toggle" type="button" aria-label="Info"
+                                        data-tip="Full coordination for private areas, drinks receptions, canapés, live music, and other wedding reception elements.">ⓘ</button>
+                                    <div class="tooltip-box">Full coordination for private areas, drinks receptions,
+                                        canapés, live music, and other wedding reception elements.</div>
+                                </div>
+                            </td>
+                            <td><span class="cx">–</span></td>
+                            <td><span class="cx">–</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sticky-col">
+                                <div class="service-name-wrap">
+                                    Dedicated Elopement Planner
+                                    <button class="info-toggle" type="button" aria-label="Info"
+                                        data-tip="A specialist to guide you through the intimate details of an elopement, which has fewer moving parts than a full wedding.">ⓘ</button>
+                                    <div class="tooltip-box">A specialist to guide you through the intimate details of
+                                        an elopement, which has fewer moving parts than a full wedding.</div>
+                                </div>
+                            </td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="cx">–</span></td>
+                            <td><span class="cx">–</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sticky-col">
+                                <div class="service-name-wrap">
+                                    Dedicated Wedding Planner
+                                    <button class="info-toggle" type="button" aria-label="Info"
+                                        data-tip="Comprehensive support for destination weddings, including guidance on wedding websites, invites, RSVPs, and guest logistics.">ⓘ</button>
+                                    <div class="tooltip-box">Comprehensive support for destination weddings, including
+                                        guidance on wedding websites, invites, RSVPs, and guest logistics.</div>
+                                </div>
+                            </td>
+                            <td><span class="cx">–</span></td>
+                            <td><span class="cx">–</span></td>
+                            <td><span class="ck">✓</span></td>
+                            <td><span class="ck">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sticky-col">
+                                <div class="service-name-wrap">
+                                    On-Day Coordinator
+                                    <button class="info-toggle" type="button" aria-label="Info"
+                                        data-tip="A professional on-site to manage the timeline and logistics on the day.">ⓘ</button>
+                                    <div class="tooltip-box">A professional on-site to manage the timeline and logistics
+                                        on the day.</div>
+                                </div>
+                            </td>
+                            <td><span class="cx">–</span></td>
+                            <td><span class="cx">–</span></td>
+                            <td><span class="cx">–</span></td>
+                            <td><span class="ck">✓</span></td>
+                        </tr>
+                        <tr>
+                            <td class="sticky-col">
+                                <div class="service-name-wrap">
+                                    Ceremony Music
+                                    <button class="info-toggle" type="button" aria-label="Info"
+                                        data-tip="Live musicians to play during your ceremony (e.g., harpist, violinist).">ⓘ</button>
+                                    <div class="tooltip-box">Live musicians to play during your ceremony (e.g., harpist,
+                                        violinist).</div>
+                                </div>
+                            </td>
+                            <td><span class="cx">–</span></td>
+                            <td><span class="cx">–</span></td>
+                            <td><span class="cx">–</span></td>
+                            <td><span class="cx">–</span></td>
+                        </tr>
+
+                        <tr class="grp">
+                            <td class="sticky-col" colspan="5">Guest Concierge</td>
+                        </tr>
+                        <tr>
+                            <td class="sticky-col">
+                                <div class="service-name-wrap">
+                                    Guest Hotline for Wedding Info
+                                    <button class="info-toggle" type="button" aria-label="Info"
+                                        data-tip="Direct access for guests to ask us questions about flying in, excursions, and logistics. (Note: We offer tips/tricks, but we do not book travel).">ⓘ</button>
+                                    <div class="tooltip-box">Direct access for guests to ask us questions about flying
+                                        in, excursions, and logistics. (Note: We offer tips/tricks, but we do not book
+                                        travel).</div>
+                                </div>
+                            </td>
+                            <td><span class="cx">–</span></td>
+                            <td><span class="cx">–</span></td>
+                            <td><span class="cx">–</span></td>
+                            <td><span class="ck">✓</span></td>
+                        </tr>
+
+                        <tr class="grp">
+                            <td class="sticky-col" colspan="5">Who This Is For</td>
+                        </tr>
+                        <tr>
+                            <td class="sticky-col">Celebration Size</td>
+                            <td>Just the two of you - a handful of loved ones welcome</td>
+                            <td>Your closest circle - a relaxed, intimate gathering</td>
+                            <td>An intimate wedding - every guest truly matters</td>
+                            <td>A full destination wedding with a real guest list</td>
+                        </tr>
+
+                        <tr class="grp">
+                            <td class="sticky-col" colspan="5">Sun–Thu · Republic of Ireland</td>
+                        </tr>
+                        <tr>
+                            <td class="sticky-col">From (USD)</td>
+                            <td><span class="price-cell-t">$4,900</span></td>
+                            <td><span class="price-cell-t">$6,900</span></td>
+                            <td><span class="price-cell-t">$7,900</span></td>
+                            <td><span class="price-cell-t">$9,400</span></td>
+                        </tr>
+
+                        <tr class="grp">
+                            <td class="sticky-col" colspan="5">Sun–Thu · NI &amp; Dublin City</td>
+                        </tr>
+                        <tr>
+                            <td class="sticky-col">From (USD)</td>
+                            <td><span class="price-cell-t">$4,900</span></td>
+                            <td><span class="price-cell-t">$7,400</span></td>
+                            <td><span class="price-cell-t">$8,500</span></td>
+                            <td><span class="price-cell-t">$9,800</span></td>
+                        </tr>
+
+                        <tr class="grp">
+                            <td class="sticky-col" colspan="5">Fri–Sat · Weekend Pricing</td>
+                        </tr>
+                        <tr>
+                            <td class="sticky-col" style="font-size:0.82rem; color:#666;">+$1,000 · Includes hair &amp;
+                                makeup for four (incl. bridal)</td>
+                            <td><span class="price-cell-t" style="color:var(--gold);">$4,900 Total</span></td>
+                            <td><span class="price-cell-t" style="color:var(--gold);">+$1k</span></td>
+                            <td><span class="price-cell-t" style="color:var(--gold);">+$1k</span></td>
+                            <td><span class="price-cell-t" style="color:var(--gold);">+$1k</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="comp-note">Weekend (Fri–Sat) pricing adds $1,000 to all packages and includes hair &amp;
+                    makeup for four (including bridal). Venue &amp; reception costs are separate.</p>
+            </div>
+
+            <div class="comp-cards-mobile reveal">
+
+                <div class="comp-card-pkg" id="mcard-failte">
+                    <div class="comp-card-header" onclick="toggleMCard('failte')">
+                        <div class="comp-card-header-left">
+                            <span class="comp-card-pkg-name">Fáilte</span>
+                            <span class="comp-card-pkg-guests">Just the two of you · Pure Elopement</span>
+                        </div>
+                        <div class="comp-card-prices">
+                            <span class="comp-card-price-val">$4,900</span>
+                            <span class="comp-card-price-region">Both Regions · Sun–Thu</span>
+                        </div>
+                        <span class="comp-card-toggle">+</span>
+                    </div>
+                    <div class="comp-card-body">
+                        <span class="comp-card-section-label">Photography</span>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Photography Hours <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="Premium photography coverage to capture your most important moments.">ⓘ</button></span>
+                            <span class="comp-card-row-val">2 hrs</span>
+                        </div>
+                        <span class="comp-card-section-label">Core Services</span>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Expert Irish Celebrant <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="A vetted, experienced celebrant to craft and officiate your personal ceremony.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Legal Guidance <button class="info-toggle" type="button"
+                                    aria-label="Info"
+                                    data-tip="Complete assistance with the paperwork required to legally marry in Ireland.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">US-Based Planning &amp; Payments <button
+                                    class="info-toggle" type="button" aria-label="Info"
+                                    data-tip="One simple contract in USD. We handle all currency conversion and vendor payments.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Venue Curation &amp; Booking <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="We research, vet, and secure the perfect location that matches your vision.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Travel Guidance <button class="info-toggle" type="button"
+                                    aria-label="Info"
+                                    data-tip="Tips, tricks, and guides for every region of your vacation-not just your wedding location, but anywhere else you plan to visit in Ireland.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Ladybird Ever After Roadmap <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="Proprietary course material covering everything you need to know about getting married in Ireland - plus insider guides on where to eat, stay, and explore to plan your whole trip.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <span class="comp-card-section-label">Styling &amp; Florals</span>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Bridal Bouquet &amp; Buttonhole <button
+                                    class="info-toggle" type="button" aria-label="Info"
+                                    data-tip="Fresh, seasonal floral arrangements designed to match your style.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="cx">–</span></span>
+                        </div>
+                        <div class="comp-card-row"><span class="comp-card-row-label">Hair Stylist</span><span
+                                class="comp-card-row-val"><span class="cx">–</span></span></div>
+                        <div class="comp-card-row"><span class="comp-card-row-label">Makeup Artist</span><span
+                                class="comp-card-row-val"><span class="cx">–</span></span></div>
+                        <span class="comp-card-section-label">Planning</span>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Dedicated Elopement Planner <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="A specialist to guide you through the intimate details of an elopement, which has fewer moving parts than a full wedding.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row"><span class="comp-card-row-label">Dedicated Wedding
+                                Planner</span><span class="comp-card-row-val"><span class="cx">–</span></span></div>
+                        <div class="comp-card-row"><span class="comp-card-row-label">Reception Coordination</span><span
+                                class="comp-card-row-val"><span class="cx">–</span></span></div>
+                        <div class="comp-card-row"><span class="comp-card-row-label">On-Day Coordinator</span><span
+                                class="comp-card-row-val"><span class="cx">–</span></span></div>
+                        <div class="comp-card-row"><span class="comp-card-row-label">Ceremony Music</span><span
+                                class="comp-card-row-val"><span class="cx">–</span></span></div>
+                        <div class="comp-card-row"><span class="comp-card-row-label">Guest Hotline</span><span
+                                class="comp-card-row-val"><span class="cx">–</span></span></div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Reception Dinner Reservation <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="We secure a reservation at a wonderful restaurant to ensure you have a confirmed place to celebrate your day (for smaller groups).">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comp-card-pkg" id="mcard-gra">
+                    <div class="comp-card-header" onclick="toggleMCard('gra')">
+                        <div class="comp-card-header-left">
+                            <span class="comp-card-pkg-name">Grá</span>
+                            <span class="comp-card-pkg-guests">Your closest circle · Enhanced Elopement</span>
+                        </div>
+                        <div class="comp-card-prices">
+                            <span class="comp-card-price-val">$6,900</span>
+                            <span class="comp-card-price-region">Republic of Ireland · Sun–Thu</span>
+                            <span class="comp-card-price-val">$7,400</span>
+                            <span class="comp-card-price-region">NI &amp; Dublin City · Sun–Thu</span>
+                        </div>
+                        <span class="comp-card-toggle">+</span>
+                    </div>
+                    <div class="comp-card-body">
+                        <span class="comp-card-section-label">Photography</span>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Photography Hours <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="Premium photography coverage to capture your most important moments.">ⓘ</button></span>
+                            <span class="comp-card-row-val">3 hrs</span>
+                        </div>
+                        <span class="comp-card-section-label">Core Services</span>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Expert Irish Celebrant <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="A vetted, experienced celebrant to craft and officiate your personal ceremony.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Legal Guidance <button class="info-toggle" type="button"
+                                    aria-label="Info"
+                                    data-tip="Complete assistance with the paperwork required to legally marry in Ireland.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">US-Based Planning &amp; Payments <button
+                                    class="info-toggle" type="button" aria-label="Info"
+                                    data-tip="One simple contract in USD. We handle all currency conversion and vendor payments.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Venue Curation &amp; Booking <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="We research, vet, and secure the perfect location that matches your vision.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Travel Guidance <button class="info-toggle" type="button"
+                                    aria-label="Info"
+                                    data-tip="Tips, tricks, and guides for every region of your vacation-not just your wedding location, but anywhere else you plan to visit in Ireland.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Ladybird Ever After Roadmap <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="Proprietary course material covering everything you need to know about getting married in Ireland - plus insider guides on where to eat, stay, and explore to plan your whole trip.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <span class="comp-card-section-label">Styling &amp; Florals</span>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Bridal Bouquet &amp; Buttonhole <button
+                                    class="info-toggle" type="button" aria-label="Info"
+                                    data-tip="Fresh, seasonal floral arrangements designed to match your style.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Hair Stylist <button class="info-toggle" type="button"
+                                    aria-label="Info"
+                                    data-tip="Professional styling for one person on the morning of the wedding.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Makeup Artist <button class="info-toggle" type="button"
+                                    aria-label="Info"
+                                    data-tip="Professional styling for one person on the morning of the wedding.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <span class="comp-card-section-label">Planning</span>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Dedicated Elopement Planner <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="A specialist to guide you through the intimate details of an elopement, which has fewer moving parts than a full wedding.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row"><span class="comp-card-row-label">Dedicated Wedding
+                                Planner</span><span class="comp-card-row-val"><span class="cx">–</span></span></div>
+                        <div class="comp-card-row"><span class="comp-card-row-label">Reception Coordination</span><span
+                                class="comp-card-row-val"><span class="cx">–</span></span></div>
+                        <div class="comp-card-row"><span class="comp-card-row-label">On-Day Coordinator</span><span
+                                class="comp-card-row-val"><span class="cx">–</span></span></div>
+                        <div class="comp-card-row"><span class="comp-card-row-label">Ceremony Music</span><span
+                                class="comp-card-row-val"><span class="cx">–</span></span></div>
+                        <div class="comp-card-row"><span class="comp-card-row-label">Guest Hotline</span><span
+                                class="comp-card-row-val"><span class="cx">–</span></span></div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Reception Dinner Reservation <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="We secure a reservation at a wonderful restaurant to ensure you have a confirmed place to celebrate your day (for smaller groups).">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comp-card-pkg" id="mcard-slainte">
+                    <div class="comp-card-header" onclick="toggleMCard('slainte')">
+                        <div class="comp-card-header-left">
+                            <span class="comp-card-pkg-name">Sláinte</span>
+                            <span class="comp-card-pkg-guests">An intimate gathering · Intimate Wedding</span>
+                        </div>
+                        <div class="comp-card-prices">
+                            <span class="comp-card-price-val">$7,900</span>
+                            <span class="comp-card-price-region">Republic of Ireland · Sun–Thu</span>
+                            <span class="comp-card-price-val">$8,500</span>
+                            <span class="comp-card-price-region">NI &amp; Dublin City · Sun–Thu</span>
+                        </div>
+                        <span class="comp-card-toggle">+</span>
+                    </div>
+                    <div class="comp-card-body">
+                        <span class="comp-card-section-label">Photography</span>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Photography Hours <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="Premium photography coverage to capture your most important moments.">ⓘ</button></span>
+                            <span class="comp-card-row-val">4 hrs</span>
+                        </div>
+                        <span class="comp-card-section-label">Core Services</span>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Expert Irish Celebrant <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="A vetted, experienced celebrant to craft and officiate your personal ceremony.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Legal Guidance <button class="info-toggle" type="button"
+                                    aria-label="Info"
+                                    data-tip="Complete assistance with the paperwork required to legally marry in Ireland.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">US-Based Planning &amp; Payments <button
+                                    class="info-toggle" type="button" aria-label="Info"
+                                    data-tip="One simple contract in USD. We handle all currency conversion and vendor payments.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Venue Curation &amp; Booking <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="We research, vet, and secure the perfect location that matches your vision.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Travel Guidance <button class="info-toggle" type="button"
+                                    aria-label="Info"
+                                    data-tip="Tips, tricks, and guides for every region of your vacation-not just your wedding location, but anywhere else you plan to visit in Ireland.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Ladybird Ever After Roadmap <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="Proprietary course material covering everything you need to know about getting married in Ireland - plus insider guides on where to eat, stay, and explore to plan your whole trip.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <span class="comp-card-section-label">Styling &amp; Florals</span>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Bridal Bouquet &amp; Buttonhole <button
+                                    class="info-toggle" type="button" aria-label="Info"
+                                    data-tip="Fresh, seasonal floral arrangements designed to match your style.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Hair Stylist <button class="info-toggle" type="button"
+                                    aria-label="Info"
+                                    data-tip="Professional styling for one person on the morning of the wedding.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Makeup Artist <button class="info-toggle" type="button"
+                                    aria-label="Info"
+                                    data-tip="Professional styling for one person on the morning of the wedding.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <span class="comp-card-section-label">Planning</span>
+                        <div class="comp-card-row"><span class="comp-card-row-label">Dedicated Elopement
+                                Planner</span><span class="comp-card-row-val"><span class="cx">–</span></span></div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Dedicated Wedding Planner <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="Comprehensive support for destination weddings, including guidance on wedding websites, invites, RSVPs, and guest logistics.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Reception Coordination <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="Full coordination for private areas, drinks receptions, canapés, live music, and other wedding reception elements.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row"><span class="comp-card-row-label">On-Day Coordinator</span><span
+                                class="comp-card-row-val"><span class="cx">–</span></span></div>
+                        <div class="comp-card-row"><span class="comp-card-row-label">Ceremony Music</span><span
+                                class="comp-card-row-val"><span class="cx">–</span></span></div>
+                        <div class="comp-card-row"><span class="comp-card-row-label">Guest Hotline</span><span
+                                class="comp-card-row-val"><span class="cx">–</span></span></div>
+                    </div>
+                </div>
+
+                <div class="comp-card-pkg" id="mcard-ard">
+                    <div class="comp-card-header" onclick="toggleMCard('ard')">
+                        <div class="comp-card-header-left">
+                            <span class="comp-card-pkg-name">Ard</span>
+                            <span class="comp-card-pkg-guests">A full guest list · Bespoke Wedding</span>
+                        </div>
+                        <div class="comp-card-prices">
+                            <span class="comp-card-price-val">$9,400</span>
+                            <span class="comp-card-price-region">Republic of Ireland · Sun–Thu</span>
+                            <span class="comp-card-price-val">$9,800</span>
+                            <span class="comp-card-price-region">NI &amp; Dublin City · Sun–Thu</span>
+                        </div>
+                        <span class="comp-card-toggle">+</span>
+                    </div>
+                    <div class="comp-card-body">
+                        <span class="comp-card-section-label">Photography</span>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Photography Hours <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="Premium photography coverage to capture your most important moments.">ⓘ</button></span>
+                            <span class="comp-card-row-val">5 hrs</span>
+                        </div>
+                        <span class="comp-card-section-label">Core Services</span>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Expert Irish Celebrant <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="A vetted, experienced celebrant to craft and officiate your personal ceremony.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Legal Guidance <button class="info-toggle" type="button"
+                                    aria-label="Info"
+                                    data-tip="Complete assistance with the paperwork required to legally marry in Ireland.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">US-Based Planning &amp; Payments <button
+                                    class="info-toggle" type="button" aria-label="Info"
+                                    data-tip="One simple contract in USD. We handle all currency conversion and vendor payments.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Venue Curation &amp; Booking <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="We research, vet, and secure the perfect location that matches your vision.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Travel Guidance <button class="info-toggle" type="button"
+                                    aria-label="Info"
+                                    data-tip="Tips, tricks, and guides for every region of your vacation-not just your wedding location, but anywhere else you plan to visit in Ireland.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Ladybird Ever After Roadmap <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="Proprietary course material covering everything you need to know about getting married in Ireland - plus insider guides on where to eat, stay, and explore to plan your whole trip.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <span class="comp-card-section-label">Styling &amp; Florals</span>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Bridal Bouquet &amp; Buttonhole <button
+                                    class="info-toggle" type="button" aria-label="Info"
+                                    data-tip="Fresh, seasonal floral arrangements designed to match your style.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Hair Stylist <button class="info-toggle" type="button"
+                                    aria-label="Info"
+                                    data-tip="Professional styling for one person on the morning of the wedding.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Makeup Artist <button class="info-toggle" type="button"
+                                    aria-label="Info"
+                                    data-tip="Professional styling for one person on the morning of the wedding.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <span class="comp-card-section-label">Planning</span>
+                        <div class="comp-card-row"><span class="comp-card-row-label">Dedicated Elopement
+                                Planner</span><span class="comp-card-row-val"><span class="cx">–</span></span></div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Dedicated Wedding Planner <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="Comprehensive support for destination weddings, including guidance on wedding websites, invites, RSVPs, and guest logistics.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Reception Coordination <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="Full coordination for private areas, drinks receptions, canapés, live music, and other wedding reception elements.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">On-Day Coordinator <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="A professional on-site to manage the timeline and logistics on the day.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row"><span class="comp-card-row-label">Ceremony Music</span><span
+                                class="comp-card-row-val"><span class="cx">–</span></span></div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Guest Hotline <button class="info-toggle" type="button"
+                                    aria-label="Info"
+                                    data-tip="Direct access for guests to ask us questions about flying in, excursions, and logistics. (Note: We offer tips/tricks, but we do not book travel).">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comp-card-pkg" id="mcard-rira" style="display:none">
+                    <div class="comp-card-header">
+                        <div class="comp-card-header-left"></div>
+                        <div class="comp-card-prices"></div>
+                        <span class="comp-card-toggle">+</span>
+                    </div>
+                    <div class="comp-card-body">
+                        <span class="comp-card-section-label">Photography</span>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Photography Hours <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="Premium photography coverage to capture your most important moments.">ⓘ</button></span>
+                            <span class="comp-card-row-val">8 hrs</span>
+                        </div>
+                        <span class="comp-card-section-label">Core Services</span>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Expert Irish Celebrant <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="A vetted, experienced celebrant to craft and officiate your personal ceremony.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Legal Guidance <button class="info-toggle" type="button"
+                                    aria-label="Info"
+                                    data-tip="Complete assistance with the paperwork required to legally marry in Ireland.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">US-Based Planning &amp; Payments <button
+                                    class="info-toggle" type="button" aria-label="Info"
+                                    data-tip="One simple contract in USD. We handle all currency conversion and vendor payments.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Venue Curation &amp; Booking <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="We research, vet, and secure the perfect location that matches your vision.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Travel Guidance <button class="info-toggle" type="button"
+                                    aria-label="Info"
+                                    data-tip="Tips, tricks, and guides for every region of your vacation-not just your wedding location, but anywhere else you plan to visit in Ireland.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Ladybird Ever After Roadmap <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="Proprietary course material covering everything you need to know about getting married in Ireland - plus insider guides on where to eat, stay, and explore to plan your whole trip.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <span class="comp-card-section-label">Styling &amp; Florals</span>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Bridal Bouquet &amp; Buttonhole <button
+                                    class="info-toggle" type="button" aria-label="Info"
+                                    data-tip="Fresh, seasonal floral arrangements designed to match your style.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Hair Stylist <button class="info-toggle" type="button"
+                                    aria-label="Info"
+                                    data-tip="Professional styling for one person on the morning of the wedding.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Makeup Artist <button class="info-toggle" type="button"
+                                    aria-label="Info"
+                                    data-tip="Professional styling for one person on the morning of the wedding.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Additional Hair &amp; Makeup ×2 <button
+                                    class="info-toggle" type="button" aria-label="Info"
+                                    data-tip="Styling for two additional party members (e.g., bridesmaids or mothers).">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Wrist Corsage ×2 &amp; Buttonhole ×2 <button
+                                    class="info-toggle" type="button" aria-label="Info"
+                                    data-tip="Includes 2 wrist corsages and 2 buttonholes for your wedding party.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <span class="comp-card-section-label">Planning</span>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Dedicated Wedding Planner <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="Comprehensive support for destination weddings, including guidance on wedding websites, invites, RSVPs, and guest logistics.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Reception Coordination <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="Full coordination for private areas, drinks receptions, canapés, live music, and other wedding reception elements.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">On-Day Coordinator <button class="info-toggle"
+                                    type="button" aria-label="Info"
+                                    data-tip="A professional on-site to manage the timeline and logistics on the day.">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Ceremony Music <button class="info-toggle" type="button"
+                                    aria-label="Info"
+                                    data-tip="Live musicians to play during your ceremony (e.g., harpist, violinist).">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                        <div class="comp-card-row">
+                            <span class="comp-card-row-label">Guest Hotline <button class="info-toggle" type="button"
+                                    aria-label="Info"
+                                    data-tip="Direct access for guests to ask us questions about flying in, excursions, and logistics. (Note: We offer tips/tricks, but we do not book travel).">ⓘ</button></span>
+                            <span class="comp-card-row-val"><span class="ck">✓</span></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="text-align:center; margin-top:2.5rem;" class="reveal">
+                <a href="#book-call" class="btn-forest">Book an Intro Call →</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="calculator" id="which-package">
+        <div class="calc-container">
+            <div id="pkgQuiz" class="pkg-quiz">
+
+                <!-- Intro screen -->
+                <div class="pq-screen pq-intro active" data-screen="intro">
+                    <span class="eyebrow" style="color:var(--forest)">Not Sure Which Package Is Right for You?</span>
+                    <h2>Find Your <em>Perfect Match</em></h2>
+                    <p
+                        style="color:var(--muted); max-width:480px; margin:0 auto 2rem; font-size:0.92rem; line-height:1.8;">
+                        Four quick questions and we'll point you toward the package that fits your vision and
+                        celebration style.<br><br><em>Don't know your guest count yet? That's completely fine - book now and we'll figure it out together as your plans take shape.</em>
+                    </p>
+                    <button class="pq-start" type="button" data-action="start">
+                        Start the quiz
+                        <span class="pq-start-meta">Takes about a minute</span>
+                    </button>
+                </div>
+
+                <!-- Question screen -->
+                <div class="pq-screen" data-screen="question">
+                    <div class="pq-progress">
+                        <div class="pq-progress-bar">
+                            <div class="pq-progress-fill" id="pqProgressFill"></div>
+                        </div>
+                        <div class="pq-progress-text">Question <span id="pqCurrentQ">1</span> of <span
+                                id="pqTotalQ">4</span></div>
+                    </div>
+                    <h3 class="pq-question" id="pqQuestionText"></h3>
+                    <p class="pq-help" id="pqQuestionHelp"></p>
+                    <div class="pq-options" id="pqOptions"></div>
+                    <button class="pq-back" type="button" data-action="back">← Back</button>
+                </div>
+
+                <!-- Result screen -->
+                <div class="pq-screen" data-screen="result">
+                    <p class="pq-result-eyebrow" id="pqResultEyebrow">Your match</p>
+                    <h2 class="pq-result-title" id="pqResultTitle"></h2>
+                    <p class="pq-result-summary" id="pqResultSummary"></p>
+
+                    <div class="pq-result-package-box" id="pqResultBox">
+                        <div class="pq-result-pkg-name" id="pqResultPkgName"></div>
+                        <div class="pq-result-prices" id="pqResultPrices"></div>
+                        <div class="pq-result-note">Weekend (Fri–Sat) +$1,000 · includes hair &amp; makeup for four
+                        </div>
+                    </div>
+
+                    <ul class="pq-result-list" id="pqResultList"></ul>
+
+                    <div class="pq-result-actions">
+                        <a class="btn-primary" href="#book-call">Book a Free Intro Call</a>
+                        <button class="pq-restart" type="button" data-action="restart"
+                            style="margin-left:1.2rem; background:none; border:none; font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:0.15em; text-transform:uppercase; color:var(--muted); cursor:pointer; text-decoration:underline;">Retake
+                            Quiz</button>
+                    </div>
+                    <p style="font-size:0.8rem; color:var(--muted); margin-top:1.4rem;">
+                        Not sure this fits? <a href="#book-call" style="color:var(--gold);">Get in touch</a> and we'll
+                        talk it through.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-inner">
+            <p class="eyebrow reveal" style="text-align:center;">Your Venue is Our Priority</p>
+            <h2 class="section-title reveal" style="text-align:center;">Discover Your Perfect<br><em>Irish Backdrop</em>
+            </h2>
+            <p style="text-align:center;color:#666;max-width:640px;margin:0 auto;font-size:0.95rem;line-height:1.85;"
+                class="reveal">
+                We save you months of research by providing a vetted shortlist of locations that match your vision and
+                budget. We handle all communications and contracts on your behalf.
+            </p>
+            <div class="venue-grid">
+                <div class="venue-card reveal">
+                    <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/67d6803a-c9da-414e-ad1e-f1f3bdea57ad/VW_Photography_Dunluce_ceremony-81+%281%29.jpg"
+                        alt="Castles & Estates">
+                    <div class="venue-overlay">
+                        <h4>Castles &amp; Estates</h4>
+                    </div>
+                </div>
+                <div class="venue-card reveal">
+                    <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/a987ed21-bad2-4585-a81f-a31653a01b41/Kalee%26Kristian-270.webp?format=2500w"
+                        alt="Coastal & Landscape">
+                    <div class="venue-overlay">
+                        <h4>Coastal &amp; Landscape</h4>
+                    </div>
+                </div>
+                <div class="venue-card reveal">
+                    <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/7b52ee5f-8408-491f-9c67-0c78c97553bd/Loughcrew3.webp?format=2500w"
+                        alt="Unique & Private">
+                    <div class="venue-overlay">
+                        <h4>Unique &amp; Private</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section style="background:var(--parchment);">
+        <div class="section-inner">
+            <p class="eyebrow reveal" style="text-align:center;">Make It Your Own</p>
+            <h2 class="section-title reveal" style="text-align:center;">Elevate Your<br><em>Celebration</em></h2>
+            <p style="text-align:center;color:#666;max-width:640px;margin:0 auto;font-size:0.95rem;line-height:1.85;"
+                class="reveal">
+                Our packages offer a luxury foundation for your celebration. Personalize through bespoke add-ons and
+                flexible substitutions.
+            </p>
+            <div class="addons-grid">
+                <div class="addon-card reveal">
+                    <div class="addon-icon">🎬</div>
+                    <h4>Videography</h4>
+                    <p>Capture your story in cinematic quality, from highlights to full ceremony edits.</p>
+                </div>
+                <div class="addon-card reveal">
+                    <div class="addon-icon">💐</div>
+                    <h4>Additional Florals</h4>
+                    <p>Enhance your décor with ceremony arches, reception centerpieces, and more.</p>
+                </div>
+                <div class="addon-card reveal">
+                    <div class="addon-icon">✨</div>
+                    <h4>Extra Styling</h4>
+                    <p>Pamper your bridal party and special guests with additional hair and makeup services.</p>
+                </div>
+                <div class="addon-card reveal">
+                    <div class="addon-icon">🎶</div>
+                    <h4>Live Music</h4>
+                    <p>Enhance your vows, reception, or late-night celebration with live Irish music.</p>
+                </div>
+                <div class="addon-card reveal">
+                    <div class="addon-icon">🚗</div>
+                    <h4>Luxury Transport</h4>
+                    <p>Arrive in style in a vintage car, or ensure smooth guest transfers via luxurious coaches.</p>
+                </div>
+                <div class="addon-card reveal">
+                    <div class="addon-icon">🍽️</div>
+                    <h4>Welcome Dinner</h4>
+                    <p>Plan a private dinner with a chef or a reserved pub for pre- or post-wedding celebrations.</p>
+                </div>
+                <div class="addon-card reveal">
+                    <div class="addon-icon">💃</div>
+                    <h4>Entertainment</h4>
+                    <p>Irish Dance, watercolor artist, childcare services for kids, and more.</p>
+                </div>
+                <div class="addon-card reveal">
+                    <div class="addon-icon">☘️</div>
+                    <h4>And Much More</h4>
+                    <p>Endless possibilities for a truly unique celebration, tailored for every wish.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="section-inner">
+            <p class="eyebrow reveal" style="text-align:center;">Real Love Stories</p>
+            <h2 class="section-title reveal" style="text-align:center;">Creating Unforgettable<br><em>Moments in
+                    Ireland</em></h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-img">
+                        <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/65bc71f1-beed-4419-b0c9-6849660e917d/dunquin4.jpg?format=2500w"
+                            alt="Mollie & Ryan">
+                    </div>
+                    <div>
+                        <span class="open-quote">"</span>
+                        <p class="testimonial-quote">We had the best experience with Ladybird Ever After. Yasmeen and
+                            Laurence are so amazing! The day was so stress free, we were able to be present and be in
+                            the moment. Every vendor involved made the day so much better. Highly recommend to anyone
+                            and everyone. If you are thinking about it… just do it.</p>
+                        <p class="testimonial-by">- Mollie &amp; Ryan, 2025 · Boston, MA</p>
+                    </div>
+                </div>
+                <div class="testimonial-card reveal">
+                    <div class="testimonial-img">
+                        <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/fd237e36-ae95-4b79-8d38-e764612de7ba/M%26B_365.webp?format=2500w"
+                            alt="Mikel & Brian">
+                    </div>
+                    <div>
+                        <span class="open-quote">"</span>
+                        <p class="testimonial-quote">Our wedding day was absolute perfection, and we have Ladybird Ever
+                            After to thank for that. Hiring Yasmeen and Laurence was one of the best decisions we made
+                            while planning our micro wedding. Their organization, attention to detail, and
+                            responsiveness are unmatched.</p>
+                        <p class="testimonial-by">- Mikel &amp; Brian, 2025 · Richmond, VA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="section-inner">
+            <p class="eyebrow reveal" style="text-align:center;">Frequent Questions</p>
+            <h2 class="section-title reveal" style="text-align:center;">Planning From Abroad<br><em>Should Not Be
+                    Stressful</em></h2>
+            <div class="faq-list reveal">
+                <div class="faq-item">
+                    <button class="faq-question">Does Ladybird help book my venue? <span
+                            class="faq-arrow">+</span></button>
+                    <div class="faq-answer">Absolutely - this is a crucial part of planning your wedding abroad. We have
+                        experience with various venues nationwide and will guide you through the entire process,
+                        handling all communications and contracts on your behalf.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Can I book a package without choosing a location? <span
+                            class="faq-arrow">+</span></button>
+                    <div class="faq-answer">Certainly! Our pricing stays consistent regardless of the venue you choose.
+                        When you sign with us, we'll assist you in selecting the ideal location that suits your vision
+                        and needs.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Can we customize a package? <span class="faq-arrow">+</span></button>
+                    <div class="faq-answer">Absolutely! Each package serves as a luxury foundation. We will customize
+                        the specifics to align with your vision - from add-ons to flexible substitutions, it's truly
+                        your canvas.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Could you assist with the legal considerations surrounding marriage?
+                        <span class="faq-arrow">+</span></button>
+                    <div class="faq-answer">Absolutely! We will guide you through the process of legal or symbolic
+                        ceremonies, discussing the pros and cons of marrying in the States versus Ireland so you can
+                        make an informed, confident decision.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Do we pay each vendor separately? <span
+                            class="faq-arrow">+</span></button>
+                    <div class="faq-answer">No - we manage all vendor payments for you through our single US-based
+                        contract, ensuring that the entire process remains straightforward and effortless. One invoice,
+                        one point of contact.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Why is the reception / venue cost not included? <span
+                            class="faq-arrow">+</span></button>
+                    <div class="faq-answer">Choosing the right reception and venue is a deeply personal decision, and
+                        costs vary enormously - from cozy pubs to luxurious castles. We provide expert guidance to help
+                        couples find the perfect venue and negotiate the best outcome.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">What happens if I go over my guest count? <span
+                            class="faq-arrow">+</span></button>
+                    <div class="faq-answer">Don't worry - you don't need a firm headcount to book with us. Guest numbers often evolve as you plan, and we work with you every step of the way.<br><br>If your celebration grows beyond 18 guests, it transitions from an elopement into a small wedding, which means you'll need an On the Day Coordinator to keep everything running smoothly. For 2026, that's an add-on of $1,000. We'll discuss it openly and, if it makes more financial sense to upgrade to a package that already includes this, we'll walk you through that too - no pressure, just the right fit for your day.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="cta-section">
+        <div class="cta-bg"></div>
+        <div class="cta-overlay"></div>
+        <div class="cta-content">
+            <p class="eyebrow">Your Unique Irish Wedding Journey Begins Here</p>
+            <h2 class="section-title">Let's Create<br><em>Something Magical</em></h2>
+            <p>Ready to start planning the wedding of your dreams in Ireland? We'd love to hear your vision and make it
+                a reality - stress free, beautifully executed, unforgettably yours.</p>
+            <div>
+                <a href="#book-call" class="btn-primary">Book a Free Intro Call</a>
+            </div>
+        </div>
+    </div>
+
+    <div id="book-call">
+        <div class="book-wrap reveal">
+            <span class="eyebrow" style="color:var(--gold)">Next Steps</span>
+            <h2>Book an Intro Call</h2>
+            <p>15 minutes. No obligation. Let's start planning.</p>
+            <div class="hubspot-frame">
+                <div class="meetings-iframe-container"
+                    data-src="https://meetings.hubspot.com/ladybird/letselope?embed=true"></div>
+                <script type="text/javascript"
+                    src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"></script>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // ══ PRICE VARIABLES - edit here to update everywhere ══
+        const PRICES = {
+            failte: { roi: 4900, ni: 4900 },
+            gra: { roi: 6900, ni: 7400 },
+            slainte: { roi: 7900, ni: 8500 },
+            ard: { roi: 9400, ni: 9800 },
+            weekend_premium: 1000
+        };
+
+        // ══ PACKAGE DATA (uses PRICES) ══
+        const PACKAGES = {
+            failte: { limit: 4, roi: PRICES.failte.roi, ni: PRICES.failte.ni, name: 'Fáilte' },
+            gra: { limit: 10, roi: PRICES.gra.roi, ni: PRICES.gra.ni, name: 'Grá' },
+            slainte: { limit: 18, roi: PRICES.slainte.roi, ni: PRICES.slainte.ni, name: 'Sláinte' },
+            ard: { limit: 50, roi: PRICES.ard.roi, ni: PRICES.ard.ni, name: 'Ard' }
+        };
+
+        // ══ PACKAGE QUIZ ══
+        (function () {
+            var PKG_QUESTIONS = [
+                {
+                    text: 'How many people do you imagine being there?',
+                    help: 'Your honest number - not what you feel you should have.',
+                    options: [
+                        { value: 0, title: 'Just the two of us', desc: 'Maybe a couple of witnesses' },
+                        { value: 1, title: 'Around 5 to 8 people', desc: 'Closest family and a few dear friends' },
+                        { value: 2, title: 'Around 10 to 15 people', desc: 'Immediate family, close friends' },
+                        { value: 3, title: 'More than 15', desc: 'Extended family, friend groups' }
+                    ]
+                },
+                {
+                    text: 'What does your ideal celebration after the ceremony look like?',
+                    help: 'Think about what feels right, not what tradition expects.',
+                    options: [
+                        { value: 0, title: 'A cliffside moment or a quiet pub', desc: 'Just being present together' },
+                        { value: 1, title: 'A long, lingering dinner reservation', desc: 'Intimate, personal, no fuss' },
+                        { value: 2, title: 'A private reception with toasts', desc: 'A meal, drinks, a few speeches' },
+                        { value: 3, title: 'A full reception with dancing', desc: 'Speeches, first dance, late into the night' }
+                    ]
+                },
+                {
+                    text: 'How much planning and coordination do you need on the day?',
+                    help: 'Be honest about how hands-on you want us to be.',
+                    options: [
+                        { value: 0, title: 'Minimal - it\'s just the ceremony', desc: 'We show up, say I do, we celebrate' },
+                        { value: 1, title: 'A little - a loose day flow', desc: 'A few key moments, relaxed otherwise' },
+                        { value: 2, title: 'Moderate - a timeline with flexibility', desc: 'Things should happen at certain times' },
+                        { value: 3, title: 'Full day-of coordination', desc: 'Handoffs, timings, someone managing everything' }
+                    ]
+                },
+                {
+                    text: 'How important is hair and makeup to your day?',
+                    help: 'This often signals how elaborate the overall experience should be.',
+                    options: [
+                        { value: 0, title: 'Not part of my plan', desc: 'I\'ll handle it myself or keep it simple' },
+                        { value: 1, title: 'Just for me (bridal)', desc: 'Professional styling for one person' },
+                        { value: 2, title: 'For me and the wedding party', desc: 'Styling for a few key people' },
+                        { value: 3, title: 'For everyone involved', desc: 'Full hair and makeup for the group' }
+                    ]
+                }
+            ];
+
+            var PKG_RESULTS = {
+                failte: {
+                    eyebrow: 'Your perfect match',
+                    title: 'The <em>Fáilte</em> Package',
+                    summary: "You're planning something intimate and pure - just the two of you, perhaps a handful of your very favourite people, a meaningful ceremony, and the freedom to simply be present. The Fáilte is built for exactly this.",
+                    list: [
+                        'A pure elopement - just the two of you and a couple of others',
+                        '2 hours of premium photography',
+                        'Expert Irish celebrant for your ceremony',
+                        'Legal guidance and paperwork support',
+                        'Venue curation, travel guidance, and US-based contract',
+                        'Reception dinner reservation at a great local restaurant',
+                        'Ladybird Ever After Roadmap - our insider guide to Ireland'
+                    ]
+                },
+                gra: {
+                    eyebrow: 'Your perfect match',
+                    title: 'The <em>Grá</em> Package',
+                    summary: "You want your closest people around you, a proper celebratory dinner, and someone to handle the styling so you can focus on the moment. The Grá package delivers exactly that.",
+                    list: [
+                        'An intimate celebration - your closest circle around you',
+                        '3 hours of premium photography',
+                        'Bridal bouquet and buttonhole',
+                        'Hair and makeup for one (bridal)',
+                        'Reception dinner reservation',
+                        'Dedicated elopement planner',
+                        'Ladybird Ever After Roadmap - our insider guide to Ireland'
+                    ]
+                },
+                slainte: {
+                    eyebrow: 'Your perfect match',
+                    title: 'The <em>Sláinte</em> Package',
+                    summary: "You're having a real wedding - beautifully intimate, every guest matters, and you want a proper reception with coordination and a wedding planner in your corner. The Sláinte is made for this.",
+                    list: [
+                        'An intimate wedding - every person there truly matters',
+                        '4 hours of premium photography',
+                        'Bridal bouquet, buttonhole, hair and makeup for one',
+                        'Full reception coordination (canapés, drinks, venue)',
+                        'Dedicated wedding planner',
+                        'Venue curation and all vendor management',
+                        'Ladybird Ever After Roadmap - our insider guide to Ireland'
+                    ]
+                },
+                ard: {
+                    eyebrow: 'Your perfect match',
+                    title: 'The <em>Ard</em> Package',
+                    summary: "You're planning a full destination wedding with a proper guest list, a coordinated day, and an on-site team managing every detail. The Ard package is our most comprehensive offering.",
+                    list: [
+                        'A full destination wedding with a real guest list',
+                        '5 hours of premium photography',
+                        'Bridal bouquet, buttonhole, hair and makeup for one',
+                        'Full reception coordination and on-day coordinator',
+                        'Dedicated wedding planner + guest concierge hotline',
+                        'Complete vendor management and day-of execution',
+                        'Ladybird Ever After Roadmap - our insider guide to Ireland'
+                    ]
+                }
+            };
+
+            function fmt(n) { return '$' + n.toLocaleString(); }
+
+            function computeKey(answers) {
+                var total = answers.reduce(function (a, b) { return a + b; }, 0);
+                if (total <= 1) return 'failte';
+                if (total <= 4) return 'gra';
+                if (total <= 8) return 'slainte';
+                return 'ard';
+            }
+
+            var quiz = document.getElementById('pkgQuiz');
+            if (!quiz) return;
+
+            var screens = quiz.querySelectorAll('.pq-screen');
+            var optionsBox = document.getElementById('pqOptions');
+            var qText = document.getElementById('pqQuestionText');
+            var qHelp = document.getElementById('pqQuestionHelp');
+            var currentQEl = document.getElementById('pqCurrentQ');
+            var fill = document.getElementById('pqProgressFill');
+
+            var state = { answers: [], current: 0 };
+
+            function showScreen(name) {
+                screens.forEach(function (s) {
+                    s.classList.toggle('active', s.dataset.screen === name);
+                });
+                var top = quiz.getBoundingClientRect().top + window.pageYOffset - 80;
+                window.scrollTo({ top: top, behavior: 'smooth' });
+            }
+
+            function renderQuestion(idx) {
+                var q = PKG_QUESTIONS[idx];
+                if (!q) return;
+                state.current = idx;
+                qText.textContent = q.text;
+                qHelp.textContent = q.help;
+                currentQEl.textContent = idx + 1;
+                fill.style.width = (idx / PKG_QUESTIONS.length * 100) + '%';
+
+                optionsBox.innerHTML = '';
+                q.options.forEach(function (opt) {
+                    var btn = document.createElement('button');
+                    btn.type = 'button';
+                    btn.className = 'pq-option';
+                    btn.innerHTML = '<span class="pq-option-title">' + opt.title + '</span><span class="pq-option-desc">' + opt.desc + '</span>';
+                    btn.addEventListener('click', function () { handleAnswer(opt.value); });
+                    optionsBox.appendChild(btn);
+                });
+            }
+
+            function handleAnswer(value) {
+                state.answers[state.current] = value;
+                if (state.current < PKG_QUESTIONS.length - 1) {
+                    renderQuestion(state.current + 1);
+                } else {
+                    fill.style.width = '100%';
+                    computeResult();
+                    showScreen('result');
+                }
+            }
+
+            function computeResult() {
+                var key = computeKey(state.answers);
+                var r = PKG_RESULTS[key];
+                var pkg = PACKAGES[key];
+
+                document.getElementById('pqResultEyebrow').textContent = r.eyebrow;
+                document.getElementById('pqResultTitle').innerHTML = r.title;
+                document.getElementById('pqResultSummary').textContent = r.summary;
+                document.getElementById('pqResultPkgName').textContent = pkg.name;
+
+                var pricesEl = document.getElementById('pqResultPrices');
+                pricesEl.innerHTML =
+                    '<div class="pq-result-price-item"><span class="pq-result-price-val">' + fmt(pkg.roi) + '</span><span class="pq-result-price-region">Republic of Ireland</span></div>' +
+                    '<div class="pq-result-price-item"><span class="pq-result-price-val">' + fmt(pkg.ni) + '</span><span class="pq-result-price-region">NI &amp; Dublin City</span></div>';
+
+                var listEl = document.getElementById('pqResultList');
+                listEl.innerHTML = '';
+                r.list.forEach(function (item) {
+                    var li = document.createElement('li');
+                    li.textContent = item;
+                    listEl.appendChild(li);
+                });
+            }
+
+            quiz.addEventListener('click', function (e) {
+                var target = e.target.closest('[data-action]');
+                if (!target) return;
+                var action = target.dataset.action;
+                if (action === 'start') {
+                    renderQuestion(0);
+                    showScreen('question');
+                } else if (action === 'back') {
+                    if (state.current > 0) {
+                        renderQuestion(state.current - 1);
+                    } else {
+                        showScreen('intro');
+                    }
+                } else if (action === 'restart') {
+                    state.answers = [];
+                    state.current = 0;
+                    fill.style.width = '0%';
+                    showScreen('intro');
+                }
+            });
+        })();
+
+        // ══ MOBILE CTA SCROLL ══
+        window.addEventListener('scroll', () => {
+            const cta = document.getElementById('mobileCTA');
+            if (window.scrollY > 600) {
+                cta.classList.add('visible');
+            } else {
+                cta.classList.remove('visible');
+            }
+        });
+
+        // ══ FAQ ══
+        document.querySelectorAll('.faq-question').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const item = btn.closest('.faq-item');
+                const isOpen = item.classList.contains('open');
+                document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+                if (!isOpen) item.classList.add('open');
+            });
+        });
+
+        // ══ SCROLL REVEAL ══
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // ══ MOBILE COMPARISON CARDS ══
+        function toggleMCard(id) {
+            const card = document.getElementById('mcard-' + id);
+            const isOpen = card.classList.contains('open');
+            document.querySelectorAll('.comp-card-pkg').forEach(c => c.classList.remove('open'));
+            if (!isOpen) {
+                card.classList.add('open');
+            }
+        }
+
+    </script>
+
+    <script>
+        // ══════════════════════════════════════════════════════
+        // FLOATING TOOLTIP - works on desktop AND mobile
+        // Uses a single #floatingTooltip div at the body level,
+        // so it is NEVER clipped by table overflow or sticky cells.
+        // ══════════════════════════════════════════════════════
+
+        (function () {
+            const floater = document.getElementById('floatingTooltip');
+            let activeBtn = null;
+            const MARGIN = 10; // px gap between button and tooltip
+
+            function showTooltip(btn) {
+                const text = btn.getAttribute('data-tip');
+                if (!text) return;
+
+                floater.textContent = text;
+                floater.className = 'visible'; // reset classes, keep visible
+
+                const btnRect = btn.getBoundingClientRect();
+                const vpW = window.innerWidth;
+                const vpH = window.innerHeight;
+
+                // Temporarily show offscreen to measure
+                floater.style.left = '-9999px';
+                floater.style.top = '-9999px';
+                floater.style.display = 'block';
+                const tipW = floater.offsetWidth;
+                const tipH = floater.offsetHeight;
+
+                let left, top, arrowClass;
+
+                const spaceRight = vpW - btnRect.right;
+                const spaceLeft = btnRect.left;
+                const spaceBottom = vpH - btnRect.bottom;
+                const spaceTop = btnRect.top;
+
+                if (spaceRight >= tipW + MARGIN + 12) {
+                    // Place to the RIGHT
+                    left = btnRect.right + MARGIN;
+                    top = btnRect.top + (btnRect.height / 2) - (tipH / 2);
+                    arrowClass = 'arrow-left';
+                } else if (spaceLeft >= tipW + MARGIN + 12) {
+                    // Place to the LEFT
+                    left = btnRect.left - tipW - MARGIN;
+                    top = btnRect.top + (btnRect.height / 2) - (tipH / 2);
+                    arrowClass = 'arrow-right';
+                } else if (spaceBottom >= tipH + MARGIN + 12) {
+                    // Place BELOW
+                    left = Math.max(8, Math.min(btnRect.left, vpW - tipW - 8));
+                    top = btnRect.bottom + MARGIN;
+                    arrowClass = 'arrow-top';
+                } else {
+                    // Place ABOVE
+                    left = Math.max(8, Math.min(btnRect.left, vpW - tipW - 8));
+                    top = btnRect.top - tipH - MARGIN;
+                    arrowClass = 'arrow-bottom';
+                }
+
+                // Keep within viewport
+                top = Math.max(8, Math.min(top, vpH - tipH - 8));
+                left = Math.max(8, Math.min(left, vpW - tipW - 8));
+
+                floater.style.left = left + 'px';
+                floater.style.top = top + 'px';
+                floater.classList.add(arrowClass);
+            }
+
+            function hideTooltip() {
+                floater.classList.remove('visible');
+                floater.style.display = 'none';
+                activeBtn = null;
+            }
+
+            // Attach to all info-toggle buttons
+            document.querySelectorAll('.info-toggle').forEach(function (btn) {
+                // Touch (mobile)
+                btn.addEventListener('touchend', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    if (activeBtn === btn) {
+                        hideTooltip();
+                        activeBtn = null;
+                    } else {
+                        activeBtn = btn;
+                        showTooltip(btn);
+                    }
+                }, { passive: false });
+
+                // Click (desktop / mouse)
+                btn.addEventListener('click', function (e) {
+                    e.stopPropagation();
+                    if (activeBtn === btn) {
+                        hideTooltip();
+                        activeBtn = null;
+                    } else {
+                        activeBtn = btn;
+                        showTooltip(btn);
+                    }
+                });
+            });
+
+            // Close on tap/click anywhere else
+            document.addEventListener('touchstart', function (e) {
+                if (activeBtn && !activeBtn.contains(e.target) && !floater.contains(e.target)) {
+                    hideTooltip();
+                }
+            }, { passive: true });
+
+            document.addEventListener('click', function (e) {
+                if (activeBtn && !activeBtn.contains(e.target) && !floater.contains(e.target)) {
+                    hideTooltip();
+                }
+            });
+
+            // Close on scroll (prevents stale position)
+            window.addEventListener('scroll', function () {
+                if (activeBtn) hideTooltip();
+            }, { passive: true });
+
+        })();
+    </script>
+</body>
+
+</html> 

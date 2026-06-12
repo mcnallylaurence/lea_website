@@ -1,0 +1,1138 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Alice&display=swap" rel="stylesheet">
+
+<style>
+/* ══════════════════════════════════════════════
+   LADYBIRD EVER AFTER - WAYS OF WORKING PAGE
+   ══════════════════════════════════════════════ */
+
+/* ── RESET & ROOT ── */
+.lb-wow {
+  --green:    #5B6239;
+  --green-dk: #3a3f25;
+  --green-hv: #4a5130;
+  --gold:     #B8964E;
+  --gold-lt:  #D4AF71;
+  --cream:    #F5F0E8;
+  --warm:     #FDFAF4;
+  --stone:    #8C8070;
+  --txt:      #1A1A18;
+  --txt-mid:  #4A4A42;
+  --pad-x: clamp(1.2rem, 5vw, 5rem);
+  --pad-y: clamp(3.5rem, 7vw, 6rem);
+
+  font-family: 'Alice', serif;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--txt);
+  background: var(--warm);
+  -webkit-text-size-adjust: 100%;
+}
+
+.lb-wow *, .lb-wow *::before, .lb-wow *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+
+.lb-wow img { display: block; }
+
+/* ── LINKS ── */
+.lb-wow a {
+  color: var(--gold);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color .3s;
+}
+.lb-wow a:hover { color: var(--green); }
+
+/* ── STICKY NAV ── */
+.lb-wow .wow-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--cream);
+  border-bottom: 1px solid rgba(91,98,57,.1);
+  padding: 0.9rem var(--pad-x);
+}
+
+.lb-wow .wow-nav__inner {
+  max-width: 820px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.lb-wow .wow-nav__label {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-right: 0.6rem;
+}
+
+.lb-wow .wow-nav a {
+  font-size: 0.62rem;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 0.35rem 0.75rem;
+  background: var(--warm);
+  border: 1px solid rgba(91,98,57,.15);
+  color: var(--stone);
+  transition: all .3s;
+}
+
+.lb-wow .wow-nav a:hover,
+.lb-wow .wow-nav a.active {
+  background: var(--green);
+  color: var(--cream);
+  border-color: var(--green);
+}
+
+/* ── HERO ── */
+.lb-wow .wow-hero {
+  background: var(--green);
+  padding: clamp(4rem, 10vw, 7rem) var(--pad-x);
+  text-align: center;
+}
+
+.lb-wow .wow-hero__inner {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.lb-wow .wow-hero__overline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gold-lt);
+  margin-bottom: 1.6rem;
+}
+
+.lb-wow .wow-hero__overline::before,
+.lb-wow .wow-hero__overline::after {
+  content: '';
+  flex: 0 0 28px;
+  height: 1px;
+  background: var(--gold);
+  opacity: .5;
+}
+
+.lb-wow .wow-hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 300;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1.18;
+  color: var(--warm);
+  margin-bottom: 1.2rem;
+}
+
+.lb-wow .wow-hero h1 em {
+  font-style: italic;
+  color: var(--gold-lt);
+}
+
+.lb-wow .wow-hero__sub {
+  font-size: 0.88rem;
+  line-height: 1.8;
+  color: rgba(253,250,244,.65);
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+/* ── SECTION SHARED ── */
+.lb-wow .wow-section {
+  padding: var(--pad-y) var(--pad-x);
+}
+
+.lb-wow .wow-section:nth-child(odd)  { background: var(--warm); }
+.lb-wow .wow-section:nth-child(even) { background: var(--cream); }
+
+.lb-wow .wow-section__inner {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+.lb-wow .wow-section__header {
+  margin-bottom: 2rem;
+}
+
+/* ── OVERLINE LABEL ── */
+.lb-wow .overline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+.lb-wow .overline::after {
+  content: '';
+  flex: 0 0 28px;
+  height: 1px;
+  background: var(--gold);
+  opacity: .5;
+}
+
+/* ── SECTION HEADINGS ── */
+.lb-wow .wow-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 300;
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  line-height: 1.2;
+  color: var(--txt);
+  margin-bottom: 0.6rem;
+}
+
+.lb-wow .wow-section h2 em {
+  font-style: italic;
+  color: var(--gold-lt);
+}
+
+.lb-wow .wow-section__intro {
+  font-size: 0.82rem;
+  line-height: 1.85;
+  color: var(--txt-mid);
+  max-width: 640px;
+}
+
+/* ── CARD GRID ── */
+.lb-wow .wow-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
+  margin-top: 1.6rem;
+}
+
+.lb-wow .wow-card {
+  padding: 1.6rem;
+  background: var(--warm);
+  border: 1px solid rgba(91,98,57,.1);
+  transition: border-color .3s;
+}
+
+.lb-wow .wow-section:nth-child(odd) .wow-card {
+  background: var(--cream);
+}
+
+.lb-wow .wow-card:hover {
+  border-color: rgba(184,150,78,.35);
+}
+
+.lb-wow .wow-card__icon {
+  font-size: 1.4rem;
+  line-height: 1;
+  color: var(--gold);
+  margin-bottom: 0.8rem;
+  font-family: 'Playfair Display', serif;
+}
+
+.lb-wow .wow-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  line-height: 1.3;
+  color: var(--txt);
+  margin-bottom: 0.6rem;
+}
+
+.lb-wow .wow-card p {
+  font-size: 0.82rem;
+  line-height: 1.75;
+  color: var(--txt-mid);
+}
+
+/* ── TWO-COLUMN LIST BLOCK ── */
+.lb-wow .wow-tworow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem 2rem;
+  margin-top: 1.6rem;
+}
+
+.lb-wow .wow-item {
+  padding-top: 1rem;
+  border-top: 1px solid rgba(91,98,57,.1);
+}
+
+.lb-wow .wow-item__label {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+
+.lb-wow .wow-item p {
+  font-size: 0.82rem;
+  line-height: 1.75;
+  color: var(--txt-mid);
+}
+
+/* ── PACKAGES TABLE ── */
+.lb-wow .wow-packages {
+  margin-top: 1.6rem;
+  border-top: 1px solid rgba(91,98,57,.1);
+}
+
+.lb-wow .wow-package {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  gap: 1rem 2rem;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid rgba(91,98,57,.1);
+  align-items: start;
+}
+
+.lb-wow .wow-package__time {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-weight: 400;
+  color: var(--green);
+  line-height: 1.2;
+}
+
+.lb-wow .wow-package__time span {
+  display: block;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-top: 0.2rem;
+  font-family: 'Alice', serif;
+}
+
+.lb-wow .wow-package__desc {
+  font-size: 0.82rem;
+  line-height: 1.75;
+  color: var(--txt-mid);
+}
+
+/* ── ACCORDION / FAQ ── */
+.lb-wow .wow-accordion {
+  margin-top: 1.6rem;
+  border-top: 1px solid rgba(91,98,57,.1);
+}
+
+.lb-wow .wow-accordion__item {
+  border-bottom: 1px solid rgba(91,98,57,.1);
+}
+
+.lb-wow .wow-accordion__btn {
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 1.1rem 3rem 1.1rem 0;
+  font-family: 'Alice', serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--txt);
+  line-height: 1.4;
+  position: relative;
+  transition: color .3s;
+}
+
+.lb-wow .wow-accordion__btn:hover { color: var(--green); }
+
+.lb-wow .wow-accordion__btn::after {
+  content: '+';
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
+  color: var(--gold);
+  line-height: 1;
+  transition: color .3s;
+}
+
+.lb-wow .wow-accordion__item.open .wow-accordion__btn::after {
+  content: '\2212';
+}
+
+.lb-wow .wow-accordion__panel {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .45s ease;
+}
+
+.lb-wow .wow-accordion__item.open .wow-accordion__panel {
+  max-height: 800px;
+}
+
+.lb-wow .wow-accordion__body {
+  padding: 0 0 1.2rem;
+  font-size: 0.82rem;
+  line-height: 1.85;
+  color: var(--txt-mid);
+}
+
+/* ── STEP FLOW ── */
+.lb-wow .wow-steps {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.lb-wow .wow-step {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 0 1.4rem;
+  position: relative;
+}
+
+.lb-wow .wow-step__spine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.lb-wow .wow-step__dot {
+  flex-shrink: 0;
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--cream);
+  position: relative;
+  z-index: 1;
+  margin-top: 0.15rem;
+}
+
+.lb-wow .wow-step__line {
+  flex: 1;
+  width: 1px;
+  background: rgba(91,98,57,.15);
+  min-height: 1.6rem;
+}
+
+.lb-wow .wow-step:last-child .wow-step__line {
+  display: none;
+}
+
+.lb-wow .wow-step__body {
+  padding-bottom: 2rem;
+}
+
+.lb-wow .wow-step__body h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: var(--txt);
+  margin-bottom: 0.45rem;
+  padding-top: 0.3rem;
+}
+
+.lb-wow .wow-step__body p {
+  font-size: 0.82rem;
+  line-height: 1.8;
+  color: var(--txt-mid);
+}
+
+/* ── CALLOUT BOX ── */
+.lb-wow .wow-callout {
+  margin-top: 2rem;
+  padding: 1.4rem 1.6rem;
+  border-left: 3px solid var(--gold);
+  background: rgba(184,150,78,.06);
+}
+
+.lb-wow .wow-callout p {
+  font-size: 0.82rem;
+  line-height: 1.85;
+  color: var(--txt-mid);
+}
+
+.lb-wow .wow-callout p strong {
+  color: var(--green);
+  font-weight: 600;
+}
+
+/* ── CTA BAR ── */
+.lb-wow .wow-cta {
+  background: var(--green);
+  padding: clamp(3rem, 7vw, 5rem) var(--pad-x);
+  text-align: center;
+}
+
+.lb-wow .wow-cta__inner {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.lb-wow .wow-cta h2 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 300;
+  font-size: clamp(1.4rem, 2.5vw, 2rem);
+  line-height: 1.2;
+  color: var(--warm);
+  margin-bottom: 0.75rem;
+}
+
+.lb-wow .wow-cta h2 em {
+  font-style: italic;
+  color: var(--gold-lt);
+}
+
+.lb-wow .wow-cta p {
+  font-size: 0.82rem;
+  line-height: 1.8;
+  color: rgba(245,240,232,.55);
+  font-style: italic;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 1.6rem;
+}
+
+/* ── BUTTONS ── */
+.lb-wow .btn-green,
+.lb-wow .btn-gold {
+  display: inline-block;
+  font-family: 'Alice', serif;
+  font-size: .74rem;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  padding: .95rem 2.2rem;
+  border: 2px solid transparent;
+  text-decoration: none;
+  line-height: 1;
+  transition: all .3s;
+  cursor: pointer;
+}
+
+.lb-wow .btn-green {
+  background: var(--green);
+  color: var(--cream);
+  border-color: var(--green);
+}
+.lb-wow .btn-green:hover {
+  background: var(--green-hv);
+  border-color: var(--green-hv);
+  color: var(--cream);
+}
+
+.lb-wow .btn-gold {
+  background: var(--gold);
+  color: var(--green-dk);
+  border-color: var(--gold);
+}
+.lb-wow .btn-gold:hover {
+  background: transparent;
+  border-color: var(--gold-lt);
+  color: var(--gold-lt);
+}
+
+/* ── REVEAL ANIMATION ── */
+.lb-wow .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .65s ease, transform .65s ease;
+}
+.lb-wow .reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── PHOTO CREDIT BLOCK ── */
+.lb-wow .wow-photo {
+  margin-top: 2rem;
+  position: relative;
+}
+
+.lb-wow .wow-photo img {
+  width: 100%;
+  max-height: 520px;
+  object-fit: cover;
+  object-position: center 30%;
+  display: block;
+}
+
+.lb-wow .wow-photo__credit {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+.lb-wow .wow-photo__credit::before {
+  content: '';
+  display: inline-block;
+  width: 18px;
+  height: 1px;
+  background: var(--gold);
+  opacity: .6;
+}
+
+.lb-wow .wow-photo__credit a {
+  color: var(--gold);
+  text-decoration: none;
+  transition: color .3s;
+}
+
+.lb-wow .wow-photo__credit a:hover { color: var(--green); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .lb-wow .wow-tworow { grid-template-columns: 1fr; }
+  .lb-wow .wow-package { grid-template-columns: 1fr; gap: 0.4rem; }
+  .lb-wow .wow-accordion__btn { font-size: 0.82rem; padding-right: 2.2rem; }
+  .lb-wow .wow-nav a { font-size: 0.58rem; padding: 0.3rem 0.55rem; }
+  .lb-wow .wow-step { grid-template-columns: 2.4rem 1fr; gap: 0 1rem; }
+}
+</style>
+
+<!-- ══════════════════════════════════════════════
+     LADYBIRD EVER AFTER - WAYS OF WORKING
+     ══════════════════════════════════════════════ -->
+<div class="lb-wow">
+
+  <!-- ── STICKY NAV ── -->
+  <nav class="wow-nav" aria-label="Page sections">
+    <div class="wow-nav__inner">
+      <span class="wow-nav__label">Jump to</span>
+      <a href="#section-relationship">Our Relationship</a>
+      <a href="#section-contracts">Contracts &amp; Invoicing</a>
+      <a href="#section-onboarding">Meeting Your Couple</a>
+      <a href="#section-scope">Scope &amp; Scale</a>
+      <a href="#section-packages">Packages</a>
+      <a href="#section-on-the-day">On the Day</a>
+      <a href="#section-delivery">Delivery</a>
+      <a href="#section-what-ifs">What Ifs</a>
+      <a href="#section-midweek">When We Work</a>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <header class="wow-hero">
+    <div class="wow-hero__inner">
+      <p class="wow-hero__overline">For Our Photography Partners</p>
+      <h1>Working with Ladybird <em>Ever After</em></h1>
+      <p class="wow-hero__sub">You are not a vendor. You are the eyes through which our couples will remember their most important day. Here is everything you need to know.</p>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 1: OUR RELATIONSHIP
+       ══════════════════════════════════════════════ -->
+  <section class="wow-section" id="section-relationship">
+    <div class="wow-section__inner">
+      <div class="wow-section__header reveal">
+        <p class="overline">Our Working Relationship</p>
+        <h2>A partnership built on <em>trust and referral</em></h2>
+        <p class="wow-section__intro">We are genuinely selective about who we work with. We do not use directories or open calls. Every photographer in our circle has come to us through referral, reputation, and a shared commitment to honest, beautiful work. We do not see you as a contractor. You are a partner, and we treat you that way.</p>
+      </div>
+      <div class="wow-cards">
+        <div class="wow-card reveal">
+          <div class="wow-card__icon">&#9825;</div>
+          <h3>How You Get Booked</h3>
+          <p>Ladybird sells all-inclusive packages that combine photography with a celebrant and other elements. We show your profile to couples, and when a couple loves your style and asks us to book you, that is how you get confirmed. No sales calls, no pitching yourself.</p>
+        </div>
+        <div class="wow-card reveal">
+          <div class="wow-card__icon">&#9998;</div>
+          <h3>No Strangers on the Day</h3>
+          <p>We require at least one video call or deep-dive session with the couple before the wedding day. We want them to feel like they are meeting a friend when they see you, not a stranger with a camera.</p>
+        </div>
+        <div class="wow-card reveal">
+          <div class="wow-card__icon">&#9750;</div>
+          <h3>Less Admin for You</h3>
+          <p>We handle contracts, payments, and all initial inquiries. You skip the sales phase entirely and go straight to the creative work. The only calls on your calendar are the ones that matter, getting to know your couple.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 2: CONTRACTS & INVOICING
+       ══════════════════════════════════════════════ -->
+  <section class="wow-section" id="section-contracts">
+    <div class="wow-section__inner">
+      <div class="wow-section__header reveal">
+        <p class="overline">Contracts, Invoicing &amp; VAT</p>
+        <h2>One agreement, <em>kept simple</em></h2>
+        <p class="wow-section__intro">To keep things straightforward for couples who are often travelling from the US, they sign one master agreement with us. Here is what that means for you.</p>
+      </div>
+      <div class="wow-tworow">
+        <div class="wow-item reveal">
+          <p class="wow-item__label">The Agreement</p>
+          <p>You enter into a contract with Ladybird Events Limited, our Irish-based company. We sign your agreement on behalf of the couple, so there is no need for you to manage a separate client contract.</p>
+        </div>
+        <div class="wow-item reveal">
+          <p class="wow-item__label">VAT on Invoices</p>
+          <p>Ladybird Events Limited is an Irish registered business. Please include VAT on all invoices if applicable.</p>
+        </div>
+        <div class="wow-item reveal">
+          <p class="wow-item__label">Insurance</p>
+          <p>We require all partners to maintain current Public Liability Insurance. Please ensure your cover is up to date before any booking is confirmed.</p>
+        </div>
+        <div class="wow-item reveal">
+          <p class="wow-item__label">Cancellations</p>
+          <p>If a couple cancels, your agreed-upon cancellation policy stands. We will always communicate any changes to a booking as early as possible.</p>
+        </div>
+        <div class="wow-item reveal">
+          <p class="wow-item__label">Payment Timeline</p>
+          <p>Our preference is to pay a deposit on booking confirmation and then settle the balance in the week before the wedding. That said, everyone runs their business differently, and we do our best to meet your terms. Share your payment schedule with us and we will work together to make it fit.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION NEW: MEETING YOUR COUPLE
+       ══════════════════════════════════════════════ -->
+  <section class="wow-section" id="section-onboarding">
+    <div class="wow-section__inner">
+      <div class="wow-section__header reveal">
+        <p class="overline">After Booking is Confirmed</p>
+        <h2>Meeting your couple for <em>the first time</em></h2>
+        <p class="wow-section__intro">Once your booking is confirmed and your deposit has been paid, we hand things over to you. Here is exactly how that works and what we ask of you in those first few days.</p>
+      </div>
+
+      <div class="wow-steps reveal">
+
+        <div class="wow-step">
+          <div class="wow-step__spine">
+            <div class="wow-step__dot">1</div>
+            <div class="wow-step__line"></div>
+          </div>
+          <div class="wow-step__body">
+            <h3>You Receive the Day-Of Document</h3>
+            <p>As soon as the booking is confirmed and your deposit is with you, we send you our Day-Of Document. This is a Google Doc Page that lives with the wedding from confirmation all the way through to the day itself. It holds everything we know at that point: the couple's names, their email address, the date, the locations, and any detail that is already locked in. The document is a living one - we update it as the timeline is built out and new information comes in, so it is always the most current version of the day. You will always have access to the latest picture.</p>
+          </div>
+        </div>
+
+        <div class="wow-step">
+          <div class="wow-step__spine">
+            <div class="wow-step__dot">2</div>
+            <div class="wow-step__line"></div>
+          </div>
+          <div class="wow-step__body">
+            <h3>Add Them to Your Own System</h3>
+            <p>The Day-Of Document gives you everything you need to add the couple to your own CRM or client management system. Their names and email address are yours to use as you would with any couple who had booked you directly. Please treat this information with the same care and discretion you would extend to any client.</p>
+          </div>
+        </div>
+
+        <div class="wow-step">
+          <div class="wow-step__spine">
+            <div class="wow-step__dot">3</div>
+            <div class="wow-step__line"></div>
+          </div>
+          <div class="wow-step__body">
+            <h3>Send Your First Email - With Us on CC</h3>
+            <p>Your very first email to the couple should include us on CC at <strong>info@ladybirdeverafter.com</strong>. That is all we need. Reach out exactly as you would if they had come to you directly - introduce yourself, let them know you are so excited to be part of their day, and take it from there in whatever way feels natural to you. There is no script from us. This is your relationship to build.</p>
+          </div>
+        </div>
+
+        <div class="wow-step">
+          <div class="wow-step__spine">
+            <div class="wow-step__dot">4</div>
+            <div class="wow-step__line"></div>
+          </div>
+          <div class="wow-step__body">
+            <h3>After That, It Is All Yours</h3>
+            <p>Once we have seen that first email land, you do not need to copy us in on anything else. All your ongoing correspondence with the couple - the questionnaires, the planning calls, the style conversations - is entirely between you and them. We do not need to be in the loop on every message. We just want to know you made that first connection.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="wow-callout reveal">
+        <p><strong>A note on the Day-Of Document:</strong> Because the Google Doc is updated continuously as we plan the day together, it is always worth checking back in the weeks before the wedding. Timeline slots, meeting points, and ceremony details are added progressively. If you ever have a question about something that is not in there yet, just ask - we will either have the answer or we will find it.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 3: SCOPE & SCALE
+       ══════════════════════════════════════════════ -->
+  <section class="wow-section" id="section-scope">
+    <div class="wow-section__inner">
+      <div class="wow-section__header reveal">
+        <p class="overline">Elopements vs. Weddings</p>
+        <h2>Context matters more than <em>a headcount</em></h2>
+        <p class="wow-section__intro">The difference between an elopement and a wedding is not simply a number. Fifteen family members quietly watching a ceremony is a very different day from fifteen RSVP'd guests with a first dance and a formal structure. We discuss the nature of each booking openly with you before anything is confirmed, so you always know exactly what kind of day you are walking into.</p>
+      </div>
+      <div class="wow-tworow">
+        <div class="wow-item reveal">
+          <p class="wow-item__label">We Are Always Clear Upfront</p>
+          <p>When we reach out about a booking, we share the full picture: who will be there, what the day involves, and the overall feel. If a day is more complex than a typical elopement, we say so before you agree to anything.</p>
+        </div>
+        <div class="wow-item reveal">
+          <p class="wow-item__label">No Surprises on the Day</p>
+          <p>We put the numbers and the context in writing when we enquire with you. You will always know whether you are covering an intimate ceremony for close family or something that has the structure of a small wedding.</p>
+        </div>
+        <div class="wow-item reveal">
+          <p class="wow-item__label">When Scale Changes</p>
+          <p>If a guest list grows significantly between booking and the wedding day, we will discuss your rates with you accordingly. We value the partnership too much to hide the scale of an event or ask you to absorb unexpected complexity without fair compensation.</p>
+        </div>
+        <div class="wow-item reveal">
+          <p class="wow-item__label">Honesty on Both Sides</p>
+          <p>We ask that you are equally honest with us. If you feel a day has grown beyond what was agreed, raise it. We would far rather have that conversation early than have anyone feel taken advantage of.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 4: PACKAGES & HOURS
+       ══════════════════════════════════════════════ -->
+  <section class="wow-section" id="section-packages">
+    <div class="wow-section__inner">
+      <div class="wow-section__header reveal">
+        <p class="overline">Photography Packages &amp; Hours</p>
+        <h2>The right amount of time for <em>every story</em></h2>
+        <p class="wow-section__intro">Our package structure by time ensures every couple gets exactly what they need. Ladybird sells all-inclusive packages, so photography is built in from the start. The packages below are how we typically frame the time, but we are always happy to talk through what fits the day.</p>
+      </div>
+      <div class="wow-packages">
+        <div class="wow-package reveal">
+          <div class="wow-package__time">2 Hours<span>Essentials</span></div>
+          <p class="wow-package__desc">Covers the ceremony and portraits, or a First Look and the ceremony. Ideal for intimate, focused elopements with one location.</p>
+        </div>
+        <div class="wow-package reveal">
+          <div class="wow-package__time">3 Hours<span>Story</span></div>
+          <p class="wow-package__desc">Covers a First Look, ceremony, and portraits, or ceremony, portraits, and a second location. The most popular choice for couples who want a little more storytelling.</p>
+        </div>
+        <div class="wow-package reveal">
+          <div class="wow-package__time">4 Hours<span>Extended</span></div>
+          <p class="wow-package__desc">An extended session designed for more locations or additional storytelling moments throughout the day.</p>
+        </div>
+        <div class="wow-package reveal">
+          <div class="wow-package__time">Half or Full Day<span>Event-Based</span></div>
+          <p class="wow-package__desc">These are event-based rather than hourly. For example, Bridal Prep through the Dinner Bell, or Ceremony through the First Dance. Scope is agreed in advance.</p>
+        </div>
+      </div>
+      <div class="wow-tworow" style="margin-top: 2rem;">
+        <div class="wow-item reveal">
+          <p class="wow-item__label">Extra Time on the Day</p>
+          <p>If a couple needs more time on the day, you will never bill them directly. Any additional time is invoiced through us and we bill the couple. Please flag it with us as early as possible so we can handle it correctly. As a rule of thumb, we would never ask that an additional hourly rate exceed your original quoted fee divided by the number of hours booked. We understand that setup, travel, and the nature of a shorter booking all affect your rate structure, and we respect that.</p>
+        </div>
+        <div class="wow-item reveal">
+          <p class="wow-item__label">Your Hourly Rate</p>
+          <p>We find it helpful to understand your hourly rate when we are quoting for extensions or half-day upgrades. We do not ask you to justify it, we simply need to know it so we can quote the couple accurately and make sure you are paid fairly. All payments flow through us.</p>
+        </div>
+        <div class="wow-item reveal">
+          <p class="wow-item__label">Travel</p>
+          <p>We try wherever possible to work with photographers who are local to the area, so that you know the landscape and we do not need to factor in travel costs. If a booking does require travel on your part, please flag this when we send you the initial enquiry so we can factor it into the quote from the start.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 5: ON THE DAY
+       ══════════════════════════════════════════════ -->
+  <section class="wow-section" id="section-on-the-day">
+    <div class="wow-section__inner">
+      <div class="wow-section__header reveal">
+        <p class="overline">On the Day</p>
+        <h2>Your role is to shoot, <em>not to lead</em></h2>
+        <p class="wow-section__intro">We take the planning off your plate entirely. Every Ladybird day comes with a detailed timeline, a clear meeting point, and a full brief so you know exactly what is expected before you arrive. Your job is to be present and creative, not to manage the logistics.</p>
+      </div>
+      <div class="wow-tworow">
+        <div class="wow-item reveal">
+          <p class="wow-item__label">We Provide the Timeline</p>
+          <p>Before the wedding day, you will receive a Ladybird timeline that covers where to be, when to be there, and what each part of the day involves. We build this collaboratively in the lead-up and share it with everyone on the team so nothing falls through the cracks.</p>
+        </div>
+        <div class="wow-item reveal">
+          <p class="wow-item__label">Transportation Is Not Your Responsibility</p>
+          <p>We never expect you to transport a couple. Couples either hire professional transportation, drive themselves, or travel with family members. If you ever choose to offer a lift as a personal gesture, that is entirely at your own risk and outside the scope of your agreement with us.</p>
+        </div>
+        <div class="wow-item reveal">
+          <p class="wow-item__label">On the Day Coordination</p>
+          <p>Some of our larger packages include on the day coordination. For couples who opt out of that, we do not expect you to step into that role. You follow the Ladybird timeline and we all work as a team. Photographers naturally become a trusted presence on the day, but leading the couple through the schedule is not something we ask of you unless it has been agreed and compensated as part of your booking.</p>
+        </div>
+        <div class="wow-item reveal">
+          <p class="wow-item__label">A Team Effort</p>
+          <p>We work together in the weeks before the wedding to make sure the timeline is solid and everyone involved knows their part. If something changes or you have a concern about how the day is structured, come to us. We would rather adjust the plan in advance than have anyone improvising on the day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 6: ARTISTIC INTEGRITY & DELIVERY
+       ══════════════════════════════════════════════ -->
+  <section class="wow-section" id="section-delivery">
+    <div class="wow-section__inner">
+      <div class="wow-section__header reveal">
+        <p class="overline">Artistic Integrity &amp; Delivery</p>
+        <h2>Your work, your <em>intellectual property</em></h2>
+        <p class="wow-section__intro">We respect your expertise and your ownership of the images you create. Here is how we protect and deliver your work.</p>
+      </div>
+      <div class="wow-tworow">
+        <div class="wow-item reveal">
+          <p class="wow-item__label">Copyright &amp; IP</p>
+          <p>You retain the copyright and IP of all images. Couples are informed they have a personal-use licence for printing, sharing, and home display only.</p>
+        </div>
+        <div class="wow-item reveal">
+          <p class="wow-item__label">No Edits or Filters</p>
+          <p>Couples are instructed not to edit, filter, or enter your images into competitions without your explicit permission. Your vision is protected.</p>
+        </div>
+        <div class="wow-item reveal">
+          <p class="wow-item__label">Sneak Peeks</p>
+          <p>Most of our couples travel from the US and head back to work shortly after the wedding. We ask for 4 to 5 high-quality sneak peek images within 48 hours so they can share their news on the way home.</p>
+        </div>
+        <div class="wow-item reveal">
+          <p class="wow-item__label">Full Gallery Delivery</p>
+          <p>Final digital albums should be delivered within 6 to 8 weeks, even during peak season. High-resolution digital delivery via platforms like Studio Ninja or PicTime is expected.</p>
+        </div>
+        <div class="wow-item reveal">
+          <p class="wow-item__label">Gallery Access</p>
+          <p>The gallery should remain active and free for the couple to download for at least one year from delivery.</p>
+        </div>
+        <div class="wow-item reveal">
+          <p class="wow-item__label">Sharing the Love</p>
+          <p>Please tag us <strong>@ladybirdeverafter</strong> when you post images from our days. We will always do the same for you, ensuring your craft is celebrated by our whole community.</p>
+        </div>
+        <div class="wow-item reveal">
+          <p class="wow-item__label">Crediting Your Work</p>
+          <p>We credit your work wherever we possibly can. On Instagram we tag you, on our website we tag you, and we do the same at every touchpoint we have. Occasionally a tag gets missed or a credit does not make it onto a page. It is never intentional. If you spot something that has not been credited correctly, just let us know and we will fix it straight away. Thank you for trusting us with your images.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       SECTION 7: THE WHAT IFS (ACCORDION)
+       ══════════════════════════════════════════════ -->
+  <section class="wow-section" id="section-what-ifs">
+    <div class="wow-section__inner">
+      <div class="wow-section__header reveal">
+        <p class="overline">The What Ifs</p>
+        <h2>Answers for the <em>unexpected</em></h2>
+        <p class="wow-section__intro">We have thought through the edge cases so you do not have to worry about them. Here is how we handle things if plans change.</p>
+      </div>
+      <div class="wow-accordion reveal">
+
+        <div class="wow-accordion__item">
+          <button class="wow-accordion__btn" type="button">What happens if a couple cancels?</button>
+          <div class="wow-accordion__panel">
+            <div class="wow-accordion__body">Your agreed-upon cancellation policy stands in full. We do not override your terms. If a couple cancels, we will notify you promptly and any deposits or fees already paid to you are governed by the terms in your agreement with us.</div>
+          </div>
+        </div>
+
+        <div class="wow-accordion__item">
+          <button class="wow-accordion__btn" type="button">What if I cannot attend due to an emergency?</button>
+          <div class="wow-accordion__panel">
+            <div class="wow-accordion__body">We understand that life happens. If you cannot make it due to an emergency, we expect you to lead the search for a trusted, high-quality replacement. If no replacement can be found, a full refund of all monies paid is required so the couple can secure a last-minute alternative. We are happy to assist in the search where we can.</div>
+          </div>
+        </div>
+
+        <div class="wow-accordion__item">
+          <button class="wow-accordion__btn" type="button">What if a guest count changes after booking?</button>
+          <div class="wow-accordion__panel">
+            <div class="wow-accordion__body">Small fluctuations below 20 guests are absorbed without any change to your rate. If a guest list grows past 20, the event moves into wedding territory and we will adjust your rates to reflect the additional complexity. We will always discuss this with you before confirming anything with the couple.</div>
+          </div>
+        </div>
+
+        <div class="wow-accordion__item">
+          <button class="wow-accordion__btn" type="button">What if I need to use a second shooter?</button>
+          <div class="wow-accordion__panel">
+            <div class="wow-accordion__body">If you feel a second shooter would improve the day, please discuss this with us before the wedding. Any additional team members should meet the same quality and professionalism standards we hold across our whole team. We are always open to the conversation.</div>
+          </div>
+        </div>
+
+        <div class="wow-accordion__item">
+          <button class="wow-accordion__btn" type="button">What if the couple wants to enter images in a competition?</button>
+          <div class="wow-accordion__panel">
+            <div class="wow-accordion__body">Couples are informed at the time of booking that they do not have permission to enter your images into competitions without your explicit consent. If a couple approaches you directly about this, the decision is entirely yours. We simply ensure they know the rules upfront.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       MIDWEEK SECTION
+       ══════════════════════════════════════════════ -->
+  <section class="wow-section" id="section-midweek">
+    <div class="wow-section__inner">
+      <div class="wow-section__header reveal">
+        <p class="overline">When We Work</p>
+        <h2>Weekdays, weekends, <em>whatever the day calls for</em></h2>
+        <p class="wow-section__intro">A lot of our elopements happen midweek, which we love because it opens the calendar up in a way that works for everyone. But we do weekend weddings too. Whatever the day, we will always have the full picture ready for you well in advance.</p>
+      </div>
+      <div class="wow-tworow">
+        <div class="wow-item reveal">
+          <p class="wow-item__label">A Different Kind of Calendar</p>
+          <p>Midweek days in particular give us the privilege of working with photographers who would simply not be available on a Saturday. You are booked on weekends, as you should be. We are grateful for every gap in your calendar that you share with us, whenever it falls.</p>
+        </div>
+        <div class="wow-item reveal">
+          <p class="wow-item__label">We Are Always Reachable</p>
+          <p>We are not a big corporation. There is no ticketing system or support queue. If you have a question, a concern, or just need to check something before the day, WhatsApp us, send an email, or give us a call. We are a small team and we genuinely mean it when we say our door is always open.</p>
+        </div>
+      </div>
+      <div class="wow-photo reveal">
+        <img
+          src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/6d89b1e6-2ba0-4231-a7c2-04b80767b432/YasmeenandLaurenceCliffs+%281%29.jpeg?format=2500w"
+          alt="A couple at the cliffs, photographed by Awake and Dreaming"
+          loading="lazy"
+        >
+        <p class="wow-photo__credit">Photography by <a href="#" target="_blank" rel="noopener">Awake and Dreaming</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════════════
+       CTA BAR
+       ══════════════════════════════════════════════ -->
+  <section class="wow-cta">
+    <div class="wow-cta__inner reveal">
+      <h2>We are not a corporation. <em>We are a circle.</em></h2>
+      <p>A small group of people who care deeply about this work, built around a trusted inner circle of top-tier talent we are genuinely proud to know. There are no directories here, no fees to be featured, no middlemen. Just great people, great days, and a team that has your back. Thank you for being part of it.</p>
+      <a href="#" class="btn-gold">Get in Touch</a>
+    </div>
+  </section>
+
+</div>
+<!-- ══ END .lb-wow ══ -->
+
+<script>
+(function () {
+  /* ── ACCORDION ── */
+  document.querySelectorAll('.lb-wow .wow-accordion__btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = this.closest('.wow-accordion__item');
+      var section = this.closest('.wow-accordion');
+      var isOpen = item.classList.contains('open');
+
+      section.querySelectorAll('.wow-accordion__item').forEach(function (i) {
+        i.classList.remove('open');
+      });
+
+      if (!isOpen) { item.classList.add('open'); }
+    });
+  });
+
+  /* ── SCROLL REVEAL ── */
+  var reveals = document.querySelectorAll('.lb-wow .reveal');
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var el = entry.target;
+          var siblings = Array.from(el.closest('.wow-cards, .wow-tworow, .wow-packages, .wow-accordion, .wow-cta__inner, .wow-section__header, .wow-steps') ? el.parentElement.querySelectorAll('.reveal') : [el]);
+          var idx = siblings.indexOf(el);
+          setTimeout(function () { el.classList.add('in'); }, idx * 60);
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+
+    reveals.forEach(function (el) { observer.observe(el); });
+  } else {
+    reveals.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* ── STICKY NAV ACTIVE STATE ── */
+  var sections = document.querySelectorAll('.lb-wow [id^="section-"]');
+  var navLinks = document.querySelectorAll('.lb-wow .wow-nav a');
+
+  var navObserver = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        var id = entry.target.getAttribute('id');
+        navLinks.forEach(function (link) {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, { threshold: 0.3 });
+
+  sections.forEach(function (s) { navObserver.observe(s); });
+
+  /* ── SMOOTH SCROLL WITH NAV OFFSET ── */
+  navLinks.forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        var navHeight = document.querySelector('.lb-wow .wow-nav').offsetHeight;
+        var top = target.getBoundingClientRect().top + window.scrollY - navHeight - 12;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    });
+  });
+}());
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What happens if a couple cancels?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your agreed-upon cancellation policy stands in full. If a couple cancels, we will notify you promptly and any deposits or fees already paid to you are governed by the terms in your agreement with us."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I cannot attend due to an emergency?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If you cannot make it due to an emergency, we expect you to lead the search for a trusted, high-quality replacement. If no replacement can be found, a full refund of all monies paid is required so the couple can secure a last-minute alternative."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if a guest count changes after booking?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Small fluctuations below 20 guests are absorbed without any change to your rate. If a guest list grows past 20, the event moves into wedding territory and we will adjust your rates to reflect the additional complexity."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I need to use a second shooter?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If you feel a second shooter would improve the day, please discuss this with us before the wedding. Any additional team members should meet the same quality and professionalism standards we hold across our whole team."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if the couple wants to enter images in a competition?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Couples are informed at the time of booking that they do not have permission to enter your images into competitions without your explicit consent. The decision is entirely yours."
+      }
+    }
+  ]
+}
+</script>

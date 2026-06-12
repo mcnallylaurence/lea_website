@@ -1,0 +1,227 @@
+<!-- Social Proof Bar - Squarespace Code Block -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Alice&display=swap" rel="stylesheet">
+
+<style>
+.lb-proof {
+  --green:    #5B6239;
+  --gold:     #B8964E;
+  --gold-lt:  #D4AF71;
+  --cream:    #F5F0E8;
+  --warm:     #FDFAF4;
+  --stone:    #8C8070;
+  --txt:      #1A1A18;
+  --txt-mid:  #4A4A42;
+  font-family: 'Alice', serif;
+  font-weight: 300;
+  color: var(--txt);
+  -webkit-text-size-adjust: 100%;
+}
+.lb-proof *, .lb-proof *::before, .lb-proof *::after { margin:0; padding:0; box-sizing:border-box; }
+
+.lb-proof .proof {
+  background: var(--warm);
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1.2rem, 5vw, 5rem);
+  border-top: 1px solid rgba(91,98,57,.08);
+  border-bottom: 1px solid rgba(91,98,57,.08);
+}
+.lb-proof .proof-inner { max-width: 900px; margin: 0 auto; }
+
+.lb-proof .proof-label {
+  text-align: center;
+  margin-bottom: 1.2rem;
+}
+.lb-proof .proof-label span {
+  font-size: .58rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+}
+.lb-proof .proof-label span::before,
+.lb-proof .proof-label span::after {
+  content: '';
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
+  opacity: .45;
+}
+
+.lb-proof .proof-stats {
+  display: flex;
+  justify-content: center;
+  gap: clamp(1.5rem, 4vw, 3.5rem);
+  flex-wrap: wrap;
+}
+.lb-proof .proof-stat { text-align: center; min-width: 100px; }
+.lb-proof .proof-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 600;
+  color: var(--green);
+  line-height: 1;
+}
+.lb-proof .proof-stat-label {
+  font-size: .62rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--stone);
+  margin-top: .45rem;
+  line-height: 1.4;
+}
+
+.lb-proof .proof-divider {
+  width: 50px;
+  height: 1px;
+  background: var(--gold);
+  opacity: .3;
+  margin: 1rem auto 0;
+}
+
+/* ── As Featured In ── */
+.lb-proof .proof-featured {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem;
+  margin-top: 1rem;
+}
+.lb-proof .proof-featured-label {
+  font-size: .58rem;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--stone);
+  white-space: nowrap;
+}
+.lb-proof .proof-featured a {
+  display: inline-flex;
+  align-items: center;
+  transition: opacity .4s;
+}
+.lb-proof .proof-featured a:hover { opacity: .7; }
+.lb-proof .proof-featured img {
+  height: 26px;
+  width: auto;
+}
+
+/* ── Animation ── */
+@keyframes lbProofFadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.lb-proof .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s ease; }
+.lb-proof .reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ── Counter Animation ── */
+.lb-proof .proof-stat-num { transition: color .3s; }
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .lb-proof .proof { padding: 2rem 1.2rem; }
+  .lb-proof .proof-stats { gap: 1.5rem; }
+  .lb-proof .proof-stat { min-width: 100px; }
+}
+@media (max-width: 400px) {
+  .lb-proof .proof-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem 1rem;
+  }
+}
+</style>
+
+<div class="lb-proof">
+  <div class="proof reveal">
+    <div class="proof-inner">
+
+      <div class="proof-label">
+        <span>Trusted by Couples Across the US &amp; Canada</span>
+      </div>
+
+      <div class="proof-stats">
+        <div class="proof-stat">
+          <div class="proof-stat-num" data-target="100" data-suffix="+">0</div>
+          <div class="proof-stat-label">Happy<br>Couples</div>
+        </div>
+        <div class="proof-stat">
+          <div class="proof-stat-num" data-target="100" data-suffix="+">0</div>
+          <div class="proof-stat-label">Vendors &amp; Venues<br>Personally Vetted</div>
+        </div>
+        <div class="proof-stat">
+          <div class="proof-stat-num" data-target="5" data-suffix="★">0</div>
+          <div class="proof-stat-label">Average Couple<br>Rating</div>
+        </div>
+        <div class="proof-stat">
+          <div class="proof-stat-num" data-target="29" data-suffix="">0</div>
+          <div class="proof-stat-label">US States<br>&amp; Counting</div>
+        </div>
+      </div>
+
+      <div class="proof-divider"></div>
+
+      <div class="proof-featured">
+        <span class="proof-featured-label">As Featured In</span>
+        <a href="https://www.independent.ie/business/money/i-bought-my-wedding-dress-for-20-on-depop-meet-the-irish-couples-walking-down-the-aisle-for-less/a1281301504.html" target="_blank" rel="noopener">
+          <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/596a3b01-01e5-4752-ac13-daa11ea53342/irishinde-nobg.png?format=2500w" alt="Irish Independent">
+        </a>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var root = document.querySelector('.lb-proof');
+  if (!root) return;
+
+  var revEls = root.querySelectorAll('.reveal');
+  var counted = false;
+
+  function animateCounters() {
+    if (counted) return;
+    counted = true;
+    root.querySelectorAll('.proof-stat-num[data-target]').forEach(function(el) {
+      var target = parseInt(el.getAttribute('data-target'));
+      var suffix = el.getAttribute('data-suffix') || '';
+      var duration = 1600;
+      var start = 0;
+      var startTime = null;
+
+      function step(ts) {
+        if (!startTime) startTime = ts;
+        var progress = Math.min((ts - startTime) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        var current = Math.round(eased * target);
+        el.textContent = current + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    });
+  }
+
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        animateCounters();
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  revEls.forEach(function(el) { obs.observe(el); });
+
+  /* ── Kill Squarespace wrapper spacing ── */
+  var el = root.closest('.sqs-block');
+  if (el) { el.style.paddingBottom = '0'; el.style.marginBottom = '0'; }
+  el = root.closest('.sqs-block-content');
+  if (el) { el.style.padding = '0'; el.style.margin = '0'; }
+  el = root.closest('.fe-block');
+  if (el) { el.style.paddingBottom = '0'; el.style.minHeight = '0'; }
+})();
+</script>

@@ -1,0 +1,1179 @@
+<!-- Ladybird Green Book – Squarespace Code Block -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Alice&display=swap" rel="stylesheet">
+
+<style>
+/* ══ ALL STYLES SCOPED TO .lb-greenbook ══ */
+
+/* ── VARIABLES ── */
+.lb-greenbook {
+  --green:    #5B6239;
+  --green-dk: #3a3f25;
+  --green-hv: #4a5130;
+  --gold:     #B8964E;
+  --gold-lt:  #D4AF71;
+  --cream:    #F5F0E8;
+  --warm:     #FDFAF4;
+  --stone:    #8C8070;
+  --txt:      #1A1A18;
+  --txt-mid:  #4A4A42;
+  --pad-x: clamp(1.2rem, 5vw, 5rem);
+  --pad-y: clamp(3.5rem, 7vw, 6rem);
+
+  font-family: 'Alice', serif;
+  font-weight: 300;
+  color: var(--txt);
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ── SCOPED RESET ── */
+.lb-greenbook *,
+.lb-greenbook *::before,
+.lb-greenbook *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Subtle texture overlay */
+.lb-greenbook .lb-texture {
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 9999;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  opacity: .38;
+}
+
+.lb-greenbook img { display: block; }
+
+/* ── TYPOGRAPHY ── */
+.lb-greenbook h1,
+.lb-greenbook h2,
+.lb-greenbook h3 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 300;
+}
+.lb-greenbook h1 em,
+.lb-greenbook h2 em,
+.lb-greenbook h3 em {
+  font-style: italic;
+  color: var(--gold-lt);
+}
+
+.lb-greenbook .label {
+  font-size: 0.6rem;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin-bottom: .75rem;
+}
+.lb-greenbook .label::after {
+  content: '';
+  flex: 0 0 28px;
+  height: 1px;
+  background: var(--gold);
+  opacity: .5;
+}
+
+/* ── BUTTONS ── */
+.lb-greenbook .btn {
+  display: inline-block;
+  font-family: 'Alice', serif;
+  font-size: .74rem;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: .95rem 2.2rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all .3s;
+}
+.lb-greenbook .btn-green {
+  background: var(--green);
+  color: var(--cream);
+  border-color: var(--green);
+}
+.lb-greenbook .btn-green:hover {
+  background: var(--green-hv);
+  border-color: var(--green-hv);
+}
+.lb-greenbook .btn-gold {
+  background: var(--gold);
+  color: var(--green);
+  border-color: var(--gold);
+}
+.lb-greenbook .btn-gold:hover {
+  background: transparent;
+  color: var(--gold-lt);
+  border-color: var(--gold-lt);
+}
+
+/* ── HERO ── */
+.lb-greenbook .hero {
+  position: relative;
+  background: var(--green);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(4rem, 10vw, 7rem) var(--pad-x);
+  min-height: 48vh;
+}
+.lb-greenbook .hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/6b7347ef-5773-40fe-988f-218e64614cc9/DarkHedges3.webp?format=2500w');
+  background-size: cover;
+  background-position: center 30%;
+  opacity: .18;
+}
+.lb-greenbook .hero-grad {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(28,28,26,.55) 0%, rgba(28,28,26,.85) 100%);
+}
+.lb-greenbook .hero-content {
+  position: relative; z-index: 2;
+  max-width: 660px;
+  animation: lbFadeUp .9s ease both;
+}
+.lb-greenbook .hero-eyebrow {
+  font-size: .58rem;
+  letter-spacing: .35em;
+  text-transform: uppercase;
+  color: var(--gold-lt);
+  font-weight: 500;
+  margin-bottom: 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem;
+}
+.lb-greenbook .hero-eyebrow-line {
+  flex: 0 0 24px;
+  height: 1px;
+  background: var(--gold-lt);
+  opacity: .45;
+}
+.lb-greenbook .hero h1 {
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  color: var(--warm);
+  line-height: 1.1;
+  margin-bottom: 1.2rem;
+}
+.lb-greenbook .hero-sub {
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  color: rgba(253,250,244,.65);
+  line-height: 1.65;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.lb-greenbook .hero-divider {
+  width: 50px;
+  height: 1px;
+  background: var(--gold-lt);
+  opacity: .4;
+  margin: 1.6rem auto;
+}
+
+/* ── WELCOME SECTION ── */
+.lb-greenbook .welcome {
+  background: var(--cream);
+  padding: var(--pad-y) var(--pad-x);
+}
+.lb-greenbook .welcome-inner {
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+}
+.lb-greenbook .welcome h2 {
+  font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+  color: var(--txt);
+  line-height: 1.18;
+  margin-bottom: 1.2rem;
+}
+.lb-greenbook .welcome p {
+  font-size: .9rem;
+  line-height: 1.85;
+  color: var(--txt-mid);
+  margin-bottom: .8rem;
+}
+.lb-greenbook .welcome p:last-of-type { margin-bottom: 0; }
+
+/* ── JOURNEY SECTION ── */
+.lb-greenbook .journey {
+  background: var(--warm);
+  padding: var(--pad-y) var(--pad-x);
+}
+.lb-greenbook .journey-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+.lb-greenbook .journey-header {
+  text-align: center;
+  margin-bottom: clamp(2rem, 4vw, 3.5rem);
+}
+.lb-greenbook .journey-header h2 {
+  font-size: clamp(2rem, 3.6vw, 2.8rem);
+  color: var(--txt);
+  line-height: 1.15;
+  margin-bottom: .8rem;
+}
+.lb-greenbook .journey-header p {
+  font-size: .85rem;
+  color: var(--txt-mid);
+  line-height: 1.75;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+/* ── JOURNEY CARDS ── */
+.lb-greenbook .journey-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid rgba(91,98,57,.12);
+}
+
+.lb-greenbook .journey-card {
+  position: relative;
+  background: var(--warm);
+  text-decoration: none;
+  color: var(--txt);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: all .45s cubic-bezier(.25,.46,.45,.94);
+}
+.lb-greenbook .journey-card:first-child {
+  border-right: 1px solid rgba(91,98,57,.12);
+}
+
+.lb-greenbook .journey-card-img {
+  position: relative;
+  height: 240px;
+  overflow: hidden;
+}
+.lb-greenbook .journey-card-img img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: saturate(.82);
+  transition: transform .7s ease, filter .5s ease;
+}
+.lb-greenbook .journey-card:hover .journey-card-img img {
+  transform: scale(1.05);
+  filter: saturate(1);
+}
+.lb-greenbook .journey-card-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(28,28,26,.5) 0%, rgba(28,28,26,0) 60%);
+  z-index: 1;
+}
+.lb-greenbook .journey-card-number {
+  position: absolute;
+  top: 1.2rem; left: 1.2rem;
+  z-index: 2;
+  font-family: 'Playfair Display', serif;
+  font-size: .65rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--warm);
+  background: rgba(91,98,57,.7);
+  backdrop-filter: blur(6px);
+  padding: .3rem .7rem;
+  font-weight: 600;
+}
+
+.lb-greenbook .journey-card-body {
+  padding: 2rem 2rem 2.4rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.lb-greenbook .journey-card-icon {
+  font-size: 1.6rem;
+  margin-bottom: .8rem;
+}
+.lb-greenbook .journey-card h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--green);
+  margin-bottom: .55rem;
+  line-height: 1.2;
+}
+.lb-greenbook .journey-card p {
+  font-size: .82rem;
+  line-height: 1.75;
+  color: var(--txt-mid);
+  margin-bottom: 1.4rem;
+}
+.lb-greenbook .journey-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin-bottom: 1.6rem;
+}
+.lb-greenbook .journey-tag {
+  font-size: .56rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--stone);
+  background: var(--cream);
+  padding: .28rem .65rem;
+  border: 1px solid rgba(91,98,57,.08);
+}
+.lb-greenbook .journey-card-cta {
+  font-family: 'Alice', serif;
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin-top: auto;
+  transition: color .3s, gap .3s;
+}
+.lb-greenbook .journey-card-cta-arrow {
+  display: inline-block;
+  transition: transform .3s;
+  font-size: .75rem;
+}
+.lb-greenbook .journey-card:hover .journey-card-cta {
+  color: var(--green);
+  gap: .75rem;
+}
+.lb-greenbook .journey-card:hover .journey-card-cta-arrow {
+  transform: translateX(3px);
+}
+.lb-greenbook .journey-card:hover {
+  background: rgba(91,98,57,.03);
+  box-shadow: 0 12px 35px rgba(0,0,0,.07);
+  transform: translateY(-3px);
+}
+
+/* Disabled / Coming Soon card */
+.lb-greenbook .journey-card--disabled {
+  cursor: default;
+  opacity: .6;
+}
+.lb-greenbook .journey-card--disabled:hover {
+  background: var(--warm);
+  box-shadow: none;
+  transform: none;
+}
+.lb-greenbook .journey-card--disabled:hover .journey-card-img img {
+  transform: none;
+  filter: saturate(.82);
+}
+.lb-greenbook .journey-card--disabled:hover .journey-card-cta {
+  color: var(--gold);
+  gap: .5rem;
+}
+.lb-greenbook .journey-card--disabled .journey-card-cta {
+  color: var(--stone);
+}
+
+/* ── DIVIDER STRIP ── */
+.lb-greenbook .strip {
+  background: var(--green);
+  padding: clamp(2rem, 3.5vw, 3rem) var(--pad-x);
+  text-align: center;
+}
+.lb-greenbook .strip-inner {
+  max-width: 700px;
+  margin: 0 auto;
+}
+.lb-greenbook .strip-text {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+  font-weight: 300;
+  color: var(--warm);
+  line-height: 1.4;
+}
+.lb-greenbook .strip-text em { font-style: italic; color: var(--gold-lt); }
+.lb-greenbook .strip-sub {
+  font-size: .72rem;
+  color: rgba(245,240,232,.48);
+  margin-top: .7rem;
+  letter-spacing: .08em;
+}
+
+/* ── BOOKING / MEETINGS SECTION ── */
+.lb-greenbook .booking {
+  position: relative;
+  padding: var(--pad-y) var(--pad-x);
+  background: var(--cream);
+}
+.lb-greenbook .booking-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+.lb-greenbook .booking-left h2 {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  color: var(--txt);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.lb-greenbook .booking-left p {
+  font-size: .85rem;
+  line-height: 1.8;
+  color: var(--txt-mid);
+  margin-bottom: 1rem;
+}
+.lb-greenbook .booking-details {
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+  margin-top: 1.4rem;
+  padding-top: 1.4rem;
+  border-top: 1px solid rgba(91,98,57,.12);
+}
+.lb-greenbook .booking-detail {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-size: .78rem;
+  color: var(--txt-mid);
+}
+.lb-greenbook .booking-detail span {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.lb-greenbook .booking-card {
+  background: var(--warm);
+  padding: 2rem 2rem 1.8rem;
+  box-shadow: 0 8px 30px rgba(0,0,0,.06);
+  border: 1px solid rgba(91,98,57,.08);
+  position: relative;
+}
+.lb-greenbook .booking-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold-lt), var(--gold));
+}
+.lb-greenbook .booking-card-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-weight: 400;
+  color: var(--green);
+  margin-bottom: .2rem;
+  line-height: 1.2;
+}
+.lb-greenbook .booking-card-title em { font-style: italic; color: var(--gold); }
+.lb-greenbook .booking-card-sub {
+  font-size: .66rem;
+  color: var(--stone);
+  margin-bottom: 1.2rem;
+  padding-bottom: 1.2rem;
+  border-bottom: 1px solid rgba(91,98,57,.1);
+}
+
+/* HubSpot meetings embed container */
+.lb-greenbook .meetings-iframe-container {
+  min-height: 660px;
+}
+.lb-greenbook .meetings-iframe-container iframe {
+  border: none !important;
+  border-radius: 0 !important;
+}
+
+/* ── ANIMATIONS ── */
+@keyframes lbFadeUp {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.lb-greenbook .reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.lb-greenbook .reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .lb-greenbook .journey-grid {
+    grid-template-columns: 1fr;
+  }
+  .lb-greenbook .journey-card:first-child {
+    border-right: none;
+    border-bottom: 1px solid rgba(91,98,57,.12);
+  }
+  .lb-greenbook .booking-inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .lb-greenbook .hero { padding: 3rem 1.2rem; min-height: 38vh; }
+  .lb-greenbook .hero h1 { font-size: clamp(2rem, 8vw, 2.8rem); }
+  .lb-greenbook .welcome { padding: 2.5rem 1.2rem; }
+  .lb-greenbook .journey { padding: 2.5rem 1.2rem; }
+  .lb-greenbook .journey-card-body { padding: 1.6rem 1.4rem 2rem; }
+  .lb-greenbook .journey-card-img { height: 200px; }
+  .lb-greenbook .booking { padding: 2.5rem 1.2rem; }
+  .lb-greenbook .booking-card { padding: 1.5rem 1.2rem; }
+}
+
+@media (max-width: 400px) {
+  .lb-greenbook .hero h1 { font-size: 1.85rem; }
+}
+</style>
+
+<div class="lb-greenbook">
+
+<!-- ═══════════════════════════════════
+     HERO
+═══════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grad"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">
+      <span class="hero-eyebrow-line"></span>
+      Ireland Awaits
+      <span class="hero-eyebrow-line"></span>
+    </p>
+    <h1>Your Guide to<br><em>Ireland.</em></h1>
+    <div class="hero-divider"></div>
+    <p class="hero-sub">You've booked your dream day in Ireland - now here's everything you need to make the most of it.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     WELCOME TEXT
+═══════════════════════════════════ -->
+<div class="welcome">
+  <div class="welcome-inner reveal">
+    <p class="label" style="justify-content:center;">Welcome</p>
+    <h2>We're so excited<br><em>you're here.</em></h2>
+    <p>You booked your dream wedding in Ireland with Ladybird - and now the fun part begins. We put this guide together just for you, with everything from practical travel tips to our favorite restaurants, pubs, and hidden gems across Ireland.</p>
+    <p>Consider this your insider's guide to getting married in Ireland. Browse through whenever you're ready - and know that we're always just a message away.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     JOURNEY CARDS
+═══════════════════════════════════ -->
+<div class="journey">
+  <div class="journey-inner">
+
+    <div class="journey-header reveal">
+      <p class="label" style="justify-content:center;">Your Resources</p>
+      <h2>Everything you need.<br><em>All in one place.</em></h2>
+      <p>From packing your bags to picking the perfect pub - we've got you covered.</p>
+    </div>
+
+    <div class="journey-grid">
+
+      <!-- CARD 1: Preparing Before You Go -->
+      <a href="https://ladybirdeverafter.com/preparing-for-ireland" class="journey-card reveal">
+        <div class="journey-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/e63dee7f-66c5-4143-b5a3-e6107f8196e5/JMReidys2.webp?format=2500w" alt="Preparing for your Ireland wedding trip">
+          <div class="journey-card-img-overlay"></div>
+        </div>
+        <div class="journey-card-body">
+          <div class="journey-card-icon">✈️</div>
+          <h3>Preparing Before<br>You Go</h3>
+          <p>Everything you need to know before you hop on the plane - travel documents, packing tips, what the weather's really like, and what to expect when you land.</p>
+          <div class="journey-card-tags">
+            <span class="journey-tag">Flights</span>
+            <span class="journey-tag">Transport</span>
+            <span class="journey-tag">Packing</span>
+            <span class="journey-tag">Practical Tips</span>
+          </div>
+          <div class="journey-card-cta">
+            Explore the Course
+            <span class="journey-card-cta-arrow">→</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- CARD 2: Our Recommendations -->
+      <a href="https://www.ladybirdeverafter.com/ladybird-green-book" class="journey-card reveal">
+        <div class="journey-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/151467b1-718c-48f8-9245-b6b11475e90a/JRMahons2.webp?format=2500w" alt="Traditional Irish pub at night">
+          <div class="journey-card-img-overlay"></div>
+        </div>
+        <div class="journey-card-body">
+          <div class="journey-card-icon">☘️</div>
+          <h3>Our Recommendations</h3>
+          <p>The places we'd send our own friends and family - our favorite restaurants, the pubs with the best atmosphere, and the hidden gems that only locals know about. Your personal cheat sheet to Ireland.</p>
+          <div class="journey-card-tags">
+            <span class="journey-tag">Restaurants</span>
+            <span class="journey-tag">Pubs</span>
+            <span class="journey-tag">Hidden Gems</span>
+            <span class="journey-tag">Local Favorites</span>
+          </div>
+          <div class="journey-card-cta">
+            Explore Our Picks
+            <span class="journey-card-cta-arrow">→</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     DIVIDER STRIP
+═══════════════════════════════════ -->
+<div class="strip">
+  <div class="strip-inner">
+    <p class="strip-text">Have a question? Want to run something by us?<br>We're <em>always</em> here for you.</p>
+    <p class="strip-sub">Your planner is with you every step of the way - from right now until your wedding day.</p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════
+     BOOK A CALL / HUBSPOT MEETINGS
+═══════════════════════════════════ -->
+<div class="booking" id="book-a-call">
+  <div class="booking-inner">
+
+    <div class="booking-left reveal">
+      <p class="label">We're Here for You</p>
+      <h2>Get in <em>touch.</em></h2>
+      <p>We'll check in with you throughout your planning - at 12 months, 6 months, 3 months, 1 month, and 1 week before your wedding. But don't wait for us! If you want to chat, schedule a call below or shoot us an email anytime. We'd love to hear from you.</p>
+      <div class="booking-details">
+        <div class="booking-detail"><span>📞</span> Schedule a call with your planner</div>
+        <div class="booking-detail"><span>✉️</span> Email us anytime</div>
+        <div class="booking-detail"><span>🕐</span> Flexible scheduling - your timezone</div>
+        <div class="booking-detail"><span>💬</span> Regular check-ins throughout your journey</div>
+      </div>
+    </div>
+
+    <div class="booking-card reveal">
+      <div class="booking-card-title">Pick a time <em>that works.</em></div>
+      <p class="booking-card-sub">Choose a slot · We'll confirm instantly · No obligation</p>
+      <!-- HubSpot Meetings Embed -->
+      <div class="meetings-iframe-container" data-src="https://meetings.hubspot.com/ladybird?embed=true"></div>
+      <script type="text/javascript" src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"></script>
+    </div>
+
+  </div>
+</div>
+
+</div><!-- /.lb-greenbook -->
+
+<!-- ═══════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════ -->
+<script>
+  (function() {
+    var root = document.querySelector('.lb-greenbook');
+    if (!root) return;
+    var revEls = root.querySelectorAll('.reveal');
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e, i) {
+        if (e.isIntersecting) {
+          setTimeout(function() { e.target.classList.add('in'); }, i * 80);
+          obs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
+    revEls.forEach(function(el) { obs.observe(el); });
+  })();
+</script>
+
+
+
+<!-- ═══════════════════════════════════════════════
+     GLOBAL HEADER — Ladybird Ever After
+     Desktop: transparent at top → solid on scroll
+     Mobile:  burger → slide-in drawer
+═══════════════════════════════════════════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Alice&display=swap" rel="stylesheet">
+
+<style>
+/* ── TOKENS ── */
+.lb-header {
+  --green:  #5B6239;
+  --gold:   #B8964E;
+  --gold-lt:#D4AF71;
+  --cream:  #F5F0E8;
+  --warm:   #FDFAF4;
+  --stone:  #8C8070;
+  --txt:    #1A1A18;
+  font-family: 'Alice', serif;
+  -webkit-text-size-adjust: 100%;
+  display: none; /* JS reveals this */
+}
+.lb-header *, .lb-header *::before, .lb-header *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+
+/* ── SHELL ── */
+.lb-header .hdr {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9000;
+  transition: background .35s ease, box-shadow .35s ease;
+}
+.lb-header .hdr.transparent { background: transparent; }
+.lb-header .hdr.scrolled {
+  background: var(--warm);
+  box-shadow: 0 1px 12px rgba(0,0,0,.08);
+}
+
+/* ── UTILITY BAR ── */
+.lb-header .hdr-utility {
+  display: flex; justify-content: flex-end; align-items: center;
+  gap: 1.4rem; padding: .45rem clamp(1.5rem,4vw,4rem);
+  overflow: hidden; max-height: 0; opacity: 0;
+  transition: max-height .35s ease, opacity .35s ease;
+  border-bottom: 1px solid rgba(91,98,57,.08);
+}
+.lb-header .hdr.scrolled .hdr-utility { max-height: 52px; opacity: 1; }
+.lb-header .hdr-utility a {
+  font-size: .6rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--stone); text-decoration: none; transition: color .25s;
+}
+.lb-header .hdr-utility a:hover { color: var(--gold); }
+.lb-header .hdr-utility .btn-book {
+  background: var(--gold); color: var(--green); border: 1px solid var(--gold);
+  padding: .38rem 1rem; font-size: .6rem; letter-spacing: .12em;
+  text-transform: uppercase; font-weight: 600; text-decoration: none;
+  transition: all .25s; white-space: nowrap;
+}
+.lb-header .hdr-utility .btn-book:hover {
+  background: transparent; color: var(--gold-lt); border-color: var(--gold-lt);
+}
+
+/* ── MAIN ROW ── */
+.lb-header .hdr-main {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .85rem clamp(1.5rem,4vw,4rem);
+}
+
+/* ── LOGOS ── */
+.lb-header .hdr-logo a { text-decoration: none; display: block; line-height: 0; }
+.lb-header .logo-shamrock,
+.lb-header .logo-green {
+  height: 44px; width: auto;
+  transition: opacity .35s ease;
+  position: absolute; top: 0; left: 0;
+}
+.lb-header .hdr-logo { position: relative; height: 44px; width: 44px; }
+.lb-header .logo-shamrock { position: relative; display: block; }
+.lb-header .hdr.transparent .logo-shamrock { opacity: 1; }
+.lb-header .hdr.transparent .logo-green    { opacity: 0; pointer-events: none; }
+.lb-header .hdr.scrolled   .logo-shamrock  { opacity: 0; pointer-events: none; }
+.lb-header .hdr.scrolled   .logo-green     { opacity: 1; }
+
+/* ── DESKTOP NAV ── */
+.lb-header .hdr-nav {
+  display: flex; align-items: center;
+  gap: clamp(.6rem, 2vw, 2rem);
+  list-style: none;
+}
+.lb-header .hdr-nav > li { position: relative; }
+.lb-header .nav-wrap { display: flex; align-items: center; gap: .15rem; }
+
+.lb-header .hdr-nav > li > .nav-wrap > a,
+.lb-header .hdr-nav > li > .nav-wrap > button.nav-label {
+  font-size: .67rem; letter-spacing: .13em; text-transform: uppercase;
+  font-weight: 600; text-decoration: none; cursor: pointer;
+  padding: .5rem 0; background: none; border: none;
+  border-bottom: 1.5px solid transparent;
+  transition: color .25s, border-color .25s;
+  white-space: nowrap;
+}
+.lb-header .hdr.transparent .hdr-nav > li > .nav-wrap > a,
+.lb-header .hdr.transparent .hdr-nav > li > .nav-wrap > button.nav-label {
+  color: rgba(255,255,255,.88);
+}
+.lb-header .hdr.scrolled .hdr-nav > li > .nav-wrap > a,
+.lb-header .hdr.scrolled .hdr-nav > li > .nav-wrap > button.nav-label {
+  color: var(--txt);
+}
+.lb-header .hdr-nav > li > .nav-wrap > a:hover,
+.lb-header .hdr-nav > li > .nav-wrap > button.nav-label:hover,
+.lb-header .hdr-nav > li.active > .nav-wrap > a {
+  color: var(--gold) !important;
+  border-bottom-color: var(--gold);
+}
+
+/* Chevron */
+.lb-header .nav-chevron-icon {
+  width: 9px; height: 9px; flex-shrink: 0;
+  transition: transform .25s ease, color .25s;
+  display: block;
+}
+.lb-header .hdr.transparent .hdr-nav > li > .nav-wrap .nav-chevron-icon { color: rgba(255,255,255,.7); }
+.lb-header .hdr.scrolled    .hdr-nav > li > .nav-wrap .nav-chevron-icon { color: var(--stone); }
+.lb-header .hdr-nav > li:hover .nav-chevron-icon,
+.lb-header .hdr-nav > li.dd-open .nav-chevron-icon { color: var(--gold); }
+.lb-header .hdr-nav > li.dd-open .nav-chevron-icon { transform: rotate(180deg); }
+
+/* ── DROPDOWNS ── */
+.lb-header .hdr-dropdown {
+  position: absolute; top: calc(100% + .6rem); left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  min-width: 280px;
+  background: var(--warm); border: 1px solid rgba(91,98,57,.12);
+  box-shadow: 0 20px 50px rgba(0,0,0,.12);
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease, visibility .2s;
+}
+.lb-header .hdr-nav > li:hover .hdr-dropdown,
+.lb-header .hdr-nav > li.dd-open .hdr-dropdown {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+.lb-header .hdr-dropdown::before {
+  content: ''; position: absolute; top: -.7rem; left: 0; right: 0; height: .7rem;
+}
+.lb-header .hdr-nav > li:last-child .hdr-dropdown,
+.lb-header .hdr-nav > li:nth-last-child(2) .hdr-dropdown {
+  left: auto; right: 0; transform: translateY(8px);
+}
+.lb-header .hdr-nav > li:last-child:hover .hdr-dropdown,
+.lb-header .hdr-nav > li:last-child.dd-open .hdr-dropdown,
+.lb-header .hdr-nav > li:nth-last-child(2):hover .hdr-dropdown,
+.lb-header .hdr-nav > li:nth-last-child(2).dd-open .hdr-dropdown {
+  transform: translateY(0);
+}
+.lb-header .hdr-dropdown ul { list-style: none; padding: .5rem 0; }
+.lb-header .hdr-dropdown ul li a {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .72rem 1.3rem; text-decoration: none; transition: background .18s;
+}
+.lb-header .hdr-dropdown ul li a:hover { background: var(--cream); }
+.lb-header .dd-name   { font-size: .72rem; font-weight: 600; color: var(--txt); letter-spacing: .04em; }
+.lb-header .dd-sub    { font-size: .61rem; color: var(--stone); margin-top: .1rem; }
+.lb-header .dd-simple { font-size: .72rem; color: var(--txt); letter-spacing: .03em; }
+.lb-header .dd-badge {
+  font-size: .5rem; letter-spacing: .1em; text-transform: uppercase;
+  font-weight: 700; padding: .2rem .48rem; white-space: nowrap; margin-left: .8rem; flex-shrink: 0;
+}
+.lb-header .dd-badge.elope   { background: rgba(155,64,96,.1);  color: #9B4060; }
+.lb-header .dd-badge.popular { background: rgba(91,98,57,.12);  color: var(--green); }
+.lb-header .dd-badge.wedding { background: rgba(30,58,95,.1);   color: #1E3A5F; }
+.lb-header .dd-footer { border-top: 1px solid rgba(91,98,57,.08); padding: .68rem 1.3rem; }
+.lb-header .dd-footer a {
+  font-size: .61rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--gold); font-weight: 600; text-decoration: none; transition: color .25s;
+}
+.lb-header .dd-footer a:hover { color: var(--green); }
+
+/* ── HAMBURGER ── */
+.lb-header .hdr-burger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; background: none; border: none; padding: 4px; z-index: 9010;
+}
+.lb-header .hdr-burger span {
+  display: block; width: 24px; height: 1.5px; transition: all .3s;
+}
+.lb-header .hdr.transparent .hdr-burger span { background: #fff; }
+.lb-header .hdr.scrolled    .hdr-burger span { background: var(--txt); }
+.lb-header .hdr-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.lb-header .hdr-burger.open span:nth-child(2) { opacity: 0; }
+.lb-header .hdr-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ── MOBILE DRAWER ── */
+.lb-header .hdr-mobile-drawer {
+  display: none; position: fixed; inset: 0; z-index: 8999;
+  background: var(--warm); padding: 6rem 2rem 3rem; overflow-y: auto;
+  transform: translateX(100%); transition: transform .32s ease;
+}
+.lb-header .hdr-mobile-drawer.open { transform: translateX(0); display: block; }
+.lb-header .hdr-mobile-drawer ul { list-style: none; }
+.lb-header .hdr-mobile-drawer > ul > li { border-bottom: 1px solid rgba(91,98,57,.1); }
+.lb-header .mob-row { display: flex; align-items: center; justify-content: space-between; }
+.lb-header .mob-row > a {
+  flex: 1; display: block; padding: .9rem 0;
+  font-size: .8rem; letter-spacing: .12em; text-transform: uppercase;
+  font-weight: 600; color: var(--txt); text-decoration: none; transition: color .25s;
+}
+.lb-header .mob-row > a:hover { color: var(--gold); }
+.lb-header .mob-chevron-btn {
+  background: none; border: none; cursor: pointer;
+  padding: .6rem .5rem; color: var(--stone); transition: color .25s;
+}
+.lb-header .mob-chevron-btn:hover { color: var(--gold); }
+.lb-header .mob-chevron-btn svg { width: 12px; height: 12px; display: block; transition: transform .25s; }
+.lb-header .hdr-mobile-drawer > ul > li.mob-open .mob-chevron-btn svg { transform: rotate(180deg); }
+.lb-header .mob-sub { list-style: none; padding: 0 0 .6rem 1rem; display: none; }
+.lb-header .hdr-mobile-drawer > ul > li.mob-open .mob-sub { display: block; }
+.lb-header .mob-sub li a {
+  display: block; padding: .48rem 0;
+  font-size: .71rem; color: var(--stone); text-decoration: none; transition: color .25s;
+}
+.lb-header .mob-sub li a:hover { color: var(--green); }
+.lb-header .mob-actions { margin-top: 2rem; display: flex; flex-direction: column; gap: .8rem; }
+.lb-header .mob-actions a {
+  display: block; text-align: center; padding: .9rem 1.5rem;
+  font-size: .7rem; letter-spacing: .12em; text-transform: uppercase;
+  font-weight: 600; text-decoration: none; transition: all .25s;
+}
+.lb-header .mob-actions .btn-primary  { background: var(--gold); color: var(--green); border: 2px solid var(--gold); }
+.lb-header .mob-actions .btn-primary:hover { background: transparent; color: var(--gold-lt); border-color: var(--gold-lt); }
+.lb-header .mob-actions .btn-secondary { background: transparent; color: var(--stone); border: 1px solid rgba(91,98,57,.2); }
+
+/* ── SPACER ── */
+.lb-header .hdr-spacer { height: 0; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .lb-header .hdr-nav    { display: none; }
+  .lb-header .hdr-burger { display: flex; }
+  .lb-header .hdr-mobile-drawer { display: block; }
+}
+@media (max-width: 600px) {
+  .lb-header .logo-shamrock,
+  .lb-header .logo-green { height: 36px; }
+  .lb-header .hdr-logo   { height: 36px; }
+}
+</style>
+
+<!-- ── HTML ── -->
+<div class="lb-header" id="lb-header">
+
+  <header class="hdr transparent" id="lb-hdr">
+
+    <div class="hdr-utility">
+      <a href="/the-ever-after-roadmap">My Wedding</a>
+      <a href="/get-in-touch" class="btn-book">Book a Free Call &rarr;</a>
+    </div>
+
+    <div class="hdr-main">
+
+      <div class="hdr-logo">
+        <a href="/">
+          <img class="logo-shamrock"
+               src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/b43d5289-8057-4c3e-9cdd-eda7333f47ce/Shamrock+Logo+No+Background.png?content-type=image%2Fpng"
+               alt="Ladybird Ever After">
+          <img class="logo-green"
+               src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/447b68ef-be3d-4843-ad3c-bdcf8acfab9f/Primary+Logo+Green+Font+No+Background.png?content-type=image%2Fpng"
+               alt="Ladybird Ever After">
+        </a>
+      </div>
+
+      <nav aria-label="Main navigation">
+        <ul class="hdr-nav">
+
+          <li>
+            <div class="nav-wrap">
+              <a href="/packages">Packages</a>
+              <svg class="nav-chevron-icon" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1,1 5,5 9,1"/></svg>
+            </div>
+            <div class="hdr-dropdown">
+              <ul>
+                <li><a href="/packages#failte">
+                  <div><div class="dd-name">F&aacute;ilte</div><div class="dd-sub">The Pure Elopement</div></div>
+                  <span class="dd-badge elope">Elopement</span>
+                </a></li>
+                <li><a href="/packages#gra">
+                  <div><div class="dd-name">Gr&aacute;</div><div class="dd-sub">The Small-Group Elopement</div></div>
+                  <span class="dd-badge elope">Elopement</span>
+                </a></li>
+                <li><a href="/packages#slainte">
+                  <div><div class="dd-name">Sl&aacute;inte</div><div class="dd-sub">The Intimate Wedding</div></div>
+                  <span class="dd-badge popular">&#9733; Popular</span>
+                </a></li>
+                <li><a href="/packages#ard">
+                  <div><div class="dd-name">Ard</div><div class="dd-sub">The Full Wedding</div></div>
+                  <span class="dd-badge wedding">Wedding</span>
+                </a></li>
+              </ul>
+              <div class="dd-footer"><a href="/packages">See all packages &rarr;</a></div>
+            </div>
+          </li>
+
+          <li>
+            <div class="nav-wrap">
+              <a href="/venues">Venues</a>
+              <svg class="nav-chevron-icon" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1,1 5,5 9,1"/></svg>
+            </div>
+            <div class="hdr-dropdown">
+              <ul>
+                <li><a href="/venue/p/dunlucecastle">
+                  <div class="dd-simple">Dunluce Castle</div>
+                  <span class="dd-badge popular">&#9733; Popular</span>
+                </a></li>
+                <li><a href="/venue/p/cliffsofmoher">
+                  <div class="dd-simple">Cliffs of Moher</div>
+                  <span class="dd-badge popular">&#9733; Popular</span>
+                </a></li>
+                <li><a href="https://www.ladybirdeverafter.com/venue/p/killarneynationalpark">
+                  <div class="dd-simple">Killarney National Park</div>
+                  <span class="dd-badge popular">&#9733; Popular</span>
+                </a></li>
+              </ul>
+              <div class="dd-footer"><a href="/venues">See all venues &rarr;</a></div>
+            </div>
+          </li>
+
+          <li>
+            <div class="nav-wrap">
+              <a href="/real-love">Real Weddings</a>
+            </div>
+          </li>
+
+          <li>
+            <div class="nav-wrap">
+              <button class="nav-label" aria-haspopup="true">Learn</button>
+              <svg class="nav-chevron-icon" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1,1 5,5 9,1"/></svg>
+            </div>
+            <div class="hdr-dropdown">
+              <ul>
+                <li><a href="/blog"><div class="dd-simple">Blog</div></a></li>
+                <li><a href="/faqs"><div class="dd-simple">FAQs</div></a></li>
+                <li><a href="https://www.ladybirdeverafter.com/elopement-in-ireland">
+                  <div class="dd-simple">The Ultimate Guide to Eloping in Ireland</div>
+                </a></li>
+                <li><a href="https://www.ladybirdeverafter.com/blog/how-to-get-married-in-ireland">
+                  <div class="dd-simple">Legal Requirements in Ireland</div>
+                </a></li>
+                <li><a href="https://www.youtube.com/@LadybirdEverAfter" target="_blank" rel="noopener">
+                  <div class="dd-simple">YouTube Channel &#8599;</div>
+                </a></li>
+              </ul>
+            </div>
+          </li>
+
+        </ul>
+      </nav>
+
+      <button class="hdr-burger" id="lb-burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </header>
+
+  <div class="hdr-mobile-drawer" id="lb-drawer" aria-hidden="true">
+    <ul>
+
+      <li id="mob-packages">
+        <div class="mob-row">
+          <a href="/packages">Packages</a>
+          <button class="mob-chevron-btn" data-mob="mob-packages" aria-label="Expand packages">
+            <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1,1 5,5 9,1"/></svg>
+          </button>
+        </div>
+        <ul class="mob-sub">
+          <li><a href="/packages#failte">F&aacute;ilte — The Pure Elopement</a></li>
+          <li><a href="/packages#gra">Gr&aacute; — The Small-Group Elopement</a></li>
+          <li><a href="/packages#slainte">Sl&aacute;inte — The Intimate Wedding &#9733;</a></li>
+          <li><a href="/packages#ard">Ard — The Full Wedding</a></li>
+          <li><a href="/packages">See all packages &rarr;</a></li>
+        </ul>
+      </li>
+
+      <li id="mob-venues">
+        <div class="mob-row">
+          <a href="/venues">Venues</a>
+          <button class="mob-chevron-btn" data-mob="mob-venues" aria-label="Expand venues">
+            <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1,1 5,5 9,1"/></svg>
+          </button>
+        </div>
+        <ul class="mob-sub">
+          <li><a href="/venues/dunluce-castle">Dunluce Castle</a></li>
+          <li><a href="/venues/cliffs-of-moher">Cliffs of Moher</a></li>
+          <li><a href="https://www.ladybirdeverafter.com/venue/p/killarneynationalpark">Killarney National Park</a></li>
+          <li><a href="/venues">See all venues &rarr;</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <div class="mob-row">
+          <a href="/real-love">Real Weddings</a>
+        </div>
+      </li>
+
+      <li id="mob-learn">
+        <div class="mob-row">
+          <span style="flex:1;display:block;padding:.9rem 0;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--txt)">Learn</span>
+          <button class="mob-chevron-btn" data-mob="mob-learn" aria-label="Expand learn">
+            <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1,1 5,5 9,1"/></svg>
+          </button>
+        </div>
+        <ul class="mob-sub">
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/faqs">FAQs</a></li>
+          <li><a href="https://www.ladybirdeverafter.com/elopement-in-ireland">The Ultimate Guide to Eloping in Ireland</a></li>
+          <li><a href="https://www.ladybirdeverafter.com/blog/how-to-get-married-in-ireland">Legal Requirements in Ireland</a></li>
+          <li><a href="https://www.youtube.com/@LadybirdEverAfter" target="_blank" rel="noopener">YouTube Channel &#8599;</a></li>
+        </ul>
+      </li>
+
+    </ul>
+    <div class="mob-actions">
+      <a href="/get-in-touch" class="btn-primary">Book a Free Call &rarr;</a>
+      <a href="/the-ever-after-roadmap" class="btn-secondary">My Wedding (Login)</a>
+    </div>
+  </div>
+
+  <div class="hdr-spacer" id="lb-hdr-spacer"></div>
+
+</div>
+
+<script>
+(function () {
+
+  /* ── SHOW OUR HEADER ──
+     SS header is already hidden globally via Custom CSS.
+     We simply always show ours. No guard needed. */
+  var lbHeader = document.getElementById('lb-header');
+  if (lbHeader) lbHeader.style.display = 'block';
+
+  /* ── SCROLL: transparent <-> scrolled ── */
+  var hdr = document.getElementById('lb-hdr');
+  function applyScroll() {
+    var past = window.scrollY > 60;
+    hdr.classList.toggle('transparent', !past);
+    hdr.classList.toggle('scrolled', past);
+  }
+  applyScroll();
+  window.addEventListener('scroll', applyScroll, { passive: true });
+
+  /* ── MOBILE BURGER ── */
+  var burger = document.getElementById('lb-burger');
+  var drawer = document.getElementById('lb-drawer');
+  burger.addEventListener('click', function () {
+    var open = drawer.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open);
+    drawer.setAttribute('aria-hidden', !open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+
+  /* ── MOBILE SUB-LISTS ── */
+  document.querySelectorAll('.lb-header .mob-chevron-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var li = document.getElementById(btn.getAttribute('data-mob'));
+      li.classList.toggle('mob-open');
+    });
+  });
+
+  /* ── ACTIVE STATE ── */
+  document.querySelectorAll('.lb-header .hdr-nav > li > .nav-wrap > a').forEach(function (a) {
+    if (a.getAttribute('href') === window.location.pathname) {
+      a.closest('li').classList.add('active');
+    }
+  });
+
+}());
+</script>

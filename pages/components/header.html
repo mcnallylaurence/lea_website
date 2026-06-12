@@ -1,0 +1,580 @@
+<!-- ═══════════════════════════════════════════════
+     GLOBAL HEADER - Ladybird Ever After
+     Desktop: transparent at top → solid on scroll
+              full nav always visible, hover to open dropdowns
+     Mobile:  burger → slide-in drawer, tap chevron to expand
+═══════════════════════════════════════════════ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&family=Alice&display=swap" rel="stylesheet">
+
+<style>
+/* ── TOKENS ── */
+.lb-header {
+  --green:  #5B6239;
+  --gold:   #B8964E;
+  --gold-lt:#D4AF71;
+  --cream:  #F5F0E8;
+  --warm:   #FDFAF4;
+  --stone:  #8C8070;
+  --txt:    #1A1A18;
+  font-family: 'Alice', serif;
+  -webkit-text-size-adjust: 100%;
+
+  /* ── GUARD: hidden by default, JS reveals after SS header check ── */
+  display: none;
+}
+.lb-header *, .lb-header *::before, .lb-header *::after {
+  margin: 0; padding: 0; box-sizing: border-box;
+}
+
+/* ── SHELL ── */
+.lb-header .hdr {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9000;
+  transition: background .35s ease, box-shadow .35s ease;
+}
+.lb-header .hdr.transparent {
+  background: linear-gradient(to bottom, rgba(26,26,24,.48) 0%, rgba(26,26,24,.22) 60%, rgba(26,26,24,0) 100%);
+}
+.lb-header .hdr.scrolled    {
+  background: var(--warm);
+  box-shadow: 0 1px 12px rgba(0,0,0,.08);
+}
+
+/* ── NAV BUTTON ── */
+.lb-header .hdr-nav > li > .nav-wrap > a.btn-book-nav {
+  background: var(--gold); color: var(--green) !important; 
+  border: 1px solid var(--gold) !important;
+  padding: .45rem 1.2rem; margin-left: .5rem;
+}
+.lb-header .hdr-nav > li > .nav-wrap > a.btn-book-nav:hover {
+  background: transparent; border-color: var(--gold) !important;
+}
+.lb-header .hdr.transparent .hdr-nav > li > .nav-wrap > a.btn-book-nav:hover {
+  color: #fff !important;
+}
+.lb-header .hdr.scrolled .hdr-nav > li > .nav-wrap > a.btn-book-nav:hover {
+  color: var(--gold) !important;
+}
+
+/* ── MAIN ROW ── */
+.lb-header .hdr-main {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .85rem clamp(1.5rem,4vw,4rem);
+}
+
+/* ── LOGOS ── */
+.lb-header .hdr-logo a { text-decoration: none; display: block; line-height: 0; }
+.lb-header .logo-transparent,
+.lb-header .logo-scrolled {
+  height: 44px; width: auto;
+  transition: opacity .35s ease;
+  position: absolute; top: 0; left: 0;
+}
+.lb-header .hdr-logo { position: relative; height: 44px; }
+.lb-header .logo-transparent { position: relative; display: block; }
+
+/* transparent → transparent visible, scrolled hidden */
+.lb-header .hdr.transparent .logo-transparent { opacity: 1; }
+.lb-header .hdr.transparent .logo-scrolled    { opacity: 0; pointer-events: none; }
+/* scrolled → scrolled visible, transparent hidden */
+.lb-header .hdr.scrolled .logo-transparent { opacity: 0; pointer-events: none; }
+.lb-header .hdr.scrolled .logo-scrolled    { opacity: 1; }
+
+/* ── DESKTOP NAV ── */
+.lb-header .hdr-nav {
+  display: flex; align-items: center;
+  gap: clamp(.6rem, 2vw, 2rem);
+  list-style: none;
+}
+.lb-header .hdr-nav > li { position: relative; }
+
+/* Nav label row: link + optional chevron */
+.lb-header .nav-wrap { display: flex; align-items: center; gap: .15rem; }
+
+.lb-header .hdr-nav > li > .nav-wrap > a,
+.lb-header .hdr-nav > li > .nav-wrap > button.nav-label {
+  font-size: .67rem; letter-spacing: .13em; text-transform: uppercase;
+  font-weight: 600; text-decoration: none; cursor: pointer;
+  padding: .5rem 0; background: none; border: none;
+  border-bottom: 1.5px solid transparent;
+  transition: color .25s, border-color .25s;
+  white-space: nowrap;
+  /* colour depends on header state */
+}
+
+/* transparent state: white labels */
+.lb-header .hdr.transparent .hdr-nav > li > .nav-wrap > a,
+.lb-header .hdr.transparent .hdr-nav > li > .nav-wrap > button.nav-label {
+  color: rgba(255,255,255,.88);
+}
+/* scrolled state: dark labels */
+.lb-header .hdr.scrolled .hdr-nav > li > .nav-wrap > a,
+.lb-header .hdr.scrolled .hdr-nav > li > .nav-wrap > button.nav-label {
+  color: var(--txt);
+}
+
+.lb-header .hdr-nav > li > .nav-wrap > a:hover,
+.lb-header .hdr-nav > li > .nav-wrap > button.nav-label:hover,
+.lb-header .hdr-nav > li.active > .nav-wrap > a {
+  color: var(--gold) !important;
+  border-bottom-color: var(--gold);
+}
+/* Active state must not override the Get In Touch button's own colours */
+.lb-header .hdr-nav > li.active > .nav-wrap > a.btn-book-nav {
+  color: var(--green) !important;
+  border-bottom-color: transparent;
+}
+
+/* Chevron icon */
+.lb-header .nav-chevron-icon {
+  width: 9px; height: 9px; flex-shrink: 0;
+  transition: transform .25s ease, color .25s;
+  display: block;
+}
+.lb-header .hdr.transparent .hdr-nav > li > .nav-wrap .nav-chevron-icon { color: rgba(255,255,255,.7); }
+.lb-header .hdr.scrolled    .hdr-nav > li > .nav-wrap .nav-chevron-icon { color: var(--stone); }
+.lb-header .hdr-nav > li:hover .nav-chevron-icon,
+.lb-header .hdr-nav > li.dd-open .nav-chevron-icon { color: var(--gold); }
+.lb-header .hdr-nav > li.dd-open .nav-chevron-icon { transform: rotate(180deg); }
+
+/* ── DROPDOWNS (hover + click) ── */
+.lb-header .hdr-dropdown {
+  position: absolute; top: calc(100% + .6rem); left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  min-width: 280px;
+  background: var(--warm); border: 1px solid rgba(91,98,57,.12);
+  box-shadow: 0 20px 50px rgba(0,0,0,.12);
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity .2s ease, transform .2s ease, visibility .2s;
+}
+/* Open on hover (desktop) */
+.lb-header .hdr-nav > li:hover .hdr-dropdown,
+.lb-header .hdr-nav > li.dd-open .hdr-dropdown {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+/* Bridge gap so mouse can move into dropdown */
+.lb-header .hdr-dropdown::before {
+  content: ''; position: absolute; top: -.7rem; left: 0; right: 0; height: .7rem;
+}
+
+/* Prevent right-edge dropdowns from overflowing off screen */
+.lb-header .hdr-nav > li:last-child .hdr-dropdown,
+.lb-header .hdr-nav > li:nth-last-child(2) .hdr-dropdown {
+  left: auto;
+  right: 0;
+  transform: translateY(8px);
+}
+.lb-header .hdr-nav > li:last-child:hover .hdr-dropdown,
+.lb-header .hdr-nav > li:last-child.dd-open .hdr-dropdown,
+.lb-header .hdr-nav > li:nth-last-child(2):hover .hdr-dropdown,
+.lb-header .hdr-nav > li:nth-last-child(2).dd-open .hdr-dropdown {
+  transform: translateY(0);
+}
+
+.lb-header .hdr-dropdown ul { list-style: none; padding: .5rem 0; }
+.lb-header .hdr-dropdown ul li a {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: .72rem 1.3rem; text-decoration: none; transition: background .18s;
+}
+.lb-header .hdr-dropdown ul li a:hover { background: var(--cream); }
+
+.lb-header .dd-name {
+  font-size: .72rem; font-weight: 600; color: var(--txt); letter-spacing: .04em;
+}
+.lb-header .dd-sub {
+  font-size: .61rem; color: var(--stone); margin-top: .1rem;
+}
+.lb-header .dd-simple {
+  font-size: .72rem; color: var(--txt); letter-spacing: .03em;
+}
+.lb-header .dd-badge {
+  font-size: .5rem; letter-spacing: .1em; text-transform: uppercase;
+  font-weight: 700; padding: .2rem .48rem; white-space: nowrap; margin-left: .8rem;
+  flex-shrink: 0;
+}
+.lb-header .dd-badge.elope   { background: rgba(184,150,78,.12); color: var(--gold); }
+.lb-header .dd-badge.wedding { background: rgba(91,98,57,.1);    color: var(--green); }
+
+.lb-header .dd-footer {
+  border-top: 1px solid rgba(91,98,57,.08); padding: .68rem 1.3rem;
+}
+.lb-header .dd-footer a {
+  font-size: .61rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--gold); font-weight: 600; text-decoration: none; transition: color .25s;
+}
+.lb-header .dd-footer a:hover { color: var(--green); }
+
+/* ── HAMBURGER (mobile only) ── */
+.lb-header .hdr-burger {
+  display: none; flex-direction: column; gap: 5px;
+  cursor: pointer; background: none; border: none; padding: 4px; z-index: 9010;
+}
+.lb-header .hdr-burger span {
+  display: block; width: 24px; height: 1.5px; transition: all .3s;
+}
+.lb-header .hdr.transparent .hdr-burger span { background: #fff; }
+.lb-header .hdr.scrolled    .hdr-burger span { background: var(--txt); }
+
+.lb-header .hdr-burger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.lb-header .hdr-burger.open span:nth-child(2) { opacity: 0; }
+.lb-header .hdr-burger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ── MOBILE DRAWER ── */
+.lb-header .hdr-mobile-drawer {
+  display: none; position: fixed; inset: 0; z-index: 8999;
+  background: var(--warm); padding: 6rem 2rem 3rem; overflow-y: auto;
+  transform: translateX(100%); transition: transform .32s ease;
+}
+.lb-header .hdr-mobile-drawer.open { transform: translateX(0); display: block; }
+
+.lb-header .hdr-mobile-drawer ul { list-style: none; }
+.lb-header .hdr-mobile-drawer > ul > li {
+  border-bottom: 1px solid rgba(91,98,57,.1);
+}
+.lb-header .mob-row {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.lb-header .mob-row > a {
+  flex: 1; display: block; padding: .9rem 0;
+  font-size: .8rem; letter-spacing: .12em; text-transform: uppercase;
+  font-weight: 600; color: var(--txt); text-decoration: none; transition: color .25s;
+}
+.lb-header .mob-row > a:hover { color: var(--gold); }
+
+.lb-header .mob-chevron-btn {
+  background: none; border: none; cursor: pointer;
+  padding: .6rem .5rem; color: var(--stone); transition: color .25s;
+}
+.lb-header .mob-chevron-btn:hover { color: var(--gold); }
+.lb-header .mob-chevron-btn svg {
+  width: 12px; height: 12px; display: block; transition: transform .25s;
+}
+.lb-header .hdr-mobile-drawer > ul > li.mob-open .mob-chevron-btn svg {
+  transform: rotate(180deg);
+}
+
+.lb-header .mob-sub { list-style: none; padding: 0 0 .6rem 1rem; display: none; }
+.lb-header .hdr-mobile-drawer > ul > li.mob-open .mob-sub { display: block; }
+.lb-header .mob-sub li a {
+  display: block; padding: .48rem 0;
+  font-size: .71rem; color: var(--stone); text-decoration: none; transition: color .25s;
+}
+.lb-header .mob-sub li a:hover { color: var(--green); }
+
+.lb-header .mob-actions {
+  margin-top: 2rem; display: flex; flex-direction: column; gap: .8rem;
+}
+.lb-header .mob-actions a {
+  display: block; text-align: center; padding: .9rem 1.5rem;
+  font-size: .7rem; letter-spacing: .12em; text-transform: uppercase;
+  font-weight: 600; text-decoration: none; transition: all .25s;
+}
+.lb-header .mob-actions .btn-primary {
+  background: var(--gold); color: var(--green); border: 2px solid var(--gold);
+}
+.lb-header .mob-actions .btn-primary:hover {
+  background: transparent; color: var(--gold-lt); border-color: var(--gold-lt);
+}
+.lb-header .mob-actions .btn-secondary {
+  background: transparent; color: var(--stone); border: 1px solid rgba(91,98,57,.2);
+}
+
+/* ── SPACER ── */
+.lb-header .hdr-spacer { height: 0; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .lb-header .hdr-nav   { display: none; }
+  .lb-header .hdr-burger { display: flex; }
+  .lb-header .hdr-mobile-drawer { display: block; }
+}
+@media (max-width: 600px) {
+  .lb-header .logo-transparent,
+  .lb-header .logo-scrolled { height: 36px; }
+  .lb-header .hdr-logo { height: 36px; }
+}
+</style>
+
+<div class="lb-header" id="lb-header">
+
+  <header class="hdr transparent" id="lb-hdr">
+
+
+
+    <div class="hdr-main">
+
+      <!-- Logo -->
+      <div class="hdr-logo">
+        <a href="/">
+          <img class="logo-transparent"
+               src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/cf0fbeec-50e2-41e9-9498-34dc4022f7bd/Primary+Logo+White+No+Background.png?content-type=image%2Fpng"
+               alt="Ladybird Ever After">
+          <img class="logo-scrolled"
+               src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/453c636d-2bc5-4f3d-b485-8cea43bf0818/Secondary+Logo+Shamrock+No+Background.png?content-type=image%2Fpng"
+               alt="Ladybird Ever After">
+        </a>
+      </div>
+
+      <!-- Desktop nav -->
+      <nav aria-label="Main navigation">
+        <ul class="hdr-nav">
+
+          <!-- Packages: link + hover dropdown -->
+          <li>
+            <div class="nav-wrap">
+              <a href="/packages">Packages</a>
+              <svg class="nav-chevron-icon" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1,1 5,5 9,1"/></svg>
+            </div>
+            <div class="hdr-dropdown">
+              <ul>
+                <li><a href="/packages#failte">
+                  <div><div class="dd-name">F&aacute;ilte</div><div class="dd-sub">The Pure Elopement</div></div>
+                  <span class="dd-badge elope">Elopement</span>
+                </a></li>
+                <li><a href="/packages#gra">
+                  <div><div class="dd-name">Gr&aacute;</div><div class="dd-sub">The Small-Group Elopement</div></div>
+                  <span class="dd-badge elope">Elopement</span>
+                </a></li>
+                <li><a href="/packages#slainte">
+                  <div><div class="dd-name">Sl&aacute;inte</div><div class="dd-sub">The Intimate Wedding</div></div>
+                  <span class="dd-badge wedding">Wedding</span>
+                </a></li>
+                <li><a href="/packages#ard">
+                  <div><div class="dd-name">Ard</div><div class="dd-sub">The Full Wedding</div></div>
+                  <span class="dd-badge wedding">Wedding</span>
+                </a></li>
+              </ul>
+              <div class="dd-footer"><a href="/packages">See all packages &rarr;</a></div>
+            </div>
+          </li>
+
+          <!-- Venues: link + hover dropdown -->
+          <li>
+            <div class="nav-wrap">
+              <a href="/venues">Venues</a>
+              <svg class="nav-chevron-icon" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1,1 5,5 9,1"/></svg>
+            </div>
+            <div class="hdr-dropdown">
+              <ul>
+                <li><a href="/venue/p/dunlucecastle">
+                  <div class="dd-simple">Dunluce Castle</div>
+                  <span class="dd-badge popular">&#9733; Popular</span>
+                </a></li>
+                <li><a href="/venue/p/cliffsofmoher">
+                  <div class="dd-simple">Cliffs of Moher</div>
+                  <span class="dd-badge popular">&#9733; Popular</span>
+                </a></li>
+                <li><a href="https://www.ladybirdeverafter.com/venue/p/killarneynationalpark">
+                  <div class="dd-simple">Killarney National Park</div>
+                  <span class="dd-badge popular">&#9733; Popular</span>
+                </a></li>
+              </ul>
+              <div class="dd-footer"><a href="/venues">See all venues &rarr;</a></div>
+            </div>
+          </li>
+
+          <!-- Real Weddings: plain link -->
+          <li>
+            <div class="nav-wrap">
+              <a href="/real-love">Real Weddings</a>
+            </div>
+          </li>
+
+          <!-- Our Story: plain link -->
+          <li>
+            <div class="nav-wrap">
+              <a href="/about">Our Story</a>
+            </div>
+          </li>
+
+          <!-- Couple Login: plain link -->
+          <li>
+            <div class="nav-wrap">
+              <a href="/couple-login">Couple Login</a>
+            </div>
+          </li>
+
+          <!-- Learn: button (no page) + hover dropdown -->
+          <li>
+            <div class="nav-wrap">
+              <button class="nav-label" aria-haspopup="true">Learn</button>
+              <svg class="nav-chevron-icon" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1,1 5,5 9,1"/></svg>
+            </div>
+            <div class="hdr-dropdown">
+              <ul>
+                <li><a href="/blog"><div class="dd-simple">Blog</div></a></li>
+                <li><a href="/faqs"><div class="dd-simple">FAQs</div></a></li>
+                <li><a href="/regions-of-ireland"><div class="dd-simple">Regions of Ireland</div></a></li>
+                <li><a href="https://www.ladybirdeverafter.com/elopement-in-ireland">
+                  <div class="dd-simple">The Ultimate Guide to Eloping in Ireland</div>
+                </a></li>
+                <li><a href="https://www.ladybirdeverafter.com/blog/how-to-get-married-in-ireland">
+                  <div class="dd-simple">Legal Requirements in Ireland</div>
+                </a></li>
+                <li><a href="https://www.youtube.com/@LadybirdEverAfter" target="_blank" rel="noopener">
+                  <div class="dd-simple">YouTube Channel &#8599;</div>
+                </a></li>
+              </ul>
+            </div>
+          </li>
+
+          <!-- Get In Touch -->
+          <li>
+            <div class="nav-wrap">
+              <a href="/get-in-touch" class="btn-book-nav">Get In Touch</a>
+            </div>
+          </li>
+
+        </ul>
+      </nav>
+
+      <!-- Burger (mobile only) -->
+      <button class="hdr-burger" id="lb-burger" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- Mobile drawer -->
+  <div class="hdr-mobile-drawer" id="lb-drawer" aria-hidden="true">
+    <ul>
+
+      <li id="mob-packages">
+        <div class="mob-row">
+          <a href="/packages">Packages</a>
+          <button class="mob-chevron-btn" data-mob="mob-packages" aria-label="Expand packages">
+            <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1,1 5,5 9,1"/></svg>
+          </button>
+        </div>
+        <ul class="mob-sub">
+          <li><a href="/packages#failte">F&aacute;ilte - The Pure Elopement</a></li>
+          <li><a href="/packages#gra">Gr&aacute; - The Small-Group Elopement</a></li>
+          <li><a href="/packages#slainte">Sl&aacute;inte - The Intimate Wedding</a></li>
+          <li><a href="/packages#ard">Ard - The Full Wedding</a></li>
+          <li><a href="/packages">See all packages &rarr;</a></li>
+        </ul>
+      </li>
+
+      <li id="mob-venues">
+        <div class="mob-row">
+          <a href="/venues">Venues</a>
+          <button class="mob-chevron-btn" data-mob="mob-venues" aria-label="Expand venues">
+            <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1,1 5,5 9,1"/></svg>
+          </button>
+        </div>
+        <ul class="mob-sub">
+          <li><a href="/venues/dunluce-castle">Dunluce Castle</a></li>
+          <li><a href="/venues/cliffs-of-moher">Cliffs of Moher</a></li>
+          <li><a href="https://www.ladybirdeverafter.com/venue/p/killarneynationalpark">Killarney National Park</a></li>
+          <li><a href="/venues">See all venues &rarr;</a></li>
+        </ul>
+      </li>
+
+      <li>
+        <div class="mob-row">
+          <a href="/real-love">Real Weddings</a>
+        </div>
+      </li>
+
+      <li>
+        <div class="mob-row">
+          <a href="/about">Our Story</a>
+        </div>
+      </li>
+
+      <li id="mob-learn">
+        <div class="mob-row">
+          <span style="flex:1;display:block;padding:.9rem 0;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--txt)">Learn</span>
+          <button class="mob-chevron-btn" data-mob="mob-learn" aria-label="Expand learn">
+            <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="1,1 5,5 9,1"/></svg>
+          </button>
+        </div>
+        <ul class="mob-sub">
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/faqs">FAQs</a></li>
+          <li><a href="/regions-of-ireland">Regions of Ireland</a></li>
+          <li><a href="https://www.ladybirdeverafter.com/elopement-in-ireland">The Ultimate Guide to Eloping in Ireland</a></li>
+          <li><a href="https://www.ladybirdeverafter.com/blog/how-to-get-married-in-ireland">Legal Requirements in Ireland</a></li>
+          <li><a href="https://www.youtube.com/@LadybirdEverAfter" target="_blank" rel="noopener">YouTube Channel &#8599;</a></li>
+        </ul>
+      </li>
+
+    </ul>
+    <div class="mob-actions">
+      <a href="/get-in-touch" class="btn-primary">Get In Touch</a>
+      <a href="/couple-login" class="btn-secondary">Couple Login</a>
+    </div>
+  </div>
+
+  <div class="hdr-spacer" id="lb-hdr-spacer"></div>
+
+</div>
+
+<script>
+(function () {
+  
+
+
+  /* ══════════════════════════════════════════════
+   SQUARESPACE HEADER GUARD
+   Mirrors SS "Show Header" toggle exactly.
+   SS hides #header via inline style or a class
+   when the toggle is off - we check both.
+══════════════════════════════════════════════ */
+// If Squarespace's own header is visible, suppress it so ours takes over.
+// Always show our custom header regardless.
+var ssHeader = document.getElementById('header');
+if (ssHeader && window.getComputedStyle(ssHeader).display !== 'none') {
+  ssHeader.style.setProperty('display', 'none', 'important');
+}
+document.getElementById('lb-header').style.display = 'block';
+
+  /* ══════════════════════════════════════════════
+     SCROLL: transparent <-> scrolled
+  ══════════════════════════════════════════════ */
+  var hdr = document.getElementById('lb-hdr');
+
+  function applyScroll() {
+    var past = window.scrollY > 60;
+    hdr.classList.toggle('transparent', !past);
+    hdr.classList.toggle('scrolled', past);
+  }
+  applyScroll();
+  window.addEventListener('scroll', applyScroll, { passive: true });
+
+  /* ══════════════════════════════════════════════
+     MOBILE BURGER
+  ══════════════════════════════════════════════ */
+  var burger = document.getElementById('lb-burger');
+  var drawer = document.getElementById('lb-drawer');
+
+  burger.addEventListener('click', function () {
+    var open = drawer.classList.toggle('open');
+    burger.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open);
+    drawer.setAttribute('aria-hidden', !open);
+    document.body.style.overflow = open ? 'hidden' : '';
+  });
+
+  /* ══════════════════════════════════════════════
+     MOBILE SUB-LISTS
+  ══════════════════════════════════════════════ */
+  document.querySelectorAll('.lb-header .mob-chevron-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var li = document.getElementById(btn.getAttribute('data-mob'));
+      li.classList.toggle('mob-open');
+    });
+  });
+
+  /* ══════════════════════════════════════════════
+     ACTIVE STATE
+  ══════════════════════════════════════════════ */
+  document.querySelectorAll('.lb-header .hdr-nav > li > .nav-wrap > a').forEach(function (a) {
+    if (a.getAttribute('href') === window.location.pathname) {
+      a.closest('li').classList.add('active');
+    }
+  });
+}());
+</script>

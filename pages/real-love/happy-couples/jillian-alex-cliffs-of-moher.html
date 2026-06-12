@@ -1,0 +1,510 @@
+<!-- Ladybird Ever After – Happy Couples: Jillian & Alex – Cliffs of Moher -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Alice:wght@400&display=swap" rel="stylesheet">
+
+<style>
+.lb-story {
+  --green:    #5B6239;
+  --green-dk: #3a3f25;
+  --green-hv: #4a5130;
+  --gold:     #B8964E;
+  --gold-lt:  #D4AF71;
+  --cream:    #F5F0E8;
+  --warm:     #FDFAF4;
+  --stone:    #8C8070;
+  --txt:      #1A1A18;
+  --txt-mid:  #4A4A42;
+  --pad-x: clamp(1.2rem, 5vw, 5rem);
+  --pad-y: clamp(3.5rem, 7vw, 6rem);
+  font-family: 'Alice', serif;
+  font-weight: 300;
+  color: var(--txt);
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+}
+.lb-story *, .lb-story *::before, .lb-story *::after { margin:0; padding:0; box-sizing:border-box; }
+.lb-story img { display:block; }
+.lb-story h1, .lb-story h2, .lb-story h3, .lb-story h4 { font-family:'Playfair Display',serif; font-weight:300; }
+.lb-story h1 em, .lb-story h2 em, .lb-story h3 em { font-style:italic; color:var(--gold-lt); }
+.lb-story a { color:inherit; }
+.lb-story .label {
+  font-size:.6rem; letter-spacing:.3em; text-transform:uppercase; color:var(--gold);
+  font-weight:600; display:flex; align-items:center; gap:.6rem; margin-bottom:.75rem;
+}
+.lb-story .label::after { content:''; flex:0 0 28px; height:1px; background:var(--gold); opacity:.5; }
+.lb-story .btn {
+  display:inline-block; font-family:'Alice',serif; font-size:.74rem; font-weight:600;
+  letter-spacing:.15em; text-transform:uppercase; text-decoration:none; padding:.95rem 2.2rem;
+  border:2px solid transparent; cursor:pointer; transition:all .3s;
+}
+.lb-story .btn-green { background:var(--green); color:var(--cream); border-color:var(--green); }
+.lb-story .btn-green:hover { background:var(--green-hv); border-color:var(--green-hv); }
+.lb-story .btn-gold { background:var(--gold); color:var(--green); border-color:var(--gold); }
+.lb-story .btn-gold:hover { background:transparent; color:var(--gold-lt); border-color:var(--gold-lt); }
+
+/* ── HERO ── */
+.lb-story .hero {
+  position:relative; background:var(--green); overflow:hidden; display:flex;
+  align-items:flex-end; min-height:70vh;
+}
+.lb-story .hero-bg {
+  position:absolute; inset:0;
+  background-image:url('https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/079e344c-393a-4992-96a3-08eda8116d7b/jillian-alex-1.jpg?format=1000w');
+  background-size:cover; background-position:center 40%;
+}
+.lb-story .hero-grad {
+  position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(28,28,26,.85) 0%, rgba(28,28,26,.35) 40%, rgba(28,28,26,.1) 100%);
+}
+.lb-story .hero-content {
+  position:relative; z-index:2; padding:clamp(2.5rem,6vw,4rem) var(--pad-x);
+  max-width:700px; animation:lbStoryFadeUp .9s ease both;
+}
+.lb-story .hero-eyebrow {
+  font-size:.55rem; letter-spacing:.35em; text-transform:uppercase; color:var(--gold-lt);
+  font-weight:500; margin-bottom:1rem; display:flex; align-items:center; gap:.7rem;
+}
+.lb-story .hero-eyebrow-line { flex:0 0 20px; height:1px; background:var(--gold-lt); opacity:.45; }
+.lb-story .hero h1 { font-size:clamp(2.4rem,5.5vw,4rem); color:var(--warm); line-height:1.05; margin-bottom:.6rem; }
+.lb-story .hero-location {
+  font-family:'Playfair Display',serif; font-style:italic; font-size:clamp(1rem,1.8vw,1.25rem);
+  color:rgba(253,250,244,.55); line-height:1.5;
+}
+.lb-story .hero-meta {
+  display:flex; gap:1.5rem; flex-wrap:wrap; margin-top:1.2rem; padding-top:1.2rem;
+  border-top:1px solid rgba(253,250,244,.12);
+}
+.lb-story .hero-meta-item { font-size:.65rem; color:rgba(253,250,244,.4); letter-spacing:.08em; }
+.lb-story .hero-meta-item strong { color:rgba(253,250,244,.65); font-weight:600; }
+
+/* ── INTRO ── */
+.lb-story .intro { background:var(--cream); padding:var(--pad-y) var(--pad-x); }
+.lb-story .intro-inner { max-width:720px; margin:0 auto; text-align:center; }
+.lb-story .intro h2 { font-size:clamp(1.6rem,3vw,2.2rem); color:var(--txt); line-height:1.18; margin-bottom:1.2rem; }
+.lb-story .intro p { font-size:.88rem; line-height:1.85; color:var(--txt-mid); margin-bottom:1rem; }
+.lb-story .intro p:last-of-type { margin-bottom:0; }
+.lb-story .intro-divider { width:50px; height:1px; background:var(--gold); opacity:.4; margin:1.8rem auto; }
+
+/* ── PHOTO GALLERY ── */
+.lb-story .gallery { background:var(--warm); padding:var(--pad-y) var(--pad-x); }
+.lb-story .gallery-inner { max-width:1000px; margin:0 auto; }
+.lb-story .gallery-header { text-align:center; margin-bottom:clamp(1.5rem,3vw,2.5rem); }
+.lb-story .gallery-header h2 { font-size:clamp(1.6rem,2.8vw,2.2rem); color:var(--txt); line-height:1.18; }
+.lb-story .gallery-grid {
+  display:grid; gap:6px;
+  grid-template-columns:1fr 1fr;
+  grid-template-rows:auto auto;
+}
+.lb-story .gallery-item { position:relative; overflow:hidden; cursor:pointer; }
+.lb-story .gallery-item img {
+  width:100%; height:100%; object-fit:cover; display:block;
+  transition:transform .6s ease;
+}
+.lb-story .gallery-item:hover img { transform:scale(1.04); }
+.lb-story .gallery-item--hero { grid-column:1/3; grid-row:1; height:350px; }
+.lb-story .gallery-item--hero img { height:100%; }
+.lb-story .gallery-item--half { height:250px; }
+
+/* ── REVIEW ── */
+.lb-story .review-section {
+  background:var(--cream); padding:var(--pad-y) var(--pad-x); position:relative; overflow:hidden;
+}
+.lb-story .review-bg-pattern {
+  position:absolute; inset:0; opacity:.3;
+  background-image:radial-gradient(circle at 20% 50%, var(--gold) .5px, transparent .5px);
+  background-size:50px 50px;
+}
+.lb-story .review-inner {
+  position:relative; z-index:1; max-width:720px; margin:0 auto; text-align:center;
+}
+.lb-story .review-stars {
+  font-size:1.2rem; color:var(--gold); letter-spacing:.4em; margin-bottom:1.5rem;
+}
+.lb-story .review-quote {
+  font-size:.88rem; line-height:1.85; color:var(--txt-mid); margin-bottom:1.5rem;
+  font-style:italic;
+}
+.lb-story .review-attribution {
+  font-size:.7rem; letter-spacing:.1em; text-transform:uppercase; color:var(--stone);
+  margin-top:1.5rem;
+}
+.lb-story .review-badge {
+  display:inline-flex; align-items:center; gap:.5rem; margin-top:1rem;
+  padding:.6rem 1.2rem; background:rgba(91,98,57,.05); border-radius:20px;
+}
+.lb-story .review-badge-icon { width:16px; height:16px; }
+.lb-story .review-badge-text {
+  font-size:.6rem; letter-spacing:.05em; color:var(--stone);
+}
+
+/* ── DETAILS ── */
+.lb-story .details {
+  background:var(--warm); padding:var(--pad-y) var(--pad-x);
+}
+.lb-story .details-inner {
+  max-width:1000px; margin:0 auto; display:grid;
+  grid-template-columns:repeat(3, 1fr); gap:2rem;
+}
+.lb-story .detail-item {
+  text-align:center;
+}
+.lb-story .detail-label {
+  font-size:.65rem; letter-spacing:.15em; text-transform:uppercase;
+  color:var(--stone); font-weight:600; margin-bottom:.5rem;
+}
+.lb-story .detail-value {
+  font-size:.95rem; color:var(--txt);
+}
+.lb-story .detail-value a {
+  text-decoration:none; border-bottom:1px solid rgba(91,98,57,.2);
+  transition:color .3s, border-color .3s;
+}
+.lb-story .detail-value a:hover {
+  color:var(--gold); border-color:var(--gold);
+}
+
+/* ── VENUE SPOTLIGHT ── */
+.lb-story .venue-spot { background:var(--cream); padding:var(--pad-y) var(--pad-x); }
+.lb-story .venue-spot-inner {
+  max-width:1100px; margin:0 auto; display:grid;
+  grid-template-columns:1fr 1fr; gap:clamp(2rem,5vw,4rem); align-items:center;
+}
+.lb-story .venue-spot-img { position:relative; overflow:hidden; border-radius:2px; }
+.lb-story .venue-spot-img img {
+  width:100%; height:100%; object-fit:cover; display:block;
+}
+.lb-story .venue-spot-body {
+  padding:0 clamp(0,2vw,2rem);
+}
+.lb-story .venue-spot-body h3 {
+  font-size:clamp(1.6rem,2.8vw,2.2rem); color:var(--txt); line-height:1.15;
+  margin-bottom:1.2rem;
+}
+.lb-story .venue-spot-body p {
+  font-size:.88rem; line-height:1.85; color:var(--txt-mid); margin-bottom:1rem;
+}
+.lb-story .venue-spot-tags {
+  display:flex; gap:.5rem; flex-wrap:wrap; margin:1.5rem 0 1.8rem;
+}
+.lb-story .venue-tag {
+  display:inline-block; padding:.4rem .9rem; background:rgba(91,98,57,.08);
+  border-radius:20px; font-size:.65rem; color:var(--green); letter-spacing:.05em;
+}
+
+/* ── MORE LOVE STORIES ── */
+.lb-story .others { background:var(--warm); padding:var(--pad-y) var(--pad-x); }
+.lb-story .others-inner { max-width:1200px; margin:0 auto; }
+.lb-story .others-header { text-align:center; margin-bottom:clamp(2rem,4vw,3rem); }
+.lb-story .others-header h2 { font-size:clamp(1.6rem,3vw,2.2rem); color:var(--txt); line-height:1.18; }
+.lb-story .others-grid {
+  display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:1px solid rgba(91,98,57,.1);
+}
+.lb-story .others-card {
+  text-decoration:none; color:var(--txt); background:var(--warm); overflow:hidden;
+  border-right:1px solid rgba(91,98,57,.1); transition:all .4s;
+}
+.lb-story .others-card:last-child { border-right:none; }
+.lb-story .others-card:hover { background:rgba(91,98,57,.03); transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,.06); }
+.lb-story .others-card-img { position:relative; height:200px; overflow:hidden; }
+.lb-story .others-card-img img {
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  filter:saturate(.8); transition:transform .6s ease, filter .4s;
+}
+.lb-story .others-card:hover .others-card-img img { transform:scale(1.06); filter:saturate(1); }
+.lb-story .others-card-img-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to top, rgba(28,28,26,.5) 0%, rgba(28,28,26,0) 55%); z-index:1;
+}
+.lb-story .others-card-body { padding:1.1rem 1rem 1.3rem; }
+.lb-story .others-card h3 { font-size:.88rem; font-weight:600; color:var(--green); line-height:1.25; margin-bottom:.2rem; }
+.lb-story .others-card p { font-size:.65rem; color:var(--stone); letter-spacing:.04em; }
+
+/* ── FINAL CTA ── */
+.lb-story .final-cta {
+  position:relative; padding:clamp(3rem,7vw,5rem) var(--pad-x);
+  text-align:center; overflow:hidden;
+}
+.lb-story .final-cta-bg {
+  position:absolute; inset:0;
+  background-image:url('https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/7063358c-caac-4652-8bf7-cbdebd2c5cef/jillian-alex-5.jpg?format=1500w');
+  background-size:cover; background-position:center 40%;
+}
+.lb-story .final-cta-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(26,30,35,.90) 0%, rgba(38,42,48,.85) 100%);
+}
+.lb-story .final-cta-content { position:relative; z-index:2; max-width:580px; margin:0 auto; }
+.lb-story .final-cta h2 {
+  font-size:clamp(1.6rem,3vw,2.4rem); color:var(--warm); line-height:1.15; margin-bottom:.8rem;
+}
+.lb-story .final-cta .cta-subtitle {
+  font-family:'Playfair Display',serif; font-style:italic; font-size:.9rem;
+  color:rgba(245,240,232,.58); line-height:1.7; margin-bottom:2rem;
+}
+.lb-story .final-cta-buttons {
+  display:flex; align-items:center; justify-content:center; gap:1.2rem; flex-wrap:wrap;
+}
+.lb-story .final-cta .cta-secondary {
+  font-family:'Alice',serif; font-size:.68rem; letter-spacing:.12em; text-transform:uppercase;
+  color:rgba(245,240,232,.42); text-decoration:none;
+  border-bottom:1px solid rgba(245,240,232,.16); padding-bottom:.15rem;
+  transition:color .3s, border-color .3s;
+}
+.lb-story .final-cta .cta-secondary:hover { color:var(--gold-lt); border-color:var(--gold-lt); }
+
+/* ── ANIMATIONS ── */
+@keyframes lbStoryFadeUp { from { opacity:0; transform:translateY(26px); } to { opacity:1; transform:translateY(0); } }
+.lb-story .reveal { opacity:0; transform:translateY(18px); transition:opacity .7s ease, transform .7s ease; }
+.lb-story .reveal.in { opacity:1; transform:translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width:900px) {
+  .lb-story .venue-spot-inner { grid-template-columns:1fr; }
+  .lb-story .others-grid { grid-template-columns:repeat(2,1fr); }
+  .lb-story .others-card:nth-child(2) { border-right:none; }
+}
+@media (max-width:600px) {
+  .lb-story .hero { min-height:55vh; }
+  .lb-story .gallery-grid { grid-template-columns:1fr; }
+  .lb-story .gallery-item--half img { height:clamp(220px,50vw,320px); }
+  .lb-story .intro, .lb-story .gallery, .lb-story .venue-spot, .lb-story .others { padding:2.5rem 1.2rem; }
+  .lb-story .others-grid { grid-template-columns:1fr 1fr; }
+  .lb-story .details-inner { gap:1.2rem; }
+  .lb-story .final-cta-buttons { flex-direction:column; gap:.8rem; }
+}
+</style>
+
+<div class="lb-story">
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grad"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">
+      <span class="hero-eyebrow-line"></span>
+      Real Love Story
+      <span class="hero-eyebrow-line"></span>
+    </p>
+    <h1>Jillian &amp; <em>Alex</em></h1>
+    <p class="hero-location">A Sunrise Elopement at the Cliffs of Moher, Co. Clare</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><strong>Venue:</strong> Cliffs of Moher</div>
+      <div class="hero-meta-item"><strong>Location:</strong> Co. Clare, Ireland</div>
+      <div class="hero-meta-item"><strong>Package:</strong> F&aacute;ilte</div>
+      <div class="hero-meta-item"><strong>Photos:</strong> Marie O&rsquo;Mahony</div>
+    </div>
+  </div>
+</div>
+
+<div class="intro">
+  <div class="intro-inner reveal">
+    <p class="label" style="justify-content:center;">Their Story</p>
+    <h2>A sunrise ceremony at the edge of the world, <em>just the two of them.</em></h2>
+    <p>Jillian and Alex wanted something truly unforgettable &mdash; a moment just for them, witnessed only by the dawn and the vast Atlantic expanse. They chose the Cliffs of Moher, and set their ceremony for 4:30 AM to catch the sunrise unfolding over the ocean.</p>
+    <p>In the quiet of early morning, with the birds waking up around them and the cliffs bathed in soft golden light, they stood at the edge of the world and said yes. It was peaceful, beautiful, and completely unbothered &mdash; exactly what they had dreamed of. The raw emotion, the stillness of the moment, and the majesty of the landscape came together to create something truly magical.</p>
+    <div class="intro-divider"></div>
+    <p style="font-size:.8rem;color:var(--stone);font-style:italic;">Beautifully captured by Marie O&rsquo;Mahony, whose talent for finding light and emotion in every frame made their sunrise ceremony absolutely timeless.</p>
+  </div>
+</div>
+
+<div class="gallery">
+  <div class="gallery-inner">
+    <div class="gallery-header reveal">
+      <p class="label" style="justify-content:center;">The Gallery</p>
+      <h2>Moments from <em>their day.</em></h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="gallery-item gallery-item--hero">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/bb83b2c3-65e6-4806-ba5b-d2ec786dc48d/jillian-alex-4.jpg?format=1000w"
+             alt="Jillian and Alex at the Cliffs of Moher during their sunrise ceremony">
+      </div>
+      <div class="gallery-item gallery-item--half">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/458eb22b-95e3-4560-a151-1e7f2bc92b49/jillian-alex-7.jpg?format=1000w"
+             alt="Jillian and Alex sharing a romantic moment at sunrise on the Cliffs of Moher">
+      </div>
+      <div class="gallery-item gallery-item--half">
+        <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/7063358c-caac-4652-8bf7-cbdebd2c5cef/jillian-alex-5.jpg?format=1000w"
+             alt="The couple on the cliff edge with the sunrise over the Atlantic Ocean behind them">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="review-section">
+  <div class="review-bg-pattern"></div>
+  <div class="review-inner reveal">
+    <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+    <div class="review-quote">
+      Yasmeen and Laurence truly made our dream come true. They organized our sunrise ceremony on the Cliffs of Moher with the most incredible people, and every single person we worked with was genuine, kind, and so thoughtful. The entire experience was breathtakingly beautiful&mdash;I still cry every time I watch the video or look through the photos. We are endlessly grateful to them both for giving us something we will cherish for the rest of our lives. I could honestly gush for pages. If this experience is even remotely on your radar, do it. You will never regret it. Everything felt effortless on our end, and the entire process was simple and stress-free. Yasmeen has an amazing way of making you feel like she&rsquo;s known you forever, and both she and Laurence are just incredibly warm, wonderful people. We couldn&rsquo;t have asked for more.
+    </div>
+    <p class="review-attribution"><strong>Jillian &amp; Alex</strong> &mdash; Cliffs of Moher, Co. Clare</p>
+    <a href="https://maps.app.goo.gl/SYSytD5idYeSma6a9" target="_blank" rel="noopener" class="review-badge" style="text-decoration:none;">
+      <svg class="review-badge-icon" viewBox="0 0 24 24" fill="none">
+        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18A10.96 10.96 0 001 12c0 1.77.42 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+      </svg>
+      <span class="review-badge-text">Verified Google Review</span>
+    </a>
+  </div>
+</div>
+
+<div class="details">
+  <div class="details-inner reveal">
+    <div class="detail-item">
+      <div class="detail-label">Venue</div>
+      <div class="detail-value"><a href="https://www.ladybirdeverafter.com/venues/p/cliffsofmoher">Cliffs of Moher</a></div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">County</div>
+      <div class="detail-value">Co. Clare</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Region</div>
+      <div class="detail-value"><a href="https://www.ladybirdeverafter.com/region-west">West</a></div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Package</div>
+      <div class="detail-value"><a href="https://www.ladybirdeverafter.com/packages">F&aacute;ilte</a></div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Photographer</div>
+      <div class="detail-value">Marie O&rsquo;Mahony</div>
+    </div>
+    <div class="detail-item">
+      <div class="detail-label">Type</div>
+      <div class="detail-value">Sunrise Elopement</div>
+    </div>
+  </div>
+</div>
+
+<div class="venue-spot">
+  <div class="venue-spot-inner">
+    <div class="venue-spot-img reveal">
+      <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/079e344c-393a-4992-96a3-08eda8116d7b/jillian-alex-1.jpg?format=1000w"
+           alt="The Cliffs of Moher at sunrise with the Atlantic Ocean stretching to the horizon">
+    </div>
+    <div class="venue-spot-body reveal">
+      <p class="label">About the Venue</p>
+      <h3>Cliffs of Moher,<br><em>Co. Clare</em></h3>
+      <p>The Cliffs of Moher rise majestically along the southwestern edge of the Burren region, standing 700 feet above the wild Atlantic Ocean. These ancient sea cliffs stretch for over 8 kilometres along the Clare coast, creating one of Ireland&rsquo;s most iconic and breathtaking landscapes.</p>
+      <p>A sunrise ceremony here is not just romantic &mdash; it&rsquo;s transcendent. The quiet of early morning, the soft golden light spreading across the ocean, and the sheer scale of the cliffs create an atmosphere of profound peace and natural beauty. It&rsquo;s a place where the world feels vast and timeless, and saying yes feels like a promise to the universe itself.</p>
+      <div class="venue-spot-tags">
+        <span class="venue-tag">Coastal Cliffs</span>
+        <span class="venue-tag">Sunrise Setting</span>
+        <span class="venue-tag">Co. Clare</span>
+        <span class="venue-tag">Iconic Landmark</span>
+      </div>
+      <a href="https://www.ladybirdeverafter.com/venues/p/cliffsofmoher" class="btn btn-green">Explore Cliffs of Moher</a>
+    </div>
+  </div>
+</div>
+
+<div class="others">
+  <div class="others-inner">
+    <div class="others-header reveal">
+      <p class="label" style="justify-content:center;">More Love Stories</p>
+      <h2>Our Happy <em>Couples</em></h2>
+    </div>
+    <div class="others-grid reveal">
+      <a href="https://www.ladybirdeverafter.com/happy-couples/krystial-kurtis-kinnitty-castle" class="others-card">
+        <div class="others-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/01262369-9c68-419c-abc2-d0158a877260/kk1.webp?format=1000w" alt="Krystial and Kurtis at Kinnitty Castle">
+          <div class="others-card-img-overlay"></div>
+        </div>
+        <div class="others-card-body">
+          <h3>Krystial &amp; Kurtis</h3>
+          <p>Kinnitty Castle</p>
+        </div>
+      </a>
+      <a href="https://www.ladybirdeverafter.com/happy-couples/jessica-kyle-ross-castle" class="others-card">
+        <div class="others-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/5e5dc75c-a834-4e3a-9edb-427b51cf940f/DC1_7641.jpg?format=1000w" alt="Jessica and Kyle at Ross Castle">
+          <div class="others-card-img-overlay"></div>
+        </div>
+        <div class="others-card-body">
+          <h3>Jessica &amp; Kyle</h3>
+          <p>Ross Castle</p>
+        </div>
+      </a>
+      <a href="https://www.ladybirdeverafter.com/happy-couples/katrina-john-cliffs-of-moher" class="others-card">
+        <div class="others-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/947d7338-0b78-428c-9950-681924ca70d5/KJCliffsofMoher5.webp?format=1000w" alt="Katrina and John at the Cliffs of Moher">
+          <div class="others-card-img-overlay"></div>
+        </div>
+        <div class="others-card-body">
+          <h3>Katrina &amp; John</h3>
+          <p>Cliffs of Moher</p>
+        </div>
+      </a>
+      <a href="https://www.ladybirdeverafter.com/happy-couples/mollie-ryan-dunquin-pier" class="others-card">
+        <div class="others-card-img">
+          <img src="https://images.squarespace-cdn.com/content/v1/6629929a89c94f57955fe87e/7d7d6ea1-cb11-47d4-a5a8-122c899f0901/MandR_Dingle3.jpg?format=1000w" alt="Mollie and Ryan at Dunquin Pier">
+          <div class="others-card-img-overlay"></div>
+        </div>
+        <div class="others-card-body">
+          <h3>Mollie &amp; Ryan</h3>
+          <p>Dunquin Pier</p>
+        </div>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:2rem;" class="reveal">
+      <a href="https://www.ladybirdeverafter.com/real-love" class="btn btn-green">See All Love Stories</a>
+    </div>
+  </div>
+</div>
+
+<div class="final-cta">
+  <div class="final-cta-bg"></div>
+  <div class="final-cta-overlay"></div>
+  <div class="final-cta-content reveal">
+    <p class="label" style="justify-content:center;color:var(--gold-lt);">Your Story Starts Here</p>
+    <h2>Ready to write your own<br><em>Irish love story?</em></h2>
+    <p class="cta-subtitle">Every fairytale needs a beginning. Let&rsquo;s start planning yours.</p>
+    <div class="final-cta-buttons">
+      <a href="https://www.ladybirdeverafter.com/get-in-touch" class="btn btn-gold">Get In Touch</a>
+      <a href="https://www.ladybirdeverafter.com/schedule-a-call" class="cta-secondary">or book a free call &rarr;</a>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const reveals = document.querySelectorAll('.lb-story .reveal');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  reveals.forEach(el => observer.observe(el));
+});
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Jillian & Alex: A Sunrise Elopement at the Cliffs of Moher, Co. Clare, Ireland",
+  "description": "Real elopement story of Jillian and Alex who celebrated their intimate sunrise wedding at the iconic Cliffs of Moher in Co. Clare, Ireland, planned by Ladybird Ever After.",
+  "image": "https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/bb83b2c3-65e6-4806-ba5b-d2ec786dc48d/jillian-alex-4.jpg",
+  "author": {
+    "@type": "Organization",
+    "name": "Ladybird Ever After",
+    "url": "https://www.ladybirdeverafter.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Ladybird Ever After",
+    "url": "https://www.ladybirdeverafter.com"
+  },
+  "datePublished": "2026-03-30"
+}
+</script>

@@ -1,0 +1,184 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Alice:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --white: #FFFFFF;
+    --off-white: #F9F7F4;
+    --gold: #B8964E;
+    --gold-lt: #D4AF71;
+    --green: #5B6239;
+    --txt: #1A1A18;
+    --txt-mid: #4A4A42;
+    --pad-x: clamp(1.2rem, 5vw, 5rem);
+    --pad-y: clamp(3.5rem, 7vw, 6rem);
+  }
+
+  .lb-lesson * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .lb-lesson {
+    font-family: 'Alice', serif;
+    font-weight: 300;
+    color: var(--txt);
+    line-height: 1.6;
+  }
+
+  .lesson-section {
+    background: var(--white);
+    padding: var(--pad-y) var(--pad-x);
+  }
+
+  .lesson-section:nth-child(even) {
+    background: var(--off-white);
+  }
+
+  .lesson-section-in {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  .lesson-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    line-height: 1.2;
+    color: var(--txt);
+    margin-bottom: 1.6rem;
+  }
+
+  .lesson-section h2 em {
+    color: var(--gold-lt);
+    font-style: italic;
+  }
+
+  .lesson-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    color: var(--txt);
+    margin-top: 1.8rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .lesson-section p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    color: var(--txt);
+  }
+
+  .lesson-section strong {
+    color: var(--txt);
+    font-weight: 600;
+  }
+
+  .lesson-section ul {
+    margin: 1.5rem 0 1.5rem 1.8rem;
+    list-style: none;
+  }
+
+  .lesson-section ul li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.7rem;
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .lesson-section ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: bold;
+  }
+
+  .lesson-callout {
+    background: rgba(184, 150, 78, 0.05);
+    border-left: 4px solid var(--gold);
+    padding: 1.6rem;
+    margin: 2rem 0;
+  }
+
+  .lesson-callout strong {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  @media (max-width: 600px) {
+    .lesson-section {
+      padding: 2.5rem var(--pad-x);
+    }
+  }
+</style>
+
+<div class="lb-lesson">
+  <section class="lesson-section">
+    <div class="lesson-section-in">
+      <h2>The Absolute Rule: The Dress Never Goes in the Cargo <em>Hold</em></h2>
+      <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/6156b2d8-a52a-479c-8a5c-3586704ff4d9/Sebrina%26John-45.jpg?content-type=image%2Fjpeg" alt="Couple in Ireland's First Look with lovely wedding dress" class="lesson-image">
+      <p>Your wedding dress must travel as a carry-on. Full stop. Checked luggage gets delayed, rerouted, and sometimes lost. Everything else can be replaced if a bag goes missing-your dress cannot.</p>
+      <p>Here is how your carry-on configuration should look:</p>
+      <ul>
+        <li>Wedding dress: your carry-on item</li>
+        <li>Purse or backpack: your personal item</li>
+      </ul>
+      <p><strong>Your partner's suit:</strong> if it is bespoke or irreplaceable, carry it on too. If it is a standard suit, it can travel safely laid flat in a garment bag inside a hard-shell checked suitcase.</p>
+    </div>
+  </section>
+
+  <section class="lesson-section">
+    <div class="lesson-section-in">
+      <h2>The Right Gear for Packing Your <em>Dress</em></h2>
+      <p>Do not use the plastic bag the bridal boutique gave you. Invest in proper gear before your trip.</p>
+
+      <h3>The Right Bag</h3>
+      <p>A high-quality, breathable, bi-fold or tri-fold garment bag. Get a white one. A white garment bag signals "wedding dress" to airline staff and flight attendants without you having to say anything. They instinctively handle it more carefully.</p>
+
+      <h3>For Large Ballgowns</h3>
+      <p>Do not use a vacuum-seal bag-it will permanently crease structured fabrics. Ask your bridal boutique to professionally pack the dress into a carry-on-sized bridal box, or use gentle fabric-safe compression bags.</p>
+    </div>
+  </section>
+
+  <section class="lesson-section">
+    <div class="lesson-section-in">
+      <h2>Airline Policies: What to <em>Expect</em></h2>
+
+      <h3>United Airlines</h3>
+      <p>The most accommodating US airline for wedding dresses. United's transatlantic planes have dedicated hanging closets, and their official policy allows you to hang your dress there for free. If you are flying United to Ireland, this is the best situation you can be in.</p>
+
+      <h3>Aer Lingus</h3>
+      <p>Aer Lingus crews are extremely familiar with destination weddings. Their large transatlantic planes (the A330) have small closets in business class, and staff will often allow economy passengers to use them if space is available. Note: if you connect onward through Europe on a smaller Aer Lingus regional plane, there are no closets-the dress will go in the overhead bin.</p>
+
+      <h3>Delta and American Airlines</h3>
+      <p>Both airlines technically reserve their onboard closets for medical devices and mobility equipment. Flight attendants will often help if space exists, but plan for the dress to go flat in an overhead bin and be prepared for that outcome.</p>
+
+      <h3>Ryanair (for European Connections)</h3>
+      <p>If you are catching a Ryanair connection from London or Paris into Ireland, note that Ryanair is extremely strict on cabin baggage dimensions and weight. You must pre-purchase a 10kg overhead cabin bag allowance for the dress before you fly. If you do not, they will force you to check it at the gate.</p>
+    </div>
+  </section>
+
+  <section class="lesson-section">
+    <div class="lesson-section-in">
+      <h2>Airport <em>Strategy</em></h2>
+      <p><strong>Pay for priority boarding.</strong> This is the best investment you will make on travel day. Boarding first guarantees empty overhead bins. You can lay your dress flat and close the bin before anyone boards with a competing bag.</p>
+      <p><strong>At the TSA checkpoint:</strong> let the agent know you are carrying a wedding dress. They will still put it through the X-ray, but they will use clean gloves if they need to open the bag.</p>
+      <p><strong>On the plane:</strong> greet the flight attendant as soon as you board, mention that you are getting married in Ireland, and ask if there is any space in the closet. Be warm and direct. This works the vast majority of the time.</p>
+    </div>
+  </section>
+
+  <section class="lesson-section">
+    <div class="lesson-section-in">
+      <h2>When You Arrive: Removing the <em>Wrinkles</em></h2>
+      <p>Expect your dress to be wrinkled when you land. This is normal. It does not mean anything is wrong.</p>
+      <p>As soon as you reach your hotel or accommodation, take the dress out of its bag and hang it somewhere high. Let gravity do the work. Given a day or two of hanging, most fabrics smooth out significantly on their own.</p>
+
+      <h3>Steamer Warning</h3>
+      <p>If you are bringing a travel steamer from the US, check the voltage label before you plug it in. Ireland runs on 220 volts. A standard American 110-volt steamer plugged into an Irish outlet with only a plastic adapter will catch fire, melt, or spit boiling water. The device must be labeled "Dual Voltage" (110-240V) to be safe. If you are not certain, leave it at home and we will arrange professional steaming on arrival.</p>
+    </div>
+  </section>
+</div>

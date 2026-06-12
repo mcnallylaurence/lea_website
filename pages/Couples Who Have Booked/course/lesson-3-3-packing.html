@@ -1,0 +1,152 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Alice:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --white: #FFFFFF;
+    --off-white: #F9F7F4;
+    --gold: #B8964E;
+    --gold-lt: #D4AF71;
+    --green: #5B6239;
+    --txt: #1A1A18;
+    --txt-mid: #4A4A42;
+    --pad-x: clamp(1.2rem, 5vw, 5rem);
+    --pad-y: clamp(3.5rem, 7vw, 6rem);
+  }
+
+  .lb-lesson * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .lb-lesson {
+    font-family: 'Alice', serif;
+    font-weight: 300;
+    color: var(--txt);
+    line-height: 1.6;
+  }
+
+  .lesson-section {
+    background: var(--white);
+    padding: var(--pad-y) var(--pad-x);
+  }
+
+  .lesson-section:nth-child(even) {
+    background: var(--off-white);
+  }
+
+  .lesson-section-in {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  .lesson-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    line-height: 1.2;
+    color: var(--txt);
+    margin-bottom: 1.6rem;
+  }
+
+  .lesson-section h2 em {
+    color: var(--gold-lt);
+    font-style: italic;
+  }
+
+  .lesson-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    color: var(--txt);
+    margin-top: 1.8rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .lesson-section p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    color: var(--txt);
+  }
+
+  .lesson-section strong {
+    color: var(--txt);
+    font-weight: 600;
+  }
+
+  .lesson-section ul {
+    margin: 1.5rem 0 1.5rem 1.8rem;
+    list-style: none;
+  }
+
+  .lesson-section ul li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.7rem;
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .lesson-section ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: bold;
+  }
+
+  .lesson-callout {
+    background: rgba(184, 150, 78, 0.05);
+    border-left: 4px solid var(--gold);
+    padding: 1.6rem;
+    margin: 2rem 0;
+  }
+
+  .lesson-callout strong {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  @media (max-width: 600px) {
+    .lesson-section {
+      padding: 2.5rem var(--pad-x);
+    }
+  }
+</style>
+
+<div class="lb-lesson">
+  <section class="lesson-section">
+    <div class="lesson-section-in">
+      <h2>Layers, Not Heavy <em>Coats</em></h2>
+      <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/16b397b4-8b9c-456b-b255-9b0e4d641cd3/Perfect-Packing.png?content-type=image%2Fpng" alt="packing for Ireland" class="lesson-image">
+      <p>Ireland's weather does not commit to a single state for an entire day. A sunny morning can become a cool, breezy afternoon and a chilly, damp evening-all before dinner. The way to stay comfortable is layers, not one heavy jacket that is either too hot or not enough.</p>
+      <p>Pack: light sweaters, a medium-weight layer, t-shirts. Plan to add and remove as the day changes. A combination of layers that you can mix and match will serve you better than anything designed for a single temperature.</p>
+    </div>
+  </section>
+
+  <section class="lesson-section">
+    <div class="lesson-section-in">
+      <h2>Ditch the Umbrella. Bring a <em>Raincoat</em>.</h2>
+      <p>Umbrellas are largely useless in Ireland because the rain often comes sideways. The wind makes a standard umbrella a liability, not a solution. What actually works is a good-quality, lightweight, waterproof rain jacket with a hood. One per person. Pack it in your day bag, not your suitcase.</p>
+    </div>
+  </section>
+
+  <section class="lesson-section">
+    <div class="lesson-section-in">
+      <h2>Sensible <em>Footwear</em></h2>
+      <p>Ireland is a country of cobblestones, gravel driveways, castle ruins, soft grass, and country lanes. Stiletto heels work beautifully for the indoor dinner portion of the evening. For everything else-the ceremony, the outdoor photos, any sightseeing before or after the wedding-bring stylish boots, comfortable sneakers, or thick block-heel or wedge styles that provide actual support.</p>
+      <div class="lesson-callout">
+        <strong>Twisted ankles at Irish weddings are more common than you would think.</strong> Good shoes prevent them.
+      </div>
+    </div>
+  </section>
+
+  <section class="lesson-section">
+    <div class="lesson-section-in">
+      <h2>Plug <em>Adapters</em></h2>
+      <p>Bring at least two Type G plug adapters per person. These are for phones and laptops. You can buy them cheaply before you leave-do not assume you will find them easily once you land. And as covered in the electricity lesson: if you are bringing any heat-styling tools, check the voltage before you pack them.</p>
+    </div>
+  </section>
+</div>

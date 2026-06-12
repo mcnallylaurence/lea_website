@@ -1,0 +1,180 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Alice:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --white: #FFFFFF;
+    --off-white: #F9F7F4;
+    --gold: #B8964E;
+    --gold-lt: #D4AF71;
+    --green: #5B6239;
+    --txt: #1A1A18;
+    --txt-mid: #4A4A42;
+    --pad-x: clamp(1.2rem, 5vw, 5rem);
+    --pad-y: clamp(3.5rem, 7vw, 6rem);
+  }
+
+  .lb-lesson * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .lb-lesson {
+    font-family: 'Alice', serif;
+    font-weight: 300;
+    color: var(--txt);
+    line-height: 1.6;
+  }
+
+  .lesson-section {
+    background: var(--white);
+    padding: var(--pad-y) var(--pad-x);
+  }
+
+  .lesson-section:nth-child(even) {
+    background: var(--off-white);
+  }
+
+  .lesson-section-in {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  .lesson-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    line-height: 1.2;
+    color: var(--txt);
+    margin-bottom: 1.6rem;
+  }
+
+  .lesson-section h2 em {
+    color: var(--gold-lt);
+    font-style: italic;
+  }
+
+  .lesson-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    color: var(--txt);
+    margin-top: 1.8rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .lesson-section p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    color: var(--txt);
+  }
+
+  .lesson-section strong {
+    color: var(--txt);
+    font-weight: 600;
+  }
+
+  .lesson-section ul {
+    margin: 1.5rem 0 1.5rem 1.8rem;
+    list-style: none;
+  }
+
+  .lesson-section ul li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.7rem;
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .lesson-section ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: bold;
+  }
+
+  .lesson-callout {
+    background: rgba(184, 150, 78, 0.05);
+    border-left: 4px solid var(--gold);
+    padding: 1.6rem;
+    margin: 2rem 0;
+  }
+
+  .lesson-callout strong {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .lesson-image {
+    width: 100%;
+    height: auto;
+    margin: 1.5rem 0;
+    display: block;
+  }
+
+  @media (max-width: 600px) {
+    .lesson-section {
+      padding: 2.5rem var(--pad-x);
+    }
+  }
+</style>
+
+<div class="lb-lesson">
+  <section class="lesson-section">
+    <div class="lesson-section-in">
+      <h2>How to Use Google <em>Flights</em></h2>
+      <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/b55f5253-93c1-40e4-8dd2-dffcc962c568/googleflights.webp?content-type=image%2Fwebp" alt="Planning flights online" class="lesson-image">
+      <p>Forget third-party booking aggregators like Expedia or Kayak for international flights. Google Flights is the most powerful tool available for tracking and comparing international fares.</p>
+
+      <h3>Turn on Price Tracking</h3>
+      <p>As soon as your wedding week is set, search your ideal route on Google Flights and toggle on "Track Prices." Google will email you automatically when the price for that specific route rises or falls significantly.</p>
+
+      <h3>Use the Date Grid and Price Graph</h3>
+      <p>Click the "Date Grid" tool to see prices across a range of departure dates. Flying on a Thursday instead of a Friday can sometimes save hundreds of dollars per person. If you or your guests have any flexibility, this tool is worth using.</p>
+
+      <h3>The "Anywhere" Trick for Finding Cheap Connections</h3>
+      <p>If direct transatlantic flights are out of budget, search from your home airport to "Europe." This shows the cheapest major connection hubs — often London Heathrow, Amsterdam, or Paris. From any of those cities, a short one-hour regional flight on Aer Lingus or Ryanair gets you to Ireland.</p>
+
+      <h3>The Golden Rule: Book Directly with the Airline</h3>
+      <p>Use Google Flights to research and compare. Then close the tab and go directly to the airline's own website to book. If a flight is delayed, cancelled, or changed, airlines are legally obligated to rebook passengers who booked directly. Third-party sites like Expedia are notoriously difficult to deal with in disruption scenarios, and they cannot always advocate on your behalf.</p>
+    </div>
+  </section>
+
+  <section class="lesson-section">
+    <div class="lesson-section-in">
+      <h2>Which Irish Airport Should You <em>Use</em>?</h2>
+      <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/4e4240b3-cfa5-4a57-9235-7db6b762d52f/T2-With-Wayfinding-1000px.jpg?content-type=image%2Fjpeg" alt="Ireland coastal landscape" class="lesson-image">
+      <p>Ireland is a small country, but where you land has a significant impact on your driving time to the venue. Here is a breakdown of your options.</p>
+
+      <h3>Dublin Airport (DUB) — The Main Hub</h3>
+      <p><strong>Best for:</strong> Weddings in Dublin, the east of Ireland, and the midlands. Also ideal for guests who plan to rent a car and road-trip across the country.</p>
+      <p>Dublin has the most direct transatlantic routes from the US and Canada. It is Ireland's largest international airport.</p>
+      <p><strong>Hidden perk:</strong> Dublin offers US Customs Preclearance. When flying home to the US, you clear US Customs and Immigration in Dublin before boarding. When you land in America, you step off the plane as a domestic passenger and walk straight out. This is a significant time-saver on an already long travel day.</p>
+
+      <h3>Shannon Airport (SNN) — The West Coast Option</h3>
+      <p><strong>Best for:</strong> Weddings in the west of Ireland — County Clare, Galway, Limerick — and the southwest, including Kerry.</p>
+      <p>Shannon is a small, easy-to-navigate airport that drops you directly on the edge of the Wild Atlantic Way. For guests flying from US hubs like New York, Boston, or Chicago, it is worth checking Shannon specifically if your venue is on the west coast.</p>
+      <p>Shannon also offers US Customs Preclearance — the same perk as Dublin, with a fraction of the airport congestion.</p>
+
+      <h3>Cork Airport (ORK) — The Southern Option</h3>
+      <p><strong>Best for:</strong> Weddings in Cork and Kerry.</p>
+      <p>Cork does not currently have direct transatlantic flights from the US, but it has strong connections to European hubs like London Heathrow and Amsterdam. It is a relaxed, manageable airport for guests connecting through Europe.</p>
+
+      <h3>Belfast Airports (BFS and BHD) — Northern Ireland</h3>
+      <p><strong>Best for:</strong> Weddings in Northern Ireland or County Donegal.</p>
+      <p>Belfast has two airports: Belfast International (BFS) and George Best Belfast City Airport (BHD). Most international guests connect through London. Note that Belfast is in the UK — the currency there is pound sterling, not euros.</p>
+
+      <h3>Ireland West Airport Knock (NOC) — The Northwest</h3>
+      <p><strong>Best for:</strong> Weddings in Mayo, Sligo, and northern Galway.</p>
+      <p>A small regional airport with mostly UK and European connections. If your venue is in the rugged northwest and your guests are connecting through London, Knock puts them right on the doorstep.</p>
+
+      <div class="lesson-callout">
+        <strong>Practical tip for your wedding website:</strong> Tell your guests exactly which airport is closest to your venue and give them the driving time. For example: "We recommend flying into Shannon (SNN). The venue is approximately 45 minutes away." This simple detail reduces confusion significantly.
+      </div>
+    </div>
+  </section>
+</div>

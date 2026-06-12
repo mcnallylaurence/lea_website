@@ -1,0 +1,171 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Alice:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --white: #FFFFFF;
+    --off-white: #F9F7F4;
+    --gold: #B8964E;
+    --gold-lt: #D4AF71;
+    --green: #5B6239;
+    --txt: #1A1A18;
+    --txt-mid: #4A4A42;
+    --pad-x: clamp(1.2rem, 5vw, 5rem);
+    --pad-y: clamp(3.5rem, 7vw, 6rem);
+  }
+
+  .lb-lesson * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .lb-lesson {
+    font-family: 'Alice', serif;
+    font-weight: 300;
+    color: var(--txt);
+    line-height: 1.6;
+  }
+
+  .lesson-section {
+    background: var(--white);
+    padding: var(--pad-y) var(--pad-x);
+  }
+
+  .lesson-section:nth-child(even) {
+    background: var(--off-white);
+  }
+
+  .lesson-section-in {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  .lesson-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    line-height: 1.2;
+    color: var(--txt);
+    margin-bottom: 1.6rem;
+  }
+
+  .lesson-section h2 em {
+    color: var(--gold-lt);
+    font-style: italic;
+  }
+
+  .lesson-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    color: var(--txt);
+    margin-top: 1.8rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .lesson-section p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    color: var(--txt);
+  }
+
+  .lesson-section strong {
+    color: var(--txt);
+    font-weight: 600;
+  }
+
+  .lesson-section ul {
+    margin: 1.5rem 0 1.5rem 1.8rem;
+    list-style: none;
+  }
+
+  .lesson-section ul li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.7rem;
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .lesson-section ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: bold;
+  }
+
+  .lesson-callout {
+    background: rgba(184, 150, 78, 0.05);
+    border-left: 4px solid var(--gold);
+    padding: 1.6rem;
+    margin: 2rem 0;
+  }
+
+  .lesson-callout strong {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .lesson-image {
+    width: 100%;
+    height: auto;
+    margin: 1.5rem 0;
+    display: block;
+  }
+
+  .tenon-btn {
+    display: inline-block;
+    margin-top: 1.2rem;
+    padding: 0.85rem 2rem;
+    background: var(--gold);
+    color: var(--white);
+    font-family: 'Alice', serif;
+    font-size: 0.95rem;
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+
+  .tenon-btn:hover {
+    background: var(--gold-lt);
+  }
+
+  @media (max-width: 600px) {
+    .lesson-section {
+      padding: 2.5rem var(--pad-x);
+    }
+  }
+</style>
+
+<div class="lb-lesson">
+  <section class="lesson-section">
+    <div class="lesson-section-in">
+      <h2>A Travel Agency We <em>Trust</em></h2>
+      <p>Planning travel to Ireland for a wedding - especially with guests coming from multiple countries - can quickly become complicated. Flights, accommodations, transfers, and extra days of sightseeing all need to coordinate around your event.</p>
+      <p>We have worked with <strong>Tenon Tours</strong> on a number of occasions and have consistently seen them handle Ireland wedding travel well. They specialize in Europe for North American travelers and have over 15 years of experience in Ireland specifically - meaning they know the country in real depth, not just the major cities.</p>
+
+      <div class="lesson-callout">
+        <strong>A note on transparency:</strong> Ladybird does not receive any commission or benefit from recommending Tenon Tours. We share this because we have had genuinely good experiences with them and believe they can make your guests' trip easier and more memorable.
+      </div>
+
+      <h3>What They Can Help With</h3>
+      <p>Tenon Tours can work with you and your guests individually or as a group to plan:</p>
+      <ul>
+        <li>Pre- and post-wedding travel itineraries around Ireland</li>
+        <li>Accommodations at all price points across the country</li>
+        <li>Private driver and car hire arrangements</li>
+        <li>Guided tours and experiences beyond your wedding days</li>
+        <li>Group travel coordination for guests who want to explore together</li>
+      </ul>
+
+      <h3>Why This Is Worth Sharing with Your Guests</h3>
+      <p>Many of your guests will be visiting Ireland for the first time. They may not know where to start when it comes to extending their trip, navigating regional travel, or finding accommodations that fit their budget. Having a specialist they can reach out to directly takes the pressure off you to field individual travel questions - and it means your guests arrive relaxed and well-prepared.</p>
+
+      <p>Tenon Tours has set up a dedicated page specifically for Ladybird couples and their guests.</p>
+
+      <a href="https://www.tenontours.com/ireland-wedding-guest-travel-ladybird-tenon-tours/" target="_blank" class="tenon-btn">Visit Tenon Tours &rarr;</a>
+    </div>
+  </section>
+</div>

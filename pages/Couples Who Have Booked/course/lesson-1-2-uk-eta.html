@@ -1,0 +1,187 @@
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Alice:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --white: #FFFFFF;
+    --off-white: #F9F7F4;
+    --gold: #B8964E;
+    --gold-lt: #D4AF71;
+    --green: #5B6239;
+    --txt: #1A1A18;
+    --txt-mid: #4A4A42;
+    --pad-x: clamp(1.2rem, 5vw, 5rem);
+    --pad-y: clamp(3.5rem, 7vw, 6rem);
+  }
+
+  .lb-lesson * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .lb-lesson {
+    font-family: 'Alice', serif;
+    font-weight: 300;
+    color: var(--txt);
+    line-height: 1.6;
+  }
+
+  .lesson-section {
+    background: var(--white);
+    padding: var(--pad-y) var(--pad-x);
+  }
+
+  .lesson-section:nth-child(even) {
+    background: var(--off-white);
+  }
+
+  .lesson-section-in {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+
+  .lesson-section h2 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+    line-height: 1.2;
+    color: var(--txt);
+    margin-bottom: 1.6rem;
+  }
+
+  .lesson-section h2 em {
+    color: var(--gold-lt);
+    font-style: italic;
+  }
+
+  .lesson-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 300;
+    font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+    color: var(--txt);
+    margin-top: 1.8rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .lesson-section p {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 1.2rem;
+    color: var(--txt);
+  }
+
+  .lesson-section strong {
+    color: var(--txt);
+    font-weight: 600;
+  }
+
+  .lesson-section ul {
+    margin: 1.5rem 0 1.5rem 1.8rem;
+    list-style: none;
+  }
+
+  .lesson-section ul li {
+    position: relative;
+    padding-left: 1.2rem;
+    margin-bottom: 0.7rem;
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+
+  .lesson-section ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: bold;
+  }
+
+  .lesson-callout {
+    background: rgba(184, 150, 78, 0.05);
+    border-left: 4px solid var(--gold);
+    padding: 1.6rem;
+    margin: 2rem 0;
+  }
+
+  .lesson-callout strong {
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  @media (max-width: 600px) {
+    .lesson-section {
+      padding: 2.5rem var(--pad-x);
+    }
+  }
+</style>
+
+<div class="lb-lesson">
+  <section class="lesson-section">
+    <div class="lesson-section-in">
+      <h2>Who This <em>Affects</em></h2>
+      <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/1772054999595-ISFLBDPR8KK1UULTJEV5/Howth+Castle+-+HandE.webp" alt="Ireland wedding" class="lesson-image">
+      <ul>
+        <li>Any couple or guest marrying in or visiting Northern Ireland</li>
+        <li>Anyone flying home to the US via a UK airport-including London Heathrow, London Gatwick, or Manchester-even if you are just connecting through and not entering the UK as a destination</li>
+      </ul>
+      <p><strong>Important distinction:</strong> The Republic of Ireland is a separate country from the UK. If your entire trip stays within the Republic-flying in, getting married, flying home from Dublin or Shannon-you do not need a UK ETA. But if any part of your journey touches UK soil or a UK airport, you do.</p>
+    </div>
+  </section>
+
+  <section class="lesson-section">
+    <div class="lesson-section-in">
+      <h2>What Is the <em>ETA</em>?</h2>
+      <img src="https://images.squarespace-cdn.com/content/6629929a89c94f57955fe87e/028b0f16-264a-4828-aa1f-011c18451d5a/UKETA.jpg?content-type=image%2Fjpeg" alt="Ireland wedding" class="lesson-image">
+      <p>The UK Electronic Travel Authorisation is a digital pre-entry screening requirement, similar to the US ESTA system that non-Americans must complete before visiting the United States. It is not a visa. It does not guarantee entry. It is a pre-clearance that must be in place before you board your flight.</p>
+      <div class="lesson-callout">
+        <strong>As of February 2026:</strong> The UK strictly enforces a "no permission, no travel" policy-meaning airlines can and will deny boarding to travelers who do not have an approved ETA on file.
+      </div>
+    </div>
+  </section>
+
+  <section class="lesson-section">
+    <div class="lesson-section-in">
+      <h2>Key <em>Facts</em></h2>
+      <ul>
+        <li>Cost: £10 per person (children included-every traveler needs one)</li>
+        <li>Valid for two years from approval, or until your passport expires, whichever comes first</li>
+        <li>Allows multiple entries to the UK during the validity period</li>
+        <li>Electronically linked to the passport you used when applying-if you get a new passport, you must apply for a new ETA</li>
+        <li>Most applications are processed within minutes, but the UK government advises allowing three working days in case your application needs further review</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="lesson-section">
+    <div class="lesson-section-in">
+      <h2>How to <em>Apply</em></h2>
+      <p>Apply only through the official UK government channels:</p>
+      <ul>
+        <li>Download the "UK ETA" app (official UK government app)</li>
+        <li>Or apply at <strong>gov.uk/eta</strong></li>
+      </ul>
+      <div class="lesson-callout">
+        <strong>Avoid third-party services</strong> that offer to apply on your behalf. They charge significantly more and offer no advantage over applying directly.
+      </div>
+    </div>
+  </section>
+
+  <section class="lesson-section">
+    <div class="lesson-section-in">
+      <h2>Who Does Not Need a UK <em>ETA</em></h2>
+      <ul>
+        <li>Anyone with a British or Irish passport</li>
+        <li>Anyone who already holds a UK visa</li>
+        <li>Anyone with UK legal residency</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="lesson-section">
+    <div class="lesson-section-in">
+      <h2>Practical <em>Advice</em></h2>
+      <p>Apply for your ETA as soon as your flights are booked. There is no reason to wait, and the two-year validity means you can apply well in advance without any risk of it expiring before your wedding. Keep a copy of your approval email on your phone. While the ETA is checked electronically at check-in, some airlines may ask to see confirmation.</p>
+    </div>
+  </section>
+</div>
