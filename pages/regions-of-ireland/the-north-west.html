@@ -626,7 +626,7 @@
 
   function buildCard(item) {
     const title  = item.title || 'Venue';
-    const href   = item.fullUrl || '/venues/p/' + (item.urlId || item.urlSlug || '');
+    const href   = item.fullUrl || '/venue/p/' + (item.urlId || item.urlSlug || '');
     const imgSrc = item.assetUrl || item.thumbnailUrl || null;
     const county = (item.customContent && item.customContent.county) ? item.customContent.county : '';
     const desc   = (item.excerpt || item.body || '').replace(/<[^>]*>/g, '').trim().slice(0, 180);

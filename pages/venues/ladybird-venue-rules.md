@@ -92,7 +92,7 @@ The final column in the sheet uses a formula to combine all the attributes and t
 4. Set the product **Title** to the venue name
 5. Paste the copied HTML blob into the product **Description** field (make sure you're in HTML/source mode, not rich text)
 6. Upload venue photos as product images
-7. Set the product URL slug to something clean e.g. `/venues/p/ballinlough-castle`
+7. Set the product URL slug to something clean e.g. `/venue/p/ballinloughcastle`
 8. Save and publish
 
 > **Important:** The description field must be in raw HTML mode when you paste. In Squarespace's editor, click the `<>` source button before pasting.
